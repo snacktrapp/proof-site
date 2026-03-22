@@ -374,7 +374,7 @@ export default function ProofWebsite() {
             color: COLORS.subtle, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.4s" }}>
             PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort
-            instead of just transactions. The Stripe of athletic loyalty.
+            instead of just transactions. Turns athletic effort into loyalty currency.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>

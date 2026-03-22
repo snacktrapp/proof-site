@@ -4,13 +4,13 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "PROOF — Effort Verified.",
   description:
-    "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. The Stripe of athletic loyalty.",
-  metadataBase: new URL("https://useproof.co"),
+    "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. Turns athletic effort into loyalty currency.",
+  metadataBase: new URL("https://verifiedeffort.com"),
   openGraph: {
     title: "PROOF — Effort Verified.",
     description:
-      "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions.",
-    url: "https://useproof.co",
+      "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. Turns athletic effort into loyalty currency.",
+    url: "https://verifiedeffort.com",
     siteName: "PROOF",
     images: [
       {
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PROOF — Effort Verified.",
     description:
-      "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions.",
+      "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. Turns athletic effort into loyalty currency.",
     images: ["/og-image.png"],
   },
   icons: {
