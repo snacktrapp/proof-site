@@ -447,10 +447,10 @@ export default function ProofWebsite() {
       {/* ── STATS ── */}
       <div style={{ background: COLORS.surface, borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <div className="stats-grid">
-          <StatCounter value={12} suffix="M+" label="MILES VERIFIED (BETA)" />
-          <StatCounter value={47} suffix="" label="BRANDS IN PIPELINE" />
-          <StatCounter value={98} suffix="%" label="VERIFICATION ACCURACY" />
-          <StatCounter value={3} suffix="s" label="AVG. SYNC TIME" />
+          <StatCounter value={40} suffix="+" label="YEARS · ANCHOR CUSTOMER" />
+          <StatCounter value={8} suffix="" label="KLAVIYO FLOWS DESIGNED" />
+          <StatCounter value={5} suffix="" label="LOYALTY TIERS" />
+          <StatCounter value={30} suffix="+" label="FITNESS PLATFORMS" />
         </div>
       </div>
 
