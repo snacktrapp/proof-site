@@ -566,8 +566,8 @@ export default function ProofWebsite() {
             { icon: "◎", title: "Endorsed model", desc: "Like Intel Inside — our badge sits discreetly in your experience. Customers see your brand first, PROOF verification second." },
             { icon: "⬡", title: "Any sport, any unit", desc: "Miles, meters, watts, rounds, sessions. You define what effort means for your customers. PROOF verifies it." },
             { icon: "⚡", title: "Fraud prevention", desc: "GPS validation, velocity checks, anomaly detection. We catch fake activities so your loyalty budget goes to real athletes." },
-            { icon: "↗", title: "Engagement lift", desc: "Brands using effort-based loyalty see 3.2× higher program engagement vs. spend-only programs." },
-            { icon: "⟁", title: "30+ integrations", desc: "Strava, Garmin, Apple Health, Peloton, Whoop, Zwift, and growing. One SDK, every platform." },
+            { icon: "↗", title: "Engagement lift", desc: "Effort-based loyalty rewards your most committed customers — not just your biggest spenders. Your best ambassador finally becomes visible to your program." },
+            { icon: "⟁", title: "Built for every platform", desc: "Strava, Garmin, Apple Health, Peloton, Whoop, Zwift — and 20+ more in the pipeline. One SDK, every platform." },
             { icon: "◈", title: "Your stack, untouched", desc: "PROOF plugs into LoyaltyLion, Yotpo, Smile.io, Shopify, Klaviyo — or your custom system via webhooks." },
           ].map((item, i) => (
             <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
