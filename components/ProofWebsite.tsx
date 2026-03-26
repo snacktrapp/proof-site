@@ -14,6 +14,8 @@ const COLORS = {
   signal: "#C8FF00",
   signalDim: "rgba(200,255,0,0.08)",
   signalGlow: "rgba(200,255,0,0.25)",
+  steel: "#8BA0B4",
+  effort: "#FF3D00",
 };
 
 function useInView(threshold = 0.15) {
@@ -134,7 +136,7 @@ const PricingCard = ({ name, price, period, features, highlight, cta }:
   </div>
 );
 
-const Step = ({ number, title, desc, isLast }: { number: string; title: string; desc: string; isLast?: boolean }) => (
+const Step = ({ number, title, desc, detail, isLast }: { number: string; title: string; desc: string; detail?: string; isLast?: boolean }) => (
   <div style={{ display: "flex", gap: 24, alignItems: "flex-start" }}>
     <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0 }}>
       <div style={{ width: 44, height: 44, borderRadius: "50%", border: `2px solid ${COLORS.signal}`,
@@ -149,6 +151,10 @@ const Step = ({ number, title, desc, isLast }: { number: string; title: string; 
         color: COLORS.textBright, marginBottom: 6 }}>{title}</div>
       <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
         lineHeight: 1.7, maxWidth: 440 }}>{desc}</div>
+      {detail && (
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel,
+          letterSpacing: "0.05em", marginTop: 8 }}>{detail}</div>
+      )}
     </div>
   </div>
 );
@@ -193,6 +199,48 @@ const LayerCard = ({ accent, title, subtitle, items, glow }: {
     </div>
   </div>
 );
+
+/* ── PEI Animated Conversion (new for Model C) ── */
+const PEIConversion = () => {
+  const sports = [
+    { raw: "23.4 mi ridden", pm: "23.4", sport: "Road Cycling", mult: "1.0×" },
+    { raw: "5.2 mi run", pm: "15.6", sport: "Running", mult: "3.0×" },
+    { raw: "1 session (45 min)", pm: "10", sport: "Strength", mult: "10×" },
+    { raw: "2.1 mi swum", pm: "16.8", sport: "Swimming", mult: "8.0×" },
+    { raw: "12.8 mi hiked", pm: "12.8", sport: "Walking", mult: "1.0×" },
+  ];
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setIdx(i => (i + 1) % sports.length), 3000);
+    return () => clearInterval(t);
+  }, []);
+  const s = sports[idx];
+  return (
+    <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+      borderRadius: 16, padding: "28px 32px",
+      display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", justifyContent: "center" }}>
+      <div style={{ textAlign: "center", minWidth: 140 }}>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+          color: COLORS.muted, marginBottom: 4 }}>{s.sport}</div>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18,
+          color: COLORS.text }}>{s.raw}</div>
+      </div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20,
+        color: COLORS.muted }}>→</div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+        color: COLORS.steel, background: COLORS.steel + "18",
+        padding: "4px 10px", borderRadius: 6 }}>{s.mult}</div>
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20,
+        color: COLORS.muted }}>→</div>
+      <div style={{ textAlign: "center" }}>
+        <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+          color: COLORS.signal, lineHeight: 1 }}>{s.pm}</div>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          color: COLORS.signal, letterSpacing: "0.1em" }}>PROOF MILES</div>
+      </div>
+    </div>
+  );
+};
 
 type FormState = "idle" | "loading" | "success" | "error";
 
@@ -269,6 +317,16 @@ export default function ProofWebsite() {
           color: ${COLORS.base}; cursor: pointer; letter-spacing: 0.08em;
           text-transform: uppercase; white-space: nowrap; transition: background 0.2s; }
 
+        .pei-table-wrap { overflow-x: auto; }
+        .pei-table { width: 100%; border-collapse: collapse; }
+        .pei-table th { padding: 14px 20px; text-align: left;
+          font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+          color: ${COLORS.muted}; letter-spacing: 0.08em; text-transform: uppercase;
+          border-bottom: 1px solid ${COLORS.surfaceBorder}; }
+        .pei-table td { padding: 12px 20px; border-bottom: 1px solid ${COLORS.surfaceBorder}; }
+
+        .account-mockup { max-width: 400px; margin: 0 auto; }
+
         /* ── TABLET ── */
         @media (max-width: 900px) {
           .proof-section { padding: 80px 20px; }
@@ -315,6 +373,9 @@ export default function ProofWebsite() {
 
           /* Code block — smaller font, scrollable */
           .code-pre { font-size: 11px !important; }
+
+          /* Account mockup — full width */
+          .account-mockup { max-width: 100%; }
         }
 
         @media (max-width: 480px) {
@@ -343,7 +404,7 @@ export default function ProofWebsite() {
 
           {/* Desktop nav */}
           <div className="nav-desktop">
-            {["How it works", "Pricing", "For brands"].map((item, i) => (
+            {["How it works", "Platform", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                   textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
@@ -370,7 +431,7 @@ export default function ProofWebsite() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="nav-mobile">
-            {["How it works", "Pricing", "For brands"].map((item, i) => (
+            {["How it works", "Platform", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
@@ -419,17 +480,18 @@ export default function ProofWebsite() {
             <VerifiedBadge size={48} animate={heroReady} />
           </div>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(15px, 4vw, 17px)",
-            color: COLORS.subtle, lineHeight: 1.7, maxWidth: 520, margin: "0 auto 40px",
+            color: COLORS.subtle, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.5s" }}>
-            PROOF connects fitness data to loyalty programs — GPS-verified, fraud-checked,
-            and ready to reward real athletic effort instead of just transactions.
+            PROOF connects real athletic activity — GPS-tracked, device-verified,
+            effort-normalized — to the loyalty programs your customers already expect.
+            One integration. Every sport. Every unit.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
             <a href="#waitlist" style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "14px 32px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Request early access
+              Get early access
             </a>
             <a href="#how-it-works" style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.text, background: "transparent", padding: "14px 32px", borderRadius: 8,
@@ -457,7 +519,8 @@ export default function ProofWebsite() {
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
                 lineHeight: 1.8, marginBottom: 28 }}>
                 PROOF Verified Effort is a universal trust mark that confirms real athletic activity —
-                verified through GPS, heart rate, and platform APIs. It works across every sport, every unit, every brand.
+                verified through GPS, heart rate, and platform APIs. Effort-normalized across every sport
+                via the PROOF Effort Index. It works across every unit, every brand.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                 {["Miles", "Meters", "Rounds", "Sessions", "Watts", "Laps", "Reps", "Hours"].map(u => (
@@ -498,7 +561,7 @@ export default function ProofWebsite() {
           <StatCounter value={40} suffix="+" label="YEARS · ANCHOR CUSTOMER" />
           <StatCounter value={8} suffix="" label="KLAVIYO FLOWS DESIGNED" />
           <StatCounter value={5} suffix="" label="LOYALTY TIERS" />
-          <StatCounter value={30} suffix="+" label="FITNESS PLATFORMS" />
+          <StatCounter value={10} suffix="+" label="SPORTS VIA PEI" />
         </div>
       </div>
 
@@ -515,23 +578,105 @@ export default function ProofWebsite() {
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
               lineHeight: 1.7, marginBottom: 40, maxWidth: 400 }}>
               PROOF owns the effort ledger. Your athletes connect once, and every verified activity
-              flows into your loyalty program automatically.
+              flows into your loyalty program automatically — across every sport in your allowlist.
             </p>
           </div>
           <div style={{ flex: "1 1 300px" }}>
-            <Step number="01" title="Connect"
-              desc="Your customer connects their Strava account via OAuth. One tap. PROOF handles authentication, imports their activity history, and starts listening for new rides in real time." />
-            <Step number="02" title="Verify"
-              desc="Every activity runs through the PROOF verification pipeline — GPS validation, velocity checks, anomaly detection. Fraudulent data gets flagged. Clean data earns verified miles on the PROOF ledger." />
-            <Step number="03" title="Reward" isLast
-              desc="PROOF tracks thresholds you define. When an athlete crosses one, we generate a Shopify discount code and fire a Klaviyo event — your brand delivers the reward in your voice." />
+            <Step number="01" title="Install and configure"
+              desc="Connect your Shopify store. Configure your sport allowlist — choose which activities earn in your program. Set reward thresholds and welcome bonuses. Takes minutes, not months."
+              detail="Shopify Admin API · Sport allowlist" />
+            <Step number="02" title="Athletes connect Strava"
+              desc="Through your site, in your brand's experience. One OAuth flow. PROOF imports their entire activity history, runs every ride through the verification pipeline, and starts listening for new activities in real time."
+              detail="OAuth · Historical import · Real-time webhooks" />
+            <Step number="03" title="Verify and convert"
+              desc="Every activity runs through PROOF's 9-gate fraud pipeline — GPS validation, sport-specific velocity ceilings, daily caps. Clean data converts to PROOF miles via the Effort Index. One cycling mile = 1 PM. One running mile = 3 PM. One strength session = 10 PM."
+              detail="9-gate fraud pipeline · PEI conversion" />
+            <Step number="04" title="Credit and reward"
+              desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a Klaviyo event — your brand delivers the reward in your voice."
+              detail="Shopify discount codes · 8 Klaviyo event types" isLast />
           </div>
         </div>
       </Section>
 
-      {/* ── ARCHITECTURE: TWO LAYERS ── */}
+      {/* ── ATHLETE EXPERIENCE (NEW) ── */}
       <div style={{ background: COLORS.surface, borderTop: `1px solid ${COLORS.surfaceBorder}`,
         borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section style={{ padding: "80px 20px" }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.steel,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Your customers&apos; experience</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              What your customers see.
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
+              Your customers connect Strava once through your site. From that moment, every verified
+              activity earns toward rewards at your store — automatically, in the background,
+              with zero effort beyond doing the thing they already love.
+            </p>
+          </div>
+
+          {/* Account page mockup */}
+          <div className="account-mockup" style={{ background: COLORS.base,
+            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 20, padding: 32 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+              <div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · PROVEN</div>
+                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 42,
+                  color: COLORS.signal, lineHeight: 1 }}>4,218</div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                  color: COLORS.muted }}>PROOF MILES</div>
+              </div>
+              <VerifiedBadge size={40} />
+            </div>
+            {/* Progress bar */}
+            <div style={{ marginBottom: 16 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text }}>Proven</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted }}>4,218 / 10,000 PM</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.muted }}>Beacon</span>
+              </div>
+              <div style={{ height: 4, background: COLORS.surfaceBorder, borderRadius: 2 }}>
+                <div style={{ height: 4, background: COLORS.signal, borderRadius: 2, width: "42%",
+                  transition: "width 1s ease" }} />
+              </div>
+            </div>
+            {/* Active status */}
+            <div style={{ display: "flex", alignItems: "center", gap: 8,
+              padding: "10px 14px", background: COLORS.surfaceRaised,
+              borderRadius: 10, marginBottom: 12 }}>
+              <div style={{ width: 6, height: 6, borderRadius: "50%", background: COLORS.signal }} />
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.text }}>Active</span>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.muted, marginLeft: "auto" }}>412 PM / 300 min</span>
+            </div>
+            {/* Reward available */}
+            <div style={{ padding: "12px 14px", border: `1px solid ${COLORS.signal}33`,
+              borderRadius: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
+                  fontWeight: 600, color: COLORS.textBright }}>$35 store credit</div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                  color: COLORS.muted }}>2,500 pts available</div>
+              </div>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+                color: COLORS.base, background: COLORS.signal, padding: "6px 14px", borderRadius: 6 }}>Redeem</div>
+            </div>
+          </div>
+
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
+            lineHeight: 1.7, maxWidth: 520, margin: "40px auto 0", textAlign: "center" }}>
+            Their PROOF identity is theirs. If they connect to another brand in the network,
+            their tier and effort history travel with them — but your rewards stay yours.
+            You only fund effort earned during your relationship.
+          </p>
+        </Section>
+      </div>
+
+      {/* ── ARCHITECTURE: TWO LAYERS ── */}
+      <div id="platform" style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section style={{ padding: "80px 20px" }}>
           <div style={{ textAlign: "center", marginBottom: 20 }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
@@ -542,17 +687,16 @@ export default function ProofWebsite() {
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
               maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
-              PROOF separates what&apos;s universal from what&apos;s yours. Verified effort lives on the
-              PROOF layer — portable, permanent, recognized everywhere. Your rewards, your thresholds,
-              your customer experience live on the brand layer.
+              PROOF separates universal effort verification from per-brand reward economics.
+              Identity travels. Rewards earn fresh.
             </p>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center",
             gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
             {[
-              { label: "Strava", sub: "GPS activity", color: COLORS.steel, glow: false },
-              { label: "PROOF Ledger", sub: "Verify · Track · Tier", color: COLORS.signal, glow: true },
+              { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
+              { label: "PROOF Ledger", sub: "Verify · PEI · Tier", color: COLORS.signal, glow: true },
               { label: "Your Brand", sub: "Shopify · Klaviyo", color: COLORS.textBright, glow: false },
             ].map((node, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -580,10 +724,10 @@ export default function ProofWebsite() {
               subtitle="Universal. Portable. Permanent."
               glow
               items={[
-                { label: "Lifetime verified miles", desc: "Cumulative total across all activities. Never resets, never decreases." },
-                { label: "PROOF tier", desc: "Sprinter → Climber → Domestique → Grand Tour → Patron. Based on lifetime miles. Recognized at every enrolled brand." },
-                { label: "Active status", desc: "Trailing 6-month activity calculation. Determines whether economic benefits stay lit." },
-                { label: "Portable athlete identity", desc: "One Strava connection. Effort history travels to every brand the athlete joins." },
+                { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
+                { label: "Universal tiers", desc: "Spark → Signal → Proven → Beacon → Patron. Based on lifetime PM. Recognized at every enrolled brand. Brands can use custom names." },
+                { label: "Active status", desc: "Trailing 6-month PM calculation. Your tier title is permanent. Active economic perks stay lit as long as you keep moving." },
+                { label: "Portable athlete identity", desc: "One Strava connection. Effort history travels to every brand the athlete joins. All PEI-supported sports verified at the PROOF layer." },
               ]}
             />
             <LayerCard
@@ -591,10 +735,10 @@ export default function ProofWebsite() {
               title="Brand Layer"
               subtitle="Your program. Your rules."
               items={[
-                { label: "Brand miles", desc: "Miles ridden since the athlete connected to your brand. Starts at zero plus a welcome bonus." },
-                { label: "Reward thresholds", desc: "You define what brand miles unlock — discount codes, free shipping, exclusive access. Your budget, your rules." },
-                { label: "Welcome bonus", desc: "One-time mile credit based on the athlete's PROOF tier at connection. A 5,000-mile rider doesn't start at zero." },
-                { label: "Reward delivery", desc: "Shopify discount codes generated automatically. Klaviyo events fired in real time. You build the flows in your voice." },
+                { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
+                { label: "Brand PM", desc: "PROOF miles earned in your allowed sports since the athlete connected. Starts at zero plus a welcome bonus based on PROOF tier." },
+                { label: "Reward thresholds", desc: "You define what brand PM unlock — discount codes, free shipping, exclusive access. Your budget, your economics, your rules." },
+                { label: "Reward delivery", desc: "Shopify discount codes generated via Admin API. Klaviyo events fired in real time. You build the flows in your voice." },
               ]}
             />
           </div>
@@ -608,8 +752,9 @@ export default function ProofWebsite() {
                 Identity travels
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
-                A 5,000-mile rider is recognized as a serious athlete at every enrolled brand. Their PROOF tier,
-                badge, and lifetime record are visible everywhere. Permanent benefits can be granted on sight.
+                A 5,000 PM athlete is recognized as serious everywhere. Their PROOF tier,
+                badge, and lifetime record are visible at every enrolled brand. Permanent benefits
+                can be granted on sight.
               </div>
             </div>
             <div style={{ width: 1, background: COLORS.surfaceBorder, alignSelf: "stretch", flexShrink: 0 }} />
@@ -627,8 +772,72 @@ export default function ProofWebsite() {
         </Section>
       </div>
 
+      {/* ── PROOF EFFORT INDEX (NEW) ── */}
+      <Section id="effort-index">
+        <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+            letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>PROOF Effort Index</div>
+          <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+            color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+            Any sport. Any unit.<br />
+            <span style={{ color: COLORS.subtle }}>One currency.</span>
+          </h2>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+            maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
+            The PROOF Effort Index normalizes effort across every sport into a single unit: PROOF miles.
+            One road cycling mile equals one PM. Every other sport converts based on physiological
+            cost — MET-minutes per unit of distance or session.
+          </p>
+        </div>
+
+        <PEIConversion />
+
+        <div className="pei-table-wrap" style={{ marginTop: 32, background: COLORS.surface,
+          border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, overflow: "hidden" }}>
+          <table className="pei-table">
+            <thead>
+              <tr>
+                <th>Sport</th>
+                <th>Multiplier</th>
+                <th>Unit</th>
+                <th>Verification</th>
+              </tr>
+            </thead>
+            <tbody>
+              {[
+                { sport: "Road Cycling", mult: "1.0×", unit: "mile", type: "GPS", color: COLORS.signal },
+                { sport: "Mountain Biking", mult: "1.5×", unit: "mile", type: "GPS", color: COLORS.signal },
+                { sport: "Gravel / CX", mult: "1.2×", unit: "mile", type: "GPS", color: COLORS.signal },
+                { sport: "Running", mult: "3.0×", unit: "mile", type: "GPS", color: COLORS.effort },
+                { sport: "Trail Running", mult: "4.0×", unit: "mile", type: "GPS", color: COLORS.effort },
+                { sport: "Walking / Hiking", mult: "1.0×", unit: "mile", type: "GPS", color: COLORS.steel },
+                { sport: "Swimming (open water)", mult: "8.0×", unit: "mile", type: "GPS", color: COLORS.steel },
+                { sport: "Strength Training", mult: "10 PM", unit: "session", type: "Device + HR", color: COLORS.effort },
+                { sport: "HIIT / CrossFit", mult: "12 PM", unit: "session", type: "Device + HR", color: COLORS.effort },
+                { sport: "Yoga", mult: "5 PM", unit: "session", type: "Device + HR", color: COLORS.steel },
+              ].map((row, i) => (
+                <tr key={i}>
+                  <td style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>{row.sport}</td>
+                  <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 14,
+                    color: row.color, fontWeight: 700 }}>{row.mult}</td>
+                  <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+                    color: COLORS.muted }}>{row.unit}</td>
+                  <td style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+                    color: COLORS.muted }}>{row.type}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+          color: COLORS.muted, marginTop: 12, textAlign: "center" }}>
+          Anchor: 1 road cycling mile = 1 PM. All sports calibrated by MET-minutes per unit.
+          Brands configure sport allowlist — not multipliers.
+        </div>
+      </Section>
+
       {/* ── CODE BLOCK ── */}
-      <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+      <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}`, borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section style={{ padding: "80px 20px" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
@@ -645,111 +854,175 @@ export default function ProofWebsite() {
             </div>
             <pre className="code-pre" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
               lineHeight: 2, color: COLORS.subtle, whiteSpace: "pre", margin: 0, overflowX: "auto", display: "block" }}>
-              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"
-"}
-              <span style={{ color: COLORS.muted }}>{"// You build the flows in your voice"}</span>{"
-
-"}
+              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>{"// proof_ = platform data, loyalty_ = brand data"}</span>{"\n\n"}
               <span style={{ color: "#c678dd" }}>Event</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"
-
-"}
-              <span style={{ color: COLORS.muted }}>{"{"}</span>{"
-"}
-              {"  "}<span style={{ color: COLORS.text }}>athlete_id</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;prf_ath_7x92k&quot;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
-              {"  "}<span style={{ color: COLORS.text }}>brand</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;voler&quot;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
-              {"  "}<span style={{ color: COLORS.text }}>brand_miles</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: "#d19a66" }}>500</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
-              {"  "}<span style={{ color: COLORS.text }}>lifetime_miles</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: "#d19a66" }}>3842</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
+              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"\n\n"}
+              <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
               {"  "}<span style={{ color: COLORS.text }}>proof_tier</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;Domestique&quot;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
+              <span style={{ color: COLORS.signal }}>{'"Proven"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>proof_lifetime_pm</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: "#d19a66" }}>4218</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>proof_active_status</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>true</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>loyalty_brand_pm</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: "#d19a66" }}>2500</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>loyalty_tier_name</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"Domestique"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"  "}<span style={{ color: COLORS.text }}>reward</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.muted }}>{"{"}</span>{"
-"}
+              <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
               {"    "}<span style={{ color: COLORS.text }}>type</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;shopify_discount&quot;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
+              <span style={{ color: COLORS.signal }}>{'"shopify_discount"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"    "}<span style={{ color: COLORS.text }}>code</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;PROOF-VLR-20-7X92K&quot;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"
-"}
+              <span style={{ color: COLORS.signal }}>{'"PROOF-A1B2C3D4"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"    "}<span style={{ color: COLORS.text }}>value</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&quot;$20 off&quot;</span>{"
-"}
-              {"  "}<span style={{ color: COLORS.muted }}>{"}"}</span>{"
-"}
+              <span style={{ color: COLORS.signal }}>{'"$35 off"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"    "}<span style={{ color: COLORS.text }}>sport</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"cycling"'}</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.muted }}>{"}"}</span>{"\n"}
               <span style={{ color: COLORS.muted }}>{"}"}</span>
             </pre>
           </div>
+          <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 16, flexWrap: "wrap" }}>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.signal }}>proof_ = platform data</span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.text }}>loyalty_ = brand data</span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel }}>8 event types total</span>
+          </div>
         </Section>
       </div>
-      {/* ── FOR BRANDS ── */}
-      <Section id="for-brands">
+
+      {/* ── NETWORK (NEW) ── */}
+      <Section id="network">
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
-            letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>For brands</div>
+            letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>The Network</div>
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
             color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
-            Your brand. Your program.<br />
-            <span style={{ color: COLORS.subtle }}>Our verification.</span>
+            One network. Every brand.
           </h2>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
-            lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
-            PROOF is the effort layer underneath your loyalty program. You own the customer experience,
-            set the thresholds, and deliver the rewards. We make sure the effort is real.
+            maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
+            Every brand on PROOF shares a growing network of verified athletes. When an athlete connects
+            through any brand, they bring their verified effort history with them.
           </p>
         </div>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
-          {[
-            { icon: "◎", title: "Endorsed model", desc: "\"Powered by PROOF\" sits discreetly in your experience. Customers see your brand first, verified effort second. Your voice, your design, your program." },
-            { icon: "⬡", title: "Any sport, any unit", desc: "Miles, meters, watts, rounds, sessions. You define what effort means for your customers. PROOF verifies it. Starting with cycling — expanding to every sport." },
-            { icon: "⚡", title: "Fraud prevention", desc: "GPS validation, velocity checks, daily mileage caps, anomaly detection. Your loyalty budget goes to real athletes who actually did the work." },
-            { icon: "↗", title: "Effort-based loyalty", desc: "Rewards earned by real effort, not just spending. Customers who ride earn alongside customers who buy — your most engaged athletes become your best customers." },
-            { icon: "⟁", title: "Shopify + Klaviyo native", desc: "Discount codes generated via Shopify Admin API. Events fired directly to Klaviyo. No middleware, no third-party loyalty platform required. PROOF is the engine." },
-            { icon: "◈", title: "Network effect built in", desc: "One Strava connection, every enrolled brand. As the network grows, your athletes are recognized everywhere — and athletes from other brands discover you." },
-          ].map((item, i) => (
-            <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
-              border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "28px",
-              transition: "border-color 0.3s ease" }}
-              onMouseOver={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.signal + "33"}
-              onMouseOut={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.surfaceBorder}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, color: COLORS.signal,
-                marginBottom: 12, opacity: 0.7 }}>{item.icon}</div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 700,
-                color: COLORS.textBright, marginBottom: 8 }}>{item.title}</div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle,
-                lineHeight: 1.7 }}>{item.desc}</div>
+
+        <div style={{ maxWidth: 720, margin: "0 auto", background: COLORS.surface,
+          border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "40px 32px" }}>
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center",
+            gap: 16, flexWrap: "wrap", marginBottom: 32 }}>
+            {["Cycling", "Running", "Training", "Swimming", "Outdoor"].map((cat, i) => (
+              <div key={i} style={{ padding: "10px 20px", borderRadius: 10,
+                border: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surfaceRaised }}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12,
+                  fontWeight: 700, color: COLORS.text }}>{cat}</div>
+                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                  color: COLORS.muted }}>brands</div>
+              </div>
+            ))}
+          </div>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
+              color: COLORS.signal, marginBottom: 12 }}>
+              ← Athletes carry their PROOF identity between brands →
             </div>
-          ))}
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
+              For brands, athletes arrive pre-qualified. A runner who connected through a footwear brand already has a PROOF tier
+              when they discover your store. You recognize their effort on day one — no cold start, no re-verification.
+            </p>
+          </div>
         </div>
       </Section>
 
-      {/* ── PRICING ── */}
+      {/* ── FOR BRANDS ── */}
       <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section id="for-brands">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>For brands</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              Your brand. Your program.<br />
+              <span style={{ color: COLORS.subtle }}>Our verification.</span>
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
+              PROOF is the effort layer underneath your loyalty program. You own the customer experience,
+              set the thresholds, configure your sport allowlist, and deliver the rewards. We verify the effort and run the ledger.
+            </p>
+          </div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
+            {[
+              { icon: "◎", title: "Verified effort ledger", desc: "PROOF-owned PostgreSQL database. Lifetime PM, brand PM, tier calculations, trailing 6-month activity tracking, active status. Yours to query, ours to maintain." },
+              { icon: "⬡", title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, strength — configure once, PROOF filters automatically via the Effort Index." },
+              { icon: "⚡", title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, HR verification for sessions, anomaly detection. Your loyalty budget goes to real athletes." },
+              { icon: "↗", title: "Hybrid tier model", desc: "Permanent identity layer — tier title, badge, community access. Active benefits layer — multipliers, shipping, early access — with trailing 6-month effort minimums." },
+              { icon: "⟁", title: "Shopify + Klaviyo native", desc: "Discount codes via Admin API. 8 event types fired to Klaviyo. No middleware, no third-party loyalty platform. PROOF is the engine." },
+              { icon: "◈", title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their PROOF identity. As the network grows, pre-qualified athletes discover your store." },
+            ].map((item, i) => (
+              <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
+                border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "28px",
+                transition: "border-color 0.3s ease" }}
+                onMouseOver={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.signal + "33"}
+                onMouseOut={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.surfaceBorder}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, color: COLORS.signal,
+                  marginBottom: 12, opacity: 0.7 }}>{item.icon}</div>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 700,
+                  color: COLORS.textBright, marginBottom: 8 }}>{item.title}</div>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle,
+                  lineHeight: 1.7 }}>{item.desc}</div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </div>
+
+      {/* ── INTEGRATIONS ── */}
+      <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}`, borderBottom: `1px solid ${COLORS.surfaceBorder}`,
+        background: COLORS.surface }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px",
+          display: "flex", justifyContent: "center", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              color: COLORS.signal, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Live</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Strava</div>
+          </div>
+          <div style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Commerce</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Shopify · Klaviyo</div>
+          </div>
+          <div style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>In development</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>Garmin · Apple Health · Peloton · Whoop · Zwift · 20+ more</div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── PRICING ── */}
+      <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section id="pricing">
           <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
@@ -766,16 +1039,16 @@ export default function ProofWebsite() {
           <div style={{ display: "flex", flexWrap: "wrap", gap: 20, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Starter" price="$299" period="/mo"
               features={["Up to 2,500 verified members", "Strava integration",
-                "GPS fraud detection", "PROOF Verified Effort badge",
-                "Shopify discount code generation", "Klaviyo event integration", "Email support"]}
+                "9-gate fraud pipeline", "PROOF Verified Effort badge",
+                "Shopify discount code generation", "Klaviyo event integration (8 types)", "Sport allowlist configuration", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Growth" price="$799" period="/mo" highlight
-              features={["Up to 25,000 verified members", "Advanced fraud + anomaly detection",
+              features={["Up to 25,000 verified members", "Everything in Starter",
                 "Custom tier configuration", "Welcome bonus controls",
                 "Webhooks + API access", "Brand dashboard + analytics", "Priority support + Slack channel"]}
               cta="Start free trial" />
             <PricingCard name="Enterprise" price="Custom"
-              features={["Unlimited members", "Dedicated infrastructure", "SLA + uptime guarantee",
+              features={["Unlimited members", "Everything in Growth", "Dedicated infrastructure", "SLA + uptime guarantee",
                 "White-label badge option", "Custom integrations",
                 "Dedicated account manager", "SOC 2 compliance docs"]}
               cta="Talk to us" />
@@ -790,12 +1063,12 @@ export default function ProofWebsite() {
           <div style={{ marginTop: 24 }} />
           <h2 style={{ fontFamily: "'Bebas Neue', sans-serif",
             fontSize: "clamp(32px, 6vw, 64px)", color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
-            Reward effort, not just spend.
+            Get early access.
           </h2>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
             maxWidth: 480, margin: "0 auto 36px", lineHeight: 1.7 }}>
-            We&apos;re onboarding the first 50 brands now. Request early access and we&apos;ll set up
-            a 15-minute walkthrough of the platform.
+            PROOF is onboarding brands now. Join the waitlist and we&apos;ll reach out
+            when your spot is ready.
           </p>
 
           {formState === "success" ? (
@@ -817,7 +1090,7 @@ export default function ProofWebsite() {
                 <button onClick={handleWaitlistSubmit} disabled={formState === "loading"}
                   style={{ background: formState === "loading" ? COLORS.muted : COLORS.signal,
                     cursor: formState === "loading" ? "not-allowed" : "pointer" }}>
-                  {formState === "loading" ? "Sending…" : "Request access"}
+                  {formState === "loading" ? "Sending…" : "Get early access"}
                 </button>
               </div>
               {formState === "error" && (
