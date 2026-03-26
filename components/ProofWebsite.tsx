@@ -354,27 +354,34 @@ export default function ProofWebsite() {
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
             letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 32,
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 0.2s" }}>
-            The verification layer for athletic loyalty
+            Verified effort loyalty infrastructure
           </div>
           <h1 style={{ fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: "clamp(60px, 15vw, 140px)", color: COLORS.textBright,
-            lineHeight: 0.9, letterSpacing: "0.02em", marginBottom: 24,
+            fontSize: "clamp(44px, 10vw, 96px)", color: COLORS.textBright,
+            lineHeight: 0.95, letterSpacing: "0.02em", marginBottom: 16,
             opacity: heroReady ? 1 : 0, transform: heroReady ? "translateY(0)" : "translateY(30px)",
             transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s" }}>
-            Effort{" "}
+            Turn every mile, rep,<br />and session into{" "}
             <span style={{ color: verified ? COLORS.signal : COLORS.muted, transition: "color 0.6s ease" }}>
-              verified.
+              loyalty currency.
             </span>
           </h1>
-          <div style={{ display: "flex", justifyContent: "center", marginBottom: 32,
-            opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1s" }}>
-            <VerifiedBadge size={56} animate={heroReady} />
+          <div style={{
+            fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+            letterSpacing: "0.2em", textTransform: "uppercase", color: COLORS.signal,
+            marginBottom: 28,
+            opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 0.9s" }}>
+            Effort verified.
           </div>
-          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(15px, 4vw, 18px)",
-            color: COLORS.subtle, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px",
-            opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.4s" }}>
-            PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort
-            instead of just transactions. Turns athletic effort into loyalty currency.
+          <div style={{ display: "flex", justifyContent: "center", marginBottom: 28,
+            opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.1s" }}>
+            <VerifiedBadge size={48} animate={heroReady} />
+          </div>
+          <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(15px, 4vw, 17px)",
+            color: COLORS.subtle, lineHeight: 1.7, maxWidth: 520, margin: "0 auto 40px",
+            opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.5s" }}>
+            PROOF connects fitness data to loyalty programs — GPS-verified, fraud-checked,
+            and ready to reward real athletic effort instead of just transactions.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
@@ -557,18 +564,18 @@ export default function ProofWebsite() {
           </h2>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
             lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
-            PROOF is the engine under the hood — not the logo on the jersey.
-            You own the customer experience. We make sure the effort is real.
+            PROOF is the effort layer underneath your loyalty program. You own the customer experience,
+            set the thresholds, and deliver the rewards. We make sure the effort is real.
           </p>
         </div>
         <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
           {[
-            { icon: "◎", title: "Endorsed model", desc: "Like Intel Inside — our badge sits discreetly in your experience. Customers see your brand first, PROOF verification second." },
-            { icon: "⬡", title: "Any sport, any unit", desc: "Miles, meters, watts, rounds, sessions. You define what effort means for your customers. PROOF verifies it." },
-            { icon: "⚡", title: "Fraud prevention", desc: "GPS validation, velocity checks, anomaly detection. We catch fake activities so your loyalty budget goes to real athletes." },
-            { icon: "↗", title: "Engagement lift", desc: "Effort-based loyalty rewards your most committed customers — not just your biggest spenders. Your best ambassador finally becomes visible to your program." },
-            { icon: "⟁", title: "Built for every platform", desc: "Strava, Garmin, Apple Health, Peloton, Whoop, Zwift — and 20+ more in the pipeline. One SDK, every platform." },
-            { icon: "◈", title: "Your stack, untouched", desc: "PROOF plugs into LoyaltyLion, Yotpo, Smile.io, Shopify, Klaviyo — or your custom system via webhooks." },
+            { icon: "◎", title: "Endorsed model", desc: "\"Powered by PROOF\" sits discreetly in your experience. Customers see your brand first, verified effort second. Your voice, your design, your program." },
+            { icon: "⬡", title: "Any sport, any unit", desc: "Miles, meters, watts, rounds, sessions. You define what effort means for your customers. PROOF verifies it. Starting with cycling — expanding to every sport." },
+            { icon: "⚡", title: "Fraud prevention", desc: "GPS validation, velocity checks, daily mileage caps, anomaly detection. Your loyalty budget goes to real athletes who actually did the work." },
+            { icon: "↗", title: "Effort-based loyalty", desc: "Rewards earned by real effort, not just spending. Customers who ride earn alongside customers who buy — your most engaged athletes become your best customers." },
+            { icon: "⟁", title: "Shopify + Klaviyo native", desc: "Discount codes generated via Shopify Admin API. Events fired directly to Klaviyo. No middleware, no third-party loyalty platform required. PROOF is the engine." },
+            { icon: "◈", title: "Network effect built in", desc: "One Strava connection, every enrolled brand. As the network grows, your athletes are recognized everywhere — and athletes from other brands discover you." },
           ].map((item, i) => (
             <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
               border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "28px",
@@ -594,22 +601,23 @@ export default function ProofWebsite() {
               letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Pricing</div>
             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
               color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
-              Scale when you&apos;re ready.
+              Flat pricing. No surprises.
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
               maxWidth: 480, margin: "0 auto" }}>
-              No setup fees. No per-transaction cuts. Flat monthly pricing that scales with your program.
+              No setup fees. No per-transaction cuts. No revenue share. Each brand funds their own rewards independently.
             </p>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 20, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Starter" price="$299" period="/mo"
-              features={["Up to 2,500 verified members", "3 fitness platform integrations",
-                "Basic fraud detection", "PROOF Verified Effort badge", "Email support"]}
+              features={["Up to 2,500 verified members", "Strava integration",
+                "GPS fraud detection", "PROOF Verified Effort badge",
+                "Shopify discount code generation", "Klaviyo event integration", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Growth" price="$799" period="/mo" highlight
-              features={["Up to 25,000 verified members", "Unlimited platform integrations",
-                "Advanced fraud + anomaly detection", "Custom badge styling",
-                "Webhooks + API access", "Priority support + Slack channel"]}
+              features={["Up to 25,000 verified members", "Advanced fraud + anomaly detection",
+                "Custom tier configuration", "Welcome bonus controls",
+                "Webhooks + API access", "Brand dashboard + analytics", "Priority support + Slack channel"]}
               cta="Start free trial" />
             <PricingCard name="Enterprise" price="Custom"
               features={["Unlimited members", "Dedicated infrastructure", "SLA + uptime guarantee",
