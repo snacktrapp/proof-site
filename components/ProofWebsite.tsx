@@ -14,6 +14,7 @@ const COLORS = {
   signal: "#C8FF00",
   signalDim: "rgba(200,255,0,0.08)",
   signalGlow: "rgba(200,255,0,0.25)",
+  steel: "#8BA0B4",
 };
 
 function useInView(threshold = 0.15) {
@@ -149,6 +150,47 @@ const Step = ({ number, title, desc, isLast }: { number: string; title: string; 
         color: COLORS.textBright, marginBottom: 6 }}>{title}</div>
       <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
         lineHeight: 1.7, maxWidth: 440 }}>{desc}</div>
+    </div>
+  </div>
+);
+
+
+const LayerCard = ({ accent, title, subtitle, items, glow }: {
+  accent: string; title: string; subtitle: string;
+  items: { label: string; desc: string }[]; glow?: boolean;
+}) => (
+  <div style={{
+    flex: "1 1 340px", maxWidth: 480,
+    background: glow ? COLORS.signalDim : COLORS.surface,
+    border: `1px solid ${glow ? COLORS.signal + "44" : COLORS.surfaceBorder}`,
+    borderRadius: 16, padding: "36px 32px",
+    position: "relative", overflow: "hidden",
+  }}>
+    {glow && (
+      <div style={{
+        position: "absolute", top: -40, right: -40, width: 120, height: 120,
+        background: `radial-gradient(circle, ${COLORS.signalGlow} 0%, transparent 70%)`,
+        opacity: 0.4,
+      }} />
+    )}
+    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+      color: accent, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 4,
+      position: "relative" }}>{title}</div>
+    <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, color: COLORS.textBright,
+      lineHeight: 1.1, marginBottom: 20, letterSpacing: "0.02em", position: "relative" }}>{subtitle}</div>
+    <div style={{ display: "flex", flexDirection: "column", gap: 14, position: "relative" }}>
+      {items.map((item, i) => (
+        <div key={i} style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+          <div style={{ width: 6, height: 6, borderRadius: "50%",
+            background: accent, marginTop: 7, flexShrink: 0, opacity: 0.7 }} />
+          <div>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
+              color: COLORS.textBright, marginBottom: 2 }}>{item.label}</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+              lineHeight: 1.6 }}>{item.desc}</div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 );
@@ -469,37 +511,134 @@ export default function ProofWebsite() {
               letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 16 }}>Integration</div>
             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(36px, 6vw, 52px)",
               color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
-              Three steps.<br />One API.
+              Verify. Track.<br />Reward.
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
               lineHeight: 1.7, marginBottom: 40, maxWidth: 400 }}>
-              PROOF sits between your customers&apos; fitness platforms and your loyalty engine.
-              One integration, every sport.
+              PROOF owns the effort ledger. Your athletes connect once, and every verified activity
+              flows into your loyalty program automatically.
             </p>
           </div>
           <div style={{ flex: "1 1 300px" }}>
             <Step number="01" title="Connect"
-              desc="Add the PROOF SDK to your stack. We handle OAuth for Strava, Garmin, Apple Health, Peloton, Whoop, and 30+ platforms. Your customer connects in one tap." />
+              desc="Your customer connects their Strava account via OAuth. One tap. PROOF handles authentication, imports their activity history, and starts listening for new rides in real time." />
             <Step number="02" title="Verify"
-              desc="Every activity runs through our verification pipeline — GPS validation, anomaly detection, cross-referencing. Fraudulent data gets flagged. Clean data gets the PROOF Verified Effort badge." />
+              desc="Every activity runs through the PROOF verification pipeline — GPS validation, velocity checks, anomaly detection. Fraudulent data gets flagged. Clean data earns verified miles on the PROOF ledger." />
             <Step number="03" title="Reward" isLast
-              desc="Verified effort flows into your loyalty system — LoyaltyLion, Yotpo, Smile.io, or custom. You define the rules. One mile, one rep, one session — whatever fits your brand." />
+              desc="PROOF tracks thresholds you define. When an athlete crosses one, we generate a Shopify discount code and fire a Klaviyo event — your brand delivers the reward in your voice." />
           </div>
         </div>
       </Section>
 
-      {/* ── CODE BLOCK ── */}
+      {/* ── ARCHITECTURE: TWO LAYERS ── */}
       <div style={{ background: COLORS.surface, borderTop: `1px solid ${COLORS.surfaceBorder}`,
         borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section style={{ padding: "80px 20px" }}>
+          <div style={{ textAlign: "center", marginBottom: 20 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Architecture</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 5vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              Two layers. One platform.
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
+              PROOF separates what&apos;s universal from what&apos;s yours. Verified effort lives on the
+              PROOF layer — portable, permanent, recognized everywhere. Your rewards, your thresholds,
+              your customer experience live on the brand layer.
+            </p>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center",
+            gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
+            {[
+              { label: "Strava", sub: "GPS activity", color: COLORS.steel, glow: false },
+              { label: "PROOF Ledger", sub: "Verify · Track · Tier", color: COLORS.signal, glow: true },
+              { label: "Your Brand", sub: "Shopify · Klaviyo", color: COLORS.textBright, glow: false },
+            ].map((node, i) => (
+              <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+                <div style={{ textAlign: "center", padding: "18px 28px",
+                  border: `1px solid ${node.glow ? COLORS.signal + "55" : COLORS.surfaceBorder}`,
+                  borderRadius: 12, background: node.glow ? COLORS.signalDim : "transparent",
+                  minWidth: 150 }}>
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14,
+                    color: node.color, marginBottom: 2 }}>{node.label}</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                    color: COLORS.muted, letterSpacing: "0.05em" }}>{node.sub}</div>
+                </div>
+                {i < 2 && (
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18,
+                    color: COLORS.muted }}>→</div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center", marginBottom: 48 }}>
+            <LayerCard
+              accent={COLORS.signal}
+              title="PROOF Layer"
+              subtitle="Universal. Portable. Permanent."
+              glow
+              items={[
+                { label: "Lifetime verified miles", desc: "Cumulative total across all activities. Never resets, never decreases." },
+                { label: "PROOF tier", desc: "Sprinter → Climber → Domestique → Grand Tour → Patron. Based on lifetime miles. Recognized at every enrolled brand." },
+                { label: "Active status", desc: "Trailing 6-month activity calculation. Determines whether economic benefits stay lit." },
+                { label: "Portable athlete identity", desc: "One Strava connection. Effort history travels to every brand the athlete joins." },
+              ]}
+            />
+            <LayerCard
+              accent={COLORS.textBright}
+              title="Brand Layer"
+              subtitle="Your program. Your rules."
+              items={[
+                { label: "Brand miles", desc: "Miles ridden since the athlete connected to your brand. Starts at zero plus a welcome bonus." },
+                { label: "Reward thresholds", desc: "You define what brand miles unlock — discount codes, free shipping, exclusive access. Your budget, your rules." },
+                { label: "Welcome bonus", desc: "One-time mile credit based on the athlete's PROOF tier at connection. A 5,000-mile rider doesn't start at zero." },
+                { label: "Reward delivery", desc: "Shopify discount codes generated automatically. Klaviyo events fired in real time. You build the flows in your voice." },
+              ]}
+            />
+          </div>
+
+          <div style={{ maxWidth: 720, margin: "0 auto", background: COLORS.base,
+            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "32px",
+            display: "flex", flexWrap: "wrap", gap: 32 }}>
+            <div style={{ flex: "1 1 280px" }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+                color: COLORS.signal, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+                Identity travels
+              </div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
+                A 5,000-mile rider is recognized as a serious athlete at every enrolled brand. Their PROOF tier,
+                badge, and lifetime record are visible everywhere. Permanent benefits can be granted on sight.
+              </div>
+            </div>
+            <div style={{ width: 1, background: COLORS.surfaceBorder, alignSelf: "stretch", flexShrink: 0 }} />
+            <div style={{ flex: "1 1 280px" }}>
+              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+                color: COLORS.textBright, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+                Rewards earn fresh
+              </div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
+                Discount thresholds start from the connection date. You only fund effort that happens during
+                the relationship. The welcome bonus bridges the gap so athletes don&apos;t start at zero.
+              </div>
+            </div>
+          </div>
+        </Section>
+      </div>
+
+      {/* ── CODE BLOCK ── */}
+      <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section style={{ padding: "80px 20px" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
-              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Developer-first</div>
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Developer-friendly</div>
             <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(28px, 5vw, 40px)",
-              color: COLORS.textBright }}>Ship in an afternoon</h3>
+              color: COLORS.textBright }}>Clean events, real-time</h3>
           </div>
-          <div style={{ background: COLORS.base, border: `1px solid ${COLORS.surfaceBorder}`,
-            borderRadius: 16, padding: "24px", maxWidth: 680, margin: "0 auto", overflow: "hidden" }}>
+          <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+            borderRadius: 16, padding: "32px", maxWidth: 680, margin: "0 auto", overflow: "auto" }}>
             <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
               {["#ff5f56", "#ffbd2e", "#27c93f"].map((c, i) => (
                 <div key={i} style={{ width: 12, height: 12, borderRadius: "50%", background: c, opacity: 0.7 }} />
@@ -507,51 +646,53 @@ export default function ProofWebsite() {
             </div>
             <pre className="code-pre" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
               lineHeight: 2, color: COLORS.subtle, whiteSpace: "pre", margin: 0, overflowX: "auto", display: "block" }}>
-              <span style={{ color: COLORS.muted }}>{"// Initialize PROOF"}</span>{"\n"}
-              <span style={{ color: "#c678dd" }}>import</span>{" "}
-              <span style={{ color: COLORS.text }}>{"{ Proof }"}</span>{" "}
-              <span style={{ color: "#c678dd" }}>from</span>{" "}
-              <span style={{ color: COLORS.signal }}>&apos;@proof/sdk&apos;</span>{"\n\n"}
-              <span style={{ color: "#c678dd" }}>const</span>{" "}
-              <span style={{ color: COLORS.text }}>proof</span>{" = "}
-              <span style={{ color: "#61afef" }}>Proof</span>
-              <span style={{ color: COLORS.text }}>.init</span>
-              <span style={{ color: COLORS.muted }}>{"({"}</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>apiKey</span>
+              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>{"// You build the flows in your voice"}</span>{"\n\n"}
+              <span style={{ color: "#c678dd" }}>Event</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>process.env.PROOF_KEY</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>sports</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>[&apos;cycling&apos;, &apos;running&apos;, &apos;swimming&apos;]</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>webhook</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>&apos;https://you.com/api/proof&apos;</span>{"\n"}
-              <span style={{ color: COLORS.muted }}>{"})"}</span>{"\n\n"}
-              <span style={{ color: COLORS.muted }}>{"// Verified activity lands here"}</span>{"\n"}
-              <span style={{ color: "#c678dd" }}>proof</span>
-              <span style={{ color: COLORS.muted }}>.</span>
-              <span style={{ color: "#61afef" }}>on</span>
-              <span style={{ color: COLORS.muted }}>(</span>
-              <span style={{ color: COLORS.signal }}>&apos;effort.verified&apos;</span>
-              <span style={{ color: COLORS.muted }}>,</span>{" "}
-              <span style={{ color: COLORS.text }}>{"(activity) =>"}</span>{" "}
+              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"\n\n"}
               <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>loyalty</span>
-              <span style={{ color: COLORS.muted }}>.</span>
-              <span style={{ color: "#61afef" }}>award</span>
-              <span style={{ color: COLORS.muted }}>(</span>
-              <span style={{ color: COLORS.text }}>activity.userId</span>
-              <span style={{ color: COLORS.muted }}>,</span>{" "}
-              <span style={{ color: COLORS.text }}>activity.miles</span>
-              <span style={{ color: COLORS.muted }}>)</span>{"\n"}
-              <span style={{ color: COLORS.muted }}>{"})"}</span>
+              {"  "}<span style={{ color: COLORS.text }}>athlete_id</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"prf_ath_7x92k"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>brand</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"voler"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>brand_miles</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: "#d19a66" }}>500</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>lifetime_miles</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: "#d19a66" }}>3842</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>proof_tier</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"Domestique"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>reward</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
+              {"    "}<span style={{ color: COLORS.text }}>type</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"shopify_discount"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"    "}<span style={{ color: COLORS.text }}>code</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"PROOF-VLR-20-7X92K"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"    "}<span style={{ color: COLORS.text }}>value</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"$20 off"'}</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.muted }}>{"}"}</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>{"}"}</span>
             </pre>
+
           </div>
         </Section>
       </div>
-
       {/* ── FOR BRANDS ── */}
       <Section id="for-brands">
         <div style={{ textAlign: "center", marginBottom: 48 }}>
