@@ -14,7 +14,6 @@ const COLORS = {
   signal: "#C8FF00",
   signalDim: "rgba(200,255,0,0.08)",
   signalGlow: "rgba(200,255,0,0.25)",
-  steel: "#8BA0B4",
 };
 
 function useInView(threshold = 0.15) {
@@ -646,50 +645,65 @@ export default function ProofWebsite() {
             </div>
             <pre className="code-pre" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
               lineHeight: 2, color: COLORS.subtle, whiteSpace: "pre", margin: 0, overflowX: "auto", display: "block" }}>
-              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"\n"}
-              <span style={{ color: COLORS.muted }}>{"// You build the flows in your voice"}</span>{"\n\n"}
+              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"
+"}
+              <span style={{ color: COLORS.muted }}>{"// You build the flows in your voice"}</span>{"
+
+"}
               <span style={{ color: "#c678dd" }}>Event</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"\n\n"}
-              <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"
+
+"}
+              <span style={{ color: COLORS.muted }}>{"{"}</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>athlete_id</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"prf_ath_7x92k"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;prf_ath_7x92k&quot;</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>brand</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"voler"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;voler&quot;</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>brand_miles</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
               <span style={{ color: "#d19a66" }}>500</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>lifetime_miles</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
               <span style={{ color: "#d19a66" }}>3842</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>proof_tier</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"Domestique"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;Domestique&quot;</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"  "}<span style={{ color: COLORS.text }}>reward</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>{"{"}</span>{"
+"}
               {"    "}<span style={{ color: COLORS.text }}>type</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"shopify_discount"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;shopify_discount&quot;</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"    "}<span style={{ color: COLORS.text }}>code</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"PROOF-VLR-20-7X92K"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;PROOF-VLR-20-7X92K&quot;</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"
+"}
               {"    "}<span style={{ color: COLORS.text }}>value</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"$20 off"'}</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.muted }}>{"}"}</span>{"\n"}
+              <span style={{ color: COLORS.signal }}>&quot;$20 off&quot;</span>{"
+"}
+              {"  "}<span style={{ color: COLORS.muted }}>{"}"}</span>{"
+"}
               <span style={{ color: COLORS.muted }}>{"}"}</span>
             </pre>
-
           </div>
         </Section>
       </div>
