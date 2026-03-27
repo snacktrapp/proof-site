@@ -321,7 +321,8 @@ export default function ProofWebsite() {
           color: ${COLORS.base}; cursor: pointer; letter-spacing: 0.08em;
           text-transform: uppercase; white-space: nowrap; transition: background 0.2s; }
 
-        .pei-table-wrap { overflow-x: auto; }
+        .pei-table-wrap { overflow-x: auto; overflow-y: hidden; border-radius: 16px;
+          -webkit-overflow-scrolling: touch; }
         .pei-table { width: 100%; border-collapse: collapse; }
         .pei-table th { padding: 14px 20px; text-align: left;
           font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
@@ -378,13 +379,54 @@ export default function ProofWebsite() {
           /* Code block — smaller font, scrollable */
           .code-pre { font-size: 11px !important; }
 
-          /* Account mockup — full width */
-          .account-mockup { max-width: 100%; }
+          /* Account mockup — full width, tighter padding */
+          .account-mockup { max-width: 100%; padding: 20px !important; }
+
+          /* Pricing cards — horizontal scroll instead of stacking */
+          .pricing-cards {
+            flex-wrap: nowrap !important; justify-content: flex-start !important;
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px; scroll-snap-type: x mandatory;
+          }
+          .pricing-cards > div {
+            flex: 0 0 220px !important; max-width: 220px !important;
+            scroll-snap-align: start;
+          }
+
+          /* Feature comparison table — smooth scroll */
+          .feature-table-wrap { -webkit-overflow-scrolling: touch; }
+
+          /* Architecture flow — stack vertically on mobile */
+          .arch-flow { flex-direction: column; gap: 8px !important; }
+          .arch-node { flex-direction: column; gap: 8px !important; }
+          .arch-arrow { transform: rotate(90deg); }
         }
 
         @media (max-width: 480px) {
           .stats-grid { gap: 28px; padding: 40px 16px; }
           .proof-section { padding: 52px 16px; }
+
+          /* Even tighter pricing cards on very small screens */
+          .pricing-cards > div {
+            flex: 0 0 200px !important; max-width: 200px !important;
+          }
+        }
+
+        /* Scrollbar styling for horizontal scroll areas */
+        .pricing-cards::-webkit-scrollbar,
+        .pei-table-wrap::-webkit-scrollbar,
+        .feature-table-wrap::-webkit-scrollbar {
+          height: 4px;
+        }
+        .pricing-cards::-webkit-scrollbar-thumb,
+        .pei-table-wrap::-webkit-scrollbar-thumb,
+        .feature-table-wrap::-webkit-scrollbar-thumb {
+          background: ${COLORS.surfaceBorder}; border-radius: 4px;
+        }
+        .pricing-cards::-webkit-scrollbar-track,
+        .pei-table-wrap::-webkit-scrollbar-track,
+        .feature-table-wrap::-webkit-scrollbar-track {
+          background: transparent;
         }
       `}</style>
 
@@ -696,14 +738,14 @@ export default function ProofWebsite() {
             </p>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center",
+          <div className="arch-flow" style={{ display: "flex", alignItems: "center", justifyContent: "center",
             gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
             {[
               { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
               { label: "PROOF Ledger", sub: "Verify · PEI · Tier", color: COLORS.signal, glow: true },
               { label: "Your Brand", sub: "Shopify · Klaviyo", color: COLORS.textBright, glow: false },
             ].map((node, i) => (
-              <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
+              <div key={i} className="arch-node" style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ textAlign: "center", padding: "18px 28px",
                   border: `1px solid ${node.glow ? COLORS.signal + "55" : COLORS.surfaceBorder}`,
                   borderRadius: 12, background: node.glow ? COLORS.signalDim : "transparent",
@@ -714,7 +756,7 @@ export default function ProofWebsite() {
                     color: COLORS.muted, letterSpacing: "0.05em" }}>{node.sub}</div>
                 </div>
                 {i < 2 && (
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18,
+                  <div className="arch-arrow" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 18,
                     color: COLORS.muted }}>→</div>
                 )}
               </div>
@@ -797,8 +839,8 @@ export default function ProofWebsite() {
         <PEIConversion />
 
         <div className="pei-table-wrap" style={{ marginTop: 32, background: COLORS.surface,
-          border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, overflow: "hidden" }}>
-          <table className="pei-table">
+          border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16 }}>
+          <table className="pei-table" style={{ minWidth: 480 }}>
             <thead>
               <tr>
                 <th>Sport</th>
@@ -1066,7 +1108,7 @@ export default function ProofWebsite() {
           </div>
 
           {/* 5-tier pricing cards */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
+          <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Developer" price="Free" members="Up to 100 active members"
               features={["Core GPS verification", "PROOF Verified Effort badge", "Strava integration", "Docs + community"]}
               cta="Get started free" />
@@ -1097,7 +1139,7 @@ export default function ProofWebsite() {
           </div>
 
           {/* Feature comparison table */}
-          <div style={{ marginTop: 64, overflowX: "auto" }}>
+          <div className="feature-table-wrap" style={{ marginTop: 64, overflowX: "auto" }}>
             <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.12em",
               textAlign: "center", marginBottom: 20 }}>
