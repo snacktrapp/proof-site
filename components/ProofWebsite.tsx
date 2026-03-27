@@ -127,12 +127,12 @@ const PricingCard = ({ name, price, period, members, features, highlight, cta }:
         </div>
       ))}
     </div>
-    <button style={{ width: "100%", padding: "12px 0",
+    <button style={{ width: "100%", padding: "12px 8px",
       background: highlight ? COLORS.signal : "transparent",
       color: highlight ? COLORS.base : COLORS.text,
       border: highlight ? "none" : `1px solid ${COLORS.surfaceBorder}`,
       borderRadius: 8, cursor: "pointer", fontFamily: "'Syne', sans-serif",
-      fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}
+      fontSize: 11, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}
       onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })}>
       {cta}
     </button>
@@ -400,6 +400,10 @@ export default function ProofWebsite() {
           .arch-flow { flex-direction: column; gap: 8px !important; }
           .arch-node { flex-direction: column; gap: 8px !important; }
           .arch-arrow { transform: rotate(90deg); }
+
+          /* Integrations bar — stack vertically, hide dividers */
+          .integrations-bar { flex-direction: column; gap: 20px !important; }
+          .integrations-divider { display: none; }
         }
 
         @media (max-width: 480px) {
@@ -1045,20 +1049,20 @@ export default function ProofWebsite() {
       {/* ── INTEGRATIONS ── */}
       <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}`, borderBottom: `1px solid ${COLORS.surfaceBorder}`,
         background: COLORS.surface }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px",
+        <div className="integrations-bar" style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px",
           display: "flex", justifyContent: "center", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.signal, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Live</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Strava</div>
           </div>
-          <div style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
+          <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Commerce</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Shopify · Klaviyo</div>
           </div>
-          <div style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
+          <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>In development</div>
