@@ -95,41 +95,44 @@ const Section = ({ children, style = {}, id }: { children: React.ReactNode; styl
   );
 };
 
-const PricingCard = ({ name, price, period, features, highlight, cta }:
-  { name: string; price: string; period?: string; features: string[]; highlight?: boolean; cta: string }) => (
+const PricingCard = ({ name, price, period, members, features, highlight, cta }:
+  { name: string; price: string; period?: string; members?: string; features: string[]; highlight?: boolean; cta: string }) => (
   <div style={{ background: highlight ? COLORS.surfaceRaised : COLORS.surface,
     border: `1px solid ${highlight ? COLORS.signal : COLORS.surfaceBorder}`,
-    borderRadius: 16, padding: "40px 32px", position: "relative", overflow: "hidden",
-    flex: "1 1 280px", maxWidth: 380,
+    borderRadius: 16, padding: "32px 24px", position: "relative", overflow: "hidden",
+    flex: "1 1 200px", maxWidth: 240, minWidth: 190,
     boxShadow: highlight ? `0 0 60px ${COLORS.signalDim}` : "none" }}>
     {highlight && (
-      <div style={{ position: "absolute", top: 16, right: -32, background: COLORS.signal,
-        color: COLORS.base, fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 700,
-        padding: "4px 40px", transform: "rotate(45deg)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
+      <div style={{ position: "absolute", top: 14, right: -34, background: COLORS.signal,
+        color: COLORS.base, fontFamily: "'JetBrains Mono', monospace", fontSize: 9, fontWeight: 700,
+        padding: "3px 40px", transform: "rotate(45deg)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
         Popular
       </div>
     )}
-    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700, color: COLORS.subtle,
+    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: COLORS.subtle,
       textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 8 }}>{name}</div>
-    <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 4 }}>
-      <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 56, color: COLORS.textBright, lineHeight: 1 }}>{price}</span>
-      {period && <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.muted }}>{period}</span>}
+    <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 2 }}>
+      <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 44, color: COLORS.textBright, lineHeight: 1 }}>{price}</span>
+      {period && <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>{period}</span>}
     </div>
-    <div style={{ width: 40, height: 2, background: highlight ? COLORS.signal : COLORS.surfaceBorder, marginBottom: 28 }} />
-    <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 36 }}>
+    {members && (
+      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted, marginBottom: 4 }}>{members}</div>
+    )}
+    <div style={{ width: 32, height: 2, background: highlight ? COLORS.signal : COLORS.surfaceBorder, marginBottom: 20 }} />
+    <div style={{ display: "flex", flexDirection: "column", gap: 10, marginBottom: 28 }}>
       {features.map((f, i) => (
-        <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-          <span style={{ color: highlight ? COLORS.signal : COLORS.subtle, fontSize: 14, lineHeight: "22px", flexShrink: 0 }}>✓</span>
-          <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text, lineHeight: "22px" }}>{f}</span>
+        <div key={i} style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+          <span style={{ color: highlight ? COLORS.signal : COLORS.subtle, fontSize: 13, lineHeight: "20px", flexShrink: 0 }}>✓</span>
+          <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.text, lineHeight: "20px" }}>{f}</span>
         </div>
       ))}
     </div>
-    <button style={{ width: "100%", padding: "14px 0",
+    <button style={{ width: "100%", padding: "12px 0",
       background: highlight ? COLORS.signal : "transparent",
       color: highlight ? COLORS.base : COLORS.text,
       border: highlight ? "none" : `1px solid ${COLORS.surfaceBorder}`,
       borderRadius: 8, cursor: "pointer", fontFamily: "'Syne', sans-serif",
-      fontSize: 14, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}
+      fontSize: 13, fontWeight: 700, letterSpacing: "0.05em", textTransform: "uppercase" }}
       onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })}>
       {cta}
     </button>
@@ -252,6 +255,7 @@ export default function ProofWebsite() {
   const [email, setEmail] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [annualPricing, setAnnualPricing] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setHeroReady(true), 100);
@@ -1024,7 +1028,7 @@ export default function ProofWebsite() {
       {/* ── PRICING ── */}
       <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section id="pricing">
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
               letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Pricing</div>
             <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
@@ -1032,26 +1036,129 @@ export default function ProofWebsite() {
               Flat pricing. No surprises.
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
-              maxWidth: 480, margin: "0 auto" }}>
-              No setup fees. No per-transaction cuts. No revenue share. Each brand funds their own rewards independently.
+              maxWidth: 520, margin: "0 auto", lineHeight: 1.7 }}>
+              No setup fees. No per-transaction cuts. No revenue share. Start free, upgrade as you grow.
+              Each brand funds their own rewards independently.
             </p>
           </div>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 20, justifyContent: "center", alignItems: "stretch" }}>
-            <PricingCard name="Starter" price="$299" period="/mo"
-              features={["Up to 2,500 verified members", "Strava integration",
-                "9-gate fraud pipeline", "PROOF Verified Effort badge",
-                "Shopify discount code generation", "Klaviyo event integration (8 types)", "Sport allowlist configuration", "Email support"]}
+
+          {/* Annual / Monthly toggle */}
+          <div style={{ display: "flex", justifyContent: "center", alignItems: "center", gap: 12, marginBottom: 40 }}>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13,
+              color: annualPricing ? COLORS.muted : COLORS.text, transition: "color 0.2s" }}>Monthly</span>
+            <button onClick={() => setAnnualPricing(a => !a)}
+              style={{ width: 48, height: 26, borderRadius: 13, border: "none", cursor: "pointer",
+                background: annualPricing ? COLORS.signal : COLORS.surfaceBorder, position: "relative",
+                transition: "background 0.3s ease" }}>
+              <div style={{ width: 20, height: 20, borderRadius: "50%", background: COLORS.textBright,
+                position: "absolute", top: 3,
+                left: annualPricing ? 25 : 3,
+                transition: "left 0.3s ease", boxShadow: "0 1px 3px rgba(0,0,0,0.3)" }} />
+            </button>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13,
+              color: annualPricing ? COLORS.text : COLORS.muted, transition: "color 0.2s" }}>Annual</span>
+            {annualPricing && (
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, background: COLORS.signalDim, padding: "3px 8px", borderRadius: 4 }}>
+                Save 20%
+              </span>
+            )}
+          </div>
+
+          {/* 5-tier pricing cards */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
+            <PricingCard name="Developer" price="Free" members="Up to 100 active members"
+              features={["Core GPS verification", "PROOF Verified Effort badge", "Strava integration", "Docs + community"]}
+              cta="Get started free" />
+            <PricingCard name="Starter"
+              price={annualPricing ? "$119" : "$149"} period="/mo"
+              members="Up to 1,000 active members"
+              features={["Everything in Developer", "Klaviyo events (8 types)", "Advanced fraud detection", "Up to 3 fitness platforms", "Email support"]}
               cta="Start free trial" />
-            <PricingCard name="Growth" price="$799" period="/mo" highlight
-              features={["Up to 25,000 verified members", "Everything in Starter",
-                "Custom tier configuration", "Welcome bonus controls",
-                "Webhooks + API access", "Brand dashboard + analytics", "Priority support + Slack channel"]}
+            <PricingCard name="Scale"
+              price={annualPricing ? "$359" : "$449"} period="/mo"
+              members="Up to 10,000 active members" highlight
+              features={["Everything in Starter", "Unlimited integrations", "Custom badge styling", "Webhooks + API access", "Priority support + Slack"]}
               cta="Start free trial" />
-            <PricingCard name="Enterprise" price="Custom"
-              features={["Unlimited members", "Everything in Growth", "Dedicated infrastructure", "SLA + uptime guarantee",
-                "White-label badge option", "Custom integrations",
-                "Dedicated account manager", "SOC 2 compliance docs"]}
+            <PricingCard name="Growth"
+              price={annualPricing ? "$639" : "$799"} period="/mo"
+              members="Up to 25,000 active members"
+              features={["Everything in Scale", "Brand dashboard + analytics", "PROOF tier engine (native)", "Dedicated CSM"]}
+              cta="Start free trial" />
+            <PricingCard name="Enterprise" price="Custom" members="Unlimited members"
+              features={["Everything in Growth", "SLA + SOC 2 docs", "White-label badge option", "Named account manager"]}
               cta="Talk to us" />
+          </div>
+
+          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+            color: COLORS.muted, textAlign: "center", marginTop: 16 }}>
+            Active members = at least one verified activity in a trailing 180-day window.
+            {annualPricing ? " Prices shown reflect annual prepayment." : " Save 20% with annual billing."}
+          </div>
+
+          {/* Feature comparison table */}
+          <div style={{ marginTop: 64, overflowX: "auto" }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+              color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.12em",
+              textAlign: "center", marginBottom: 20 }}>
+              Compare plans
+            </div>
+            <table style={{ width: "100%", minWidth: 700, borderCollapse: "collapse" }}>
+              <thead>
+                <tr style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+                  {["Feature", "Developer", "Starter", "Scale", "Growth", "Enterprise"].map((h, i) => (
+                    <th key={i} style={{ padding: "12px 10px", textAlign: i === 0 ? "left" : "center",
+                      fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+                      color: h === "Scale" ? COLORS.signal : COLORS.muted,
+                      letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
+                  { feature: "Klaviyo event integration (8 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Custom badge styling", vals: ["—", "—", "✓", "✓", "✓"] },
+                  { feature: "Webhooks + API access", vals: ["—", "—", "✓", "✓", "✓"] },
+                  { feature: "Brand dashboard + analytics", vals: ["—", "—", "—", "✓", "✓"] },
+                  { feature: "PROOF tier engine (native)", vals: ["—", "—", "—", "✓", "✓"] },
+                  { feature: "SLA + SOC 2 documentation", vals: ["—", "—", "—", "—", "✓"] },
+                  { feature: "White-label badge option", vals: ["—", "—", "—", "—", "✓"] },
+                  { feature: "Support", vals: ["Docs", "Email", "Priority + Slack", "Dedicated CSM", "Named acct mgr"] },
+                ].map((row, ri) => (
+                  <tr key={ri} style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+                    <td style={{ padding: "11px 10px", fontFamily: "'Outfit', sans-serif", fontSize: 13,
+                      color: COLORS.text }}>{row.feature}</td>
+                    {row.vals.map((val, vi) => (
+                      <td key={vi} style={{ padding: "11px 10px", textAlign: "center",
+                        fontFamily: val === "✓" || val === "—" ? "'Outfit', sans-serif" : "'JetBrains Mono', monospace",
+                        fontSize: val === "✓" || val === "—" ? 14 : 10,
+                        color: val === "✓" ? COLORS.signal : val === "—" ? COLORS.muted : COLORS.subtle }}>
+                        {val}
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Overage note */}
+          <div style={{ maxWidth: 600, margin: "32px auto 0", textAlign: "center",
+            padding: "16px 24px", background: COLORS.surface,
+            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 12 }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>
+              No hard caps
+            </div>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted, lineHeight: 1.6 }}>
+              If you exceed your tier&apos;s active member limit, we charge a small per-member overage
+              rather than cutting verification. Starter $0.15/member, Scale $0.06, Growth $0.04.
+              Enterprise is unlimited.
+            </p>
           </div>
         </Section>
       </div>
