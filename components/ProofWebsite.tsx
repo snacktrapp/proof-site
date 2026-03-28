@@ -208,7 +208,7 @@ const PEIConversion = () => {
   const sports = [
     { raw: "23.4 mi ridden", pm: "23.4", sport: "Road Cycling", mult: "1.0×" },
     { raw: "5.2 mi run", pm: "15.6", sport: "Running", mult: "3.0×" },
-    { raw: "1 session (45 min)", pm: "10", sport: "Strength", mult: "10×" },
+    { raw: "4.8 mi paddled", pm: "9.6", sport: "Rowing", mult: "2.0×" },
     { raw: "2.1 mi swum", pm: "16.8", sport: "Swimming", mult: "8.0×" },
     { raw: "12.8 mi hiked", pm: "12.8", sport: "Walking", mult: "1.0×" },
   ];
@@ -409,6 +409,20 @@ export default function ProofWebsite() {
           .dash-sidebar { display: none !important; }
           .dash-metrics { grid-template-columns: 1fr 1fr !important; }
           .dash-cols { grid-template-columns: 1fr !important; }
+
+          /* Activity feed — horizontal scroll with right fade */
+          .dash-feed-wrap { position: relative; }
+          .dash-feed-wrap::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0;
+            width: 48px;
+            background: linear-gradient(to right, transparent, ${COLORS.surface});
+            pointer-events: none;
+            z-index: 1;
+          }
+          .dash-feed-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+          .dash-feed-scroll::-webkit-scrollbar { height: 0; display: none; }
         }
 
         @media (max-width: 480px) {
@@ -518,7 +532,7 @@ export default function ProofWebsite() {
             lineHeight: 0.95, letterSpacing: "0.02em", marginBottom: 16,
             opacity: heroReady ? 1 : 0, transform: heroReady ? "translateY(0)" : "translateY(30px)",
             transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s" }}>
-            Turn every mile, rep,<br />and session into{" "}
+            Turn every mile, stroke,<br />and stride into{" "}
             <span style={{ color: verified ? COLORS.signal : COLORS.muted, transition: "color 0.6s ease" }}>
               loyalty currency.
             </span>
@@ -574,11 +588,11 @@ export default function ProofWebsite() {
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
                 lineHeight: 1.8, marginBottom: 28 }}>
                 PROOF Verified Effort is a universal trust mark that confirms real athletic activity —
-                verified through GPS, heart rate, and platform APIs. Effort-normalized across every sport
+                verified through GPS and platform APIs. Effort-normalized across every sport
                 via the PROOF Effort Index. It works across every unit, every brand.
               </p>
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {["Miles", "Meters", "Rounds", "Sessions", "Watts", "Laps", "Reps", "Hours"].map(u => (
+                {["Miles", "Meters", "Kilometers", "Laps", "Hours"].map(u => (
                   <span key={u} className="unit-pill">{u}</span>
                 ))}
               </div>
@@ -644,7 +658,7 @@ export default function ProofWebsite() {
               desc="Through your site, in your brand's experience. One OAuth flow. PROOF imports their entire activity history, runs every ride through the verification pipeline, and starts listening for new activities in real time."
               detail="OAuth · Historical import · Real-time webhooks" />
             <Step number="03" title="Verify and convert"
-              desc="Every activity runs through PROOF's 9-gate fraud pipeline — GPS validation, sport-specific velocity ceilings, daily caps. Clean data converts to PROOF miles via the Effort Index. One cycling mile = 1 PM. One running mile = 3 PM. One strength session = 10 PM."
+              desc="Every activity runs through PROOF's 9-gate fraud pipeline — GPS validation, sport-specific velocity ceilings, daily caps. Clean data converts to PROOF miles via the Effort Index. One cycling mile = 1 PM. One running mile = 3 PM. One swimming mile = 8 PM."
               detail="9-gate fraud pipeline · PEI conversion" />
             <Step number="04" title="Credit and reward"
               desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a webhook event to your email platform — your brand delivers the reward in your voice."
@@ -839,9 +853,9 @@ export default function ProofWebsite() {
           </h2>
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
             maxWidth: 580, margin: "0 auto", lineHeight: 1.7 }}>
-            The PROOF Effort Index normalizes effort across every sport into a single unit: PROOF miles.
+            The PROOF Effort Index normalizes effort across every GPS-verified sport into a single unit: PROOF miles.
             One road cycling mile equals one PM. Every other sport converts based on physiological
-            cost — MET-minutes per unit of distance or session.
+            cost — MET-minutes per unit of distance.
           </p>
         </div>
 
@@ -863,13 +877,13 @@ export default function ProofWebsite() {
                 { sport: "Road Cycling", mult: "1.0×", unit: "mile", type: "GPS", color: COLORS.signal },
                 { sport: "Mountain Biking", mult: "1.5×", unit: "mile", type: "GPS", color: COLORS.signal },
                 { sport: "Gravel / CX", mult: "1.2×", unit: "mile", type: "GPS", color: COLORS.signal },
+                { sport: "E-Bike", mult: "0.4×", unit: "mile", type: "GPS", color: COLORS.muted },
                 { sport: "Running", mult: "3.0×", unit: "mile", type: "GPS", color: COLORS.effort },
                 { sport: "Trail Running", mult: "4.0×", unit: "mile", type: "GPS", color: COLORS.effort },
                 { sport: "Walking / Hiking", mult: "1.0×", unit: "mile", type: "GPS", color: COLORS.steel },
                 { sport: "Swimming (open water)", mult: "8.0×", unit: "mile", type: "GPS", color: COLORS.steel },
-                { sport: "Strength Training", mult: "10 PM", unit: "session", type: "Device + HR", color: COLORS.effort },
-                { sport: "HIIT / CrossFit", mult: "12 PM", unit: "session", type: "Device + HR", color: COLORS.effort },
-                { sport: "Yoga", mult: "5 PM", unit: "session", type: "Device + HR", color: COLORS.steel },
+                { sport: "Swimming (pool)", mult: "6.0×", unit: "1,000m", type: "Device", color: COLORS.steel },
+                { sport: "Rowing / Kayaking", mult: "2.0×", unit: "mile", type: "GPS", color: COLORS.steel },
               ].map((row, i) => (
                 <tr key={i}>
                   <td style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>{row.sport}</td>
@@ -1048,7 +1062,7 @@ export default function ProofWebsite() {
                   <line x1="6" y1="24" x2="24" y2="24" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
                   <circle cx="10" cy="24" r="3" fill="none" stroke={COLORS.signal} strokeWidth="1.2" opacity={0.4} />
                 </svg>
-              ), title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, strength — configure once, PROOF filters automatically via the Effort Index." },
+              ), title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, rowing — configure once, PROOF filters automatically via the Effort Index." },
               { icon: (
                 <svg width="44" height="34" viewBox="0 0 44 34" fill="none">
                   <rect x="0" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.15} />
@@ -1061,7 +1075,7 @@ export default function ProofWebsite() {
                   <rect x="35" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.84} />
                   <rect x="40" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={1} />
                 </svg>
-              ), title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, HR verification for sessions, anomaly detection. Your loyalty budget goes to real athletes." },
+              ), title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, idempotency checks, anomaly detection. Your loyalty budget goes to real athletes." },
               { icon: (
                 <svg width="34" height="42" viewBox="0 0 34 42" fill="none">
                   <circle cx="16" cy="30" r="12" stroke={COLORS.signal} strokeWidth="1" opacity={0.2} />
@@ -1237,7 +1251,9 @@ export default function ProofWebsite() {
                 </div>
 
                 {/* Activity feed */}
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
+                <div className="dash-feed-wrap">
+                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
+                  <div className="dash-feed-scroll">
                 {[
                   { name: "J. Matsuda", sport: "ROAD", miles: "34.2 mi", pm: "+34.2 PM", status: "VERIFIED", ok: true, time: "12m" },
                   { name: "R. Chen", sport: "MTB", miles: "18.7 mi", pm: "+28.1 PM", status: "VERIFIED", ok: true, time: "24m" },
@@ -1245,7 +1261,7 @@ export default function ProofWebsite() {
                   { name: "T. Novak", sport: "ROAD", miles: "6.1 mi", pm: "—", status: "NO GPS", ok: false, time: "2h" },
                   { name: "K. Okonkwo", sport: "ROAD", miles: "21.8 mi", pm: "+21.8 PM", status: "VERIFIED", ok: true, time: "3h" },
                 ].map((a, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: `1px solid ${COLORS.surfaceBorder}`, minWidth: 460 }}>
                     <div style={{ width: 6, height: 6, borderRadius: "50%", background: a.ok ? COLORS.signal : COLORS.effort, flexShrink: 0 }} />
                     <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text, width: 80, flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{a.name}</span>
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, background: COLORS.surfaceRaised, padding: "1px 6px", borderRadius: 3, flexShrink: 0 }}>{a.sport}</span>
@@ -1255,6 +1271,8 @@ export default function ProofWebsite() {
                     <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, marginLeft: "auto", flexShrink: 0 }}>{a.time}</span>
                   </div>
                 ))}
+                  </div>
+                </div>
               </div>
             </div>
 
