@@ -532,9 +532,9 @@ export default function ProofWebsite() {
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(15px, 4vw, 17px)",
             color: COLORS.subtle, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.5s" }}>
-            Athletes earn loyalty from real effort — GPS-tracked, device-verified,
-            effort-normalized. Brands reward what no transaction history can prove:
-            that someone actually shows up. One integration. Every sport. Every unit.
+            Your customers are already training. PROOF verifies their effort and turns it
+            into loyalty currency for your brand. GPS-tracked. Effort-normalized.
+            One integration. Every sport. Every unit.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
