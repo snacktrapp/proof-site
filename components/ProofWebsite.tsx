@@ -404,6 +404,11 @@ export default function ProofWebsite() {
           /* Integrations bar — stack vertically, hide dividers */
           .integrations-bar { flex-direction: column; gap: 20px !important; }
           .integrations-divider { display: none; }
+
+          /* Dashboard — hide sidebar, stack metrics 2x2, simplify feed */
+          .dash-sidebar { display: none !important; }
+          .dash-metrics { grid-template-columns: 1fr 1fr !important; }
+          .dash-cols { grid-template-columns: 1fr !important; }
         }
 
         @media (max-width: 480px) {
@@ -454,7 +459,7 @@ export default function ProofWebsite() {
 
           {/* Desktop nav */}
           <div className="nav-desktop">
-            {["How it works", "Platform", "Pricing", "For brands"].map((item, i) => (
+            {["How it works", "Platform", "Dashboard", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                   textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
@@ -481,7 +486,7 @@ export default function ProofWebsite() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="nav-mobile">
-            {["How it works", "Platform", "Pricing", "For brands"].map((item, i) => (
+            {["How it works", "Platform", "Dashboard", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
@@ -1142,6 +1147,144 @@ export default function ProofWebsite() {
         </div>
       </div>
 
+      {/* ── BRAND DASHBOARD ── */}
+      <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section id="dashboard">
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Brand dashboard</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              See every verified mile.<br />
+              <span style={{ color: COLORS.subtle }}>Own every insight.</span>
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
+              Every brand on PROOF gets a dashboard from day one. Monitor verification in real time, track program health, and see exactly what your loyalty investment delivers.
+            </p>
+          </div>
+
+          {/* Dashboard mockup */}
+          <div style={{ background: COLORS.base, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, overflow: "hidden", maxWidth: 960, margin: "0 auto" }}>
+            {/* Top bar */}
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderBottom: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 18, letterSpacing: "0.06em", color: COLORS.textBright }}>PROOF</span>
+                <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase" }}>Basecamp Athletics Effort Club</span>
+              </div>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.base, background: COLORS.signal, padding: "2px 8px", borderRadius: 3, letterSpacing: "0.05em" }}>STARTER</span>
+            </div>
+
+            <div style={{ display: "flex" }}>
+              {/* Sidebar */}
+              <div className="dash-sidebar" style={{ width: 140, borderRight: `1px solid ${COLORS.surfaceBorder}`, padding: "16px 0", background: COLORS.surface, flexShrink: 0 }}>
+                {["Overview", "Athletes", "Activity", "Rewards", "Config", "Billing"].map((item, i) => (
+                  <div key={i} style={{ padding: "7px 16px", fontFamily: "'Syne', sans-serif", fontSize: 11, color: i === 0 ? COLORS.signal : COLORS.muted, borderLeft: `2px solid ${i === 0 ? COLORS.signal : "transparent"}`, cursor: "default" }}>{item}</div>
+                ))}
+              </div>
+
+              {/* Main content */}
+              <div style={{ flex: 1, padding: "20px 24px", minWidth: 0 }}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 }}>Program overview · last 30 days</div>
+
+                {/* Metrics row */}
+                <div className="dash-metrics" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24 }}>
+                  {[
+                    { label: "Active members", value: "847", color: COLORS.signal, sub: "+12% vs prior 30d", subColor: COLORS.signal },
+                    { label: "Verified activities", value: "1,243", color: COLORS.textBright, sub: "+8% vs prior 30d", subColor: COLORS.signal },
+                    { label: "PM credited", value: "38,491", color: COLORS.textBright, sub: "30.9 avg PM / member", subColor: COLORS.muted },
+                    { label: "Rewards issued", value: "23", color: COLORS.textBright, sub: "78% redeemed", subColor: COLORS.muted },
+                  ].map((m, i) => (
+                    <div key={i} style={{ background: COLORS.surfaceRaised, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 8, padding: "12px 14px" }}>
+                      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 8, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>{m.label}</div>
+                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, fontWeight: 700, color: m.color, lineHeight: 1 }}>{m.value}</div>
+                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: m.subColor, marginTop: 4 }}>{m.sub}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Two-column content */}
+                <div className="dash-cols" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
+                  {/* Activity chart */}
+                  <div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Daily verified activities</div>
+                    <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 60 }}>
+                      {[45,52,38,60,72,25,18,55,65,48,78,90,35,100].map((h, i) => (
+                        <div key={i} style={{ flex: 1, background: COLORS.signal, borderRadius: 2, height: `${h}%`, opacity: 0.5 + (h / 200) }} />
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Tier distribution */}
+                  <div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Tier distribution</div>
+                    {[
+                      { name: "Sprinter", w: "49%", color: COLORS.muted, count: "412" },
+                      { name: "Climber", w: "34%", color: COLORS.steel, count: "287" },
+                      { name: "Domestique", w: "12%", color: COLORS.signal, count: "104" },
+                      { name: "Grand Tour", w: "4.5%", color: COLORS.signal, count: "38" },
+                      { name: "Patron", w: "0.7%", color: COLORS.effort, count: "6" },
+                    ].map((t, i) => (
+                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                        <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 10, fontWeight: 700, color: COLORS.subtle, width: 70, flexShrink: 0 }}>{t.name}</span>
+                        <div style={{ flex: 1, height: 6, background: COLORS.surfaceRaised, borderRadius: 3, overflow: "hidden" }}>
+                          <div style={{ width: t.w, height: "100%", background: t.color, borderRadius: 3 }} />
+                        </div>
+                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, width: 28, textAlign: "right", flexShrink: 0 }}>{t.count}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Activity feed */}
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
+                {[
+                  { name: "J. Matsuda", sport: "ROAD", miles: "34.2 mi", pm: "+34.2 PM", status: "VERIFIED", ok: true, time: "12m" },
+                  { name: "R. Chen", sport: "MTB", miles: "18.7 mi", pm: "+28.1 PM", status: "VERIFIED", ok: true, time: "24m" },
+                  { name: "A. Ramirez", sport: "GRAVEL", miles: "42.1 mi", pm: "+50.5 PM", status: "VERIFIED", ok: true, time: "1h" },
+                  { name: "T. Novak", sport: "ROAD", miles: "6.1 mi", pm: "—", status: "NO GPS", ok: false, time: "2h" },
+                  { name: "K. Okonkwo", sport: "ROAD", miles: "21.8 mi", pm: "+21.8 PM", status: "VERIFIED", ok: true, time: "3h" },
+                ].map((a, i) => (
+                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
+                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: a.ok ? COLORS.signal : COLORS.effort, flexShrink: 0 }} />
+                    <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text, width: 80, flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{a.name}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, background: COLORS.surfaceRaised, padding: "1px 6px", borderRadius: 3, flexShrink: 0 }}>{a.sport}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel, width: 50, textAlign: "right", flexShrink: 0 }}>{a.miles}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: a.ok ? COLORS.signal : COLORS.muted, width: 55, textAlign: "right", flexShrink: 0 }}>{a.pm}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, padding: "1px 6px", borderRadius: 3, flexShrink: 0, color: a.ok ? COLORS.base : COLORS.effort, background: a.ok ? COLORS.signal : "rgba(255,61,0,0.1)" }}>{a.status}</span>
+                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, marginLeft: "auto", flexShrink: 0 }}>{a.time}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Billing bar */}
+            <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 20px", borderTop: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
+              <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", flexShrink: 0 }}>Active members</span>
+              <div style={{ flex: 1, height: 4, background: COLORS.surfaceRaised, borderRadius: 2, overflow: "hidden" }}>
+                <div style={{ width: "84.7%", height: "100%", background: COLORS.signal, borderRadius: 2 }} />
+              </div>
+              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.subtle, flexShrink: 0 }}>847 / 1,000</span>
+            </div>
+          </div>
+
+          {/* Dashboard tier callout */}
+          <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap", marginTop: 40, maxWidth: 800, margin: "40px auto 0" }}>
+            {[
+              { tier: "Developer", desc: "Basic monitoring — members, activities, billing cap", color: COLORS.muted },
+              { tier: "Starter", desc: "Program dashboard — rewards, athlete profiles, config", color: COLORS.signal },
+              { tier: "Scale", desc: "Advanced analytics — cohorts, funnels, exports, API", color: COLORS.steel },
+              { tier: "Growth", desc: "Custom reporting — anomaly alerts, program health score", color: COLORS.effort },
+            ].map((d, i) => (
+              <div key={i} style={{ flex: "1 1 160px", maxWidth: 200, padding: "16px", background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 10, borderTop: `2px solid ${d.color}` }}>
+                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700, color: d.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{d.tier}</div>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.subtle, lineHeight: 1.5 }}>{d.desc}</div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      </div>
+
       {/* ── PRICING ── */}
       <div style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <Section id="pricing">
@@ -1185,22 +1328,22 @@ export default function ProofWebsite() {
           {/* 5-tier pricing cards */}
           <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Developer" price="Free" members="Up to 100 active members"
-              features={["Core GPS verification", "PROOF Verified Effort badge", "Strava integration", "Docs + community"]}
+              features={["Core GPS verification", "PROOF tier engine", "Basic dashboard", "Strava integration", "Docs + community"]}
               cta="Get started free" />
             <PricingCard name="Starter"
               price={annualPricing ? "$119" : "$149"} period="/mo"
               members="Up to 1,000 active members"
-              features={["Everything in Developer", "Webhook events (8 types)", "Advanced fraud detection", "Up to 3 fitness platforms", "Email support"]}
+              features={["Everything in Developer", "Program dashboard", "Webhook events (8 types)", "Custom tier names", "Advanced fraud detection", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Scale"
               price={annualPricing ? "$359" : "$449"} period="/mo"
               members="Up to 10,000 active members" highlight
-              features={["Everything in Starter", "Unlimited integrations", "Custom badge styling", "Webhooks + API access", "Priority support + Slack"]}
+              features={["Everything in Starter", "Advanced analytics + exports", "Unlimited integrations", "Custom badge styling", "Webhooks + API access", "Priority support + Slack"]}
               cta="Start free trial" />
             <PricingCard name="Growth"
               price={annualPricing ? "$639" : "$799"} period="/mo"
               members="Up to 25,000 active members"
-              features={["Everything in Scale", "Brand dashboard + analytics", "PROOF tier engine (native)", "Dedicated CSM"]}
+              features={["Everything in Scale", "Custom reporting", "Anomaly alerts + flagging", "Dedicated CSM"]}
               cta="Start free trial" />
             <PricingCard name="Enterprise" price="Custom" members="Unlimited members"
               features={["Everything in Growth", "SLA + SOC 2 docs", "White-label badge option", "Named account manager"]}
@@ -1235,13 +1378,18 @@ export default function ProofWebsite() {
                 {[
                   { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
+                  { feature: "PROOF tier engine (native)", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Webhook event integration (8 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Program dashboard (rewards, profiles, config)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Custom tier name mapping", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
+                  { feature: "Advanced analytics + exports", vals: ["—", "—", "✓", "✓", "✓"] },
                   { feature: "Custom badge styling", vals: ["—", "—", "✓", "✓", "✓"] },
                   { feature: "Webhooks + API access", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Brand dashboard + analytics", vals: ["—", "—", "—", "✓", "✓"] },
-                  { feature: "PROOF tier engine (native)", vals: ["—", "—", "—", "✓", "✓"] },
+                  { feature: "Custom reporting", vals: ["—", "—", "—", "✓", "✓"] },
+                  { feature: "Anomaly alerts + flagging", vals: ["—", "—", "—", "✓", "✓"] },
                   { feature: "SLA + SOC 2 documentation", vals: ["—", "—", "—", "—", "✓"] },
                   { feature: "White-label badge option", vals: ["—", "—", "—", "—", "✓"] },
                   { feature: "Support", vals: ["Docs", "Email", "Priority + Slack", "Dedicated CSM", "Named acct mgr"] },
