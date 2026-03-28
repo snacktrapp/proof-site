@@ -609,7 +609,7 @@ export default function ProofWebsite() {
       <div style={{ background: COLORS.surface, borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <div className="stats-grid">
           <StatCounter value={40} suffix="+" label="YEARS · ANCHOR CUSTOMER" />
-          <StatCounter value={8} suffix="" label="KLAVIYO FLOWS DESIGNED" />
+          <StatCounter value={8} suffix="" label="WEBHOOK EVENT TYPES" />
           <StatCounter value={5} suffix="" label="LOYALTY TIERS" />
           <StatCounter value={10} suffix="+" label="SPORTS VIA PEI" />
         </div>
@@ -642,8 +642,8 @@ export default function ProofWebsite() {
               desc="Every activity runs through PROOF's 9-gate fraud pipeline — GPS validation, sport-specific velocity ceilings, daily caps. Clean data converts to PROOF miles via the Effort Index. One cycling mile = 1 PM. One running mile = 3 PM. One strength session = 10 PM."
               detail="9-gate fraud pipeline · PEI conversion" />
             <Step number="04" title="Credit and reward"
-              desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a Klaviyo event — your brand delivers the reward in your voice."
-              detail="Shopify discount codes · 8 Klaviyo event types" isLast />
+              desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a webhook event to your email platform — your brand delivers the reward in your voice."
+              detail="Shopify discount codes · 8 webhook event types" isLast />
           </div>
         </div>
       </Section>
@@ -747,7 +747,7 @@ export default function ProofWebsite() {
             {[
               { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
               { label: "PROOF Ledger", sub: "Verify · PEI · Tier", color: COLORS.signal, glow: true },
-              { label: "Your Brand", sub: "Shopify · Klaviyo", color: COLORS.textBright, glow: false },
+              { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.textBright, glow: false },
             ].map((node, i) => (
               <div key={i} className="arch-node" style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ textAlign: "center", padding: "18px 28px",
@@ -788,7 +788,7 @@ export default function ProofWebsite() {
                 { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
                 { label: "Brand PM", desc: "PROOF miles earned in your allowed sports since the athlete connected. Starts at zero plus a welcome bonus based on PROOF tier." },
                 { label: "Reward thresholds", desc: "You define what brand PM unlock — discount codes, free shipping, exclusive access. Your budget, your economics, your rules." },
-                { label: "Reward delivery", desc: "Shopify discount codes generated via Admin API. Klaviyo events fired in real time. You build the flows in your voice." },
+                { label: "Reward delivery", desc: "Shopify discount codes generated via Admin API. Webhook events fired to your email platform in real time. You build the flows in your voice." },
               ]}
             />
           </div>
@@ -904,7 +904,7 @@ export default function ProofWebsite() {
             </div>
             <pre className="code-pre" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
               lineHeight: 2, color: COLORS.subtle, whiteSpace: "pre", margin: 0, overflowX: "auto", display: "block" }}>
-              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your Klaviyo"}</span>{"\n"}
+              <span style={{ color: COLORS.muted }}>{"// PROOF fires events to your email platform"}</span>{"\n"}
               <span style={{ color: COLORS.muted }}>{"// proof_ = platform data, loyalty_ = brand data"}</span>{"\n\n"}
               <span style={{ color: "#c678dd" }}>Event</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
@@ -1026,7 +1026,7 @@ export default function ProofWebsite() {
               { icon: "⬡", title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, strength — configure once, PROOF filters automatically via the Effort Index." },
               { icon: "⚡", title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, HR verification for sessions, anomaly detection. Your loyalty budget goes to real athletes." },
               { icon: "↗", title: "Hybrid tier model", desc: "Permanent identity layer — tier title, badge, community access. Active benefits layer — multipliers, shipping, early access — with trailing 6-month effort minimums." },
-              { icon: "⟁", title: "Shopify + Klaviyo native", desc: "Discount codes via Admin API. 8 event types fired to Klaviyo. No middleware, no third-party loyalty platform. PROOF is the engine." },
+              { icon: "⟁", title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 8 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
               { icon: "◈", title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their PROOF identity. As the network grows, pre-qualified athletes discover your store." },
             ].map((item, i) => (
               <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
@@ -1060,7 +1060,13 @@ export default function ProofWebsite() {
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Commerce</div>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Shopify · Klaviyo</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Shopify</div>
+          </div>
+          <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
+          <div style={{ textAlign: "center" }}>
+            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Email</div>
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Klaviyo · Mailchimp · Any ESP</div>
           </div>
           <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
@@ -1119,7 +1125,7 @@ export default function ProofWebsite() {
             <PricingCard name="Starter"
               price={annualPricing ? "$119" : "$149"} period="/mo"
               members="Up to 1,000 active members"
-              features={["Everything in Developer", "Klaviyo events (8 types)", "Advanced fraud detection", "Up to 3 fitness platforms", "Email support"]}
+              features={["Everything in Developer", "Webhook events (8 types)", "Advanced fraud detection", "Up to 3 fitness platforms", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Scale"
               price={annualPricing ? "$359" : "$449"} period="/mo"
@@ -1165,7 +1171,7 @@ export default function ProofWebsite() {
                   { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
-                  { feature: "Klaviyo event integration (8 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Webhook event integration (8 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Custom badge styling", vals: ["—", "—", "✓", "✓", "✓"] },
                   { feature: "Webhooks + API access", vals: ["—", "—", "✓", "✓", "✓"] },
