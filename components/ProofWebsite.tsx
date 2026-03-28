@@ -532,9 +532,9 @@ export default function ProofWebsite() {
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: "clamp(15px, 4vw, 17px)",
             color: COLORS.subtle, lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.5s" }}>
-            PROOF connects real athletic activity — GPS-tracked, device-verified,
-            effort-normalized — to the loyalty programs your customers already expect.
-            One integration. Every sport. Every unit.
+            Athletes earn loyalty from real effort — GPS-tracked, device-verified,
+            effort-normalized. Brands reward what no transaction history can prove:
+            that someone actually shows up. One integration. Every sport. Every unit.
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
@@ -1022,20 +1022,85 @@ export default function ProofWebsite() {
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
             {[
-              { icon: "◎", title: "Verified effort ledger", desc: "PROOF-owned PostgreSQL database. Lifetime PM, brand PM, tier calculations, trailing 6-month activity tracking, active status. Yours to query, ours to maintain." },
-              { icon: "⬡", title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, strength — configure once, PROOF filters automatically via the Effort Index." },
-              { icon: "⚡", title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, HR verification for sessions, anomaly detection. Your loyalty budget goes to real athletes." },
-              { icon: "↗", title: "Hybrid tier model", desc: "Permanent identity layer — tier title, badge, community access. Active benefits layer — multipliers, shipping, early access — with trailing 6-month effort minimums." },
-              { icon: "⟁", title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 8 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
-              { icon: "◈", title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their PROOF identity. As the network grows, pre-qualified athletes discover your store." },
+              { icon: (
+                <svg width="40" height="36" viewBox="0 0 40 36" fill="none">
+                  <rect x="0" y="6" width="12" height="20" rx="2" stroke={COLORS.signal} strokeWidth="1.5" opacity={0.35} />
+                  <rect x="14" y="6" width="12" height="20" rx="2" stroke={COLORS.signal} strokeWidth="1.5" opacity={0.55} />
+                  <rect x="28" y="6" width="12" height="20" rx="2" stroke={COLORS.signal} strokeWidth="1.5" opacity={0.8} />
+                  <line x1="12" y1="16" x2="14" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <line x1="26" y1="16" x2="28" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.5} />
+                  <circle cx="34" cy="6" r="5" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
+                  <path d="M31.5 6L33.5 8L37 4.5" stroke={COLORS.signal} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                </svg>
+              ), title: "Verified effort ledger", desc: "PROOF-owned PostgreSQL database. Lifetime PM, brand PM, tier calculations, trailing 6-month activity tracking, active status. Yours to query, ours to maintain." },
+              { icon: (
+                <svg width="32" height="34" viewBox="0 0 32 34" fill="none">
+                  <rect x="0" y="0" width="30" height="32" rx="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.2} />
+                  <line x1="6" y1="8" x2="24" y2="8" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <circle cx="20" cy="8" r="3" fill={COLORS.signal} opacity={0.8} />
+                  <line x1="6" y1="16" x2="24" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <circle cx="16" cy="16" r="3" fill={COLORS.signal} opacity={0.8} />
+                  <line x1="6" y1="24" x2="24" y2="24" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <circle cx="10" cy="24" r="3" fill="none" stroke={COLORS.signal} strokeWidth="1.2" opacity={0.4} />
+                </svg>
+              ), title: "Sport allowlist", desc: "Choose which sports earn in your program. Road cycling, MTB, running, swimming, strength — configure once, PROOF filters automatically via the Effort Index." },
+              { icon: (
+                <svg width="44" height="34" viewBox="0 0 44 34" fill="none">
+                  <rect x="0" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.15} />
+                  <rect x="5" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.22} />
+                  <rect x="10" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.3} />
+                  <rect x="15" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.38} />
+                  <rect x="20" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.48} />
+                  <rect x="25" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.58} />
+                  <rect x="30" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.7} />
+                  <rect x="35" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={0.84} />
+                  <rect x="40" y="1" width="2.5" height="32" rx="1" fill={COLORS.signal} opacity={1} />
+                </svg>
+              ), title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, HR verification for sessions, anomaly detection. Your loyalty budget goes to real athletes." },
+              { icon: (
+                <svg width="34" height="42" viewBox="0 0 34 42" fill="none">
+                  <circle cx="16" cy="30" r="12" stroke={COLORS.signal} strokeWidth="1" opacity={0.2} />
+                  <circle cx="16" cy="26" r="10" stroke={COLORS.signal} strokeWidth="1" opacity={0.35} />
+                  <circle cx="16" cy="22" r="8" stroke={COLORS.signal} strokeWidth="1.2" opacity={0.55} />
+                  <circle cx="16" cy="18" r="6" stroke={COLORS.signal} strokeWidth="1.3" opacity={0.75} />
+                  <circle cx="16" cy="14" r="4" fill={COLORS.signal} opacity={0.9} />
+                </svg>
+              ), title: "Hybrid tier model", desc: "Permanent identity layer — tier title, badge, community access. Active benefits layer — multipliers, shipping, early access — with trailing 6-month effort minimums." },
+              { icon: (
+                <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
+                  <circle cx="6" cy="16" r="5" stroke={COLORS.signal} strokeWidth="1.5" />
+                  <circle cx="6" cy="16" r="2" fill={COLORS.signal} opacity={0.6} />
+                  <line x1="11" y1="16" x2="18" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="18" y1="16" x2="26" y2="8" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="18" y1="16" x2="26" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" />
+                  <line x1="18" y1="16" x2="26" y2="24" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" />
+                  <circle cx="28" cy="8" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
+                  <circle cx="28" cy="16" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
+                  <circle cx="28" cy="24" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
+                </svg>
+              ), title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 8 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
+              { icon: (
+                <svg width="34" height="36" viewBox="0 0 34 36" fill="none">
+                  <line x1="6" y1="6" x2="16" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <line x1="26" y1="6" x2="16" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <line x1="16" y1="16" x2="6" y2="28" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <line x1="16" y1="16" x2="26" y2="28" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
+                  <line x1="6" y1="6" x2="26" y2="6" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.2} />
+                  <line x1="6" y1="28" x2="26" y2="28" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.2} />
+                  <circle cx="6" cy="6" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
+                  <circle cx="26" cy="6" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
+                  <circle cx="16" cy="16" r="5" fill={COLORS.signal} opacity={0.9} />
+                  <circle cx="6" cy="28" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
+                  <circle cx="26" cy="28" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
+                </svg>
+              ), title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their PROOF identity. As the network grows, pre-qualified athletes discover your store." },
             ].map((item, i) => (
               <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
                 border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "28px",
                 transition: "border-color 0.3s ease" }}
                 onMouseOver={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.signal + "33"}
                 onMouseOut={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.surfaceBorder}>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 24, color: COLORS.signal,
-                  marginBottom: 12, opacity: 0.7 }}>{item.icon}</div>
+                <div style={{ marginBottom: 16, height: 40, display: "flex", alignItems: "center" }}>{item.icon}</div>
                 <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 700,
                   color: COLORS.textBright, marginBottom: 8 }}>{item.title}</div>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle,
