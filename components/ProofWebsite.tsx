@@ -1523,17 +1523,22 @@ export default function ProofWebsite() {
             </div>
           </div>
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
-            {["Privacy", "Terms", "Documentation", "Status"].map((link, i) => (
-              <a key={i} href="#" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
+            {[
+              { label: "Privacy", href: "/privacy" },
+              { label: "Terms", href: "#" },
+              { label: "Documentation", href: "#" },
+              { label: "Status", href: "#" },
+            ].map((link, i) => (
+              <a key={i} href={link.href} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
                 color: COLORS.muted, textDecoration: "none" }}
                 onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.text}
                 onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.muted}>
-                {link}
+                {link.label}
               </a>
             ))}
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted }}>
-            © 2026 PROOF Technologies, Inc.
+            © 2026 Proof Technologies, Inc.
           </div>
         </div>
       </footer>
