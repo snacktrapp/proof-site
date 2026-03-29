@@ -477,7 +477,7 @@ export default function AthletesPage() {
               color: COLORS.textBright, marginBottom: 16,
               letterSpacing: "0.02em"
             }}>
-              VERIFIED. NOT ESTIMATED.
+              EARNED. NOT BOUGHT.
             </h3>
 
             <p style={{
