@@ -482,6 +482,13 @@ export default function ProofWebsite() {
                 {item}
               </a>
             ))}
+            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+              Sign up / Log in
+            </a>
             <a href="#waitlist" style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
@@ -504,6 +511,8 @@ export default function ProofWebsite() {
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
+            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}>Sign up / Log in</a>
             <a href="#waitlist" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
               Get early access
             </a>
