@@ -645,8 +645,8 @@ export default function ProofWebsite() {
       <div style={{ background: COLORS.surface, borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <div className="stats-grid">
           <StatCounter value={40} suffix="+" label="YEARS · ANCHOR CUSTOMER" />
-          <StatCounter value={8} suffix="" label="WEBHOOK EVENT TYPES" />
-          <StatCounter value={5} suffix="" label="LOYALTY TIERS" />
+          <StatCounter value={6} suffix="" label="WEBHOOK EVENT TYPES" />
+          <StatCounter value={3} suffix="" label="ATHLETE SIGNALS" />
           <StatCounter value={10} suffix="+" label="SPORTS VIA PEI" />
         </div>
       </div>
@@ -679,7 +679,7 @@ export default function ProofWebsite() {
               detail="9-gate fraud pipeline · PEI conversion" />
             <Step number="04" title="Credit and reward"
               desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a webhook event to your email platform — your brand delivers the reward in your voice."
-              detail="Shopify discount codes · 8 webhook event types" isLast />
+              detail="Shopify discount codes · 6 webhook event types" isLast />
           </div>
         </div>
       </Section>
@@ -709,7 +709,7 @@ export default function ProofWebsite() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
               <div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · PROVEN</div>
+                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · STEADY PACE</div>
                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 42,
                   color: COLORS.signal, lineHeight: 1 }}>4,218</div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
@@ -717,26 +717,26 @@ export default function ProofWebsite() {
               </div>
               <VerifiedBadge size={40} />
             </div>
-            {/* Progress bar */}
+            {/* Milestone progress */}
             <div style={{ marginBottom: 16 }}>
               <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text }}>Proven</span>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted }}>4,218 / 10,000 PM</span>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.muted }}>Beacon</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text }}>Next milestone</span>
+                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted }}>4,218 / 5,000 PM</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.muted }}>$50 credit</span>
               </div>
               <div style={{ height: 4, background: COLORS.surfaceBorder, borderRadius: 2 }}>
-                <div style={{ height: 4, background: COLORS.signal, borderRadius: 2, width: "42%",
+                <div style={{ height: 4, background: COLORS.signal, borderRadius: 2, width: "84%",
                   transition: "width 1s ease" }} />
               </div>
             </div>
-            {/* Active status */}
+            {/* Pace indicator */}
             <div style={{ display: "flex", alignItems: "center", gap: 8,
               padding: "10px 14px", background: COLORS.surfaceRaised,
               borderRadius: 10, marginBottom: 12 }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: COLORS.signal }} />
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.text }}>Active</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.text }}>Steady</span>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                color: COLORS.muted, marginLeft: "auto" }}>412 PM / 300 min</span>
+                color: COLORS.muted, marginLeft: "auto" }}>215 PM/mo · ↑ Increasing</span>
             </div>
             {/* Reward available */}
             <div style={{ padding: "12px 14px", border: `1px solid ${COLORS.signal}33`,
@@ -755,7 +755,7 @@ export default function ProofWebsite() {
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
             lineHeight: 1.7, maxWidth: 520, margin: "40px auto 0", textAlign: "center" }}>
             Their PROOF identity is theirs. If they connect to another brand in the network,
-            their tier and effort history travel with them — but your rewards stay yours.
+            their effort profile and history travel with them — but your rewards stay yours.
             You only fund effort earned during your relationship.
           </p>
         </Section>
@@ -782,7 +782,7 @@ export default function ProofWebsite() {
             gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
             {[
               { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
-              { label: "PROOF Ledger", sub: "Verify · PEI · Tier", color: COLORS.signal, glow: true },
+              { label: "PROOF Ledger", sub: "Verify · PEI · Signals", color: COLORS.signal, glow: true },
               { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.textBright, glow: false },
             ].map((node, i) => (
               <div key={i} className="arch-node" style={{ display: "flex", alignItems: "center", gap: 16 }}>
@@ -811,8 +811,8 @@ export default function ProofWebsite() {
               glow
               items={[
                 { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
-                { label: "Universal tiers", desc: "Spark → Signal → Proven → Beacon → Patron. Based on lifetime PM. Recognized at every enrolled brand. Brands can use custom names." },
-                { label: "Active status", desc: "Trailing 6-month PM calculation. Your tier title is permanent. Active economic perks stay lit as long as you keep moving." },
+                { label: "Three-signal athlete profile", desc: "Lifetime PM (total experience), Pace (12-month rolling average, categorized), and Trend (3-month vs. 9-month direction). Visible to every enrolled brand." },
+                { label: "Pace and Trend tracking", desc: "Current activity level categorized as Inactive, Light, Moderate, Steady, or High Volume. Trend shows whether the athlete is ramping up, stable, or slowing down." },
                 { label: "Portable athlete identity", desc: "One Strava connection. Effort history travels to every brand the athlete joins. All PEI-supported sports verified at the PROOF layer." },
               ]}
             />
@@ -822,8 +822,8 @@ export default function ProofWebsite() {
               subtitle="Your program. Your rules."
               items={[
                 { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
-                { label: "Brand PM", desc: "PROOF miles earned in your allowed sports since the athlete connected. Starts at zero plus a welcome bonus based on PROOF tier." },
-                { label: "Reward thresholds", desc: "You define what brand PM unlock — discount codes, free shipping, exclusive access. Your budget, your economics, your rules." },
+                { label: "Brand PM", desc: "PROOF miles earned in your allowed sports since the athlete connected. Starts at zero plus a welcome bonus based on your configured rules against the athlete's three signals." },
+                { label: "Milestone rewards", desc: "You define what lifetime brand PM thresholds unlock — discount codes, free shipping, exclusive access. Your budget, your economics, your rules." },
                 { label: "Reward delivery", desc: "Shopify discount codes generated via Admin API. Webhook events fired to your email platform in real time. You build the flows in your voice." },
               ]}
             />
@@ -838,9 +838,9 @@ export default function ProofWebsite() {
                 Identity travels
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
-                A 5,000 PM athlete is recognized as serious everywhere. Their PROOF tier,
-                badge, and lifetime record are visible at every enrolled brand. Permanent benefits
-                can be granted on sight.
+                A 5,000 PM athlete is recognized as serious everywhere. Their PROOF profile —
+                lifetime PM, pace, and trend — is visible at every enrolled brand. Benefits
+                can be granted based on these signals on day one.
               </div>
             </div>
             <div style={{ width: 1, background: COLORS.surfaceBorder, alignSelf: "stretch", flexShrink: 0 }} />
@@ -944,27 +944,27 @@ export default function ProofWebsite() {
               <span style={{ color: COLORS.muted }}>{"// proof_ = platform data, loyalty_ = brand data"}</span>{"\n\n"}
               <span style={{ color: "#c678dd" }}>Event</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>proof.reward_earned</span>{"\n\n"}
+              <span style={{ color: COLORS.signal }}>proof.milestone_reached</span>{"\n\n"}
               <span style={{ color: COLORS.muted }}>{"{"}</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>proof_tier</span>
-              <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"Proven"'}</span>
-              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"  "}<span style={{ color: COLORS.text }}>proof_lifetime_pm</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
               <span style={{ color: "#d19a66" }}>4218</span>
               <span style={{ color: COLORS.muted }}>,</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>proof_active_status</span>
+              {"  "}<span style={{ color: COLORS.text }}>proof_pace_category</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>true</span>
+              <span style={{ color: COLORS.signal }}>{'"Steady"'}</span>
+              <span style={{ color: COLORS.muted }}>,</span>{"\n"}
+              {"  "}<span style={{ color: COLORS.text }}>proof_trend</span>
+              <span style={{ color: COLORS.muted }}>:</span>{" "}
+              <span style={{ color: COLORS.signal }}>{'"Increasing"'}</span>
               <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"  "}<span style={{ color: COLORS.text }}>loyalty_brand_pm</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
               <span style={{ color: "#d19a66" }}>2500</span>
               <span style={{ color: COLORS.muted }}>,</span>{"\n"}
-              {"  "}<span style={{ color: COLORS.text }}>loyalty_tier_name</span>
+              {"  "}<span style={{ color: COLORS.text }}>loyalty_next_milestone_pm</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
-              <span style={{ color: COLORS.signal }}>{'"Domestique"'}</span>
+              <span style={{ color: "#d19a66" }}>5000</span>
               <span style={{ color: COLORS.muted }}>,</span>{"\n"}
               {"  "}<span style={{ color: COLORS.text }}>reward</span>
               <span style={{ color: COLORS.muted }}>:</span>{" "}
@@ -991,7 +991,7 @@ export default function ProofWebsite() {
           <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 16, flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.signal }}>proof_ = platform data</span>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.text }}>loyalty_ = brand data</span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel }}>8 event types total</span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel }}>6 event types total</span>
           </div>
         </Section>
       </div>
@@ -1032,7 +1032,7 @@ export default function ProofWebsite() {
               ← Athletes carry their PROOF identity between brands →
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
-              For brands, athletes arrive pre-qualified. A runner who connected through a footwear brand already has a PROOF tier
+              For brands, athletes arrive pre-qualified. A runner who connected through a footwear brand already has a PROOF profile
               when they discover your store. You recognize their effort on day one — no cold start, no re-verification.
             </p>
           </div>
@@ -1068,7 +1068,7 @@ export default function ProofWebsite() {
                   <circle cx="34" cy="6" r="5" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
                   <path d="M31.5 6L33.5 8L37 4.5" stroke={COLORS.signal} strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                 </svg>
-              ), title: "Verified effort ledger", desc: "PROOF-owned PostgreSQL database. Lifetime PM, brand PM, tier calculations, trailing 6-month activity tracking, active status. Yours to query, ours to maintain." },
+              ), title: "Verified effort ledger", desc: "PROOF-owned PostgreSQL database. Lifetime PM, brand PM, pace and trend calculations, activity history. Yours to query, ours to maintain." },
               { icon: (
                 <svg width="32" height="34" viewBox="0 0 32 34" fill="none">
                   <rect x="0" y="0" width="30" height="32" rx="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.2} />
@@ -1094,14 +1094,14 @@ export default function ProofWebsite() {
                 </svg>
               ), title: "9-gate fraud pipeline", desc: "GPS validation, sport-specific velocity ceilings, daily caps per sport, idempotency checks, anomaly detection. Your loyalty budget goes to real athletes." },
               { icon: (
-                <svg width="34" height="42" viewBox="0 0 34 42" fill="none">
-                  <circle cx="16" cy="30" r="12" stroke={COLORS.signal} strokeWidth="1" opacity={0.2} />
-                  <circle cx="16" cy="26" r="10" stroke={COLORS.signal} strokeWidth="1" opacity={0.35} />
-                  <circle cx="16" cy="22" r="8" stroke={COLORS.signal} strokeWidth="1.2" opacity={0.55} />
-                  <circle cx="16" cy="18" r="6" stroke={COLORS.signal} strokeWidth="1.3" opacity={0.75} />
-                  <circle cx="16" cy="14" r="4" fill={COLORS.signal} opacity={0.9} />
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <rect x="4" y="28" width="8" height="6" rx="1.5" fill={COLORS.signal} opacity={0.9} />
+                  <rect x="4" y="20" width="8" height="14" rx="1.5" stroke={COLORS.signal} strokeWidth="1" opacity={0.3} />
+                  <polyline points="16,26 19,20 22,24 25,16 28,18" stroke={COLORS.signal} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.7} />
+                  <line x1="30" y1="10" x2="30" y2="4" stroke={COLORS.signal} strokeWidth="1.8" strokeLinecap="round" opacity={0.9} />
+                  <polyline points="27,7 30,4 33,7" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.9} />
                 </svg>
-              ), title: "Hybrid tier model", desc: "Permanent identity layer — tier title, badge, community access. Active benefits layer — multipliers, shipping, early access — with trailing 6-month effort minimums." },
+              ), title: "Three-signal athlete profile", desc: "Every athlete described by three signals: Lifetime PM (total experience), Pace (12-month rolling average), and Trend (recent momentum). Brands configure welcome bonuses and benefits against these signals — no arbitrary tier names required." },
               { icon: (
                 <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
                   <circle cx="6" cy="16" r="5" stroke={COLORS.signal} strokeWidth="1.5" />
@@ -1114,7 +1114,7 @@ export default function ProofWebsite() {
                   <circle cx="28" cy="16" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
                   <circle cx="28" cy="24" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
                 </svg>
-              ), title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 8 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
+              ), title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 6 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
               { icon: (
                 <svg width="34" height="36" viewBox="0 0 34 36" fill="none">
                   <line x1="6" y1="6" x2="16" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
@@ -1246,15 +1246,15 @@ export default function ProofWebsite() {
                     </div>
                   </div>
 
-                  {/* Tier distribution */}
+                  {/* Pace distribution */}
                   <div>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Tier distribution</div>
+                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Pace distribution</div>
                     {[
-                      { name: "Sprinter", w: "49%", color: COLORS.muted, count: "412" },
-                      { name: "Climber", w: "34%", color: COLORS.steel, count: "287" },
-                      { name: "Domestique", w: "12%", color: COLORS.signal, count: "104" },
-                      { name: "Grand Tour", w: "4.5%", color: COLORS.signal, count: "38" },
-                      { name: "Patron", w: "0.7%", color: COLORS.effort, count: "6" },
+                      { name: "Inactive", w: "8%", color: COLORS.muted, count: "68" },
+                      { name: "Light", w: "22%", color: COLORS.muted, count: "186" },
+                      { name: "Moderate", w: "35%", color: COLORS.steel, count: "296" },
+                      { name: "Steady", w: "28%", color: COLORS.signal, count: "237" },
+                      { name: "High Vol.", w: "7%", color: COLORS.effort, count: "60" },
                     ].map((t, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
                         <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 10, fontWeight: 700, color: COLORS.subtle, width: 70, flexShrink: 0 }}>{t.name}</span>
@@ -1363,12 +1363,12 @@ export default function ProofWebsite() {
           {/* 5-tier pricing cards */}
           <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Developer" price="Free" members="Up to 100 active members"
-              features={["Core GPS verification", "PROOF tier engine", "Basic dashboard", "Strava integration", "Docs + community"]}
+              features={["Core GPS verification", "Three-signal athlete profiles", "Basic dashboard", "Strava integration", "Docs + community"]}
               cta="Get started free" />
             <PricingCard name="Starter"
               price={annualPricing ? "$119" : "$149"} period="/mo"
               members="Up to 1,000 active members"
-              features={["Everything in Developer", "Program dashboard", "Webhook events (8 types)", "Custom tier names", "Advanced fraud detection", "Email support"]}
+              features={["Everything in Developer", "Program dashboard", "Webhook events (6 types)", "Welcome bonus rules", "Advanced fraud detection", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Scale"
               price={annualPricing ? "$359" : "$449"} period="/mo"
@@ -1413,12 +1413,12 @@ export default function ProofWebsite() {
                 {[
                   { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "PROOF tier engine (native)", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "Three-signal athlete profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Webhook event integration (8 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Webhook event integration (6 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Program dashboard (rewards, profiles, config)", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Custom tier name mapping", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Welcome bonus rule configuration", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
                   { feature: "Advanced analytics + exports", vals: ["—", "—", "✓", "✓", "✓"] },
                   { feature: "Custom badge styling", vals: ["—", "—", "✓", "✓", "✓"] },

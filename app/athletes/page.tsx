@@ -91,7 +91,7 @@ export default function AthletesPage() {
   }, []);
 
   return (
-    <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text, overflowX: "hidden" }}>
+    <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text, overflowX: "hidden", fontFamily: "'Outfit', sans-serif" }}>
       <style>{`
         @keyframes pulseGlow {
           0% { opacity: 0.6; transform: scale(0.95); }
@@ -237,11 +237,11 @@ export default function AthletesPage() {
       <section style={{ padding: "80px 24px", maxWidth: 1000, margin: "0 auto" }}>
         <FadeIn>
           <h2 className="section-title" style={{
-            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32,
+            fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
             color: COLORS.textBright, textAlign: "center", marginBottom: 56,
-            letterSpacing: "0.03em"
+            letterSpacing: "0.02em"
           }}>
-            How it works
+            HOW IT WORKS
           </h2>
         </FadeIn>
 
@@ -282,11 +282,11 @@ export default function AthletesPage() {
       <section style={{ padding: "80px 24px", maxWidth: 800, margin: "0 auto" }}>
         <FadeIn>
           <h2 className="section-title" style={{
-            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32,
+            fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
             color: COLORS.textBright, textAlign: "center", marginBottom: 16,
-            letterSpacing: "0.03em"
+            letterSpacing: "0.02em"
           }}>
-            Your effort, in three numbers
+            YOUR EFFORT, IN THREE NUMBERS
           </h2>
           <p style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
@@ -375,7 +375,7 @@ export default function AthletesPage() {
                     ↑
                   </span>
                   <span style={{
-                    fontFamily: "'JetBrains Mono', monospace", fontSize: 24, fontWeight: 700,
+                    fontFamily: "'JetBrains Mono', monospace", fontSize: 32, fontWeight: 700,
                     color: COLORS.signal, lineHeight: 1
                   }}>
                     Increasing
@@ -402,11 +402,11 @@ export default function AthletesPage() {
       <section style={{ padding: "80px 24px", maxWidth: 900, margin: "0 auto" }}>
         <FadeIn>
           <h2 className="section-title" style={{
-            fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 32,
+            fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
             color: COLORS.textBright, textAlign: "center", marginBottom: 16,
-            letterSpacing: "0.03em"
+            letterSpacing: "0.02em"
           }}>
-            Every mile counts. Every sport.
+            EVERY MILE COUNTS. EVERY SPORT.
           </h2>
           <p style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
@@ -473,10 +473,11 @@ export default function AthletesPage() {
             </div>
 
             <h3 style={{
-              fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 22,
-              color: COLORS.textBright, marginBottom: 16
+              fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 28,
+              color: COLORS.textBright, marginBottom: 16,
+              letterSpacing: "0.02em"
             }}>
-              Verified. Not estimated.
+              VERIFIED. NOT ESTIMATED.
             </h3>
 
             <p style={{
