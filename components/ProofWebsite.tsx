@@ -473,6 +473,13 @@ export default function ProofWebsite() {
 
           {/* Desktop nav */}
           <div className="nav-desktop">
+            <a href="/athletes"
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+              Athletes
+            </a>
             {["How it works", "Platform", "Dashboard", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
@@ -507,6 +514,7 @@ export default function ProofWebsite() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="nav-mobile">
+            <a href="/athletes" onClick={() => setMenuOpen(false)}>Athletes</a>
             {["How it works", "Platform", "Dashboard", "Pricing", "For brands"].map((item, i) => (
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMenuOpen(false)}>{item}</a>
