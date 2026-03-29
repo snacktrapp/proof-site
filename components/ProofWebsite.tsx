@@ -645,7 +645,7 @@ export default function ProofWebsite() {
       <div style={{ background: COLORS.surface, borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
         <div className="stats-grid">
           <StatCounter value={40} suffix="+" label="YEARS · ANCHOR CUSTOMER" />
-          <StatCounter value={6} suffix="" label="WEBHOOK EVENT TYPES" />
+          <StatCounter value={5} suffix="" label="WEBHOOK EVENT TYPES" />
           <StatCounter value={3} suffix="" label="ATHLETE SIGNALS" />
           <StatCounter value={10} suffix="+" label="SPORTS VIA PEI" />
         </div>
@@ -679,7 +679,7 @@ export default function ProofWebsite() {
               detail="9-gate fraud pipeline · PEI conversion" />
             <Step number="04" title="Credit and reward"
               desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a webhook event to your email platform — your brand delivers the reward in your voice."
-              detail="Shopify discount codes · 6 webhook event types" isLast />
+              detail="Shopify discount codes · 5 webhook event types" isLast />
           </div>
         </div>
       </Section>
@@ -991,7 +991,7 @@ export default function ProofWebsite() {
           <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 16, flexWrap: "wrap" }}>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.signal }}>proof_ = platform data</span>
             <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.text }}>loyalty_ = brand data</span>
-            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel }}>6 event types total</span>
+            <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel }}>5 event types total</span>
           </div>
         </Section>
       </div>
@@ -1114,7 +1114,7 @@ export default function ProofWebsite() {
                   <circle cx="28" cy="16" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
                   <circle cx="28" cy="24" r="3" stroke={COLORS.signal} strokeWidth="1" opacity={0.5} />
                 </svg>
-              ), title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 6 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
+              ), title: "Shopify native + any email provider", desc: "Discount codes via Admin API. 5 webhook event types fired to Klaviyo, Mailchimp, or any ESP. No middleware, no third-party loyalty platform. PROOF is the engine." },
               { icon: (
                 <svg width="34" height="36" viewBox="0 0 34 36" fill="none">
                   <line x1="6" y1="6" x2="16" y2="16" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" opacity={0.3} />
@@ -1368,7 +1368,7 @@ export default function ProofWebsite() {
             <PricingCard name="Starter"
               price={annualPricing ? "$119" : "$149"} period="/mo"
               members="Up to 1,000 active members"
-              features={["Everything in Developer", "Program dashboard", "Webhook events (6 types)", "Welcome bonus rules", "Advanced fraud detection", "Email support"]}
+              features={["Everything in Developer", "Program dashboard", "Webhook events (5 types)", "Welcome bonus rules", "Advanced fraud detection", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Scale"
               price={annualPricing ? "$359" : "$449"} period="/mo"
@@ -1415,7 +1415,7 @@ export default function ProofWebsite() {
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Three-signal athlete profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Webhook event integration (6 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Webhook event integration (5 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Program dashboard (rewards, profiles, config)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Welcome bonus rule configuration", vals: ["—", "✓", "✓", "✓", "✓"] },
