@@ -83,6 +83,7 @@ const steps = [
 
 export default function AthletesPage() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -116,6 +117,14 @@ export default function AthletesPage() {
           transform: translateY(-1px);
           box-shadow: 0 0 24px rgba(200,255,0,0.3);
         }
+
+        .nav-desktop { display: flex; gap: 32px; align-items: center; }
+        .nav-hamburger { display: none; background: none; border: none; cursor: pointer;
+          padding: 4px; flex-direction: column; gap: 5px; }
+        .nav-hamburger span { display: block; width: 22px; height: 2px;
+          background: ${COLORS.textBright}; border-radius: 2px; transition: all 0.3s ease; }
+        .nav-mobile { display: none; }
+
         @media (max-width: 768px) {
           .hero-title { font-size: 40px !important; }
           .hero-sub { font-size: 16px !important; max-width: 100% !important; }
@@ -125,6 +134,29 @@ export default function AthletesPage() {
           .profile-signals { flex-direction: column !important; gap: 16px !important; }
           .section-title { font-size: 28px !important; }
           .final-cta-title { font-size: 32px !important; }
+
+          /* Nav */
+          .nav-desktop { display: none; }
+          .nav-hamburger { display: flex; }
+          .nav-mobile {
+            display: flex; flex-direction: column;
+            position: fixed; top: 64px; left: 0; right: 0; z-index: 98;
+            background: rgba(5,5,5,0.97); backdrop-filter: blur(20px);
+            border-bottom: 1px solid ${COLORS.surfaceBorder};
+            padding: 20px; gap: 4px;
+          }
+          .nav-mobile a {
+            font-family: 'Outfit', sans-serif; font-size: 16px; color: ${COLORS.subtle};
+            text-decoration: none; padding: 12px 0;
+            border-bottom: 1px solid ${COLORS.surfaceBorder};
+          }
+          .nav-mobile .nav-mobile-cta {
+            margin-top: 8px; padding: 14px; border-radius: 8px;
+            background: ${COLORS.signal}; color: ${COLORS.base};
+            font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+            text-align: center; letter-spacing: 0.08em; text-transform: uppercase;
+            border: none; text-decoration: none; display: block;
+          }
         }
         @media (max-width: 480px) {
           .hero-title { font-size: 32px !important; }
@@ -132,46 +164,82 @@ export default function AthletesPage() {
         }
       `}</style>
 
-      {/* Nav */}
-      <nav style={{
-        position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
+      {/* ── NAV ── */}
+      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
         background: scrolled ? "rgba(5,5,5,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(20px)" : "none",
         borderBottom: scrolled ? `1px solid ${COLORS.surfaceBorder}` : "1px solid transparent",
-        transition: "all 0.3s ease"
-      }}>
-        <div style={{
-          maxWidth: 1200, margin: "0 auto", padding: "0 24px",
-          display: "flex", alignItems: "center", justifyContent: "space-between", height: 64
-        }}>
+        transition: "all 0.3s ease" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px",
+          display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+
+          {/* Logo */}
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{
-              width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
+            <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.textBright
-            }}>P</div>
-            <span style={{
-              fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16,
-              color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase"
-            }}>Proof</span>
+              fontSize: 12, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
+            <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16,
+              color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
-            <a href="/" style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
-              textDecoration: "none", letterSpacing: "0.02em"
-            }}>For brands</a>
+
+          {/* Desktop nav */}
+          <div className="nav-desktop">
+            <a href="/"
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+              For brands
+            </a>
+            {[{ label: "How it works", href: "#how-it-works" },
+              { label: "Your profile", href: "#your-profile" },
+              { label: "Sports", href: "#sports" }].map((item, i) => (
+              <a key={i} href={item.href}
+                style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                  textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+                onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+                onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+                {item.label}
+              </a>
+            ))}
             <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
-              className="cta-button"
-              style={{
-                fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
-                color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
-                textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
-                display: "inline-block"
-              }}>
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+              Sign up / Log in
+            </a>
+            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+              style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+              color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
+              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Sign up free
             </a>
           </div>
+
+          {/* Hamburger */}
+          <button className="nav-hamburger" onClick={() => setMenuOpen(o => !o)} aria-label="Open menu">
+            <span style={{ transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
+            <span style={{ opacity: menuOpen ? 0 : 1 }} />
+            <span style={{ transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+          </button>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <div className="nav-mobile">
+            <a href="/" onClick={() => setMenuOpen(false)}>For brands</a>
+            <a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
+            <a href="#your-profile" onClick={() => setMenuOpen(false)}>Your profile</a>
+            <a href="#sports" onClick={() => setMenuOpen(false)}>Sports</a>
+            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+              onClick={() => setMenuOpen(false)}>Sign up / Log in</a>
+            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+              className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
+              Sign up free
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* Hero */}
@@ -234,7 +302,7 @@ export default function AthletesPage() {
       </section>
 
       {/* How It Works */}
-      <section style={{ padding: "80px 24px", maxWidth: 1000, margin: "0 auto" }}>
+      <section id="how-it-works" style={{ padding: "80px 24px", maxWidth: 1000, margin: "0 auto", scrollMarginTop: 80 }}>
         <FadeIn>
           <h2 className="section-title" style={{
             fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
@@ -279,7 +347,7 @@ export default function AthletesPage() {
       </section>
 
       {/* Your Athlete Profile */}
-      <section style={{ padding: "80px 24px", maxWidth: 800, margin: "0 auto" }}>
+      <section id="your-profile" style={{ padding: "80px 24px", maxWidth: 800, margin: "0 auto", scrollMarginTop: 80 }}>
         <FadeIn>
           <h2 className="section-title" style={{
             fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
@@ -399,7 +467,7 @@ export default function AthletesPage() {
       </section>
 
       {/* Supported Sports */}
-      <section style={{ padding: "80px 24px", maxWidth: 900, margin: "0 auto" }}>
+      <section id="sports" style={{ padding: "80px 24px", maxWidth: 900, margin: "0 auto", scrollMarginTop: 80 }}>
         <FadeIn>
           <h2 className="section-title" style={{
             fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
