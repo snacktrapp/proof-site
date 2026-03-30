@@ -709,7 +709,7 @@ export default function ProofWebsite() {
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
               <div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · STEADY PACE</div>
+                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · RIVAL</div>
                 <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 42,
                   color: COLORS.signal, lineHeight: 1 }}>4,218</div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
@@ -810,6 +810,7 @@ export default function ProofWebsite() {
               subtitle="Universal. Portable. Permanent."
               glow
               items={[
+                { label: "PROOF Tier", desc: "Recruit, Contender, Rival, Elite, Legend — earned by lifetime PM. Recognition that travels with the athlete across every brand." },
                 { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
                 { label: "Three-signal athlete profile", desc: "Lifetime PM (total experience), Pace (12-month rolling average, categorized), and Trend (3-month vs. 9-month direction). Visible to every enrolled brand." },
                 { label: "Pace and Trend tracking", desc: "Current activity level categorized as Inactive, Light, Moderate, Steady, or High Volume. Trend shows whether the athlete is ramping up, stable, or slowing down." },
@@ -821,6 +822,7 @@ export default function ProofWebsite() {
               title="Brand Layer"
               subtitle="Your program. Your rules."
               items={[
+                { label: "Custom tier names", desc: "Map PROOF tiers to your brand's identity. Recruit becomes Sprinter. Rival becomes Domestique. Your program, your language." },
                 { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
                 { label: "Brand PM", desc: "PROOF miles earned in your allowed sports since the athlete connected. Starts at zero plus a welcome bonus based on your configured rules against the athlete's three signals." },
                 { label: "Milestone rewards", desc: "You define what lifetime brand PM thresholds unlock — discount codes, free shipping, exclusive access. Your budget, your economics, your rules." },
@@ -838,8 +840,8 @@ export default function ProofWebsite() {
                 Identity travels
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
-                A 5,000 PM athlete is recognized as serious everywhere. Their PROOF profile —
-                lifetime PM, pace, and trend — is visible at every enrolled brand. Benefits
+                A 5,000 PM athlete arrives as a Rival — recognized as serious everywhere. Their PROOF tier,
+                lifetime PM, pace, and trend are visible at every enrolled brand. Benefits
                 can be granted based on these signals on day one.
               </div>
             </div>
@@ -1101,7 +1103,7 @@ export default function ProofWebsite() {
                   <line x1="30" y1="10" x2="30" y2="4" stroke={COLORS.signal} strokeWidth="1.8" strokeLinecap="round" opacity={0.9} />
                   <polyline points="27,7 30,4 33,7" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.9} />
                 </svg>
-              ), title: "Three-signal athlete profile", desc: "Every athlete described by three signals: Lifetime PM (total experience), Pace (12-month rolling average), and Trend (recent momentum). Brands configure welcome bonuses and benefits against these signals — no arbitrary tier names required." },
+              ), title: "Tier + three-signal athlete profile", desc: "Every athlete earns a PROOF tier (Recruit → Legend) for recognition, plus three signals: Lifetime PM, Pace, and Trend. Tiers provide identity. Signals drive economics. Brands can map custom tier names to match their voice." },
               { icon: (
                 <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
                   <circle cx="6" cy="16" r="5" stroke={COLORS.signal} strokeWidth="1.5" />
@@ -1363,7 +1365,7 @@ export default function ProofWebsite() {
           {/* 5-tier pricing cards */}
           <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Developer" price="Free" members="Up to 100 active members"
-              features={["Core GPS verification", "Three-signal athlete profiles", "Basic dashboard", "Strava integration", "Docs + community"]}
+              features={["Core GPS verification", "PROOF tiers + three-signal profiles", "Basic dashboard", "Strava integration", "Docs + community"]}
               cta="Get started free" />
             <PricingCard name="Starter"
               price={annualPricing ? "$119" : "$149"} period="/mo"
@@ -1413,7 +1415,7 @@ export default function ProofWebsite() {
                 {[
                   { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Three-signal athlete profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "PROOF tiers + three-signal profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Webhook event integration (5 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },

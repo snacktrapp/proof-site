@@ -354,14 +354,14 @@ export default function AthletesPage() {
             color: COLORS.textBright, textAlign: "center", marginBottom: 16,
             letterSpacing: "0.02em"
           }}>
-            YOUR EFFORT, IN THREE NUMBERS
+            YOUR EFFORT. YOUR RANK.
           </h2>
           <p style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
             textAlign: "center", maxWidth: 500, margin: "0 auto 48px", lineHeight: 1.65
           }}>
-            No abstract tiers. No gamified levels. Just honest numbers that mean something —
-            to you and to every brand on the network.
+            A tier you earned. Three signals that tell your story.
+            Recognized at every brand on the network.
           </p>
         </FadeIn>
 
@@ -381,9 +381,24 @@ export default function AthletesPage() {
             <div style={{
               fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-              marginBottom: 24
+              marginBottom: 16
             }}>
               Example athlete profile
+            </div>
+
+            {/* Tier headline */}
+            <div style={{
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, fontWeight: 400,
+              color: COLORS.textBright, letterSpacing: "0.04em", lineHeight: 1,
+              marginBottom: 6
+            }}>
+              RIVAL
+            </div>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
+              color: COLORS.steel, marginBottom: 24
+            }}>
+              Rival &middot; 8,420 lifetime PM &middot; Steady pace &middot; &uarr; Increasing
             </div>
 
             <div className="profile-signals" style={{
