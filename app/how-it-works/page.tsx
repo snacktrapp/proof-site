@@ -443,25 +443,55 @@ export default function HowItWorksPage() {
         </div>
       </Section>
 
-      {/* 4. Beyond milestones */}
+      {/* 4. Rewards toolkit */}
       <Section>
-        <Kicker>04 · Beyond milestones</Kicker>
-        <H2>Challenges and anniversary bonuses.</H2>
+        <Kicker>04 · The rewards toolkit</Kicker>
+        <H2>Three ways to reward effort.</H2>
         <Lead>
-          Milestones build long-term engagement — permanent thresholds on lifetime brand PM.
-          But a program isn&apos;t only milestones. Two additional primitives let you drive
-          campaign-scale activity and celebrate retention, both using the same credit pipeline
-          as milestones.
+          Milestones build long-term engagement. Challenges drive campaign-scale activity.
+          Anniversary bonuses celebrate retention. Three primitives — all running through the
+          same credit pipeline, all surfacing on the athlete&apos;s account page in your
+          theme&apos;s voice.
         </Lead>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: 16,
             marginTop: 20,
           }}
         >
+          <Card>
+            <SmallLabel>Milestones</SmallLabel>
+            <h3 style={{
+              fontFamily: "'Outfit', sans-serif", fontSize: 20, fontWeight: 700,
+              color: COLORS.textBright, margin: "0 0 12px 0",
+            }}>
+              Permanent thresholds. Lifetime value.
+            </h3>
+            <Body style={{ fontSize: 14, marginBottom: 14 }}>
+              Set a ladder of brand PM thresholds — 500, 1,000, 2,500, 5,000, and beyond. Each
+              crossing issues a reward the athlete keeps. The backbone of your program.
+            </Body>
+            <Body style={{ fontSize: 13, color: COLORS.subtle, marginBottom: 14 }}>
+              <strong style={{ color: COLORS.text }}>Reward types:</strong> store credit (Shopify
+              discount), free shipping, early drop access, or custom Shopify tag for your own
+              theme / Klaviyo logic.<br />
+              <strong style={{ color: COLORS.text }}>Immutable:</strong> once issued, a reward
+              stays — even if you later change the ladder. Config changes are forward-only by
+              default, with a per-change &quot;apply retroactively?&quot; toggle.<br />
+              <strong style={{ color: COLORS.text }}>Expiry per milestone:</strong> you set how
+              long an earned reward stays active. Expired rewards don&apos;t auto-rollover.
+            </Body>
+            <div style={{
+              fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted,
+              letterSpacing: "0.08em",
+            }}>
+              Permanent · Per-brand PM threshold · Issued on crossing
+            </div>
+          </Card>
+
           <Card>
             <SmallLabel>Challenges</SmallLabel>
             <h3 style={{
@@ -526,8 +556,9 @@ export default function HowItWorksPage() {
         </div>
 
         <Body style={{ marginTop: 28, fontSize: 14, color: COLORS.muted }}>
-          Both live in the same dashboard as your milestone ladder. Both reuse the same credit
-          pipeline. Both surface on the athlete&apos;s account page in your theme&apos;s voice.
+          All three primitives live in the same brand dashboard. All reuse the same credit
+          pipeline. All surface on the athlete&apos;s account page in your theme&apos;s voice —
+          no PROOF-branded interruption between the earn and the reward.
         </Body>
       </Section>
 

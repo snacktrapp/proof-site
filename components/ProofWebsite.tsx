@@ -691,6 +691,93 @@ export default function ProofWebsite() {
         </div>
       </Section>
 
+      {/* ── REWARDS TOOLKIT ── */}
+      <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Your rewards toolkit</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              Three ways to reward effort.
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              lineHeight: 1.7, maxWidth: 620, margin: "0 auto" }}>
+              Milestones build long-term engagement. Challenges drive campaign-scale activity.
+              Anniversary bonuses celebrate retention. Three primitives. One program.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 16 }}>
+            {/* Milestones */}
+            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+              borderRadius: 12, padding: 28 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 14 }}>Milestones</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                Permanent thresholds. Lifetime value.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, marginBottom: 18 }}>
+                Set a ladder of brand PM thresholds — 500, 1,000, 2,500, 5,000, and beyond.
+                Each crossing issues a reward the athlete keeps. The backbone of your program.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                Store credit · Free shipping · Early drop access · Custom tags
+              </div>
+            </div>
+
+            {/* Challenges */}
+            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+              borderRadius: 12, padding: 28 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 14 }}>Challenges</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                Time-bound. Window-scoped. Activity-driving.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, marginBottom: 18 }}>
+                Launch seasonal campaigns or &quot;better than yesterday&quot; improvement goals.
+                Conditions on total miles, unique days, or improvement vs. prior period. Same
+                reward pipeline as milestones.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                Calendar-month · Fixed dates · Rolling windows · Eligibility gates
+              </div>
+            </div>
+
+            {/* Anniversary Bonus */}
+            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+              borderRadius: 12, padding: 28 }}>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 14 }}>Anniversary bonus</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                Every year. Every member. Unconditional.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, marginBottom: 18 }}>
+                During each athlete&apos;s connection-anniversary month, multiply their brand PM
+                by the value you set. Celebration, not filter — every member earns more, active
+                or not.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                1.5× / 2× / 2.5× / 3× · Per-brand · Once per year
+              </div>
+            </div>
+          </div>
+        </Section>
+      </div>
+
       {/* ── ATHLETE EXPERIENCE (NEW) ── */}
       <div style={{ background: COLORS.surface, borderTop: `1px solid ${COLORS.surfaceBorder}`,
         borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
@@ -1152,93 +1239,6 @@ export default function ProofWebsite() {
                   lineHeight: 1.7 }}>{item.desc}</div>
               </div>
             ))}
-          </div>
-        </Section>
-      </div>
-
-      {/* ── REWARDS TOOLKIT ── */}
-      <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}` }}>
-        <Section>
-          <div style={{ textAlign: "center", marginBottom: 48 }}>
-            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
-              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Your rewards toolkit</div>
-            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
-              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
-              Three ways to reward effort.
-            </h2>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
-              lineHeight: 1.7, maxWidth: 620, margin: "0 auto" }}>
-              Milestones build long-term engagement. Challenges drive campaign-scale activity.
-              Anniversary bonuses celebrate retention. Three primitives. One program.
-            </p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 16 }}>
-            {/* Milestones */}
-            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Milestones</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
-                Permanent thresholds. Lifetime value.
-              </h3>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
-                Set a ladder of brand PM thresholds — 500, 1,000, 2,500, 5,000, and beyond.
-                Each crossing issues a reward the athlete keeps. The backbone of your program.
-              </p>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
-                letterSpacing: "0.04em", lineHeight: 1.6 }}>
-                Store credit · Free shipping · Early drop access · Custom tags
-              </div>
-            </div>
-
-            {/* Challenges */}
-            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Challenges</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
-                Time-bound. Window-scoped. Activity-driving.
-              </h3>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
-                Launch seasonal campaigns or &quot;better than yesterday&quot; improvement goals.
-                Conditions on total miles, unique days, or improvement vs. prior period. Same
-                reward pipeline as milestones.
-              </p>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
-                letterSpacing: "0.04em", lineHeight: 1.6 }}>
-                Calendar-month · Fixed dates · Rolling windows · Eligibility gates
-              </div>
-            </div>
-
-            {/* Anniversary Bonus */}
-            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
-              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Anniversary bonus</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
-                Every year. Every member. Unconditional.
-              </h3>
-              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
-                During each athlete&apos;s connection-anniversary month, multiply their brand PM
-                by the value you set. Celebration, not filter — every member earns more, active
-                or not.
-              </p>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
-                letterSpacing: "0.04em", lineHeight: 1.6 }}>
-                1.5× / 2× / 2.5× / 3× · Per-brand · Once per year
-              </div>
-            </div>
           </div>
         </Section>
       </div>
