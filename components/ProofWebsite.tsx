@@ -748,7 +748,7 @@ export default function ProofWebsite() {
             </div>
 
             {/* Challenges */}
-            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+            <div style={{ background: COLORS.signalDim, border: `1px solid ${COLORS.signal}44`,
               borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
               <div style={{ color: COLORS.signal, marginBottom: 24 }}>
                 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
@@ -930,8 +930,8 @@ export default function ProofWebsite() {
             gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
             {[
               { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
-              { label: "PROOF Ledger", sub: "Verify · PEI · Signals", color: COLORS.signal, glow: true },
-              { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.textBright, glow: false },
+              { label: "PROOF Ledger", sub: "Verify · PEI · Signals", color: COLORS.textBright, glow: false },
+              { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.signal, glow: true },
             ].map((node, i) => (
               <div key={i} className="arch-node" style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ textAlign: "center", padding: "18px 28px",
@@ -953,10 +953,9 @@ export default function ProofWebsite() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center", marginBottom: 48 }}>
             <LayerCard
-              accent={COLORS.signal}
+              accent={COLORS.textBright}
               title="PROOF Layer"
               subtitle="Universal. Portable. Permanent."
-              glow
               items={[
                 { label: "PROOF Tier", desc: "Recruit, Contender, Rival, Elite, Legend — earned by lifetime PM. Recognition that travels with the athlete across every brand." },
                 { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
@@ -966,9 +965,10 @@ export default function ProofWebsite() {
               ]}
             />
             <LayerCard
-              accent={COLORS.textBright}
+              accent={COLORS.signal}
               title="Brand Layer"
               subtitle="Your program. Your rules."
+              glow
               items={[
                 { label: "Custom tier names", desc: "Map PROOF tiers to your brand's identity. Recruit becomes Sprinter. Rival becomes Domestique. Your program, your language." },
                 { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
@@ -984,7 +984,7 @@ export default function ProofWebsite() {
             display: "flex", flexWrap: "wrap", gap: 32 }}>
             <div style={{ flex: "1 1 280px" }}>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
-                color: COLORS.signal, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+                color: COLORS.textBright, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                 Identity travels
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
@@ -996,7 +996,7 @@ export default function ProofWebsite() {
             <div style={{ width: 1, background: COLORS.surfaceBorder, alignSelf: "stretch", flexShrink: 0 }} />
             <div style={{ flex: "1 1 280px" }}>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
-                color: COLORS.textBright, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+                color: COLORS.signal, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                 Rewards earn fresh
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
