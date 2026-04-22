@@ -712,18 +712,34 @@ export default function ProofWebsite() {
             gap: 16 }}>
             {/* Milestones */}
             <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="4" y="26" width="8" height="10" />
+                  <rect x="16" y="18" width="8" height="18" />
+                  <rect x="28" y="10" width="8" height="26" />
+                </svg>
+              </div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
                 color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Milestones</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                marginBottom: 12 }}>Milestones</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
                 Permanent thresholds. Lifetime value.
               </h3>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
+                lineHeight: 1.7, margin: 0 }}>
                 Set a ladder of brand PM thresholds — 500, 1,000, 2,500, 5,000, and beyond.
                 Each crossing issues a reward the athlete keeps. The backbone of your program.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Voler&apos;s ladder: 500 → $10 credit, 1,000 → $20, 2,500 → $35, 5,000 → $50 + free shipping.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
                 letterSpacing: "0.04em", lineHeight: 1.6 }}>
@@ -733,19 +749,37 @@ export default function ProofWebsite() {
 
             {/* Challenges */}
             <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="20" cy="24" r="12" />
+                  <line x1="20" y1="24" x2="20" y2="16" />
+                  <line x1="20" y1="24" x2="26" y2="20" />
+                  <line x1="16" y1="6" x2="24" y2="6" />
+                  <line x1="20" y1="6" x2="20" y2="12" />
+                </svg>
+              </div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
                 color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Challenges</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                marginBottom: 12 }}>Challenges</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
                 Time-bound. Window-scoped. Activity-driving.
               </h3>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
+                lineHeight: 1.7, margin: 0 }}>
                 Launch seasonal campaigns or &quot;better than yesterday&quot; improvement goals.
                 Conditions on total miles, unique days, or improvement vs. prior period. Same
                 reward pipeline as milestones.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Carb Fuel&apos;s December Miles: ride 500 miles in December, earn a $20 store credit.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
                 letterSpacing: "0.04em", lineHeight: 1.6 }}>
@@ -755,19 +789,39 @@ export default function ProofWebsite() {
 
             {/* Anniversary Bonus */}
             <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-              borderRadius: 12, padding: 28 }}>
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="20" cy="20" r="14" />
+                  <line x1="20" y1="6" x2="20" y2="8" />
+                  <line x1="34" y1="20" x2="32" y2="20" />
+                  <line x1="20" y1="34" x2="20" y2="32" />
+                  <line x1="6" y1="20" x2="8" y2="20" />
+                  <circle cx="20" cy="6" r="3" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
               <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
                 color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-                marginBottom: 14 }}>Anniversary bonus</div>
-              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
-                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0" }}>
+                marginBottom: 12 }}>Anniversary bonus</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
                 Every year. Every member. Unconditional.
               </h3>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
-                lineHeight: 1.7, marginBottom: 18 }}>
+                lineHeight: 1.7, margin: 0 }}>
                 During each athlete&apos;s connection-anniversary month, multiply their brand PM
                 by the value you set. Celebration, not filter — every member earns more, active
                 or not.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Ocean and San&apos;s 2× month: every rider earns double brand PM during their
+                membership anniversary.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
                 letterSpacing: "0.04em", lineHeight: 1.6 }}>

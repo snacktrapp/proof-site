@@ -462,11 +462,19 @@ export default function HowItWorksPage() {
             marginTop: 20,
           }}
         >
-          <Card>
+          <Card style={{ padding: 36 }}>
+            <div style={{ color: COLORS.signal, marginBottom: 20 }}>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <rect x="4" y="26" width="8" height="10" />
+                <rect x="16" y="18" width="8" height="18" />
+                <rect x="28" y="10" width="8" height="26" />
+              </svg>
+            </div>
             <SmallLabel>Milestones</SmallLabel>
             <h3 style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 20, fontWeight: 700,
-              color: COLORS.textBright, margin: "0 0 12px 0",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+              color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0",
             }}>
               Permanent thresholds. Lifetime value.
             </h3>
@@ -492,11 +500,21 @@ export default function HowItWorksPage() {
             </div>
           </Card>
 
-          <Card>
+          <Card style={{ padding: 36 }}>
+            <div style={{ color: COLORS.signal, marginBottom: 20 }}>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <circle cx="20" cy="24" r="12" />
+                <line x1="20" y1="24" x2="20" y2="16" />
+                <line x1="20" y1="24" x2="26" y2="20" />
+                <line x1="16" y1="6" x2="24" y2="6" />
+                <line x1="20" y1="6" x2="20" y2="12" />
+              </svg>
+            </div>
             <SmallLabel>Challenges</SmallLabel>
             <h3 style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 20, fontWeight: 700,
-              color: COLORS.textBright, margin: "0 0 12px 0",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+              color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0",
             }}>
               Time-bound, window-scoped goals.
             </h3>
@@ -523,11 +541,22 @@ export default function HowItWorksPage() {
             </div>
           </Card>
 
-          <Card>
+          <Card style={{ padding: 36 }}>
+            <div style={{ color: COLORS.signal, marginBottom: 20 }}>
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <circle cx="20" cy="20" r="14" />
+                <line x1="20" y1="6" x2="20" y2="8" />
+                <line x1="34" y1="20" x2="32" y2="20" />
+                <line x1="20" y1="34" x2="20" y2="32" />
+                <line x1="6" y1="20" x2="8" y2="20" />
+                <circle cx="20" cy="6" r="3" fill="currentColor" stroke="none" />
+              </svg>
+            </div>
             <SmallLabel>Anniversary bonus</SmallLabel>
             <h3 style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 20, fontWeight: 700,
-              color: COLORS.textBright, margin: "0 0 12px 0",
+              fontFamily: "'Bebas Neue', sans-serif", fontSize: 28,
+              color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 16px 0",
             }}>
               One month a year, unconditional.
             </h3>
