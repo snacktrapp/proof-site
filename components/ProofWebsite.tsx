@@ -739,7 +739,7 @@ export default function ProofWebsite() {
                 marginBottom: 8 }}>In practice</div>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                 lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
-                Voler&apos;s ladder: 500 → $10 credit, 1,000 → $20, 2,500 → $35, 5,000 → $50 + free shipping.
+                Brand A&apos;s ladder: 500 → $10 credit, 1,000 → $20, 2,500 → $35, 5,000 → $50 + free shipping.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
                 letterSpacing: "0.04em", lineHeight: 1.6 }}>
@@ -779,7 +779,7 @@ export default function ProofWebsite() {
                 marginBottom: 8 }}>In practice</div>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                 lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
-                Carb Fuel&apos;s December Miles: ride 500 miles in December, earn a $20 store credit.
+                Brand B&apos;s December Miles: ride 500 miles in December, earn a $20 store credit.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
                 letterSpacing: "0.04em", lineHeight: 1.6 }}>
@@ -820,7 +820,7 @@ export default function ProofWebsite() {
                 marginBottom: 8 }}>In practice</div>
               <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                 lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
-                Ocean and San&apos;s 2× month: every rider earns double brand PM during their
+                Brand C&apos;s 2× month: every rider earns double brand PM during their
                 membership anniversary.
               </p>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
