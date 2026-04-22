@@ -153,7 +153,7 @@ export default function AthletesPage() {
           .nav-mobile .nav-mobile-cta {
             margin-top: 8px; padding: 14px; border-radius: 8px;
             background: ${COLORS.signal}; color: ${COLORS.base};
-            font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
             text-align: center; letter-spacing: 0.08em; text-transform: uppercase;
             border: none; text-decoration: none; display: block;
           }
@@ -177,8 +177,8 @@ export default function AthletesPage() {
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
-            <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16,
+              fontSize: 12, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 16,
               color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
           </a>
 
@@ -210,7 +210,7 @@ export default function AthletesPage() {
               Sign up / Log in
             </a>
             <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Sign up free
@@ -258,7 +258,7 @@ export default function AthletesPage() {
         <div style={{ position: "relative", maxWidth: 700 }}>
           <FadeIn>
             <div style={{
-              fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+              fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
               marginBottom: 24
             }}>
@@ -290,7 +290,7 @@ export default function AthletesPage() {
             <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
               className="cta-button"
               style={{
-                fontFamily: "'Syne', sans-serif", fontSize: 14, fontWeight: 700,
+                fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,
                 color: COLORS.base, background: COLORS.signal, padding: "14px 36px", borderRadius: 8,
                 textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
                 display: "inline-block"
@@ -329,7 +329,7 @@ export default function AthletesPage() {
                   {step.number}
                 </div>
                 <h3 style={{
-                  fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 18,
+                  fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: 18,
                   color: COLORS.textBright, marginBottom: 12, lineHeight: 1.3
                 }}>
                   {step.title}
@@ -379,7 +379,7 @@ export default function AthletesPage() {
             }} />
 
             <div style={{
-              fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
               marginBottom: 16
             }}>
@@ -596,7 +596,7 @@ export default function AthletesPage() {
           <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
             className="cta-button"
             style={{
-              fontFamily: "'Syne', sans-serif", fontSize: 14, fontWeight: 700,
+              fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "16px 40px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
               display: "inline-block"
