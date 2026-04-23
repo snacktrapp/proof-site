@@ -467,8 +467,8 @@ export default function ProofWebsite() {
             <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 12, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 16,
-              color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
+            <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 22,
+              color: COLORS.textBright, letterSpacing: "0.08em", lineHeight: 1 }}>PROOF</span>
           </div>
 
           {/* Desktop nav */}
