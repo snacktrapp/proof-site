@@ -167,67 +167,75 @@ function Card({ children, style }: { children: React.ReactNode; style?: React.CS
   );
 }
 
-function ScreenshotSlot({
-  label,
-  caption,
-  aspect = "16 / 10",
+function Surface({
+  route,
+  title,
+  description,
+  imageSrc,
+  imageAlt,
 }: {
-  label: string;
-  caption: string;
-  aspect?: string;
+  route: string;
+  title: string;
+  description: string;
+  imageSrc?: string;
+  imageAlt?: string;
 }) {
   return (
-    <div style={{ marginBottom: 40 }}>
+    <div
+      style={{
+        marginBottom: 28,
+        paddingBottom: 28,
+        borderBottom: `1px solid ${COLORS.surfaceBorder}`,
+      }}
+    >
       <div
         style={{
-          background: COLORS.surfaceRaised,
-          border: `1px dashed ${COLORS.surfaceBorder}`,
-          borderRadius: 12,
-          aspectRatio: aspect,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: 32,
-          textAlign: "center",
-          marginBottom: 12,
+          fontFamily: "'JetBrains Mono', monospace",
+          fontSize: 11,
+          color: COLORS.signal,
+          letterSpacing: "0.15em",
+          textTransform: "uppercase",
+          marginBottom: 10,
         }}
       >
-        <div
-          style={{
-            fontFamily: "'JetBrains Mono', monospace",
-            fontSize: 10,
-            color: COLORS.muted,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            marginBottom: 10,
-          }}
-        >
-          Screenshot · placeholder
-        </div>
-        <div
-          style={{
-            fontFamily: "'Bebas Neue', sans-serif",
-            fontSize: 28,
-            color: COLORS.subtle,
-            lineHeight: 1.1,
-            marginBottom: 8,
-          }}
-        >
-          {label}
-        </div>
-        <div
-          style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontSize: 13,
-            color: COLORS.muted,
-            maxWidth: 480,
-            lineHeight: 1.6,
-          }}
-        >
-          {caption}
-        </div>
+        {route}
       </div>
+      <h3
+        style={{
+          fontFamily: "'Bebas Neue', sans-serif",
+          fontSize: 28,
+          color: COLORS.textBright,
+          lineHeight: 1.1,
+          letterSpacing: "-0.005em",
+          margin: "0 0 14px 0",
+        }}
+      >
+        {title}
+      </h3>
+      <p
+        style={{
+          fontFamily: "'Outfit', sans-serif",
+          fontSize: 15,
+          color: COLORS.text,
+          lineHeight: 1.7,
+          margin: imageSrc ? "0 0 20px 0" : 0,
+          maxWidth: 860,
+        }}
+      >
+        {description}
+      </p>
+      {imageSrc && (
+        <img
+          src={imageSrc}
+          alt={imageAlt ?? title}
+          style={{
+            width: "100%",
+            borderRadius: 12,
+            border: `1px solid ${COLORS.surfaceBorder}`,
+            display: "block",
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -526,26 +534,44 @@ export default function DemoPage() {
         <Kicker>01 · Athlete experience</Kicker>
         <H2>One connection. Every verified activity. Every enrolled brand.</H2>
         <Lead>
-          What an athlete sees from sign-up through redemption. Screenshots
-          below are placeholders in this MVP of the demo page — the walkthrough
-          reflects the live product at proof.verifiedeffort.com.
+          What an athlete sees from sign-up through redemption. Every surface
+          described below is live at{" "}
+          <a
+            href={LIVE_APP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: COLORS.signal, textDecoration: "none", borderBottom: `1px solid ${COLORS.signal}` }}
+          >
+            proof.verifiedeffort.com
+          </a>
+          .
         </Lead>
 
-        <ScreenshotSlot
-          label="Connect Strava"
-          caption="The athlete signs into a brand's storefront, clicks 'Connect Strava' on the loyalty section, and completes Strava's standard OAuth consent screen. PROOF receives the access token and begins the historical backfill in the background."
+        <Surface
+          route="Brand storefront · Connect Strava"
+          title="Strava OAuth, inside the brand's experience"
+          description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' on the loyalty section. Strava's standard consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. On approval, Strava returns the access token to PROOF, which kicks off a background historical backfill and fires the brand's welcome bonus immediately — before the backfill completes, so there's no blank-state waiting period for the athlete."
         />
-        <ScreenshotSlot
-          label="Athlete dashboard · proof.verifiedeffort.com"
-          caption="After connect, the athlete's PROOF home: their tier (Recruit through Apex), Lifetime PM, current pace category (Dormant/Light/Moderate/Steady/Heavy), trend direction, connected brands, available rewards, recent verified activities, and public-profile controls. The athlete can manage their Strava connection and revoke it here at any time."
+        <Surface
+          route="proof.verifiedeffort.com/dashboard"
+          title="Athlete dashboard — the cross-brand home"
+          description="After connecting, the athlete's PROOF home is a utility surface: a compact status strip (tier, Lifetime PM, pace category, trend direction) sits at the top, followed by connected brands with per-brand progress to next milestone, available rewards, recent verified activities through the 9-gate pipeline, and identity controls. The athlete manages their Strava connection and can revoke it from here at any time. Lifetime PM never resets — the permanent ledger is anchored to this surface."
+          imageSrc="/demo/athlete-dashboard.png"
+          imageAlt="PROOF athlete dashboard at proof.verifiedeffort.com/dashboard"
         />
-        <ScreenshotSlot
-          label="Public profile · proof.verifiedeffort.com/athlete/[handle]"
-          caption="Opt-in public profile page. Shows tier, verified-effort narrative, multi-sport breakdown, and enrolled brands. This is the athlete's portable identity across the network."
+        <Surface
+          route="proof.verifiedeffort.com/athlete/[handle]"
+          title="Public profile — portable identity across the network"
+          description="Opt-in public profile with a trophy-treatment tier display, verified-effort narrative, multi-sport breakdown, and enrolled brands. This is the athlete's identity that travels with them: every brand in the PROOF network sees this profile when the athlete connects. Never shows individual activity details, routes, or photos — only the aggregated signal (tier, Lifetime PM, pace, trend, sport mix)."
+          imageSrc="/demo/public-profile.png"
+          imageAlt="PROOF public athlete profile at proof.verifiedeffort.com/athlete/[handle]"
         />
-        <ScreenshotSlot
-          label="Brand account page · brand's Shopify storefront"
-          caption="What an athlete sees on the brand's account page — the loyalty section is rendered in the brand's theme, not ours. PROOF data (tier, brand PM, progress to next milestone, active rewards) is passed in via Shopify customer metafields. The athlete redeems rewards here, on the brand's site, in the brand's voice."
+        <Surface
+          route="Brand storefront · Account page"
+          title="Loyalty section rendered in the brand's theme"
+          description="What an athlete sees on the brand's Shopify customer account page. The loyalty section is a Liquid template reading from Shopify customer metafields that PROOF writes — not an embedded PROOF iframe. The brand owns the rendering: typography, color, voice. PROOF passes the data (brand PM, progress to next milestone, active rewards with restrictions, pace category as 'member status') and the brand styles it. When the athlete clicks 'Shop' on a reward, PROOF lazy-generates a single-use Shopify discount code tied to their email and deep-links them into checkout with the discount pre-applied. No codes to copy, no codes to leak."
+          imageSrc="/demo/brand-account-page.png"
+          imageAlt="Brand storefront customer account page with the PROOF loyalty section rendered in the brand's theme"
         />
       </Section>
 
@@ -554,26 +580,38 @@ export default function DemoPage() {
         <Kicker>02 · Brand experience</Kicker>
         <H2>Configure once. Operate continuously.</H2>
         <Lead>
-          What a brand sees in the PROOF dashboard. Brand operators configure
-          the program, monitor member health, and iterate on thresholds without
-          writing code.
+          What a brand sees in the PROOF operator dashboard. Brand operators
+          configure the program, monitor member health, and iterate on
+          thresholds without writing code.
         </Lead>
 
-        <ScreenshotSlot
-          label="Brand overview · /brand/overview"
-          caption="Top-level program health: active members (90-day), verification success rate, rewards issued, redemption rate, activity volume by sport. Real-time view of whether the loyalty investment is delivering."
+        <Surface
+          route="/brand/overview"
+          title="Program health at a glance"
+          description="Top-level operator view: active members on a 90-day window (the billing metric), verification success rate across the fraud pipeline, rewards issued, redemption rate, activity volume by sport. Brands get real-time visibility into whether the loyalty investment is delivering — and a case-study-ready view of revenue attributed to redeemed rewards."
+          imageSrc="/demo/brand-overview.png"
+          imageAlt="PROOF brand operator dashboard, overview surface"
         />
-        <ScreenshotSlot
-          label="Members table · /brand/members"
-          caption="Segmented member list filterable by tier, pace, trend, connection date, and brand PM. Click through to an individual member for their full activity and reward history with this brand."
+        <Surface
+          route="/brand/members"
+          title="Segmented member list"
+          description="Filterable by tier (Recruit through Apex), pace category, trend direction, connection date, and brand PM. Click through to an individual member for their full activity and reward history with this brand. Brands never see an athlete's Strava credentials or raw activity data — only the aggregated PROOF miles credited to their program."
+          imageSrc="/demo/brand-members.png"
+          imageAlt="PROOF brand operator dashboard, members surface"
         />
-        <ScreenshotSlot
-          label="Rewards ladder · /brand/rewards"
-          caption="Brand configures threshold → reward mapping (e.g., 500 PM → $10 credit; 1,000 PM → $20 credit; 2,500 PM → $35 + free shipping). Brand's budget, brand's economics. PROOF executes against the configuration."
+        <Surface
+          route="/brand/rewards"
+          title="Threshold-to-reward ladder"
+          description="Brand configures the milestone ladder (e.g., 500 brand PM → $10 credit; 1,000 → $20; 2,500 → $35 + free shipping; 5,000 → $50 + free shipping). Brand's budget, brand's economics. PROOF executes against the configuration — fires a webhook when an athlete crosses a threshold, generates the Shopify discount code on redemption. Thresholds iterate without code changes."
+          imageSrc="/demo/brand-rewards.png"
+          imageAlt="PROOF brand operator dashboard, rewards ladder configuration"
         />
-        <ScreenshotSlot
-          label="Integrations · /brand/integrations"
-          caption="Brand pastes their ESP webhook endpoint + API key, tests the connection, then builds reward-delivery email flows in their own ESP (Klaviyo, Mailchimp, Sendgrid, Customer.io, or any generic webhook). PROOF fires 5 canonical webhook events; the brand authors the emails in their voice."
+        <Surface
+          route="/brand/integrations"
+          title="ESP-agnostic webhook delivery"
+          description="Brand pastes their ESP webhook endpoint and API key (Klaviyo, Mailchimp, Sendgrid, Customer.io, or any HTTP endpoint), tests the connection with a sample payload, then builds reward-delivery email flows in their own ESP in their own brand voice. PROOF fires 5 canonical webhook events (athlete_connected, activity_verified, milestone_reached, pace_changed, tier_advanced) signed with HMAC. Brand authors the emails; PROOF authors the data."
+          imageSrc="/demo/brand-integrations.png"
+          imageAlt="PROOF brand operator dashboard, integrations configuration"
         />
       </Section>
 
