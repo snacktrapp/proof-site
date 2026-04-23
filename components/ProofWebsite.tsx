@@ -109,7 +109,7 @@ const PricingCard = ({ name, price, period, members, features, highlight, cta }:
         Popular
       </div>
     )}
-    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700, color: COLORS.subtle,
+    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700, color: COLORS.subtle,
       textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: 8 }}>{name}</div>
     <div style={{ display: "flex", alignItems: "baseline", gap: 4, marginBottom: 2 }}>
       <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 44, color: COLORS.textBright, lineHeight: 1 }}>{price}</span>
@@ -131,7 +131,7 @@ const PricingCard = ({ name, price, period, members, features, highlight, cta }:
       background: highlight ? COLORS.signal : "transparent",
       color: highlight ? COLORS.base : COLORS.text,
       border: highlight ? "none" : `1px solid ${COLORS.surfaceBorder}`,
-      borderRadius: 8, cursor: "pointer", fontFamily: "'Syne', sans-serif",
+      borderRadius: 8, cursor: "pointer", fontFamily: "'Outfit', sans-serif",
       fontSize: 11, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}
       onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })}>
       {cta}
@@ -150,7 +150,7 @@ const Step = ({ number, title, desc, detail, isLast }: { number: string; title: 
       {!isLast && <div style={{ width: 1, height: 60, background: COLORS.surfaceBorder, marginTop: 8 }} />}
     </div>
     <div style={{ paddingTop: 8, paddingBottom: isLast ? 0 : 40 }}>
-      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 18, fontWeight: 700,
+      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 18, fontWeight: 700,
         color: COLORS.textBright, marginBottom: 6 }}>{title}</div>
       <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
         lineHeight: 1.7, maxWidth: 440 }}>{desc}</div>
@@ -181,7 +181,7 @@ const LayerCard = ({ accent, title, subtitle, items, glow }: {
         opacity: 0.4,
       }} />
     )}
-    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
       color: accent, textTransform: "uppercase", letterSpacing: "0.12em", marginBottom: 4,
       position: "relative" }}>{title}</div>
     <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, color: COLORS.textBright,
@@ -192,7 +192,7 @@ const LayerCard = ({ accent, title, subtitle, items, glow }: {
           <div style={{ width: 6, height: 6, borderRadius: "50%",
             background: accent, marginTop: 7, flexShrink: 0, opacity: 0.7 }} />
           <div>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.textBright, marginBottom: 2 }}>{item.label}</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
               lineHeight: 1.6 }}>{item.desc}</div>
@@ -280,7 +280,7 @@ export default function ProofWebsite() {
   return (
     <div style={{ background: COLORS.base, color: COLORS.text, minHeight: "100vh", overflowX: "hidden" }}>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600&family=Syne:wght@500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         ::selection { background: ${COLORS.signal}; color: ${COLORS.base}; }
@@ -317,7 +317,7 @@ export default function ProofWebsite() {
           border: none; outline: none; font-family: 'Outfit', sans-serif;
           font-size: 14px; color: ${COLORS.text}; min-width: 0; }
         .waitlist-row button { padding: 14px 28px; border: none;
-          font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+          font-family: 'Outfit', sans-serif; font-size: 12px; font-weight: 700;
           color: ${COLORS.base}; cursor: pointer; letter-spacing: 0.08em;
           text-transform: uppercase; white-space: nowrap; transition: background 0.2s; }
 
@@ -325,7 +325,7 @@ export default function ProofWebsite() {
           -webkit-overflow-scrolling: touch; }
         .pei-table { width: 100%; border-collapse: collapse; }
         .pei-table th { padding: 14px 20px; text-align: left;
-          font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+          font-family: 'Outfit', sans-serif; font-size: 11px; font-weight: 700;
           color: ${COLORS.muted}; letter-spacing: 0.08em; text-transform: uppercase;
           border-bottom: 1px solid ${COLORS.surfaceBorder}; }
         .pei-table td { padding: 12px 20px; border-bottom: 1px solid ${COLORS.surfaceBorder}; }
@@ -360,7 +360,7 @@ export default function ProofWebsite() {
           .nav-mobile .nav-mobile-cta {
             margin-top: 8px; padding: 14px; border-radius: 8px;
             background: ${COLORS.signal}; color: ${COLORS.base};
-            font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700;
+            font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700;
             text-align: center; letter-spacing: 0.08em; text-transform: uppercase;
             border: none; text-decoration: none; display: block;
           }
@@ -466,8 +466,8 @@ export default function ProofWebsite() {
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
-            <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16,
+              fontSize: 12, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 16,
               color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
           </div>
 
@@ -496,7 +496,7 @@ export default function ProofWebsite() {
               onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
               Sign up / Log in
             </a>
-            <a href="#waitlist" style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+            <a href="#waitlist" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Get early access
@@ -574,12 +574,12 @@ export default function ProofWebsite() {
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
-            <a href="#waitlist" style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
+            <a href="#waitlist" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "14px 32px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Get early access
             </a>
-            <a href="#how-it-works" style={{ fontFamily: "'Syne', sans-serif", fontSize: 13, fontWeight: 700,
+            <a href="#how-it-works" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.text, background: "transparent", padding: "14px 32px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
               border: `1px solid ${COLORS.surfaceBorder}` }}>
@@ -627,7 +627,7 @@ export default function ProofWebsite() {
                     strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div style={{ position: "relative", textAlign: "center" }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 14,
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 14,
                     color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>PROOF</div>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.signal,
                     letterSpacing: "0.15em", textTransform: "uppercase", marginTop: 2 }}>Verified Effort</div>
@@ -669,8 +669,8 @@ export default function ProofWebsite() {
           </div>
           <div style={{ flex: "1 1 300px" }}>
             <Step number="01" title="Install and configure"
-              desc="Connect your Shopify store. Configure your sport allowlist — choose which activities earn in your program. Set reward thresholds and welcome bonuses. Takes minutes, not months."
-              detail="Shopify Admin API · Sport allowlist" />
+              desc="Connect your Shopify store. Install a small Liquid section on your customer account template — this is where your athletes see tier, rewards, and progress, rendered in your theme's voice. Configure sport allowlist, reward thresholds, and welcome bonus rules from the PROOF dashboard. An hour, not weeks."
+              detail="Shopify OAuth · Metafield-driven account page · Liquid section" />
             <Step number="02" title="Athletes connect Strava"
               desc="Through your site, in your brand's experience. One OAuth flow. PROOF imports their entire activity history, runs every ride through the verification pipeline, and starts listening for new activities in real time."
               detail="OAuth · Historical import · Real-time webhooks" />
@@ -678,11 +678,159 @@ export default function ProofWebsite() {
               desc="Every activity runs through PROOF's 9-gate fraud pipeline — GPS validation, sport-specific velocity ceilings, daily caps. Clean data converts to PROOF miles via the Effort Index. One cycling mile = 1 PM. One running mile = 3 PM. One swimming mile = 8 PM."
               detail="9-gate fraud pipeline · PEI conversion" />
             <Step number="04" title="Credit and reward"
-              desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, we generate a unique Shopify discount code and fire a webhook event to your email platform — your brand delivers the reward in your voice."
-              detail="Shopify discount codes · 5 webhook event types" isLast />
+              desc="PROOF credits lifetime PM (all sports) and brand PM (your allowed sports). When an athlete crosses a threshold, they see it on their account page and in the email your ESP sends — your voice, your design. When they click Shop, PROOF generates a single-use Shopify discount tied to their email and deep-links them straight into checkout with it pre-applied. No codes to copy. No codes to leak."
+              detail="Lazy code generation · Single-use · Email-locked · 5 webhook event types" isLast />
           </div>
         </div>
+        <div style={{ textAlign: "center", marginTop: 40 }}>
+          <a href="/how-it-works" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
+            color: COLORS.signal, textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
+            borderBottom: `1px solid ${COLORS.signal}`, paddingBottom: 2 }}>
+            Read the full story →
+          </a>
+        </div>
       </Section>
+
+      {/* ── REWARDS TOOLKIT ── */}
+      <div style={{ borderTop: `1px solid ${COLORS.surfaceBorder}` }}>
+        <Section>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
+            <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted,
+              letterSpacing: "0.2em", textTransform: "uppercase", marginBottom: 12 }}>Your rewards toolkit</div>
+            <h2 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: "clamp(32px, 6vw, 52px)",
+              color: COLORS.textBright, lineHeight: 1, marginBottom: 16 }}>
+              Three ways to reward effort.
+            </h2>
+            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
+              lineHeight: 1.7, maxWidth: 620, margin: "0 auto" }}>
+              Milestones build long-term engagement. Challenges drive campaign-scale activity.
+              Anniversary bonuses celebrate retention. Three primitives. One program.
+            </p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: 16 }}>
+            {/* Milestones */}
+            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <rect x="4" y="26" width="8" height="10" />
+                  <rect x="16" y="18" width="8" height="18" />
+                  <rect x="28" y="10" width="8" height="26" />
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 12 }}>Milestones</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
+                Permanent thresholds. Lifetime value.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, margin: 0 }}>
+                Set a ladder of brand PM thresholds — 500, 1,000, 2,500, 5,000, and beyond.
+                Each crossing issues a reward the athlete keeps. The backbone of your program.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Brand A&apos;s ladder: 500 → $10 credit, 1,000 → $20, 2,500 → $35, 5,000 → $50 + free shipping.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                Store credit · Free shipping · Early drop access · Custom tags
+              </div>
+            </div>
+
+            {/* Challenges */}
+            <div style={{ background: COLORS.signalDim, border: `1px solid ${COLORS.signal}44`,
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="20" cy="24" r="12" />
+                  <line x1="20" y1="24" x2="20" y2="16" />
+                  <line x1="20" y1="24" x2="26" y2="20" />
+                  <line x1="16" y1="6" x2="24" y2="6" />
+                  <line x1="20" y1="6" x2="20" y2="12" />
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 12 }}>Challenges</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
+                Time-bound. Window-scoped. Activity-driving.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, margin: 0 }}>
+                Launch seasonal campaigns or &quot;better than yesterday&quot; improvement goals.
+                Conditions on total miles, unique days, or improvement vs. prior period. Same
+                reward pipeline as milestones.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Brand B&apos;s December Miles: ride 500 miles in December, earn a $20 store credit.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                Calendar-month · Fixed dates · Rolling windows · Eligibility gates
+              </div>
+            </div>
+
+            {/* Anniversary Bonus */}
+            <div style={{ background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+              borderRadius: 12, padding: 36, display: "flex", flexDirection: "column" }}>
+              <div style={{ color: COLORS.signal, marginBottom: 24 }}>
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor"
+                  strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                  <circle cx="20" cy="20" r="14" />
+                  <line x1="20" y1="6" x2="20" y2="8" />
+                  <line x1="34" y1="20" x2="32" y2="20" />
+                  <line x1="20" y1="34" x2="20" y2="32" />
+                  <line x1="6" y1="20" x2="8" y2="20" />
+                  <circle cx="20" cy="6" r="3" fill="currentColor" stroke="none" />
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
+                color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+                marginBottom: 12 }}>Anniversary bonus</div>
+              <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 36,
+                color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 18px 0" }}>
+                Every year. Every member. Unconditional.
+              </h3>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text,
+                lineHeight: 1.7, margin: 0 }}>
+                During each athlete&apos;s connection-anniversary month, multiply their brand PM
+                by the value you set. Celebration, not filter — every member earns more, active
+                or not.
+              </p>
+              <div style={{ height: 1, background: COLORS.surfaceBorder, margin: "24px 0 18px" }} />
+              <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
+                color: COLORS.steel, letterSpacing: "0.18em", textTransform: "uppercase",
+                marginBottom: 8 }}>In practice</div>
+              <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                lineHeight: 1.6, margin: "0 0 20px 0", fontStyle: "italic" }}>
+                Brand C&apos;s 2× month: every rider earns double brand PM during their
+                membership anniversary.
+              </p>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted,
+                letterSpacing: "0.04em", lineHeight: 1.6 }}>
+                1.5× / 2× / 2.5× / 3× · Per-brand · Once per year
+              </div>
+            </div>
+          </div>
+        </Section>
+      </div>
 
       {/* ── ATHLETE EXPERIENCE (NEW) ── */}
       <div style={{ background: COLORS.surface, borderTop: `1px solid ${COLORS.surfaceBorder}`,
@@ -697,9 +845,9 @@ export default function ProofWebsite() {
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
               maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
-              Your customers connect Strava once through your site. From that moment, every verified
-              activity earns toward rewards at your store — automatically, in the background,
-              with zero effort beyond doing the thing they already love.
+              Your customers connect Strava from your site. From then on, their tier, rewards,
+              and progress live on your account page — rendered in your theme's voice, not ours.
+              PROOF is infrastructure. Your storefront is the destination.
             </p>
           </div>
 
@@ -747,7 +895,7 @@ export default function ProofWebsite() {
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
                   color: COLORS.muted }}>2,500 pts available</div>
               </div>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
                 color: COLORS.base, background: COLORS.signal, padding: "6px 14px", borderRadius: 6 }}>Redeem</div>
             </div>
           </div>
@@ -782,15 +930,15 @@ export default function ProofWebsite() {
             gap: 16, margin: "48px auto", maxWidth: 700, flexWrap: "wrap" }}>
             {[
               { label: "Strava", sub: "GPS · All sports", color: COLORS.steel, glow: false },
-              { label: "PROOF Ledger", sub: "Verify · PEI · Signals", color: COLORS.signal, glow: true },
-              { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.textBright, glow: false },
+              { label: "PROOF Ledger", sub: "Verify · PEI · Signals", color: COLORS.textBright, glow: false },
+              { label: "Your Brand", sub: "Shopify · Your ESP", color: COLORS.signal, glow: true },
             ].map((node, i) => (
               <div key={i} className="arch-node" style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 <div style={{ textAlign: "center", padding: "18px 28px",
                   border: `1px solid ${node.glow ? COLORS.signal + "55" : COLORS.surfaceBorder}`,
                   borderRadius: 12, background: node.glow ? COLORS.signalDim : "transparent",
                   minWidth: 150 }}>
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontWeight: 700, fontSize: 14,
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: 14,
                     color: node.color, marginBottom: 2 }}>{node.label}</div>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
                     color: COLORS.muted, letterSpacing: "0.05em" }}>{node.sub}</div>
@@ -805,22 +953,22 @@ export default function ProofWebsite() {
 
           <div style={{ display: "flex", flexWrap: "wrap", gap: 24, justifyContent: "center", marginBottom: 48 }}>
             <LayerCard
-              accent={COLORS.signal}
+              accent={COLORS.textBright}
               title="PROOF Layer"
               subtitle="Universal. Portable. Permanent."
-              glow
               items={[
                 { label: "PROOF Tier", desc: "Recruit, Contender, Rival, Elite, Legend — earned by lifetime PM. Recognition that travels with the athlete across every brand." },
                 { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
                 { label: "Three-signal athlete profile", desc: "Lifetime PM (total experience), Pace (12-month rolling average, categorized), and Trend (3-month vs. 9-month direction). Visible to every enrolled brand." },
-                { label: "Pace and Trend tracking", desc: "Current activity level categorized as Inactive, Light, Moderate, Steady, or High Volume. Trend shows whether the athlete is ramping up, stable, or slowing down." },
+                { label: "Pace and Trend tracking", desc: "Current activity level categorized as Dormant, Light, Moderate, Steady, or Heavy. Trend shows whether the athlete is ramping up, stable, or slowing down." },
                 { label: "Portable athlete identity", desc: "One Strava connection. Effort history travels to every brand the athlete joins. All PEI-supported sports verified at the PROOF layer." },
               ]}
             />
             <LayerCard
-              accent={COLORS.textBright}
+              accent={COLORS.signal}
               title="Brand Layer"
               subtitle="Your program. Your rules."
+              glow
               items={[
                 { label: "Custom tier names", desc: "Map PROOF tiers to your brand's identity. Recruit becomes Sprinter. Rival becomes Domestique. Your program, your language." },
                 { label: "Sport allowlist", desc: "Choose which PEI-supported sports earn in your program. A cycling brand rewards cycling. A running brand rewards running. PROOF verifies everything." },
@@ -835,8 +983,8 @@ export default function ProofWebsite() {
             border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "32px",
             display: "flex", flexWrap: "wrap", gap: 32 }}>
             <div style={{ flex: "1 1 280px" }}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
-                color: COLORS.signal, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
+                color: COLORS.textBright, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                 Identity travels
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
@@ -847,8 +995,8 @@ export default function ProofWebsite() {
             </div>
             <div style={{ width: 1, background: COLORS.surfaceBorder, alignSelf: "stretch", flexShrink: 0 }} />
             <div style={{ flex: "1 1 280px" }}>
-              <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
-                color: COLORS.textBright, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
+                color: COLORS.signal, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>
                 Rewards earn fresh
               </div>
               <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7 }}>
@@ -1021,7 +1169,7 @@ export default function ProofWebsite() {
             {["Cycling", "Running", "Training", "Swimming", "Outdoor"].map((cat, i) => (
               <div key={i} style={{ padding: "10px 20px", borderRadius: 10,
                 border: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surfaceRaised }}>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12,
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
                   fontWeight: 700, color: COLORS.text }}>{cat}</div>
                 <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
                   color: COLORS.muted }}>brands</div>
@@ -1139,7 +1287,7 @@ export default function ProofWebsite() {
                 onMouseOver={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.signal + "33"}
                 onMouseOut={e => (e.currentTarget as HTMLDivElement).style.borderColor = COLORS.surfaceBorder}>
                 <div style={{ marginBottom: 16, height: 40, display: "flex", alignItems: "center" }}>{item.icon}</div>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 16, fontWeight: 700,
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 16, fontWeight: 700,
                   color: COLORS.textBright, marginBottom: 8 }}>{item.title}</div>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle,
                   lineHeight: 1.7 }}>{item.desc}</div>
@@ -1155,25 +1303,25 @@ export default function ProofWebsite() {
         <div className="integrations-bar" style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px",
           display: "flex", justifyContent: "center", alignItems: "center", gap: 32, flexWrap: "wrap" }}>
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.signal, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Live</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Strava</div>
           </div>
           <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Commerce</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Shopify</div>
           </div>
           <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>Email</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.text }}>Klaviyo · Mailchimp · Any ESP</div>
           </div>
           <div className="integrations-divider" style={{ width: 1, height: 32, background: COLORS.surfaceBorder }} />
           <div style={{ textAlign: "center" }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.muted, letterSpacing: "0.1em", textTransform: "uppercase", marginBottom: 6 }}>In development</div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>Garmin · Apple Health · Peloton · Whoop · Zwift · 20+ more</div>
           </div>
@@ -1203,7 +1351,7 @@ export default function ProofWebsite() {
             <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderBottom: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
               <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
                 <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 18, letterSpacing: "0.06em", color: COLORS.textBright }}>PROOF</span>
-                <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase" }}>Basecamp Athletics Effort Club</span>
+                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase" }}>Basecamp Athletics Effort Club</span>
               </div>
               <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.base, background: COLORS.signal, padding: "2px 8px", borderRadius: 3, letterSpacing: "0.05em" }}>STARTER</span>
             </div>
@@ -1212,13 +1360,13 @@ export default function ProofWebsite() {
               {/* Sidebar */}
               <div className="dash-sidebar" style={{ width: 140, borderRight: `1px solid ${COLORS.surfaceBorder}`, padding: "16px 0", background: COLORS.surface, flexShrink: 0 }}>
                 {["Overview", "Athletes", "Activity", "Rewards", "Config", "Billing"].map((item, i) => (
-                  <div key={i} style={{ padding: "7px 16px", fontFamily: "'Syne', sans-serif", fontSize: 11, color: i === 0 ? COLORS.signal : COLORS.muted, borderLeft: `2px solid ${i === 0 ? COLORS.signal : "transparent"}`, cursor: "default" }}>{item}</div>
+                  <div key={i} style={{ padding: "7px 16px", fontFamily: "'Outfit', sans-serif", fontSize: 11, color: i === 0 ? COLORS.signal : COLORS.muted, borderLeft: `2px solid ${i === 0 ? COLORS.signal : "transparent"}`, cursor: "default" }}>{item}</div>
                 ))}
               </div>
 
               {/* Main content */}
               <div style={{ flex: 1, padding: "20px 24px", minWidth: 0 }}>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 }}>Program overview · last 30 days</div>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 }}>Program overview · last 30 days</div>
 
                 {/* Metrics row */}
                 <div className="dash-metrics" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24 }}>
@@ -1229,7 +1377,7 @@ export default function ProofWebsite() {
                     { label: "Rewards issued", value: "23", color: COLORS.textBright, sub: "78% redeemed", subColor: COLORS.muted },
                   ].map((m, i) => (
                     <div key={i} style={{ background: COLORS.surfaceRaised, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 8, padding: "12px 14px" }}>
-                      <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 8, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>{m.label}</div>
+                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 8, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>{m.label}</div>
                       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, fontWeight: 700, color: m.color, lineHeight: 1 }}>{m.value}</div>
                       <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: m.subColor, marginTop: 4 }}>{m.sub}</div>
                     </div>
@@ -1240,7 +1388,7 @@ export default function ProofWebsite() {
                 <div className="dash-cols" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
                   {/* Activity chart */}
                   <div>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Daily verified activities</div>
+                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Daily verified activities</div>
                     <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 60 }}>
                       {[45,52,38,60,72,25,18,55,65,48,78,90,35,100].map((h, i) => (
                         <div key={i} style={{ flex: 1, background: COLORS.signal, borderRadius: 2, height: `${h}%`, opacity: 0.5 + (h / 200) }} />
@@ -1250,16 +1398,16 @@ export default function ProofWebsite() {
 
                   {/* Pace distribution */}
                   <div>
-                    <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Pace distribution</div>
+                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Pace distribution</div>
                     {[
-                      { name: "Inactive", w: "8%", color: COLORS.muted, count: "68" },
+                      { name: "Dormant", w: "8%", color: COLORS.muted, count: "68" },
                       { name: "Light", w: "22%", color: COLORS.muted, count: "186" },
                       { name: "Moderate", w: "35%", color: COLORS.steel, count: "296" },
                       { name: "Steady", w: "28%", color: COLORS.signal, count: "237" },
-                      { name: "High Vol.", w: "7%", color: COLORS.effort, count: "60" },
+                      { name: "Heavy", w: "7%", color: COLORS.effort, count: "60" },
                     ].map((t, i) => (
                       <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                        <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 10, fontWeight: 700, color: COLORS.subtle, width: 70, flexShrink: 0 }}>{t.name}</span>
+                        <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 700, color: COLORS.subtle, width: 70, flexShrink: 0 }}>{t.name}</span>
                         <div style={{ flex: 1, height: 6, background: COLORS.surfaceRaised, borderRadius: 3, overflow: "hidden" }}>
                           <div style={{ width: t.w, height: "100%", background: t.color, borderRadius: 3 }} />
                         </div>
@@ -1271,7 +1419,7 @@ export default function ProofWebsite() {
 
                 {/* Activity feed */}
                 <div className="dash-feed-wrap">
-                  <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
                   <div className="dash-feed-scroll">
                 {[
                   { name: "J. Matsuda", sport: "ROAD", miles: "34.2 mi", pm: "+34.2 PM", status: "VERIFIED", ok: true, time: "12m" },
@@ -1297,7 +1445,7 @@ export default function ProofWebsite() {
 
             {/* Billing bar */}
             <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 20px", borderTop: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", flexShrink: 0 }}>Active members</span>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", flexShrink: 0 }}>Active members</span>
               <div style={{ flex: 1, height: 4, background: COLORS.surfaceRaised, borderRadius: 2, overflow: "hidden" }}>
                 <div style={{ width: "84.7%", height: "100%", background: COLORS.signal, borderRadius: 2 }} />
               </div>
@@ -1314,7 +1462,7 @@ export default function ProofWebsite() {
               { tier: "Growth", desc: "Custom reporting — anomaly alerts, program health score", color: COLORS.effort },
             ].map((d, i) => (
               <div key={i} style={{ flex: "1 1 160px", maxWidth: 200, padding: "16px", background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 10, borderTop: `2px solid ${d.color}` }}>
-                <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700, color: d.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{d.tier}</div>
+                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700, color: d.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{d.tier}</div>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.subtle, lineHeight: 1.5 }}>{d.desc}</div>
               </div>
             ))}
@@ -1368,17 +1516,17 @@ export default function ProofWebsite() {
               features={["Core GPS verification", "PROOF tiers + three-signal profiles", "Basic dashboard", "Strava integration", "Docs + community"]}
               cta="Get started free" />
             <PricingCard name="Starter"
-              price={annualPricing ? "$119" : "$149"} period="/mo"
+              price={annualPricing ? "$159" : "$199"} period="/mo"
               members="Up to 1,000 active members"
               features={["Everything in Developer", "Program dashboard", "Webhook events (5 types)", "Welcome bonus rules", "Advanced fraud detection", "Email support"]}
               cta="Start free trial" />
             <PricingCard name="Scale"
-              price={annualPricing ? "$359" : "$449"} period="/mo"
+              price={annualPricing ? "$399" : "$499"} period="/mo"
               members="Up to 10,000 active members" highlight
               features={["Everything in Starter", "Advanced analytics + exports", "Unlimited integrations", "Custom badge styling", "Webhooks + API access", "Priority support + Slack"]}
               cta="Start free trial" />
             <PricingCard name="Growth"
-              price={annualPricing ? "$639" : "$799"} period="/mo"
+              price={annualPricing ? "$719" : "$899"} period="/mo"
               members="Up to 25,000 active members"
               features={["Everything in Scale", "Custom reporting", "Anomaly alerts + flagging", "Dedicated CSM"]}
               cta="Start free trial" />
@@ -1389,13 +1537,13 @@ export default function ProofWebsite() {
 
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
             color: COLORS.muted, textAlign: "center", marginTop: 16 }}>
-            Active members = at least one verified activity in a trailing 180-day window.
+            Active members = at least one verified activity in a trailing 90-day window.
             {annualPricing ? " Prices shown reflect annual prepayment." : " Save 20% with annual billing."}
           </div>
 
           {/* Feature comparison table */}
           <div className="feature-table-wrap" style={{ marginTop: 64, overflowX: "auto" }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 12, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.12em",
               textAlign: "center", marginBottom: 20 }}>
               Compare plans
@@ -1405,7 +1553,7 @@ export default function ProofWebsite() {
                 <tr style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
                   {["Feature", "Developer", "Starter", "Scale", "Growth", "Enterprise"].map((h, i) => (
                     <th key={i} style={{ padding: "12px 10px", textAlign: i === 0 ? "left" : "center",
-                      fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+                      fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
                       color: h === "Scale" ? COLORS.signal : COLORS.muted,
                       letterSpacing: "0.08em", textTransform: "uppercase" }}>{h}</th>
                   ))}
@@ -1452,7 +1600,7 @@ export default function ProofWebsite() {
           <div style={{ maxWidth: 600, margin: "32px auto 0", textAlign: "center",
             padding: "16px 24px", background: COLORS.surface,
             border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 12 }}>
-            <div style={{ fontFamily: "'Syne', sans-serif", fontSize: 11, fontWeight: 700,
+            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>
               No hard caps
             </div>
@@ -1511,7 +1659,7 @@ export default function ProofWebsite() {
 
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
             color: COLORS.muted, marginTop: 16 }}>
-            No credit card required · 14-day free trial on all plans
+            Developer tier free forever · no credit card
           </div>
         </Section>
       </div>
@@ -1524,8 +1672,8 @@ export default function ProofWebsite() {
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
               <div style={{ width: 22, height: 22, borderRadius: 4, border: `1.5px solid ${COLORS.subtle}`,
                 display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: 10, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.subtle }}>P</div>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 13,
+                fontSize: 10, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.subtle }}>P</div>
+              <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 13,
                 color: COLORS.subtle, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
             </div>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted }}>

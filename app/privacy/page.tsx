@@ -30,8 +30,8 @@ export default function PrivacyPolicy() {
           <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
             <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
               display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontFamily: "'Syne', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
-            <span style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 16,
+              fontSize: 12, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
+            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 16,
               color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
           </a>
           <a href="/" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
@@ -45,7 +45,7 @@ export default function PrivacyPolicy() {
       <main style={{ maxWidth: 800, margin: "0 auto", padding: "120px 24px 80px",
         fontFamily: "'Outfit', sans-serif", fontSize: 15, lineHeight: 1.75, color: COLORS.text }}>
 
-        <h1 style={{ fontFamily: "'Syne', sans-serif", fontWeight: 800, fontSize: 36,
+        <h1 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 36,
           color: COLORS.textBright, letterSpacing: "0.04em", marginBottom: 8 }}>
           Privacy Policy
         </h1>
@@ -55,7 +55,7 @@ export default function PrivacyPolicy() {
 
         <style>{`
           .privacy h2 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 700;
             font-size: 20px;
             color: ${COLORS.textBright};
@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
             margin-bottom: 16px;
           }
           .privacy h3 {
-            font-family: 'Syne', sans-serif;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 16px;
             color: ${COLORS.textBright};
