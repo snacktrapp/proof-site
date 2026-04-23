@@ -556,11 +556,15 @@ export default function DemoPage() {
           route="proof.verifiedeffort.com/dashboard"
           title="Athlete dashboard — the cross-brand home"
           description="After connecting, the athlete's PROOF home is a utility surface: a compact status strip (tier, Lifetime PM, pace category, trend direction) sits at the top, followed by connected brands with per-brand progress to next milestone, available rewards, recent verified activities through the 9-gate pipeline, and identity controls. The athlete manages their Strava connection and can revoke it from here at any time. Lifetime PM never resets — the permanent ledger is anchored to this surface."
+          imageSrc="/demo/athlete-dashboard.png"
+          imageAlt="PROOF athlete dashboard at proof.verifiedeffort.com/dashboard"
         />
         <Surface
           route="proof.verifiedeffort.com/athlete/[handle]"
           title="Public profile — portable identity across the network"
           description="Opt-in public profile with a trophy-treatment tier display, verified-effort narrative, multi-sport breakdown, and enrolled brands. This is the athlete's identity that travels with them: every brand in the PROOF network sees this profile when the athlete connects. Never shows individual activity details, routes, or photos — only the aggregated signal (tier, Lifetime PM, pace, trend, sport mix)."
+          imageSrc="/demo/public-profile.png"
+          imageAlt="PROOF public athlete profile at proof.verifiedeffort.com/athlete/[handle]"
         />
         <Surface
           route="Brand storefront · Account page"
@@ -590,16 +594,22 @@ export default function DemoPage() {
           route="/brand/members"
           title="Segmented member list"
           description="Filterable by tier (Recruit through Apex), pace category, trend direction, connection date, and brand PM. Click through to an individual member for their full activity and reward history with this brand. Brands never see an athlete's Strava credentials or raw activity data — only the aggregated PROOF miles credited to their program."
+          imageSrc="/demo/brand-members.png"
+          imageAlt="PROOF brand operator dashboard, members surface"
         />
         <Surface
           route="/brand/rewards"
           title="Threshold-to-reward ladder"
           description="Brand configures the milestone ladder (e.g., 500 brand PM → $10 credit; 1,000 → $20; 2,500 → $35 + free shipping; 5,000 → $50 + free shipping). Brand's budget, brand's economics. PROOF executes against the configuration — fires a webhook when an athlete crosses a threshold, generates the Shopify discount code on redemption. Thresholds iterate without code changes."
+          imageSrc="/demo/brand-rewards.png"
+          imageAlt="PROOF brand operator dashboard, rewards ladder configuration"
         />
         <Surface
           route="/brand/integrations"
           title="ESP-agnostic webhook delivery"
           description="Brand pastes their ESP webhook endpoint and API key (Klaviyo, Mailchimp, Sendgrid, Customer.io, or any HTTP endpoint), tests the connection with a sample payload, then builds reward-delivery email flows in their own ESP in their own brand voice. PROOF fires 5 canonical webhook events (athlete_connected, activity_verified, milestone_reached, pace_changed, tier_advanced) signed with HMAC. Brand authors the emails; PROOF authors the data."
+          imageSrc="/demo/brand-integrations.png"
+          imageAlt="PROOF brand operator dashboard, integrations configuration"
         />
       </Section>
 
