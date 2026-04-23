@@ -583,6 +583,8 @@ export default function DemoPage() {
           route="/brand/overview"
           title="Program health at a glance"
           description="Top-level operator view: active members on a 90-day window (the billing metric), verification success rate across the fraud pipeline, rewards issued, redemption rate, activity volume by sport. Brands get real-time visibility into whether the loyalty investment is delivering — and a case-study-ready view of revenue attributed to redeemed rewards."
+          imageSrc="/demo/brand-overview.png"
+          imageAlt="PROOF brand operator dashboard, overview surface"
         />
         <Surface
           route="/brand/members"
