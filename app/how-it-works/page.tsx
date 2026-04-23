@@ -622,7 +622,7 @@ export default function HowItWorksPage() {
             },
             {
               name: "proof.tier_advanced",
-              desc: "Athlete crosses a PROOF tier threshold (Recruit → Contender → Rival → Elite → Legend). Recognition moment. No economic unlock required.",
+              desc: "Athlete crosses a PROOF tier threshold (Recruit → Contender → Rival → Elite → Legend → Myth → Apex, plus infinite Marks above Apex). Recognition moment. No economic unlock required.",
             },
           ].map((e) => (
             <Card key={e.name} style={{ padding: "20px 24px" }}>

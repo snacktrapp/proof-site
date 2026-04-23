@@ -957,7 +957,7 @@ export default function ProofWebsite() {
               title="PROOF Layer"
               subtitle="Universal. Portable. Permanent."
               items={[
-                { label: "PROOF Tier", desc: "Recruit, Contender, Rival, Elite, Legend — earned by lifetime PM. Recognition that travels with the athlete across every brand." },
+                { label: "PROOF Tier", desc: "Recruit, Contender, Rival, Elite, Legend, Myth, Apex — and infinite Marks above Apex for the rarest ledgers. Earned by lifetime PM. Recognition that travels with the athlete across every brand." },
                 { label: "Lifetime PROOF miles (PM)", desc: "Effort-normalized via the PROOF Effort Index. Cumulative total across all sports. Never resets, never decreases." },
                 { label: "Three-signal athlete profile", desc: "Lifetime PM (total experience), Pace (12-month rolling average, categorized), and Trend (3-month vs. 9-month direction). Visible to every enrolled brand." },
                 { label: "Pace and Trend tracking", desc: "Current activity level categorized as Dormant, Light, Moderate, Steady, or Heavy. Trend shows whether the athlete is ramping up, stable, or slowing down." },
@@ -1251,7 +1251,7 @@ export default function ProofWebsite() {
                   <line x1="30" y1="10" x2="30" y2="4" stroke={COLORS.signal} strokeWidth="1.8" strokeLinecap="round" opacity={0.9} />
                   <polyline points="27,7 30,4 33,7" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.9} />
                 </svg>
-              ), title: "Tier + three-signal athlete profile", desc: "Every athlete earns a PROOF tier (Recruit → Legend) for recognition, plus three signals: Lifetime PM, Pace, and Trend. Tiers provide identity. Signals drive economics. Brands can map custom tier names to match their voice." },
+              ), title: "Tier + three-signal athlete profile", desc: "Every athlete earns a PROOF tier — Recruit through Apex, plus infinite Marks for the rarest ledgers — for recognition, plus three signals: Lifetime PM, Pace, and Trend. Tiers provide identity. Signals drive economics. Brands can map custom tier names to match their voice." },
               { icon: (
                 <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
                   <circle cx="6" cy="16" r="5" stroke={COLORS.signal} strokeWidth="1.5" />
