@@ -489,14 +489,14 @@ export default function ProofWebsite() {
                 {item}
               </a>
             ))}
-            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                 textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
               onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
               onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
               Sign up / Log in
             </a>
-            <a href="#waitlist" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
+            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Get early access
@@ -519,9 +519,9 @@ export default function ProofWebsite() {
               <a key={i} href={`#${item.toLowerCase().replace(/ /g, "-")}`}
                 onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
-            <a href="https://proof.verifiedeffort.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}>Sign up / Log in</a>
-            <a href="#waitlist" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
+            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
               Get early access
             </a>
           </div>
@@ -574,7 +574,7 @@ export default function ProofWebsite() {
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
-            <a href="#waitlist" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
+            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "14px 32px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Get early access
