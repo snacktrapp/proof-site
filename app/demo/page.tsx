@@ -551,6 +551,8 @@ export default function DemoPage() {
           route="Brand storefront · Connect Strava"
           title="Strava OAuth, inside the brand's experience"
           description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' on the loyalty section. Strava's standard consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. On approval, Strava returns the access token to PROOF, which begins verifying activities going forward. Historical backfill and brand welcome bonuses roll out as part of launch preparation."
+          imageSrc="/demo/strava-auth.png"
+          imageAlt="Strava OAuth authorization page showing the scopes PROOF requests with the PROOF brand identified"
         />
         <Surface
           route="proof.verifiedeffort.com/dashboard"
