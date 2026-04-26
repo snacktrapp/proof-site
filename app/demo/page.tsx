@@ -368,7 +368,7 @@ export default function DemoPage() {
             }}
           >
             Brands reward their athletic customers for real, GPS-verified activity.
-            Athletes connect Strava once. Every verified mile, stroke, or stride earns
+            Athletes connect Strava once. Every GPS-verified activity earns
             loyalty currency at every enrolled brand. This page orients platform
             reviewers and sales prospects to what PROOF does and how it uses Strava
             and Garmin data.
@@ -550,7 +550,7 @@ export default function DemoPage() {
         <Surface
           route="Brand storefront · Connect Strava"
           title="Strava OAuth, inside the brand's experience"
-          description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' on the loyalty section. Strava's standard consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. On approval, Strava returns the access token to PROOF, which kicks off a background historical backfill and fires the brand's welcome bonus immediately — before the backfill completes, so there's no blank-state waiting period for the athlete."
+          description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' on the loyalty section. Strava's standard consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. On approval, Strava returns the access token to PROOF, which begins verifying activities going forward. Historical backfill and brand welcome bonuses roll out as part of launch preparation."
         />
         <Surface
           route="proof.verifiedeffort.com/dashboard"
@@ -569,7 +569,7 @@ export default function DemoPage() {
         <Surface
           route="Brand storefront · Account page"
           title="Loyalty section rendered in the brand's theme"
-          description="What an athlete sees on the brand's Shopify customer account page. The loyalty section is a Liquid template reading from Shopify customer metafields that PROOF writes — not an embedded PROOF iframe. The brand owns the rendering: typography, color, voice. PROOF passes the data (brand PM, progress to next milestone, active rewards with restrictions, pace category as 'member status') and the brand styles it. When the athlete clicks 'Shop' on a reward, PROOF lazy-generates a single-use Shopify discount code tied to their email and deep-links them into checkout with the discount pre-applied. No codes to copy, no codes to leak."
+          description="What an athlete sees on the brand's Shopify customer account page. The loyalty section is a Liquid template designed to render brand PM, progress to next milestone, and active rewards in the brand's own theme — not an embedded PROOF iframe. The brand owns the rendering: typography, color, voice. PROOF generates a single-use Shopify discount code when the athlete claims a reward, scoped via the brand's existing Shopify discount-template configuration so collection restrictions, minimum order, and exclusions all apply automatically."
           imageSrc="/demo/brand-account-page.png"
           imageAlt="Brand storefront customer account page with the PROOF loyalty section rendered in the brand's theme"
         />
@@ -609,7 +609,7 @@ export default function DemoPage() {
         <Surface
           route="/brand/integrations"
           title="ESP-agnostic webhook delivery"
-          description="Brand pastes their ESP webhook endpoint and API key (Klaviyo, Mailchimp, Sendgrid, Customer.io, or any HTTP endpoint), tests the connection with a sample payload, then builds reward-delivery email flows in their own ESP in their own brand voice. PROOF fires 5 canonical webhook events (athlete_connected, activity_verified, milestone_reached, pace_changed, tier_advanced) signed with HMAC. Brand authors the emails; PROOF authors the data."
+          description="Brand pastes their ESP webhook endpoint and API key (Klaviyo, Mailchimp, Sendgrid, Customer.io, or any HTTP endpoint), tests the connection with a sample payload, then builds reward-delivery email flows in their own ESP in their own brand voice. PROOF fires HMAC-signed webhook events on athlete connect, activity verified, and milestone reached; pace-change and tier-advance events roll out as the underlying signals stabilize. Brand authors the emails; PROOF authors the data."
           imageSrc="/demo/brand-integrations.png"
           imageAlt="PROOF brand operator dashboard, integrations configuration"
         />
@@ -642,20 +642,11 @@ export default function DemoPage() {
               paddingLeft: 20,
             }}
           >
-            <li style={{ marginBottom: 10 }}>
-              <Mono>read</Mono> — basic profile information (athlete name, ID) required
-              to associate verified activities with a PROOF account.
-            </li>
-            <li style={{ marginBottom: 10 }}>
+            <li style={{ marginBottom: 0 }}>
               <Mono>activity:read_all</Mono> — read all activities including private
               ones, required to compute lifetime PROOF miles and pace accurately.
               Private activities are used for computation only; they are never
               displayed publicly and never shared with brands.
-            </li>
-            <li style={{ marginBottom: 0 }}>
-              <Mono>profile:read_all</Mono> — full profile, including multi-sport
-              preferences, used to correctly apply the PROOF Effort Index across
-              sports the athlete actively records.
             </li>
           </ul>
           <Body style={{ marginTop: 16, fontSize: 13, color: COLORS.subtle }}>
@@ -669,10 +660,10 @@ export default function DemoPage() {
           <Kicker>What we do with activity data</Kicker>
           <Body style={{ marginBottom: 10 }}>
             Each verified activity from a connected athlete is processed through
-            a 9-gate fraud-and-validity pipeline (GPS sanity, sport-specific
-            velocity ceilings, daily cap enforcement, duplicate detection,
-            geographic plausibility). Activities that clear the pipeline are
-            converted into PROOF miles via the PROOF Effort Index — a
+            a multi-gate fraud-and-validity pipeline (GPS presence, velocity
+            ceilings, daily cap enforcement, duplicate detection, manual-entry
+            rejection, ownership validation). Activities that clear the pipeline
+            are converted into PROOF miles via the PROOF Effort Index — a
             sport-normalization table calibrated on MET-minutes per unit of
             distance.
           </Body>
@@ -840,7 +831,8 @@ export default function DemoPage() {
               PROOF&apos;s data handling complies with the Strava API Agreement,
               Strava&apos;s data handling requirements, and Garmin Connect Developer
               Program terms. Athlete data is stored in encrypted databases, access
-              is role-limited within PROOF, and audit logging covers all data reads.
+              is role-limited within PROOF, and admin actions and state changes
+              are logged to a tamper-evident audit trail.
             </Body>
           </Card>
         </div>
