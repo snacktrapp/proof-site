@@ -130,8 +130,6 @@ export default function AthletesPage() {
           .hero-sub { font-size: 16px !important; max-width: 100% !important; }
           .steps-grid { grid-template-columns: 1fr !important; }
           .sports-grid { grid-template-columns: 1fr 1fr !important; }
-          .profile-card { padding: 24px !important; }
-          .profile-signals { flex-direction: column !important; gap: 16px !important; }
           .section-title { font-size: 28px !important; }
           .final-cta-title { font-size: 32px !important; }
 
@@ -367,116 +365,15 @@ export default function AthletesPage() {
 
         <FadeIn delay={100}>
           <div className="profile-card" style={{
-            background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
-            borderRadius: 16, padding: 40, position: "relative", overflow: "hidden"
+            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16,
+            overflow: "hidden", background: COLORS.surface,
+            boxShadow: "0 24px 60px -20px rgba(0,0,0,0.5)"
           }}>
-            {/* Subtle verified glow */}
-            <div style={{
-              position: "absolute", top: -40, right: -40, width: 160, height: 160,
-              borderRadius: "50%",
-              background: `radial-gradient(circle, rgba(200,255,0,0.06) 0%, transparent 70%)`,
-              pointerEvents: "none"
-            }} />
-
-            <div style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
-              color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-              marginBottom: 16
-            }}>
-              Example athlete profile
-            </div>
-
-            {/* Tier headline */}
-            <div style={{
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, fontWeight: 400,
-              color: COLORS.textBright, letterSpacing: "0.04em", lineHeight: 1,
-              marginBottom: 6
-            }}>
-              RIVAL
-            </div>
-            <div style={{
-              fontFamily: "'JetBrains Mono', monospace", fontSize: 12,
-              color: COLORS.steel, marginBottom: 24
-            }}>
-              Rival &middot; 8,420 lifetime PM &middot; Steady pace &middot; &uarr; Increasing
-            </div>
-
-            <div className="profile-signals" style={{
-              display: "flex", gap: 40, justifyContent: "space-between"
-            }}>
-              {/* Lifetime PM */}
-              <div style={{ flex: 1 }}>
-                <div style={{
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 32, fontWeight: 700,
-                  color: COLORS.textBright, lineHeight: 1, marginBottom: 6
-                }}>
-                  8,420
-                </div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.subtle,
-                  letterSpacing: "0.02em", marginBottom: 4
-                }}>
-                  lifetime PROOF miles
-                </div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted
-                }}>
-                  Total verified effort, ever
-                </div>
-              </div>
-
-              {/* Pace */}
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                  <span style={{
-                    fontFamily: "'JetBrains Mono', monospace", fontSize: 32, fontWeight: 700,
-                    color: COLORS.textBright, lineHeight: 1
-                  }}>
-                    Steady
-                  </span>
-                </div>
-                <div style={{
-                  fontFamily: "'JetBrains Mono', monospace", fontSize: 13,
-                  color: COLORS.steel, marginTop: 4, marginBottom: 4
-                }}>
-                  215 PM/month
-                </div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted
-                }}>
-                  12-month rolling average
-                </div>
-              </div>
-
-              {/* Trend */}
-              <div style={{ flex: 1 }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                  <span style={{
-                    fontFamily: "'JetBrains Mono', monospace", fontSize: 32, fontWeight: 700,
-                    color: COLORS.signal, lineHeight: 1
-                  }}>
-                    ↑
-                  </span>
-                  <span style={{
-                    fontFamily: "'JetBrains Mono', monospace", fontSize: 32, fontWeight: 700,
-                    color: COLORS.signal, lineHeight: 1
-                  }}>
-                    Increasing
-                  </span>
-                </div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.subtle,
-                  marginTop: 6, marginBottom: 4
-                }}>
-                  Training more than last year
-                </div>
-                <div style={{
-                  fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.muted
-                }}>
-                  3-month vs. 9-month trend
-                </div>
-              </div>
-            </div>
+            <img
+              src="/demo/public-profile.png"
+              alt="An example PROOF public athlete profile showing Rival tier nameplate, verified badge, and three signals: 8,420 Lifetime PROOF Miles, Steady current pace, and an Increasing momentum trend"
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
           </div>
         </FadeIn>
       </section>
