@@ -330,7 +330,8 @@ export default function ProofWebsite() {
           border-bottom: 1px solid ${COLORS.surfaceBorder}; }
         .pei-table td { padding: 12px 20px; border-bottom: 1px solid ${COLORS.surfaceBorder}; }
 
-        .account-mockup { max-width: 400px; margin: 0 auto; }
+        .account-mockup { max-width: 800px; margin: 0 auto; }
+        .dashboard-mockup { box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5); }
 
         /* ── TABLET ── */
         @media (max-width: 900px) {
@@ -379,8 +380,8 @@ export default function ProofWebsite() {
           /* Code block — smaller font, scrollable */
           .code-pre { font-size: 11px !important; }
 
-          /* Account mockup — full width, tighter padding */
-          .account-mockup { max-width: 100%; padding: 20px !important; }
+          /* Mockup screenshots — full width on mobile */
+          .account-mockup { max-width: 100%; }
 
           /* Pricing cards — horizontal scroll instead of stacking */
           .pricing-cards {
@@ -851,53 +852,15 @@ export default function ProofWebsite() {
             </p>
           </div>
 
-          {/* Account page mockup */}
-          <div className="account-mockup" style={{ background: COLORS.base,
-            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 20, padding: 32 }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
-              <div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9,
-                  color: COLORS.muted, letterSpacing: "0.1em", marginBottom: 4 }}>YOUR BRAND · RIVAL</div>
-                <div style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 42,
-                  color: COLORS.signal, lineHeight: 1 }}>4,218</div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: COLORS.muted }}>PROOF MILES</div>
-              </div>
-              <VerifiedBadge size={40} />
-            </div>
-            {/* Milestone progress */}
-            <div style={{ marginBottom: 16 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text }}>Next milestone</span>
-                <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.muted }}>4,218 / 5,000 PM</span>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.muted }}>$50 credit</span>
-              </div>
-              <div style={{ height: 4, background: COLORS.surfaceBorder, borderRadius: 2 }}>
-                <div style={{ height: 4, background: COLORS.signal, borderRadius: 2, width: "84%",
-                  transition: "width 1s ease" }} />
-              </div>
-            </div>
-            {/* Pace indicator */}
-            <div style={{ display: "flex", alignItems: "center", gap: 8,
-              padding: "10px 14px", background: COLORS.surfaceRaised,
-              borderRadius: 10, marginBottom: 12 }}>
-              <div style={{ width: 6, height: 6, borderRadius: "50%", background: COLORS.signal }} />
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, color: COLORS.text }}>Steady</span>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                color: COLORS.muted, marginLeft: "auto" }}>215 PM/mo · ↑ Increasing</span>
-            </div>
-            {/* Reward available */}
-            <div style={{ padding: "12px 14px", border: `1px solid ${COLORS.signal}33`,
-              borderRadius: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-              <div>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
-                  fontWeight: 600, color: COLORS.textBright }}>$35 store credit</div>
-                <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-                  color: COLORS.muted }}>2,500 pts available</div>
-              </div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
-                color: COLORS.base, background: COLORS.signal, padding: "6px 14px", borderRadius: 6 }}>Redeem</div>
-            </div>
+          {/* Account page screenshot — brand storefront with PROOF loyalty section */}
+          <div className="account-mockup" style={{ border: `1px solid ${COLORS.surfaceBorder}`,
+            borderRadius: 16, overflow: "hidden", background: COLORS.surface,
+            boxShadow: "0 24px 60px -20px rgba(0,0,0,0.5)" }}>
+            <img
+              src="/demo/brand-account-page.png"
+              alt="A PROOF-powered brand storefront showing rider tier, lifetime miles, active challenges, and rewards inside the brand's own theme"
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
           </div>
 
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
@@ -1345,112 +1308,15 @@ export default function ProofWebsite() {
             </p>
           </div>
 
-          {/* Dashboard mockup */}
-          <div style={{ background: COLORS.base, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, overflow: "hidden", maxWidth: 960, margin: "0 auto" }}>
-            {/* Top bar */}
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px", borderBottom: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
-              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-                <span style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 18, letterSpacing: "0.06em", color: COLORS.textBright }}>PROOF</span>
-                <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase" }}>Basecamp Athletics Effort Club</span>
-              </div>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.base, background: COLORS.signal, padding: "2px 8px", borderRadius: 3, letterSpacing: "0.05em" }}>STARTER</span>
-            </div>
-
-            <div style={{ display: "flex" }}>
-              {/* Sidebar */}
-              <div className="dash-sidebar" style={{ width: 140, borderRight: `1px solid ${COLORS.surfaceBorder}`, padding: "16px 0", background: COLORS.surface, flexShrink: 0 }}>
-                {["Overview", "Athletes", "Activity", "Rewards", "Config", "Billing"].map((item, i) => (
-                  <div key={i} style={{ padding: "7px 16px", fontFamily: "'Outfit', sans-serif", fontSize: 11, color: i === 0 ? COLORS.signal : COLORS.muted, borderLeft: `2px solid ${i === 0 ? COLORS.signal : "transparent"}`, cursor: "default" }}>{item}</div>
-                ))}
-              </div>
-
-              {/* Main content */}
-              <div style={{ flex: 1, padding: "20px 24px", minWidth: 0 }}>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 12 }}>Program overview · last 30 days</div>
-
-                {/* Metrics row */}
-                <div className="dash-metrics" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 10, marginBottom: 24 }}>
-                  {[
-                    { label: "Active members", value: "847", color: COLORS.signal, sub: "+12% vs prior 30d", subColor: COLORS.signal },
-                    { label: "Verified activities", value: "1,243", color: COLORS.textBright, sub: "+8% vs prior 30d", subColor: COLORS.signal },
-                    { label: "PM credited", value: "38,491", color: COLORS.textBright, sub: "30.9 avg PM / member", subColor: COLORS.muted },
-                    { label: "Rewards issued", value: "23", color: COLORS.textBright, sub: "78% redeemed", subColor: COLORS.muted },
-                  ].map((m, i) => (
-                    <div key={i} style={{ background: COLORS.surfaceRaised, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 8, padding: "12px 14px" }}>
-                      <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 8, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", marginBottom: 6 }}>{m.label}</div>
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 20, fontWeight: 700, color: m.color, lineHeight: 1 }}>{m.value}</div>
-                      <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: m.subColor, marginTop: 4 }}>{m.sub}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* Two-column content */}
-                <div className="dash-cols" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16, marginBottom: 20 }}>
-                  {/* Activity chart */}
-                  <div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Daily verified activities</div>
-                    <div style={{ display: "flex", alignItems: "flex-end", gap: 3, height: 60 }}>
-                      {[45,52,38,60,72,25,18,55,65,48,78,90,35,100].map((h, i) => (
-                        <div key={i} style={{ flex: 1, background: COLORS.signal, borderRadius: 2, height: `${h}%`, opacity: 0.5 + (h / 200) }} />
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Pace distribution */}
-                  <div>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 10 }}>Pace distribution</div>
-                    {[
-                      { name: "Dormant", w: "8%", color: COLORS.muted, count: "68" },
-                      { name: "Light", w: "22%", color: COLORS.muted, count: "186" },
-                      { name: "Moderate", w: "35%", color: COLORS.steel, count: "296" },
-                      { name: "Steady", w: "28%", color: COLORS.signal, count: "237" },
-                      { name: "Heavy", w: "7%", color: COLORS.effort, count: "60" },
-                    ].map((t, i) => (
-                      <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                        <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 10, fontWeight: 700, color: COLORS.subtle, width: 70, flexShrink: 0 }}>{t.name}</span>
-                        <div style={{ flex: 1, height: 6, background: COLORS.surfaceRaised, borderRadius: 3, overflow: "hidden" }}>
-                          <div style={{ width: t.w, height: "100%", background: t.color, borderRadius: 3 }} />
-                        </div>
-                        <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, width: 28, textAlign: "right", flexShrink: 0 }}>{t.count}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Activity feed */}
-                <div className="dash-feed-wrap">
-                  <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, fontWeight: 700, color: COLORS.muted, letterSpacing: "0.12em", textTransform: "uppercase", marginBottom: 8 }}>Recent verified activity</div>
-                  <div className="dash-feed-scroll">
-                {[
-                  { name: "J. Matsuda", sport: "ROAD", miles: "34.2 mi", pm: "+34.2 PM", status: "VERIFIED", ok: true, time: "12m" },
-                  { name: "R. Chen", sport: "MTB", miles: "18.7 mi", pm: "+28.1 PM", status: "VERIFIED", ok: true, time: "24m" },
-                  { name: "A. Ramirez", sport: "GRAVEL", miles: "42.1 mi", pm: "+50.5 PM", status: "VERIFIED", ok: true, time: "1h" },
-                  { name: "T. Novak", sport: "ROAD", miles: "6.1 mi", pm: "—", status: "NO GPS", ok: false, time: "2h" },
-                  { name: "K. Okonkwo", sport: "ROAD", miles: "21.8 mi", pm: "+21.8 PM", status: "VERIFIED", ok: true, time: "3h" },
-                ].map((a, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "7px 0", borderBottom: `1px solid ${COLORS.surfaceBorder}`, minWidth: 460 }}>
-                    <div style={{ width: 6, height: 6, borderRadius: "50%", background: a.ok ? COLORS.signal : COLORS.effort, flexShrink: 0 }} />
-                    <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, color: COLORS.text, width: 80, flexShrink: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{a.name}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, background: COLORS.surfaceRaised, padding: "1px 6px", borderRadius: 3, flexShrink: 0 }}>{a.sport}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.steel, width: 50, textAlign: "right", flexShrink: 0 }}>{a.miles}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: a.ok ? COLORS.signal : COLORS.muted, width: 55, textAlign: "right", flexShrink: 0 }}>{a.pm}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, padding: "1px 6px", borderRadius: 3, flexShrink: 0, color: a.ok ? COLORS.base : COLORS.effort, background: a.ok ? COLORS.signal : "rgba(255,61,0,0.1)" }}>{a.status}</span>
-                    <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.muted, marginLeft: "auto", flexShrink: 0 }}>{a.time}</span>
-                  </div>
-                ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Billing bar */}
-            <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 20px", borderTop: `1px solid ${COLORS.surfaceBorder}`, background: COLORS.surface }}>
-              <span style={{ fontFamily: "'Outfit', sans-serif", fontSize: 9, color: COLORS.muted, letterSpacing: "0.08em", textTransform: "uppercase", flexShrink: 0 }}>Active members</span>
-              <div style={{ flex: 1, height: 4, background: COLORS.surfaceRaised, borderRadius: 2, overflow: "hidden" }}>
-                <div style={{ width: "84.7%", height: "100%", background: COLORS.signal, borderRadius: 2 }} />
-              </div>
-              <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.subtle, flexShrink: 0 }}>847 / 1,000</span>
-            </div>
+          {/* Dashboard screenshot — brand admin overview */}
+          <div className="dashboard-mockup" style={{ border: `1px solid ${COLORS.surfaceBorder}`,
+            borderRadius: 16, overflow: "hidden", maxWidth: 960, margin: "0 auto",
+            background: COLORS.surface, boxShadow: "0 24px 60px -20px rgba(0,0,0,0.5)" }}>
+            <img
+              src="/demo/brand-overview.png"
+              alt="The PROOF brand admin overview dashboard showing active members, verified activities, PROOF Miles credited, rewards issued, daily activity chart, pace distribution, and a recent verified-activity feed"
+              style={{ display: "block", width: "100%", height: "auto" }}
+            />
           </div>
 
           {/* Dashboard tier callout */}
