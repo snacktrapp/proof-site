@@ -205,13 +205,7 @@ export default function AthletesPage() {
                 textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
               onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
               onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
-              Sign up / Log in
-            </a>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=athlete" target="_blank" rel="noopener noreferrer"
-              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
-              color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
-              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Sign up free
+              Log in
             </a>
           </div>
 
@@ -231,11 +225,7 @@ export default function AthletesPage() {
             <a href="#your-profile" onClick={() => setMenuOpen(false)}>Your profile</a>
             <a href="#sports" onClick={() => setMenuOpen(false)}>Sports</a>
             <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}>Sign up / Log in</a>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=athlete" target="_blank" rel="noopener noreferrer"
-              className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
-              Sign up free
-            </a>
+              onClick={() => setMenuOpen(false)}>Log in</a>
           </div>
         )}
       </nav>
@@ -285,7 +275,7 @@ export default function AthletesPage() {
           </FadeIn>
 
           <FadeIn delay={300}>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=athlete" target="_blank" rel="noopener noreferrer"
+            <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
               className="cta-button"
               style={{
                 fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,
@@ -490,7 +480,7 @@ export default function AthletesPage() {
           }}>
             Connect your Strava. Start earning PROOF miles. It's free.
           </p>
-          <a href="https://proof.verifiedeffort.com/auth/register?role=athlete" target="_blank" rel="noopener noreferrer"
+          <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
             className="cta-button"
             style={{
               fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,

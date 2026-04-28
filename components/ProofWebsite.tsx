@@ -495,12 +495,7 @@ export default function ProofWebsite() {
                 textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
               onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
               onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
-              Sign up / Log in
-            </a>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
-              color: COLORS.base, background: COLORS.signal, padding: "8px 20px", borderRadius: 6,
-              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-              Get early access
+              Log in
             </a>
           </div>
 
@@ -521,10 +516,7 @@ export default function ProofWebsite() {
                 onClick={() => setMenuOpen(false)}>{item}</a>
             ))}
             <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
-              onClick={() => setMenuOpen(false)}>Sign up / Log in</a>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" className="nav-mobile-cta" onClick={() => setMenuOpen(false)}>
-              Get early access
-            </a>
+              onClick={() => setMenuOpen(false)}>Log in</a>
           </div>
         )}
       </nav>
@@ -550,7 +542,7 @@ export default function ProofWebsite() {
             lineHeight: 0.95, letterSpacing: "0.02em", marginBottom: 16,
             opacity: heroReady ? 1 : 0, transform: heroReady ? "translateY(0)" : "translateY(30px)",
             transition: "all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s" }}>
-            Turn every mile, stroke,<br />and stride into{" "}
+            Turn every mile, stroke, and stride into{" "}
             <span style={{ color: verified ? COLORS.signal : COLORS.muted, transition: "color 0.6s ease" }}>
               loyalty currency.
             </span>
@@ -575,7 +567,7 @@ export default function ProofWebsite() {
           </p>
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap",
             opacity: heroReady ? 1 : 0, transition: "opacity 0.6s ease 1.8s" }}>
-            <a href="https://proof.verifiedeffort.com/auth/register?role=brand" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
+            <a href="https://proof.verifiedeffort.com/auth/register" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, fontWeight: 700,
               color: COLORS.base, background: COLORS.signal, padding: "14px 32px", borderRadius: 8,
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase" }}>
               Get early access
