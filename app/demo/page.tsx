@@ -5,20 +5,22 @@ import Link from "next/link";
 /*
  * PROOF demo / platform-review page.
  *
- * Purpose: single URL that serves three audiences —
+ * Purpose: single URL that serves three audiences with equal weight —
  *  1. Strava API review team (evaluating PROOF for API access)
- *  2. Garmin Connect review team (future — same evaluation framework)
+ *  2. Garmin Connect API review team (evaluating PROOF for API access)
  *  3. Brand prospects and sales conversations
  *
- * Live OAuth integration is deployed at https://proof.verifiedeffort.com
- * Reviewers can request credentialed access to test the flow end-to-end.
+ * Live OAuth integration is deployed at https://proof.verifiedeffort.com.
+ * Strava OAuth is wired live today; Garmin Connect ships once API access
+ * is granted. Reviewers can request credentialed access to test the
+ * flow end-to-end.
  *
  * CONFIGURE BEFORE SENDING TO REVIEWERS:
  *  - The REVIEWER_EMAIL constant below must resolve to a monitored inbox
  *    (Brian's inbox is fine — just confirm the alias is forwarding).
- *  - OAuth scope list in the "How PROOF uses Strava data" section must match
- *    what Noah's deployed app actually requests. Verify against the live
- *    integration before sharing this URL.
+ *  - OAuth scope list in the data-handling section must match what the
+ *    deployed app actually requests for the platform under review.
+ *    Verify against the live integration before sharing this URL.
  */
 
 const REVIEWER_EMAIL = "brian@verifiedeffort.com";
@@ -38,6 +40,7 @@ const COLORS = {
   signalGlow: "rgba(200,255,0,0.25)",
   steel: "#8BA0B4",
   stravaOrange: "#FC4C02",
+  garminBlue: "#007CC3",
 };
 
 /* ─── Small components ────────────────────────────────────────────── */
@@ -368,10 +371,11 @@ export default function DemoPage() {
             }}
           >
             Brands reward their athletic customers for real, GPS-verified activity.
-            Athletes connect Strava once. Every GPS-verified activity earns
-            loyalty currency at every enrolled brand. This page orients platform
-            reviewers and sales prospects to what PROOF does and how it uses Strava
-            and Garmin data.
+            Athletes connect their fitness platform — Strava or Garmin Connect —
+            once. Every GPS-verified activity earns loyalty currency at every
+            enrolled brand. This page orients Strava and Garmin Connect API
+            reviewers, plus brand prospects, to what PROOF does and how it
+            handles fitness-platform data.
           </p>
 
           <div
@@ -388,9 +392,9 @@ export default function DemoPage() {
               sub="OAuth scopes, data handling, brand compliance"
             />
             <AudienceLink
-              label="Garmin reviewer"
+              label="Garmin Connect reviewer"
               href="#data-handling"
-              sub="Same data-handling framework — Garmin integration Q3"
+              sub="OAuth scopes, data handling, brand compliance"
             />
             <AudienceLink
               label="Brand evaluating PROOF"
@@ -434,7 +438,7 @@ export default function DemoPage() {
                   lineHeight: 1.6,
                 }}
               >
-                A deployed build of PROOF with working Strava OAuth is available at{" "}
+                A deployed build of PROOF is available at{" "}
                 <a
                   href={LIVE_APP_URL}
                   target="_blank"
@@ -443,7 +447,9 @@ export default function DemoPage() {
                 >
                   proof.verifiedeffort.com
                 </a>
-                . Credentialed access for review available on request — email{" "}
+                . Strava OAuth is wired live today; Garmin Connect ships
+                alongside Strava once API access is granted. Credentialed
+                access for review available on request — email{" "}
                 <a href={`mailto:${REVIEWER_EMAIL}`} style={{ color: COLORS.signal, textDecoration: "none" }}>
                   {REVIEWER_EMAIL}
                 </a>
@@ -495,12 +501,13 @@ export default function DemoPage() {
           <Card>
             <Kicker>The athlete</Kicker>
             <Body>
-              Connects their Strava account once — through the storefront of any
-              enrolled brand. PROOF reads their verified activities, normalizes
-              effort across sports (the PROOF Effort Index — PEI), and credits
-              their lifetime profile plus every brand&apos;s loyalty ledger the
-              sport qualifies for. Thresholds crossed = rewards earned at the
-              brand, redeemable on the brand&apos;s own storefront.
+              Connects their Strava or Garmin Connect account once — through
+              the storefront of any enrolled brand. PROOF reads their verified
+              activities, normalizes effort across sports (the PROOF Effort
+              Index — PEI), and credits their lifetime profile plus every
+              brand&apos;s loyalty ledger the sport qualifies for. Thresholds
+              crossed = rewards earned at the brand, redeemable on the
+              brand&apos;s own storefront.
             </Body>
           </Card>
           <Card>
@@ -548,16 +555,16 @@ export default function DemoPage() {
         </Lead>
 
         <Surface
-          route="Brand storefront · Connect Strava"
-          title="Strava OAuth, inside the brand's experience"
-          description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' on the loyalty section. Strava's standard consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. On approval, Strava returns the access token to PROOF, which begins verifying activities going forward. Historical backfill and brand welcome bonuses roll out as part of launch preparation."
+          route="Brand storefront · Connect fitness platform"
+          title="Platform OAuth, inside the brand's experience"
+          description="The athlete is on the brand's Shopify storefront, signed into their customer account. They click 'Connect Strava' or 'Connect Garmin' on the loyalty section. The platform's standard OAuth consent screen loads with the scopes PROOF requests and the PROOF brand clearly identified. Shown below: Strava's consent flow — Garmin Connect follows the same pattern. On approval, the platform returns the access token to PROOF, which begins verifying activities going forward. Historical backfill and brand welcome bonuses roll out as part of launch preparation."
           imageSrc="/demo/strava-auth.png"
-          imageAlt="Strava OAuth authorization page showing the scopes PROOF requests with the PROOF brand identified"
+          imageAlt="Strava OAuth authorization page showing the scopes PROOF requests with the PROOF brand identified — Garmin Connect follows the same pattern"
         />
         <Surface
           route="proof.verifiedeffort.com/dashboard"
           title="Athlete dashboard — the cross-brand home"
-          description="After connecting, the athlete's PROOF home is a utility surface: a compact status strip (tier, Lifetime PM, pace category, trend direction) sits at the top, followed by connected brands with per-brand progress to next milestone, available rewards, recent verified activities through the 9-gate pipeline, and identity controls. The athlete manages their Strava connection and can revoke it from here at any time. Lifetime PM never resets — the permanent ledger is anchored to this surface."
+          description="After connecting, the athlete's PROOF home is a utility surface: a compact status strip (tier, Lifetime PM, pace category, trend direction) sits at the top, followed by connected brands with per-brand progress to next milestone, available rewards, recent verified activities through the 9-gate pipeline, and identity controls. The athlete manages their connected platform — Strava or Garmin Connect — and can revoke access from here at any time. Lifetime PM never resets — the permanent ledger is anchored to this surface."
           imageSrc="/demo/athlete-dashboard.png"
           imageAlt="PROOF athlete dashboard at proof.verifiedeffort.com/dashboard"
         />
@@ -597,7 +604,7 @@ export default function DemoPage() {
         <Surface
           route="/brand/members"
           title="Segmented member list"
-          description="Filterable by tier (Recruit through Apex), pace category, trend direction, connection date, and brand PM. Click through to an individual member for their full activity and reward history with this brand. Brands never see an athlete's Strava credentials or raw activity data — only the aggregated PROOF miles credited to their program."
+          description="Filterable by tier (Recruit through Apex), pace category, trend direction, connection date, and brand PM. Click through to an individual member for their full activity and reward history with this brand. Brands never see an athlete's platform credentials or raw activity data — only the aggregated PROOF miles credited to their program."
           imageSrc="/demo/brand-members.png"
           imageAlt="PROOF brand operator dashboard, members surface"
         />
@@ -619,7 +626,7 @@ export default function DemoPage() {
 
       {/* Data handling / technical transparency */}
       <Section id="data-handling">
-        <Kicker>03 · How PROOF uses Strava &amp; Garmin data</Kicker>
+        <Kicker>03 · How PROOF uses Strava &amp; Garmin Connect data</Kicker>
         <H2>Verification rail, not identity surface.</H2>
         <Lead>
           Transparency on the scopes we request, what we do with the data, how
@@ -632,7 +639,11 @@ export default function DemoPage() {
           <Kicker>OAuth scopes requested</Kicker>
           <Body style={{ marginBottom: 16 }}>
             PROOF requests the minimum scopes necessary to compute verified
-            effort. Scopes requested from Strava:
+            effort. Read-only on both platforms — never write, modify, or
+            delete.
+          </Body>
+          <Body style={{ marginBottom: 8, fontSize: 13, color: COLORS.subtle, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            Strava
           </Body>
           <ul
             style={{
@@ -651,9 +662,31 @@ export default function DemoPage() {
               displayed publicly and never shared with brands.
             </li>
           </ul>
+          <Body style={{ marginTop: 14, marginBottom: 8, fontSize: 13, color: COLORS.subtle, letterSpacing: "0.06em", textTransform: "uppercase" }}>
+            Garmin Connect
+          </Body>
+          <ul
+            style={{
+              fontFamily: "'Outfit', sans-serif",
+              fontSize: 15,
+              color: COLORS.text,
+              lineHeight: 1.7,
+              margin: 0,
+              paddingLeft: 20,
+            }}
+          >
+            <li style={{ marginBottom: 0 }}>
+              Activity-read scopes equivalent to Strava&apos;s{" "}
+              <Mono>activity:read_all</Mono> — final scope list confirmed
+              during Garmin&apos;s API review and updated here ahead of
+              launch. Same private-activity handling: computation only, never
+              displayed publicly, never shared with brands.
+            </li>
+          </ul>
           <Body style={{ marginTop: 16, fontSize: 13, color: COLORS.subtle }}>
-            We do not request <Mono>activity:write</Mono> or <Mono>profile:write</Mono>{" "}
-            scopes. PROOF never modifies Strava activities or profile data.
+            On both platforms, PROOF does not request activity-write or
+            profile-write scopes. PROOF never modifies activities or profile
+            data on the connected platform.
           </Body>
         </Card>
 
@@ -674,8 +707,8 @@ export default function DemoPage() {
             profile (visible to them on proof.verifiedeffort.com and to brands
             they&apos;ve enrolled with) and the brand-specific ledger for every
             active brand connection where the sport is in the brand&apos;s
-            allowlist. Brands never see raw Strava activity data — only aggregated
-            PROOF miles credited to their program.
+            allowlist. Brands never see raw activity data from the connected
+            platform — only aggregated PROOF miles credited to their program.
           </Body>
         </Card>
 
@@ -690,16 +723,16 @@ export default function DemoPage() {
             core feature of the platform.
           </Body>
           <Body style={{ marginBottom: 10 }}>
-            Raw Strava API response bodies are retained for 90 days for
-            debugging and fraud-pipeline audit, then pruned. Only the computed
-            results (normalized PROOF miles, verification status) persist beyond
-            that window.
+            Raw API response bodies — from Strava and Garmin Connect alike —
+            are retained for 90 days for debugging and fraud-pipeline audit,
+            then pruned. Only the computed results (normalized PROOF miles,
+            verification status) persist beyond that window.
           </Body>
           <Body>
             PROOF does not store, process, or index third-party user content
-            such as photos, route GPX traces, or comments attached to Strava
-            activities. We read only the metadata needed to verify and normalize
-            the effort.
+            such as photos, route GPX traces, or comments attached to
+            fitness-platform activities. We read only the metadata needed to
+            verify and normalize the effort.
           </Body>
         </Card>
 
@@ -707,10 +740,11 @@ export default function DemoPage() {
         <Card style={{ marginBottom: 20 }}>
           <Kicker>Revocation &amp; deletion</Kicker>
           <Body style={{ marginBottom: 10 }}>
-            Athletes can revoke PROOF&apos;s Strava access from two places: the
-            PROOF athlete dashboard at proof.verifiedeffort.com, and Strava&apos;s
-            own authorized-apps settings. Both revoke the OAuth token
-            immediately.
+            Athletes can revoke PROOF&apos;s platform access from two places:
+            the PROOF athlete dashboard at proof.verifiedeffort.com, and the
+            connected platform&apos;s own authorized-apps settings (Strava:
+            Settings → My Apps; Garmin Connect: Account → Account Information
+            → Connected Apps). Both revoke the OAuth token immediately.
           </Body>
           <Body style={{ marginBottom: 10 }}>
             On revocation: no further activities are ingested. The
@@ -718,11 +752,11 @@ export default function DemoPage() {
             effort remains recognized at enrolled brands) but marked as{" "}
             <Mono>rail_disconnected</Mono>. If the athlete separately requests
             account deletion via proof.verifiedeffort.com (distinct from
-            revoking Strava access), all personal data and activity records are
-            deleted within 30 days, per standard GDPR/CCPA handling.
+            revoking platform access), all personal data and activity records
+            are deleted within 30 days, per standard GDPR/CCPA handling.
           </Body>
           <Body>
-            Brand operators never see the athlete&apos;s Strava credentials,
+            Brand operators never see the athlete&apos;s platform credentials,
             tokens, or raw activity data at any point in the integration.
           </Body>
         </Card>
@@ -750,19 +784,20 @@ export default function DemoPage() {
             </li>
             <li style={{ marginBottom: 8 }}>
               We do not build social features, leaderboards, or public feeds on
-              top of Strava activity data. The public athlete profile is
-              opt-in and shows only aggregated stats — never individual activity
-              details.
+              top of fitness-platform activity data. The public athlete profile
+              is opt-in and shows only aggregated stats — never individual
+              activity details.
             </li>
             <li style={{ marginBottom: 0 }}>
               We do not modify, write to, or delete anything in the
-              athlete&apos;s Strava account.
+              athlete&apos;s connected platform account (Strava or Garmin
+              Connect).
             </li>
           </ul>
         </Card>
       </Section>
 
-      {/* Strava brand attribution + compliance */}
+      {/* Platform brand attribution + compliance (Strava + Garmin Connect) */}
       <Section id="brand-compliance" background={COLORS.surface}>
         <Kicker>04 · Platform attribution &amp; compliance</Kicker>
         <H2>Powered by Strava. Powered by Garmin Connect.</H2>
@@ -783,11 +818,29 @@ export default function DemoPage() {
             <Kicker>Attribution placement</Kicker>
             <Body style={{ marginBottom: 12 }}>
               On every athlete-facing surface where activity data is rendered,
-              PROOF displays a &quot;Powered by Strava&quot; attribution with the
-              correct trademark styling. On the brand account page (rendered on
-              the brand&apos;s storefront), the attribution appears in the
-              loyalty section footer.
+              PROOF displays a &quot;Powered by&quot; attribution naming the
+              connected fitness platform with the correct trademark styling.
+              On the brand account page (rendered on the brand&apos;s
+              storefront), the attribution appears in the loyalty section
+              footer.
             </Body>
+            <div
+              style={{
+                fontFamily: "'JetBrains Mono', monospace",
+                fontSize: 11,
+                color: COLORS.muted,
+                padding: "12px 16px",
+                background: COLORS.base,
+                border: `1px solid ${COLORS.surfaceBorder}`,
+                borderRadius: 8,
+                marginBottom: 8,
+              }}
+            >
+              Activity data verified via{" "}
+              <span style={{ color: COLORS.stravaOrange, fontWeight: 700 }}>STRAVA</span>
+              {" · "}
+              <span style={{ color: COLORS.subtle }}>Powered by Strava</span>
+            </div>
             <div
               style={{
                 fontFamily: "'JetBrains Mono', monospace",
@@ -800,9 +853,9 @@ export default function DemoPage() {
               }}
             >
               Activity data verified via{" "}
-              <span style={{ color: COLORS.stravaOrange, fontWeight: 700 }}>STRAVA</span>
+              <span style={{ color: COLORS.garminBlue, fontWeight: 700 }}>GARMIN CONNECT</span>
               {" · "}
-              <span style={{ color: COLORS.subtle }}>Powered by Strava</span>
+              <span style={{ color: COLORS.subtle }}>Powered by Garmin Connect</span>
             </div>
           </Card>
 
@@ -821,9 +874,12 @@ export default function DemoPage() {
             <Kicker>Logo usage</Kicker>
             <Body>
               PROOF uses the Strava wordmark in its official trademark form
-              (Strava orange, unmodified) wherever required. We do not use the
-              Strava arc/S mark on marketing materials. Usage is confined to
-              attribution contexts and &quot;Connect Strava&quot; OAuth buttons.
+              (Strava orange, unmodified) and the Garmin Connect wordmark per
+              Garmin&apos;s brand guidelines (Garmin blue, unmodified) wherever
+              required. We do not use the Strava arc/S mark or the Garmin
+              triangle device on marketing materials. Usage on both platforms
+              is confined to attribution contexts and OAuth buttons
+              (&quot;Connect Strava&quot; / &quot;Connect Garmin&quot;).
             </Body>
           </Card>
 
