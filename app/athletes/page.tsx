@@ -502,7 +502,7 @@ export default function AthletesPage() {
           <a href="/" style={{ color: COLORS.muted, textDecoration: "none" }}>For brands</a>
           <a href="/privacy" style={{ color: COLORS.muted, textDecoration: "none" }}>Privacy</a>
         </div>
-        &copy; {new Date().getFullYear()} Proof Technologies, Inc.
+        &copy; {new Date().getFullYear()} PROOF Verified Effort, Inc.
       </footer>
     </div>
   );
