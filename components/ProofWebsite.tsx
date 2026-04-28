@@ -1541,7 +1541,7 @@ export default function ProofWebsite() {
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
             {[
               { label: "Privacy", href: "/privacy" },
-              { label: "Terms", href: "#" },
+              { label: "Terms", href: "/terms" },
               { label: "Documentation", href: "#" },
               { label: "Status", href: "#" },
             ].map((link, i) => (
@@ -1554,7 +1554,7 @@ export default function ProofWebsite() {
             ))}
           </div>
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.muted }}>
-            © 2026 Proof Technologies, Inc.
+            © {new Date().getFullYear()} PROOF Verified Effort, Inc.
           </div>
         </div>
       </footer>

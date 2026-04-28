@@ -102,7 +102,7 @@ export default function PrivacyPolicy() {
           <h2>1. Who We Are</h2>
           <p>
             PROOF ("we," "us," or "our") operates the verified effort loyalty platform at verifiedeffort.com
-            and the application at proof.verifiedeffort.com. PROOF is operated by Proof Technologies, Inc.,
+            and the application at proof.verifiedeffort.com. PROOF is operated by PROOF Verified Effort, Inc.,
             based in California, United States.
           </p>
           <p>
@@ -372,7 +372,7 @@ export default function PrivacyPolicy() {
             If you have questions about this Privacy Policy or our data practices, contact us at:
           </p>
           <p>
-            Proof Technologies, Inc.<br />
+            PROOF Verified Effort, Inc.<br />
             Email: <a href="mailto:team@verifiedeffort.com">team@verifiedeffort.com</a>
           </p>
 
@@ -390,7 +390,7 @@ export default function PrivacyPolicy() {
       {/* Footer */}
       <footer style={{ borderTop: `1px solid ${COLORS.rail}`, padding: "32px 24px",
         textAlign: "center", fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>
-        &copy; {new Date().getFullYear()} Proof Technologies, Inc. All rights reserved.
+        &copy; {new Date().getFullYear()} PROOF Verified Effort, Inc. All rights reserved.
       </footer>
     </div>
   );

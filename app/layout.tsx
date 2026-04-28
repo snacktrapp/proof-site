@@ -12,14 +12,6 @@ export const metadata: Metadata = {
       "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. Turns athletic effort into loyalty currency.",
     url: "https://verifiedeffort.com",
     siteName: "PROOF",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "PROOF — Effort Verified.",
-      },
-    ],
     type: "website",
   },
   twitter: {
@@ -27,7 +19,6 @@ export const metadata: Metadata = {
     title: "PROOF — Effort Verified.",
     description:
       "PROOF connects fitness data to loyalty programs — so brands can reward real athletic effort instead of just transactions. Turns athletic effort into loyalty currency.",
-    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.svg",
