@@ -252,23 +252,6 @@ export default function HowItWorksPage() {
         >
           ← PROOF
         </Link>
-        <Link
-          href="/#waitlist"
-          style={{
-            fontFamily: "'Outfit', sans-serif",
-            fontSize: 12,
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            color: COLORS.base,
-            background: COLORS.signal,
-            padding: "8px 18px",
-            borderRadius: 6,
-            textDecoration: "none",
-          }}
-        >
-          Get early access
-        </Link>
       </nav>
 
       {/* Hero */}
@@ -811,7 +794,7 @@ export default function HowItWorksPage() {
             Tell us about your brand and we&apos;ll be in touch within two business days.
           </p>
           <Link
-            href="/#waitlist"
+            href="https://proof.verifiedeffort.com/auth/register"
             style={{
               fontFamily: "'Outfit', sans-serif",
               fontSize: 13,
