@@ -49,7 +49,15 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body style={{ margin: 0, padding: 0, background: "#050505" }}>
+      <body
+        style={{
+          margin: 0,
+          padding: 0,
+          background: "#050505",
+          WebkitFontSmoothing: "antialiased",
+          MozOsxFontSmoothing: "grayscale",
+        }}
+      >
         {children}
         <Analytics />
       </body>
