@@ -314,8 +314,8 @@ export default function TermsOfService() {
           <p>You agree not to:</p>
           <ul>
             <li>
-              Submit, fabricate, or upload activity data that does not reflect real, GPS-verified
-              physical effort by you.
+              Submit, fabricate, or upload activity data that does not reflect real physical
+              effort by you, recorded by your fitness device or app.
             </li>
             <li>
               Use multiple devices to record the same physical activity in a way that causes
@@ -336,7 +336,7 @@ export default function TermsOfService() {
           </ul>
           <p>
             We screen activities for fraud signals, including but not limited to: unrealistic
-            speed for the sport, manual entries, missing GPS, overlapping multi-device recordings,
+            speed for the sport, manually entered activities, overlapping multi-device recordings,
             and future-dated submissions. Activities that fail these checks do not credit and may
             result in account review.
           </p>
@@ -454,8 +454,9 @@ export default function TermsOfService() {
           </ul>
           <p>
             Upon termination, your right to use the Service ends immediately. Sections 11
-            (Intellectual Property), 14 (Disclaimer), 15 (Limitation of Liability), 17 (Governing
-            Law), and 18 (Dispute Resolution) survive termination.
+            (Intellectual Property), 14 (Disclaimer), 15 (Limitation of Liability), 16
+            (Indemnification), 17 (Governing Law), and 18 (Dispute Resolution) survive
+            termination.
           </p>
 
           <h2>14. Disclaimer of Warranties</h2>
