@@ -293,8 +293,8 @@ export default function Methodology() {
             scale so a runner and a cyclist who train equally hard earn comparable credit.
           </p>
           <p>
-            Activity data comes from connected fitness platforms (Strava and Garmin Connect today;
-            more later). We read what the platform reports, run it through our calculation, and
+            Activity data comes from connected fitness platforms (Strava today; more
+            integrations planned). We read what the platform reports, run it through our calculation, and
             credit the result as PM. We don't infer effort from things you didn't actually do — if
             it isn't recorded by your fitness device or app, it doesn't count.
           </p>

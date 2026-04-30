@@ -1543,7 +1543,6 @@ export default function ProofWebsite() {
               { label: "Privacy", href: "/privacy" },
               { label: "Terms", href: "/terms" },
               { label: "Methodology", href: "/methodology" },
-              { label: "Status", href: "#" },
             ].map((link, i) => (
               <a key={i} href={link.href} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
                 color: COLORS.muted, textDecoration: "none" }}
