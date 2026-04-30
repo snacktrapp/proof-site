@@ -210,16 +210,9 @@ export default function AthletesPage() {
 
           {/* Desktop nav */}
           <div className="nav-desktop">
-            <a href="/"
-              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
-                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
-              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
-              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
-              For brands
-            </a>
             {[{ label: "How it works", href: "#how-it-works" },
-              { label: "Your profile", href: "#your-profile" },
               { label: "Sports", href: "#sports" },
+              { label: "Your profile", href: "#your-profile" },
               { label: "FAQ", href: "#faq" }].map((item, i) => (
               <a key={i} href={item.href}
                 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
@@ -229,6 +222,13 @@ export default function AthletesPage() {
                 {item.label}
               </a>
             ))}
+            <a href="/"
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
+                textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
+              onMouseOver={e => (e.target as HTMLAnchorElement).style.color = COLORS.textBright}
+              onMouseOut={e => (e.target as HTMLAnchorElement).style.color = COLORS.subtle}>
+              For brands
+            </a>
             <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
               style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                 textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
@@ -249,11 +249,11 @@ export default function AthletesPage() {
         {/* Mobile menu */}
         {menuOpen && (
           <div className="nav-mobile">
-            <a href="/" onClick={() => setMenuOpen(false)}>For brands</a>
             <a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
-            <a href="#your-profile" onClick={() => setMenuOpen(false)}>Your profile</a>
             <a href="#sports" onClick={() => setMenuOpen(false)}>Sports</a>
+            <a href="#your-profile" onClick={() => setMenuOpen(false)}>Your profile</a>
             <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+            <a href="/" onClick={() => setMenuOpen(false)}>For brands</a>
             <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}>Log in</a>
           </div>
@@ -274,58 +274,48 @@ export default function AthletesPage() {
         }} />
 
         <div style={{ position: "relative", maxWidth: 700 }}>
-          <FadeIn>
-            <div style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
-              color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
-              marginBottom: 24
-            }}>
-              Your effort. Verified. Rewarded.
-            </div>
-          </FadeIn>
+          <div style={{
+            fontFamily: "'Outfit', sans-serif", fontSize: 12, fontWeight: 700,
+            color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
+            marginBottom: 24
+          }}>
+            Your effort. Verified. Rewarded.
+          </div>
 
-          <FadeIn delay={100}>
-            <h1 className="hero-title" style={{
-              fontFamily: "'Bebas Neue', sans-serif", fontSize: 64, fontWeight: 400,
-              color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 24px",
-              letterSpacing: "0.02em"
-            }}>
-              The More You Train,<br />The More You Earn.
-            </h1>
-          </FadeIn>
+          <h1 className="hero-title" style={{
+            fontFamily: "'Bebas Neue', sans-serif", fontSize: 64, fontWeight: 400,
+            color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 24px",
+            letterSpacing: "0.02em"
+          }}>
+            The More You Train,<br />The More You Earn.
+          </h1>
 
-          <FadeIn delay={200}>
-            <p className="hero-sub" style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 18, color: COLORS.subtle,
-              lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px"
-            }}>
-              Connect Strava once. Every verified mile, stroke, and stride earns PROOF Miles —
-              points you redeem for real discounts at the brands you already shop.
-            </p>
-          </FadeIn>
+          <p className="hero-sub" style={{
+            fontFamily: "'Outfit', sans-serif", fontSize: 18, color: COLORS.subtle,
+            lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px"
+          }}>
+            Connect Strava once. Every verified mile, stroke, and stride earns PROOF Miles —
+            points you redeem for real discounts at the brands you already shop.
+          </p>
 
-          <FadeIn delay={300}>
-            <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
-              className="cta-button"
-              style={{
-                fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,
-                color: COLORS.base, background: COLORS.signal, padding: "14px 36px", borderRadius: 8,
-                textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
-                display: "inline-block"
-              }}>
-              Sign up free
-            </a>
-          </FadeIn>
-
-          <FadeIn delay={400}>
-            <p style={{
-              fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted,
-              lineHeight: 1.6, marginTop: 28, letterSpacing: "0.01em"
+          <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
+            className="cta-button"
+            style={{
+              fontFamily: "'Outfit', sans-serif", fontSize: 14, fontWeight: 700,
+              color: COLORS.base, background: COLORS.signal, padding: "14px 36px", borderRadius: 8,
+              textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
+              display: "inline-block"
             }}>
-              Most loyalty programs reward what you <span style={{ color: COLORS.subtle, fontWeight: 600 }}>BUY</span>.
-              PROOF rewards what you <span style={{ color: COLORS.signal, fontWeight: 600 }}>DO</span>.
-            </p>
-          </FadeIn>
+            Sign up free
+          </a>
+
+          <p style={{
+            fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted,
+            lineHeight: 1.6, marginTop: 28, letterSpacing: "0.01em"
+          }}>
+            Most loyalty programs reward what you <span style={{ color: COLORS.subtle, fontWeight: 600 }}>BUY</span>.
+            PROOF rewards what you <span style={{ color: COLORS.signal, fontWeight: 600 }}>DO</span>.
+          </p>
         </div>
       </section>
 
@@ -596,7 +586,7 @@ export default function AthletesPage() {
             fontFamily: "'Outfit', sans-serif", fontSize: 16, color: COLORS.subtle,
             marginBottom: 40, lineHeight: 1.6
           }}>
-            Connect your Strava. Start earning PROOF miles. It's free.
+            Free for athletes. Setup takes 60 seconds. First miles credit within minutes.
           </p>
           <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
             className="cta-button"
@@ -606,7 +596,7 @@ export default function AthletesPage() {
               textDecoration: "none", letterSpacing: "0.08em", textTransform: "uppercase",
               display: "inline-block"
             }}>
-            Sign up free
+            Connect Strava — Start Earning
           </a>
         </FadeIn>
       </section>
