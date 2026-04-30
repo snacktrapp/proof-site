@@ -63,6 +63,33 @@ const sports = [
   { name: "Rowing / Kayaking", multiplier: "2.0×", icon: "🚣" },
 ];
 
+const faqs: Array<{ q: string; a: string }> = [
+  {
+    q: "Is PROOF really free for athletes?",
+    a: "Yes — athletes never pay for PROOF. Brands on the network pay PROOF to run their loyalty programs. You connect Strava once and earn from there. No subscription, no premium tier, no upsell.",
+  },
+  {
+    q: "What does PROOF see from my Strava?",
+    a: "Activity-level data from the rides, runs, swims, and hikes you've already chosen to share publicly on Strava. Brands on the network see your tier and the milestones you cross — never your specific routes, individual activities, or feed. Private Strava activities aren't visible to PROOF at all.",
+  },
+  {
+    q: "Which brands can I earn rewards at?",
+    a: "The network is in beta with launch partners and growing. Sign up free now — your PROOF Miles accrue from day one and apply at any brand you join later. You don't need to wait for a specific brand to be on the network; your verified-effort history is portable.",
+  },
+  {
+    q: "How long until I see my first reward?",
+    a: "Depends on you and the brand. A typical cyclist crosses a brand's first milestone in three to six weeks of regular activity. Some brands have lower first thresholds, some are higher. Activity in any sport counts, calibrated by physiological cost.",
+  },
+  {
+    q: "What if I'm not a competitive athlete?",
+    a: "PROOF rewards verified effort, not performance. Walking, hiking, casual rides — your effort still counts. Pace bands run from Dormant to Heavy and there's a place on the ladder at every level. The point isn't to beat anyone; it's to get credit for the work you're already doing.",
+  },
+  {
+    q: "Can I lose my PROOF Miles?",
+    a: "No. Your Lifetime PROOF Miles never reset and never decrease. Tier identity (Recruit through Apex) is permanent. Disconnect Strava, sit out a year, come back — your verified-effort history is yours forever.",
+  },
+];
+
 const steps = [
   {
     number: "01",
@@ -84,6 +111,7 @@ const steps = [
 export default function AthletesPage() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -191,7 +219,8 @@ export default function AthletesPage() {
             </a>
             {[{ label: "How it works", href: "#how-it-works" },
               { label: "Your profile", href: "#your-profile" },
-              { label: "Sports", href: "#sports" }].map((item, i) => (
+              { label: "Sports", href: "#sports" },
+              { label: "FAQ", href: "#faq" }].map((item, i) => (
               <a key={i} href={item.href}
                 style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
                   textDecoration: "none", letterSpacing: "0.02em", transition: "color 0.2s" }}
@@ -224,6 +253,7 @@ export default function AthletesPage() {
             <a href="#how-it-works" onClick={() => setMenuOpen(false)}>How it works</a>
             <a href="#your-profile" onClick={() => setMenuOpen(false)}>Your profile</a>
             <a href="#sports" onClick={() => setMenuOpen(false)}>Sports</a>
+            <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
             <a href="https://proof.verifiedeffort.com/auth/login" target="_blank" rel="noopener noreferrer"
               onClick={() => setMenuOpen(false)}>Log in</a>
           </div>
@@ -476,6 +506,77 @@ export default function AthletesPage() {
               PROOF Miles are earned, not gamed.
             </p>
           </div>
+        </FadeIn>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" style={{
+        padding: "80px 24px", maxWidth: 760, margin: "0 auto", scrollMarginTop: 80
+      }}>
+        <FadeIn>
+          <h2 className="section-title" style={{
+            fontFamily: "'Bebas Neue', sans-serif", fontWeight: 400, fontSize: 40,
+            color: COLORS.textBright, textAlign: "center", marginBottom: 16,
+            letterSpacing: "0.02em"
+          }}>
+            QUESTIONS, ANSWERED.
+          </h2>
+          <p style={{
+            fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
+            textAlign: "center", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.65
+          }}>
+            The things athletes ask before signing up — straight answers, no marketing.
+          </p>
+        </FadeIn>
+
+        <FadeIn delay={120}>
+          <ul style={{
+            listStyle: "none", padding: 0, margin: 0,
+            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 12,
+            background: COLORS.surface, overflow: "hidden"
+          }}>
+            {faqs.map((faq, i) => {
+              const open = openFaq === i;
+              const isLast = i === faqs.length - 1;
+              return (
+                <li key={faq.q} style={{
+                  borderBottom: isLast ? "none" : `1px solid ${COLORS.surfaceBorder}`
+                }}>
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(open ? null : i)}
+                    aria-expanded={open}
+                    style={{
+                      width: "100%", textAlign: "left", padding: "20px 24px",
+                      background: "transparent", border: "none", cursor: "pointer",
+                      display: "flex", alignItems: "flex-start", justifyContent: "space-between",
+                      gap: 16, color: COLORS.textBright,
+                      fontFamily: "'Outfit', sans-serif", fontSize: 15, fontWeight: 600
+                    }}
+                  >
+                    <span>{faq.q}</span>
+                    <span style={{
+                      flexShrink: 0, fontFamily: "'JetBrains Mono', monospace",
+                      fontSize: 16, color: COLORS.signal,
+                      transform: open ? "rotate(45deg)" : "rotate(0deg)",
+                      transition: "transform 0.2s ease"
+                    }} aria-hidden="true">
+                      +
+                    </span>
+                  </button>
+                  {open && (
+                    <div style={{
+                      padding: "0 24px 22px",
+                      fontFamily: "'Outfit', sans-serif", fontSize: 14,
+                      color: COLORS.subtle, lineHeight: 1.7
+                    }}>
+                      {faq.a}
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
         </FadeIn>
       </section>
 
