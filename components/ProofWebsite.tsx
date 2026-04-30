@@ -95,8 +95,8 @@ const Section = ({ children, style = {}, id }: { children: React.ReactNode; styl
   );
 };
 
-const PricingCard = ({ name, price, period, members, features, highlight, cta }:
-  { name: string; price: string; period?: string; members?: string; features: string[]; highlight?: boolean; cta: string }) => (
+const PricingCard = ({ name, price, period, members, features, highlight, cta, href }:
+  { name: string; price: string; period?: string; members?: string; features: string[]; highlight?: boolean; cta: string; href: string }) => (
   <div style={{ background: highlight ? COLORS.surfaceRaised : COLORS.surface,
     border: `1px solid ${highlight ? COLORS.signal : COLORS.surfaceBorder}`,
     borderRadius: 16, padding: "32px 24px", position: "relative", overflow: "hidden",
@@ -127,15 +127,15 @@ const PricingCard = ({ name, price, period, members, features, highlight, cta }:
         </div>
       ))}
     </div>
-    <button style={{ width: "100%", padding: "12px 8px",
+    <a href={href} style={{ width: "100%", padding: "12px 8px",
       background: highlight ? COLORS.signal : "transparent",
       color: highlight ? COLORS.base : COLORS.text,
       border: highlight ? "none" : `1px solid ${COLORS.surfaceBorder}`,
       borderRadius: 8, cursor: "pointer", fontFamily: "'Outfit', sans-serif",
-      fontSize: 11, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase" }}
-      onClick={() => document.getElementById("waitlist")?.scrollIntoView({ behavior: "smooth" })}>
+      fontSize: 11, fontWeight: 700, letterSpacing: "0.03em", textTransform: "uppercase",
+      textDecoration: "none", display: "block", textAlign: "center", boxSizing: "border-box" }}>
       {cta}
-    </button>
+    </a>
   </div>
 );
 
@@ -1316,8 +1316,8 @@ export default function ProofWebsite() {
             {[
               { tier: "Developer", desc: "Basic monitoring — members, activities, billing cap", color: COLORS.muted },
               { tier: "Starter", desc: "Program dashboard — rewards, athlete profiles, config", color: COLORS.signal },
-              { tier: "Scale", desc: "Advanced analytics — cohorts, funnels, exports, API", color: COLORS.steel },
-              { tier: "Growth", desc: "Custom reporting — anomaly alerts, program health score", color: COLORS.effort },
+              { tier: "Scale", desc: "Cohort insights — pace distribution, recent crossings, brand exports", color: COLORS.steel },
+              { tier: "Growth", desc: "Multi-brand reporting and program health insights", color: COLORS.effort },
             ].map((d, i) => (
               <div key={i} style={{ flex: "1 1 160px", maxWidth: 200, padding: "16px", background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 10, borderTop: `2px solid ${d.color}` }}>
                 <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700, color: d.color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>{d.tier}</div>
@@ -1340,9 +1340,21 @@ export default function ProofWebsite() {
             </h2>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
               maxWidth: 520, margin: "0 auto", lineHeight: 1.7 }}>
-              No setup fees. No per-transaction cuts. No revenue share. Start free, upgrade as you grow.
-              Each brand funds their own rewards independently.
+              No setup fees. No per-transaction cuts. No revenue share. Each brand funds their own
+              rewards independently.
             </p>
+          </div>
+
+          {/* Beta disclaimer */}
+          <div style={{
+            maxWidth: 640, margin: "0 auto 36px", padding: "14px 20px",
+            background: COLORS.surface, border: `1px solid ${COLORS.surfaceBorder}`,
+            borderLeft: `3px solid ${COLORS.signal}`, borderRadius: 4,
+            fontFamily: "'Outfit', sans-serif", fontSize: 13, lineHeight: 1.6, color: COLORS.text
+          }}>
+            <strong style={{ color: COLORS.textBright }}>PROOF is in beta.</strong> The tiers below
+            indicate where pricing is heading at full launch. Beta brands receive customized terms
+            during onboarding — get in touch to discuss.
           </div>
 
           {/* Annual / Monthly toggle */}
@@ -1371,26 +1383,31 @@ export default function ProofWebsite() {
           {/* 5-tier pricing cards */}
           <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
             <PricingCard name="Developer" price="Free" members="Up to 100 active members"
-              features={["Core GPS verification", "PROOF tiers + three-signal profiles", "Basic dashboard", "Strava integration", "Docs + community"]}
-              cta="Get started free" />
+              features={["Core verification (fraud gates)", "PROOF tiers + public profiles", "Basic dashboard", "Strava integration", "Documentation"]}
+              cta="Get started free"
+              href="/auth/register?role=brand" />
             <PricingCard name="Starter"
               price={annualPricing ? "$159" : "$199"} period="/mo"
               members="Up to 1,000 active members"
-              features={["Everything in Developer", "Program dashboard", "Webhook events (5 types)", "Welcome bonus rules", "Advanced fraud detection", "Email support"]}
-              cta="Start free trial" />
+              features={["Everything in Developer", "Program dashboard", "Webhook events (ESP integration)", "Milestone + challenge configuration", "Advanced fraud detection", "Email support"]}
+              cta="Apply for Beta"
+              href="/auth/register?role=brand" />
             <PricingCard name="Scale"
               price={annualPricing ? "$399" : "$499"} period="/mo"
               members="Up to 10,000 active members" highlight
-              features={["Everything in Starter", "Advanced analytics + exports", "Unlimited integrations", "Custom badge styling", "Webhooks + API access", "Priority support + Slack"]}
-              cta="Start free trial" />
+              features={["Everything in Starter", "Cohort insights + exports", "Multi-platform integrations (roadmap)", "Priority support"]}
+              cta="Apply for Beta"
+              href="/auth/register?role=brand" />
             <PricingCard name="Growth"
               price={annualPricing ? "$719" : "$899"} period="/mo"
               members="Up to 25,000 active members"
-              features={["Everything in Scale", "Custom reporting", "Anomaly alerts + flagging", "Dedicated CSM"]}
-              cta="Start free trial" />
+              features={["Everything in Scale", "Cross-brand reporting (roadmap)", "Program health insights (roadmap)"]}
+              cta="Apply for Beta"
+              href="/auth/register?role=brand" />
             <PricingCard name="Enterprise" price="Custom" members="Unlimited members"
-              features={["Everything in Growth", "SLA + SOC 2 docs", "White-label badge option", "Named account manager"]}
-              cta="Talk to us" />
+              features={["Everything in Growth", "Custom contract + SLA", "Named account manager"]}
+              cta="Talk to us"
+              href="mailto:team@verifiedeffort.com" />
           </div>
 
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
@@ -1419,23 +1436,21 @@ export default function ProofWebsite() {
               </thead>
               <tbody>
                 {[
-                  { feature: "Core verification (GPS, fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "Core verification (fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "PROOF tiers + three-signal profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "PROOF tiers + public profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
                   { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Webhook event integration (5 events)", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Advanced fraud detection + anomaly", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Webhook events (ESP integration)", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Advanced fraud detection", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Program dashboard (rewards, profiles, config)", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Welcome bonus rule configuration", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Fitness platform integrations", vals: ["Strava", "Up to 3", "Unlimited", "Unlimited", "Unlimited"] },
-                  { feature: "Advanced analytics + exports", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Custom badge styling", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Webhooks + API access", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Custom reporting", vals: ["—", "—", "—", "✓", "✓"] },
-                  { feature: "Anomaly alerts + flagging", vals: ["—", "—", "—", "✓", "✓"] },
-                  { feature: "SLA + SOC 2 documentation", vals: ["—", "—", "—", "—", "✓"] },
-                  { feature: "White-label badge option", vals: ["—", "—", "—", "—", "✓"] },
-                  { feature: "Support", vals: ["Docs", "Email", "Priority + Slack", "Dedicated CSM", "Named acct mgr"] },
+                  { feature: "Milestone + challenge configuration", vals: ["—", "✓", "✓", "✓", "✓"] },
+                  { feature: "Fitness platform — Strava (live)", vals: ["✓", "✓", "✓", "✓", "✓"] },
+                  { feature: "Additional platforms (roadmap)", vals: ["—", "—", "✓", "✓", "✓"] },
+                  { feature: "Cohort insights + exports", vals: ["—", "—", "✓", "✓", "✓"] },
+                  { feature: "Cross-brand reporting", vals: ["—", "—", "—", "Roadmap", "Roadmap"] },
+                  { feature: "Program health insights", vals: ["—", "—", "—", "Roadmap", "Roadmap"] },
+                  { feature: "Custom contract + SLA", vals: ["—", "—", "—", "—", "✓"] },
+                  { feature: "Support", vals: ["Docs", "Email", "Priority", "Priority", "Named acct mgr"] },
                 ].map((row, ri) => (
                   <tr key={ri} style={{ borderBottom: `1px solid ${COLORS.surfaceBorder}` }}>
                     <td style={{ padding: "11px 10px", fontFamily: "'Outfit', sans-serif", fontSize: 13,
@@ -1463,9 +1478,9 @@ export default function ProofWebsite() {
               No hard caps
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted, lineHeight: 1.6 }}>
-              If you exceed your tier&apos;s active member limit, we charge a small per-member overage
-              rather than cutting verification. Starter $0.15/member, Scale $0.06, Growth $0.04.
-              Enterprise is unlimited.
+              If you exceed your tier&apos;s active member limit, a small per-member overage applies
+              rather than cutting verification. Overage rates and tier billing finalize at full
+              launch. Enterprise is unlimited.
             </p>
           </div>
         </Section>
