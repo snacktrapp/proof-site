@@ -122,8 +122,9 @@ export default function PrivacyPolicy() {
 
           <h3>2.2 Fitness Platform Data</h3>
           <p>
-            When you connect a fitness platform (such as Strava or Garmin Connect) to PROOF, we receive
-            activity data from that platform through their authorized API. This data may include:
+            When you connect a fitness platform to PROOF (currently Strava; additional integrations
+            planned), we receive activity data from that platform through their authorized API.
+            This data may include:
           </p>
           <ul>
             <li>Activity type (e.g., cycling, running, swimming, walking)</li>
@@ -175,7 +176,7 @@ export default function PrivacyPolicy() {
           <h2>3. How We Use Your Information</h2>
           <p>We use the information we collect to:</p>
           <ul>
-            <li>Verify that athletic activities are real and GPS-confirmed</li>
+            <li>Verify that athletic activities are real and recorded by the athlete&apos;s fitness device or app</li>
             <li>Convert verified activities into PROOF miles using our PROOF Effort Index (PEI)</li>
             <li>Calculate and maintain your PROOF tier and active status</li>
             <li>Credit your effort to brand loyalty programs you have joined</li>
@@ -209,7 +210,7 @@ export default function PrivacyPolicy() {
 
           <h3>4.2 With Fitness Platforms</h3>
           <p>
-            We do not share your data back to Strava, Garmin, or other connected fitness platforms
+            We do not share your data back to Strava or other connected fitness platforms
             beyond what is required for the API connection to function.
           </p>
 
@@ -236,7 +237,8 @@ export default function PrivacyPolicy() {
           </p>
           <p>
             GPS route data is used during the verification process to confirm that an activity is
-            real and GPS-tracked. We do not store full GPS route coordinates long-term. Once
+            real and recorded by your fitness device or app. We do not store full GPS route
+            coordinates long-term. Once
             verification is complete, we retain only the verification result (verified or not) and
             aggregate activity data (distance, sport type, duration).
           </p>
@@ -282,13 +284,12 @@ export default function PrivacyPolicy() {
 
           <h3>7.4 Disconnect Fitness Platforms</h3>
           <p>
-            You may disconnect Strava, Garmin Connect, or any other connected fitness platform at any
-            time through your PROOF account settings. You may also revoke PROOF's access directly
-            through your fitness platform's settings:
+            You may disconnect any connected fitness platform at any time through your PROOF
+            account settings. You may also revoke PROOF&apos;s access directly through the platform&apos;s
+            own settings:
           </p>
           <ul>
             <li>Strava: Settings → My Apps → PROOF → Revoke Access</li>
-            <li>Garmin Connect: Account Settings → Connected Apps → PROOF → Remove</li>
           </ul>
           <p>
             Disconnecting a fitness platform stops new activity data from being sent to PROOF. Activity
@@ -354,10 +355,6 @@ export default function PrivacyPolicy() {
               Privacy Policy</a> · <a href="https://www.strava.com/legal/api" target="_blank" rel="noopener noreferrer">
               API Agreement</a>
             </li>
-            <li>
-              Garmin: <a href="https://www.garmin.com/en-US/privacy/connect/policy/" target="_blank" rel="noopener noreferrer">
-              Garmin Connect Privacy Policy</a>
-            </li>
           </ul>
           <p>
             PROOF's access to your fitness data is subject to the terms of each platform's API
@@ -394,9 +391,9 @@ export default function PrivacyPolicy() {
           <hr className="divider" />
 
           <p style={{ color: COLORS.subtle, fontSize: 13 }}>
-            This policy is designed to meet the requirements of the Strava API Agreement, the Garmin
-            Connect Developer Program Agreement, the California Consumer Privacy Act (CCPA/CPRA),
-            and the General Data Protection Regulation (GDPR).
+            This policy is designed to meet the requirements of the Strava API Agreement, the
+            California Consumer Privacy Act (CCPA/CPRA), and the General Data Protection Regulation
+            (GDPR).
           </p>
 
         </div>

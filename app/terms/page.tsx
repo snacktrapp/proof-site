@@ -225,8 +225,9 @@ export default function TermsOfService() {
               integration.
             </li>
             <li>
-              <strong>Connected Platform</strong> — a third-party fitness service (e.g., Strava,
-              Garmin Connect) that an athlete authorizes PROOF to read activity data from.
+              <strong>Connected Platform</strong> — a third-party fitness service (e.g., Strava;
+              additional integrations planned) that an athlete authorizes PROOF to read activity
+              data from.
             </li>
           </ul>
 
@@ -256,8 +257,9 @@ export default function TermsOfService() {
 
           <h2>4. Athletes — Connecting Fitness Platforms</h2>
           <p>
-            To earn verified-effort rewards, you connect a fitness platform such as Strava or
-            Garmin Connect through that platform's OAuth authorization flow. By connecting, you:
+            To earn verified-effort rewards, you connect a fitness platform (currently Strava;
+            additional integrations planned) through that platform&apos;s OAuth authorization flow.
+            By connecting, you:
           </p>
           <ul>
             <li>
@@ -330,8 +332,8 @@ export default function TermsOfService() {
               Service.
             </li>
             <li>
-              Use the Service to violate the terms of any connected platform (Strava, Garmin, or
-              otherwise) or any brand's program rules.
+              Use the Service to violate the terms of any connected platform or any brand&apos;s
+              program rules.
             </li>
           </ul>
           <p>
@@ -560,8 +562,7 @@ export default function TermsOfService() {
           <p style={{ color: COLORS.subtle, fontSize: 13 }}>
             These Terms are designed to comply with applicable U.S. consumer-protection,
             intellectual-property, and electronic-contracting laws, and to operate alongside the
-            Strava API Agreement and Garmin Connect Developer Program Agreement that govern
-            PROOF's connected-platform integrations.
+            Strava API Agreement that governs PROOF&apos;s connected-platform integration.
           </p>
         </div>
       </main>
