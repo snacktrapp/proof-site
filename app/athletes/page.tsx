@@ -72,12 +72,12 @@ const steps = [
   {
     number: "02",
     title: "Train like you already do",
-    description: "Every GPS-verified activity earns PROOF miles. Cycle, run, swim, hike — all your effort counts.",
+    description: "Every verified activity earns PROOF Miles. Cycle, run, swim, hike — all your effort counts. No subscription, no manual logging.",
   },
   {
     number: "03",
-    title: "Earn rewards from brands you love",
-    description: "Brands on the PROOF network reward real effort with real discounts. Your verified miles unlock rewards automatically.",
+    title: "Earn rewards automatically",
+    description: "Hit a milestone — say 500 verified miles with a brand — and a discount code drops into your inbox. Redeem at checkout. No coupon hunting.",
   },
 ];
 
@@ -260,17 +260,17 @@ export default function AthletesPage() {
               color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 24px",
               letterSpacing: "0.02em"
             }}>
-              TRAIN. EARN PROOF MILES.<br />GET REWARDED.
+              The More You Train,<br />The More You Earn.
             </h1>
           </FadeIn>
 
           <FadeIn delay={200}>
             <p className="hero-sub" style={{
               fontFamily: "'Outfit', sans-serif", fontSize: 18, color: COLORS.subtle,
-              lineHeight: 1.7, maxWidth: 520, margin: "0 auto 40px"
+              lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px"
             }}>
-              Connect your Strava. Every GPS-verified mile, stroke, and stride earns PROOF miles —
-              effort-normalized, fraud-protected, and recognized by brands across the network.
+              Connect Strava once. Every verified mile, stroke, and stride earns PROOF Miles —
+              points you redeem for real discounts at the brands you already shop.
             </p>
           </FadeIn>
 
@@ -285,6 +285,16 @@ export default function AthletesPage() {
               }}>
               Sign up free
             </a>
+          </FadeIn>
+
+          <FadeIn delay={400}>
+            <p style={{
+              fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted,
+              lineHeight: 1.6, marginTop: 28, letterSpacing: "0.01em"
+            }}>
+              Most loyalty programs reward what you <span style={{ color: COLORS.subtle, fontWeight: 600 }}>BUY</span>.
+              PROOF rewards what you <span style={{ color: COLORS.signal, fontWeight: 600 }}>DO</span>.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -380,10 +390,11 @@ export default function AthletesPage() {
           </h2>
           <p style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
-            textAlign: "center", maxWidth: 480, margin: "0 auto 48px", lineHeight: 1.65
+            textAlign: "center", maxWidth: 520, margin: "0 auto 48px", lineHeight: 1.65
           }}>
-            The PROOF Effort Index normalizes effort across sports.
-            A running mile earns more than a cycling mile — because it costs more.
+            Different sports take different effort. A swim mile earns way more than a bike mile
+            because it costs way more. Every sport you log earns PROOF Miles in proportion to the
+            work it takes.
           </p>
         </FadeIn>
 
@@ -417,9 +428,15 @@ export default function AthletesPage() {
         <FadeIn delay={700}>
           <p style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted,
-            textAlign: "center", marginTop: 24
+            textAlign: "center", marginTop: 24, lineHeight: 1.6
           }}>
-            Anchor: 1 road cycling mile = 1 PM. All sports calibrated by physiological cost (MET-minutes).
+            Anchor: 1 road cycling mile = 1 PROOF Mile. Other sports calibrated to match the
+            actual effort each one demands.
+            {" "}
+            <a href="/methodology"
+              style={{ color: COLORS.subtle, textDecoration: "underline", textUnderlineOffset: 3 }}>
+              See the full methodology →
+            </a>
           </p>
         </FadeIn>
       </section>
@@ -454,9 +471,9 @@ export default function AthletesPage() {
               fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
               lineHeight: 1.7, maxWidth: 480, margin: "0 auto"
             }}>
-              Every activity runs through a 9-gate fraud pipeline. GPS-tracked only.
-              No manual entries. Sport-specific daily caps and velocity checks.
-              Your PROOF miles are earned, not gamed.
+              Every activity runs through a multi-stage verification pipeline. Device-recorded
+              only — no manual entries. Sport-specific daily caps and velocity checks. Your
+              PROOF Miles are earned, not gamed.
             </p>
           </div>
         </FadeIn>
