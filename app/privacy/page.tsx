@@ -131,12 +131,27 @@ export default function PrivacyPolicy() {
             <li>GPS route data (used for verification, then discarded — see Section 5)</li>
             <li>Date and time of activity</li>
             <li>Activity title and description</li>
-            <li>Heart rate data (if available and relevant to activity verification)</li>
+            <li>Total elevation gain</li>
+            <li>Heart rate data (average and maximum, when recorded by your device)</li>
+            <li>Power data (average and weighted-average watts, when a power meter is paired)</li>
+            <li>Energy expended in kilojoules (when computable from power data)</li>
+            <li>Your fitness platform&apos;s native intensity score, where one is published</li>
             <li>Your fitness platform profile information (athlete ID, profile name, profile photo URL)</li>
           </ul>
           <p>
             We only access data you have explicitly authorized through the OAuth consent flow provided
             by each fitness platform. You can revoke this access at any time (see Section 7).
+          </p>
+          <p>
+            <strong>Forward-purpose declaration.</strong> We capture all of the activity-data fields
+            above on every recorded activity, even though our current PROOF Miles calculation
+            (methodology v1.0) only uses distance and elevation. The remaining fields — heart rate,
+            power, kilojoules, and intensity scores — are stored to support enriched effort
+            calculation in future releases (intensity-aware PROOF Miles, dimension-specific
+            challenges, athlete specializations). You can review the full methodology, including the
+            forward roadmap, at our{" "}
+            <a href="/methodology">PROOF methodology page</a>. Disconnecting a fitness platform
+            stops new data of any of these types from being received.
           </p>
 
           <h3>2.3 Brand Program Data</h3>
