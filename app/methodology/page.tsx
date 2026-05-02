@@ -280,7 +280,7 @@ export default function Methodology() {
 
           <div className="callout">
             <strong>Methodology version: {methodVersion}.</strong> This is our launch
-            calculation. We commit to a clear versioning policy (Section 8) — when we revise the
+            calculation. We commit to a clear versioning policy (Section 9) — when we revise the
             math, activities credited under {methodVersion} stay at {methodVersion}. New rules
             apply forward only.
           </div>
@@ -304,7 +304,44 @@ export default function Methodology() {
             graduated entirely on lifetime PM.
           </p>
 
-          <h2>2. The v1.0 calculation</h2>
+          <h2>2. Which activities count</h2>
+          <p>
+            The platforms we connect to (Strava and Garmin Connect today) record many things.
+            PROOF only credits activities that pass a small set of inclusion gates — designed to
+            keep the system honest without being precious about it.
+          </p>
+          <p>
+            <strong>Sports we credit.</strong> Anything in Sections 4 and 5 of this page
+            (cycling and its variants, running, trail running, hiking, walking, swimming).
+            Sports outside that table — yoga, weight training, surfing, etc. — don&apos;t
+            credit. We add new sports to the table as they make sense for the network.
+          </p>
+          <p>
+            <strong>Recorded by a device, not typed in.</strong> Manual entries — where you
+            type "I ran 5 miles" into Strava without a watch or phone actually tracking it —
+            don&apos;t credit. We need device-verified data to honor the &quot;verified
+            effort&quot; promise; a typed entry isn&apos;t verified.
+          </p>
+          <p>
+            <strong>Indoor and virtual activities.</strong> They count. Strava forwards indoor
+            rides without elevation data, so they credit on distance alone — Section 7 covers
+            the detail. Treadmills, smart trainers, Zwift sessions are all eligible.
+          </p>
+          <p>
+            <strong>Elevation, when reported.</strong> When the recording device captures
+            elevation gain, it credits per the Section 5 weights. When it doesn&apos;t, the
+            activity credits on distance only. We don&apos;t infer elevation from terrain
+            databases or course data — only what the device measured.
+          </p>
+          <p>
+            <strong>Sane minimums and speed ceilings.</strong> Activities below a small
+            distance minimum don&apos;t credit. Activities exceeding the speed ceiling for
+            their sport — say, a &quot;run&quot; averaging 25 mph — drop through our anti-fraud
+            screen. These gates run on every activity, every time, both during the initial
+            history backfill and on every live activity after that.
+          </p>
+
+          <h2>3. The v1.0 calculation</h2>
           <p>For every verified activity, the formula is:</p>
 
           <div className="formula">
@@ -333,7 +370,7 @@ export default function Methodology() {
             contributed.
           </p>
 
-          <h2>3. Sport multipliers (v1.0)</h2>
+          <h2>4. Sport multipliers (v1.0)</h2>
           <p>
             The multiplier is anchored to road cycling at 1.0. A mile run is roughly 3× the
             cardiovascular cost of a mile ridden at a moderate pace; a mile swum is roughly 8×.
@@ -367,7 +404,7 @@ export default function Methodology() {
             at equivalent distance is genuinely higher. Gravel sits between them.
           </p>
 
-          <h2>4. Elevation weights (v1.0)</h2>
+          <h2>5. Elevation weights (v1.0)</h2>
           <p>
             Elevation weights determine how much each 100m of climbing contributes, expressed in
             miles-equivalent. For cycling, climbing 100m roughly costs the metabolic equivalent of
@@ -397,10 +434,10 @@ export default function Methodology() {
             We expect the running and hiking weights to be the most likely targets for revision in
             v1.1 based on coach and community feedback. The cycling weight has decades of
             consistent physiology research behind it. Where we update constants, we'll publish a
-            changelog (Section 8).
+            changelog (Section 9).
           </p>
 
-          <h2>5. Worked examples</h2>
+          <h2>6. Worked examples</h2>
           <p>Five activities, working through the math.</p>
 
           <div className="example">
@@ -453,7 +490,7 @@ export default function Methodology() {
             </div>
           </div>
 
-          <h2>6. Indoor and virtual rides</h2>
+          <h2>7. Indoor and virtual rides</h2>
           <p>
             <strong>Strava reports zero elevation gain for indoor and virtual activities</strong>{" "}
             — Zwift, Peloton, smart-trainer rides, treadmill runs. The activity data we receive
@@ -472,7 +509,7 @@ export default function Methodology() {
             Strava (some do), it'll credit through the standard math automatically.
           </p>
 
-          <h2>7. What we capture but don&apos;t yet use</h2>
+          <h2>8. What we capture but don&apos;t yet use</h2>
           <p>
             On every activity, we record more than what v1.0 of the calculation reads. We capture
             (and store) all of the following from every Strava activity:
@@ -501,7 +538,7 @@ export default function Methodology() {
             same versioning discipline as v1.0.
           </p>
 
-          <h2>8. Versioning</h2>
+          <h2>9. Versioning</h2>
           <p>
             We follow a <strong>version-from-now</strong> policy: when we ship a new version of
             the calculation, activities credited under the previous version stay at that version.
@@ -527,7 +564,7 @@ export default function Methodology() {
             </li>
           </ul>
 
-          <h2>9. What this isn&apos;t</h2>
+          <h2>10. What this isn&apos;t</h2>
           <p>
             We've drawn from established physiology and training-science literature in calibrating
             the v1.0 constants — Banister&apos;s TRIMP framework for cardiovascular load, Coggan&apos;s
@@ -562,9 +599,9 @@ export default function Methodology() {
             </li>
           </ul>
 
-          <h2>10. Feedback</h2>
+          <h2>11. Feedback</h2>
           <p>
-            We expect to revise this methodology. The constants in Sections 3 and 4 are our best
+            We expect to revise this methodology. The constants in Sections 4 and 5 are our best
             calibration today, informed by public research and our own analysis — but coaches,
             physiologists, and athletes who think hard about training will have informed opinions,
             and we want to hear them.
@@ -577,7 +614,7 @@ export default function Methodology() {
             you&apos;ll see them in the changelog above.
           </p>
 
-          <h2>11. For brand admins</h2>
+          <h2>12. For brand admins</h2>
           <p>
             If you run a brand loyalty program on PROOF, this calibration affects how fast your
             athletes accumulate brand PM. Two things to know:
@@ -604,7 +641,7 @@ export default function Methodology() {
             accumulates, not how you should think about your reward strategy.
           </p>
 
-          <h2>12. Privacy reference</h2>
+          <h2>13. Privacy reference</h2>
           <p>
             This methodology document explains how we calculate PROOF Miles from the data we
             collect. For details on what data we collect, how we use it, who we share it with,
