@@ -311,6 +311,13 @@ export default function Methodology() {
             keep the system honest without being precious about it.
           </p>
           <p>
+            These gates run on PROOF&apos;s side, against the activity data Strava sends us.
+            We don&apos;t consume Strava&apos;s own moderation signals (their flagged-activity
+            status, segment-leaderboard reviews, etc.) — those are post-hoc community processes
+            that operate on a different timeline than reward issuance. More on that at the
+            bottom of this section.
+          </p>
+          <p>
             <strong>Sports we credit.</strong> Anything in Sections 4 and 5 of this page
             (cycling and its variants, running, trail running, hiking, walking, swimming).
             Sports outside that table — yoga, weight training, surfing, etc. — don&apos;t
@@ -334,11 +341,36 @@ export default function Methodology() {
             databases or course data — only what the device measured.
           </p>
           <p>
-            <strong>Sane minimums and speed ceilings.</strong> Activities below a small
-            distance minimum don&apos;t credit. Activities exceeding the speed ceiling for
-            their sport — say, a &quot;run&quot; averaging 25 mph — drop through our anti-fraud
-            screen. These gates run on every activity, every time, both during the initial
-            history backfill and on every live activity after that.
+            <strong>Sport-specific speed ceilings.</strong> A &quot;run&quot; averaging 25
+            mph or a &quot;ride&quot; averaging 50 mph drops through the speed-ceiling
+            screen. Each sport has its own ceiling tuned to what real athletes actually
+            achieve at the elite end (Tour de France average pace ≈ 25 mph; world-class
+            marathon pace ≈ 13 mph). Activities below a small distance minimum also don&apos;t
+            credit — guards against accidental partial recordings.
+          </p>
+          <p>
+            <strong>Multi-device duplicate detection.</strong> Recording the same effort on
+            two devices at once (head unit + phone, watch + bike computer) creates two
+            separate Strava activities. PROOF detects duplicates across the same sport, start
+            time within ±10 minutes, and matching distance + duration; one credits, the other
+            is recognized as a duplicate and ignored.
+          </p>
+          <p>
+            <strong>Daily cap.</strong> A single athlete can earn up to 250 miles of
+            distance-based PROOF Miles per UTC day. Activities that would push past the cap
+            credit partially up to the limit; further activity that day doesn&apos;t add more.
+            This sits well above what almost any athlete logs in a day, but exists so a
+            single anomalous activity can&apos;t inflate the system. Elevation always credits
+            on top — climbing isn&apos;t bound by the daily cap.
+          </p>
+          <p>
+            <strong>What we don&apos;t currently do.</strong> Strava&apos;s flagged-activity
+            status, leaderboard moderation, and segment review are processes that run on
+            Strava&apos;s timeline (sometimes days or weeks after upload, often via community
+            reports). PROOF credits at activity-create time and doesn&apos;t re-check or roll
+            back later. We may add Strava-flag awareness in a future release; today, the
+            integrity guarantees are the gates listed above. If something gets through that
+            shouldn&apos;t have, the brand admin can reach out and we&apos;ll review.
           </p>
 
           <h2>3. The v1.0 calculation</h2>
