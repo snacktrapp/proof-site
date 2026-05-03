@@ -279,7 +279,7 @@ export default function AthletesPage() {
             color: COLORS.signal, letterSpacing: "0.15em", textTransform: "uppercase",
             marginBottom: 24
           }}>
-            Your effort. Verified. Rewarded.
+            For Athletes
           </div>
 
           <h1 className="hero-title" style={{
@@ -287,15 +287,15 @@ export default function AthletesPage() {
             color: COLORS.textBright, lineHeight: 1.05, margin: "0 0 24px",
             letterSpacing: "0.02em"
           }}>
-            The More You Train,<br />The More You Earn.
+            Your Effort Is Worth Something.
           </h1>
 
           <p className="hero-sub" style={{
             fontFamily: "'Outfit', sans-serif", fontSize: 18, color: COLORS.subtle,
             lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px"
           }}>
-            Connect Strava once. Every verified mile, stroke, and stride earns PROOF Miles —
-            points you redeem for real discounts at the brands you already shop.
+            Connect Strava once. Every verified mile, stride, and stroke credits toward
+            rewards from the brands you already shop — for the training you already do.
           </p>
 
           <a href="https://proof.verifiedeffort.com/auth/register" target="_blank" rel="noopener noreferrer"
