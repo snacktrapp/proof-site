@@ -18,8 +18,9 @@ const COLORS = {
 };
 
 export default function Methodology() {
-  const effectiveDate = "April 30, 2026";
-  const methodVersion = "v1.0";
+  const effectiveDate = "May 6, 2026";
+  const methodVersion = "v1.6";
+  const v1EffectiveDate = "April 30, 2026";
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
@@ -266,23 +267,27 @@ export default function Methodology() {
 
         <div className="meth">
           <p>
-            PROOF Miles (PM) are how PROOF measures verified athletic effort. They're the single
-            unit that drives every athlete's tier, every brand's milestone thresholds, and every
-            reward issued on the network. This document explains exactly how PM is calculated, why
-            we made the choices we made, and how we plan to evolve the methodology over time.
+            PROOF Miles are the unit of verified athletic effort. Every mile traces to a
+            device-recorded activity confirmed through third-party platforms (Strava, Garmin) —
+            not self-reported, not inferred. Constants are derived from published metabolic-cost
+            data (Ainsworth et al. 2011 Compendium of Physical Activities) and the work-energy
+            theorem for elevation. The math is open, every multiplier is inspectable, and your
+            lifetime total is preserved under the rules in effect when each mile was earned.
           </p>
 
           <p>
-            We publish this openly because the math should be inspectable. If you race, coach, or
-            think hard about training, you should be able to read this and understand precisely
-            what you're earning credit for.
+            This document explains exactly how PM is calculated, where each constant comes from,
+            and how we plan to evolve the methodology over time. If you race, coach, or think hard
+            about training, you should be able to read this and reproduce every multiplier with
+            the Compendium open on a second tab.
           </p>
 
           <div className="callout">
-            <strong>Methodology version: {methodVersion}.</strong> This is our launch
-            calculation. We commit to a clear versioning policy (Section 9) — when we revise the
-            math, activities credited under {methodVersion} stay at {methodVersion}. New rules
-            apply forward only.
+            <strong>Methodology version: {methodVersion}.</strong> Effective {effectiveDate}.
+            We commit to a clear versioning policy (Section 9) — when we revise the math,
+            activities credited under any prior version stay at that version. New rules apply
+            forward only. v1.0 launched {v1EffectiveDate}; {methodVersion} supersedes it from
+            the date above. The full changelog is in Section 9.
           </div>
 
           <h2>1. What PROOF Miles measure</h2>
@@ -291,6 +296,16 @@ export default function Methodology() {
             sports. The core idea: a mile of running, a mile of cycling, and a mile of swimming
             represent very different metabolic costs. PM is the unit that puts them on a common
             scale so a runner and a cyclist who train equally hard earn comparable credit.
+          </p>
+          <p>
+            <strong>"Verified" refers to the activity itself</strong> — that it was recorded by a
+            device, uploaded through a third-party platform, and confirms when, where, and how
+            far you moved. PROOF Miles is not a training-load metric or a fitness assessment.
+            For training-load precision, see TSS (cycling, power-based), TRIMP (heart-rate
+            based), or your platform's own training-load tool. PM is calibrated for cross-sport
+            equity using published metabolic-cost data — intentionally simpler than those metrics
+            because it is built to be inspectable, sport-agnostic, and stable across years of an
+            athlete's record.
           </p>
           <p>
             Activity data comes from connected fitness platforms (Strava and Garmin Connect today;
@@ -402,48 +417,79 @@ export default function Methodology() {
             contributed.
           </p>
 
-          <h2>4. Sport multipliers (v1.0)</h2>
+          <h2>4. Sport multipliers ({methodVersion})</h2>
           <p>
-            The multiplier is anchored to road cycling at 1.0. A mile run is roughly 3× the
-            cardiovascular cost of a mile ridden at a moderate pace; a mile swum is roughly 8×.
-            These ratios trace back to public physiology research on metabolic cost (MET-equivalents
-            adapted for distance-normalized comparison).
+            The multiplier is anchored to road cycling at 14 mph (Compendium 2011 entry 01040,
+            10.0 MET). For each other sport, the pure-MET multiplier is derived as
+            <em> (sport MET / sport pace_mph) ÷ (10.0 / 14)</em>. This produces the per-mile
+            metabolic cost ratio against the cycling anchor. Where we adjust above the pure-MET
+            number — for impact load, on-water cardiovascular premium, whole-body engagement,
+            level-trail metabolic cost — the adjustment is named explicitly with its rationale.
           </p>
           <table>
             <thead>
               <tr>
                 <th>Sport (Strava type)</th>
+                <th>Compendium code · MET · pace</th>
                 <th style={{ textAlign: "right" }}>Multiplier</th>
+                <th style={{ textAlign: "right" }}>Adjustment</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Ride / VirtualRide</td><td className="num">1.0</td></tr>
-              <tr><td>GravelRide</td><td className="num">1.2</td></tr>
-              <tr><td>MountainBikeRide</td><td className="num">1.5</td></tr>
-              <tr><td>EBikeRide</td><td className="num">0.4</td></tr>
-              <tr><td>Run / VirtualRun</td><td className="num">3.0</td></tr>
-              <tr><td>TrailRun</td><td className="num">4.0</td></tr>
-              <tr><td>Hike</td><td className="num">1.0</td></tr>
-              <tr><td>Walk</td><td className="num">1.0</td></tr>
-              <tr><td>Swim</td><td className="num">8.0</td></tr>
-              <tr><td>Rowing</td><td className="num">2.0</td></tr>
-              <tr><td>Kayaking</td><td className="num">2.0</td></tr>
+              <tr><td>Ride / VirtualRide</td><td>01040 · 10.0 MET · 14 mph (anchor)</td><td className="num">1.00</td><td className="num">—</td></tr>
+              <tr><td>GravelRide</td><td>01030 · 8.0 MET · 12 mph</td><td className="num">0.95</td><td className="num">—</td></tr>
+              <tr><td>MountainBikeRide</td><td>01015 · 8.5 MET · 9 mph</td><td className="num">1.30</td><td className="num">—</td></tr>
+              <tr><td>EBikeRide</td><td>01084 · 6.0 MET · 14 mph (light electronic support)</td><td className="num">0.60</td><td className="num">—</td></tr>
+              <tr><td>Run / VirtualRun</td><td>12070 · 11.0 MET · 7 mph</td><td className="num">2.50</td><td className="num">+14% †</td></tr>
+              <tr><td>TrailRun</td><td>Run + level-trail premium</td><td className="num">2.70</td><td className="num">+0.20 ‡</td></tr>
+              <tr><td>Hike</td><td>17080 · 6.0 MET · 3 mph</td><td className="num">2.80</td><td className="num">—</td></tr>
+              <tr><td>Walk</td><td>17200 · 4.3 MET · 3.5 mph</td><td className="num">1.70</td><td className="num">—</td></tr>
+              <tr><td>Swim</td><td>18240–18290 · 5.8–8.0 MET · 1.7 mph (midpoint)</td><td className="num">6.00</td><td className="num">—</td></tr>
+              <tr><td>Rowing (water)</td><td>18050 · 5.8 MET · 6 mph</td><td className="num">1.40</td><td className="num">+5% §</td></tr>
+              <tr><td>Kayaking</td><td>18100 · 5.0 MET · 4 mph</td><td className="num">1.75</td><td className="num">—</td></tr>
+              <tr><td>NordicSki / RollerSki</td><td>19090 · 9.0 MET · 4.5 mph</td><td className="num">3.00</td><td className="num">+10% ¶</td></tr>
             </tbody>
           </table>
+          <p style={{ fontSize: 13, color: COLORS.subtle }}>
+            <strong>†</strong> Run: pure-MET derivation gives 2.20. The +14% above pure-MET is a
+            cross-modality balancing factor reflecting running's higher impact load, EPOC
+            premium, and athlete-perceived effort relative to cycling at the anchor pace. This
+            adjustment is editorial — labeled as such rather than presented as additional
+            physiology — and is a live calibration we will revisit in v2.1 against accumulated
+            cohort data.
+            <br /><br />
+            <strong>‡</strong> TrailRun: Run baseline plus a +0.20 level-trail metabolic premium
+            consistent with published comparative studies of trail vs road running on level
+            terrain. Uphill premium is captured separately by the elevation weight (Section 5).
+            <br /><br />
+            <strong>§</strong> Rowing (water): Compendium 18050 gives 1.35 pure-MET. The +5% is
+            an on-water premium reflecting balance, wind, and steering — published literature
+            shows water rowing produces meaningfully higher HR and lactate at matched-power vs
+            ergometer rowing.
+            <br /><br />
+            <strong>¶</strong> NordicSki: Compendium 19090 gives 2.80 pure-MET. The +10% reflects
+            whole-body engagement — XC skiing has the highest measured VO₂max among Olympic
+            sports (sustained ~96 ml/kg/min in elite), driven by upper-body work that is not
+            fully captured in lower-body-dominant Compendium derivations.
+          </p>
           <p>
             E-bikes are rated below cycling because the motor does meaningful work — we credit the
-            human contribution. Mountain biking is rated above road cycling because off-road effort
-            at equivalent distance is genuinely higher. Gravel sits between them.
+            human contribution. Mountain biking is rated above road cycling because off-road
+            effort at equivalent distance is genuinely higher. Gravel sits between them.
+          </p>
+          <p>
+            All Compendium codes refer to entries in the 2011 update of the Compendium of
+            Physical Activities (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81).
+            Available openly at <a href="https://pacompendium.com" target="_blank" rel="noopener noreferrer">pacompendium.com</a>.
           </p>
 
-          <h2>5. Elevation weights (v1.0)</h2>
+          <h2>5. Elevation weights ({methodVersion})</h2>
           <p>
             Elevation weights determine how much each 100m of climbing contributes, expressed in
-            miles-equivalent. For cycling, climbing 100m roughly costs the metabolic equivalent of
-            riding an additional flat mile. Running's cost-per-meter-of-climb is lower per unit
-            because runners are already working hard on flat — the elevation premium is smaller as
-            a fraction of total effort. Trail running runs slightly higher than road running due to
-            the terrain variability.
+            miles-equivalent. The cycling weight is derived from the work-energy theorem
+            (gravity is exact); other sports' weights are derived from Minetti et al. 2002
+            (<em>J Appl Physiol</em> 93:1039-46), the canonical reference for the energy cost of
+            walking and running on extreme uphill and downhill slopes.
           </p>
           <table>
             <thead>
@@ -453,30 +499,40 @@ export default function Methodology() {
               </tr>
             </thead>
             <tbody>
-              <tr><td>Cycling (all variants)</td><td className="num">+1.0 mi</td></tr>
-              <tr><td>TrailRun</td><td className="num">+0.6 mi</td></tr>
-              <tr><td>Run / VirtualRun</td><td className="num">+0.5 mi</td></tr>
-              <tr><td>Hike</td><td className="num">+0.5 mi</td></tr>
-              <tr><td>Walk</td><td className="num">+0.3 mi</td></tr>
-              <tr><td>NordicSki / RollerSki</td><td className="num">+0.5 mi</td></tr>
+              <tr><td>Cycling (all variants)</td><td className="num">+1.75 mi</td></tr>
+              <tr><td>Hike</td><td className="num">+0.95 mi</td></tr>
+              <tr><td>TrailRun</td><td className="num">+0.70 mi</td></tr>
+              <tr><td>Run / VirtualRun</td><td className="num">+0.60 mi</td></tr>
+              <tr><td>NordicSki / RollerSki</td><td className="num">+0.60 mi</td></tr>
+              <tr><td>Walk</td><td className="num">+0.40 mi</td></tr>
               <tr><td>Swim / Rowing / Kayaking</td><td className="num">0</td></tr>
             </tbody>
           </table>
           <p>
-            We expect the running and hiking weights to be the most likely targets for revision in
-            v1.1 based on coach and community feedback. The cycling weight has decades of
-            consistent physiology research behind it. Where we update constants, we'll publish a
-            changelog (Section 9).
+            <strong>Cycling elevation derivation.</strong> Lifting an 85kg system (75kg rider +
+            10kg gear) by 100m requires <em>mgh = 85 × 9.81 × 100 = 83.3 kJ of mechanical work</em>.
+            At 23% gross cycling efficiency (a well-validated mid-range value), the metabolic
+            cost is 83.3 / 0.23 ≈ <em>362 kJ metabolic</em>. A flat mile at 14 mph requires
+            roughly 165W × 257s = 42.4 kJ mechanical, or ≈ 184 kJ metabolic. The ratio is 1.97;
+            the +1.75 weight is a conservative round-down for the median rider. Per-athlete
+            weight normalization is deferred to v3.0.
+          </p>
+          <p>
+            <strong>Hike weight (+0.95) higher than Run weight (+0.60).</strong> Per Minetti, the
+            energy cost gradient for walking is steeper than for running on uphill terrain
+            because walking has less elastic recoil to recover energy on each step. Running's
+            biomechanics favor rebound; walking's do not. Hikers climbing 100m do meaningfully
+            more work per vertical meter than runners; the elevation weight reflects this.
           </p>
 
           <h2>6. Worked examples</h2>
-          <p>Five activities, working through the math.</p>
+          <p>Five activities, working through the {methodVersion} math.</p>
 
           <div className="example">
             <div className="head">A. Flat 30-mile road ride</div>
             <div className="row">distance_mi = 30 · elevation_gain_m = 0 · sport = Ride</div>
-            <div className="row">distance_pm = floor(30 × 1.0) = 30</div>
-            <div className="row">climbing_pm = floor(0 × 1.0) = 0</div>
+            <div className="row">distance_pm = floor(30 × 1.00) = 30</div>
+            <div className="row">climbing_pm = floor(0 × 1.75) = 0</div>
             <div className="result">
               verified_pm = 30 · breakdown: 30 from miles · 0 from climbing
             </div>
@@ -485,37 +541,37 @@ export default function Methodology() {
           <div className="example">
             <div className="head">B. Hilly 30-mile road ride, 1,500m climb</div>
             <div className="row">distance_mi = 30 · elevation_gain_m = 1,500 · sport = Ride</div>
-            <div className="row">elevation_mi_equiv = (1,500 / 100) × 1.0 = 15</div>
-            <div className="row">distance_pm = floor(30 × 1.0) = 30</div>
-            <div className="row">climbing_pm = floor(15 × 1.0) = 15</div>
+            <div className="row">elevation_mi_equiv = (1,500 / 100) × 1.75 = 26.25</div>
+            <div className="row">distance_pm = floor(30 × 1.00) = 30</div>
+            <div className="row">climbing_pm = floor(26.25 × 1.00) = 26</div>
             <div className="result">
-              verified_pm = 45 · breakdown: 30 from miles · 15 from climbing
+              verified_pm = 56 · breakdown: 30 from miles · 26 from climbing
             </div>
           </div>
 
           <div className="example">
             <div className="head">C. Trail run, 6 miles, 400m climb</div>
             <div className="row">distance_mi = 6 · elevation_gain_m = 400 · sport = TrailRun</div>
-            <div className="row">elevation_mi_equiv = (400 / 100) × 0.6 = 2.4</div>
-            <div className="row">distance_pm = floor(6 × 4.0) = 24</div>
-            <div className="row">climbing_pm = floor(2.4 × 4.0) = 9</div>
+            <div className="row">elevation_mi_equiv = (400 / 100) × 0.70 = 2.80</div>
+            <div className="row">distance_pm = floor(6 × 2.70) = 16</div>
+            <div className="row">climbing_pm = floor(2.80 × 2.70) = 7</div>
             <div className="result">
-              verified_pm = 33 · breakdown: 24 from miles · 9 from climbing
+              verified_pm = 23 · breakdown: 16 from miles · 7 from climbing
             </div>
           </div>
 
           <div className="example">
             <div className="head">D. Pool swim, 1 mile</div>
             <div className="row">distance_mi = 1 · elevation_gain_m = 0 · sport = Swim</div>
-            <div className="row">distance_pm = floor(1 × 8.0) = 8</div>
+            <div className="row">distance_pm = floor(1 × 6.00) = 6</div>
             <div className="row">climbing_pm = 0 (elevation_weight = 0 for swim)</div>
-            <div className="result">verified_pm = 8 · no climb breakdown shown for swim</div>
+            <div className="result">verified_pm = 6 · no climb breakdown shown for swim</div>
           </div>
 
           <div className="example">
             <div className="head">E. Indoor cycling, 25 miles (Zwift)</div>
             <div className="row">distance_mi = 25 · elevation_gain_m = 0 · sport = VirtualRide</div>
-            <div className="row">distance_pm = floor(25 × 1.0) = 25</div>
+            <div className="row">distance_pm = floor(25 × 1.00) = 25</div>
             <div className="row">climbing_pm = 0 (no recorded elevation)</div>
             <div className="result">
               verified_pm = 25 · breakdown: 25 from miles · 0 from climbing
@@ -591,18 +647,32 @@ export default function Methodology() {
           <h3>Changelog</h3>
           <ul>
             <li>
-              <strong>{methodVersion}</strong> — initial release. Distance + elevation-aware
-              calculation. Effective {effectiveDate}.
+              <strong>{methodVersion}</strong> — sport multiplier and elevation weight
+              recalibration. Anchored to the 2011 Compendium of Physical Activities (Ainsworth
+              et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) with documented cross-modality
+              balancing factors and physics-derived elevation weights. Per-sport changes vs v1.0:
+              GravelRide 1.20→0.95, MountainBikeRide 1.50→1.30, EBikeRide 0.40→0.60 (corrected
+              MET basis), Run 3.00→2.50, TrailRun 4.00→2.70, Hike 1.00→2.80 (major correction),
+              Walk 1.00→1.70, Swim 8.00→6.00, Rowing 2.00→1.40, Kayaking 2.00→1.75, NordicSki
+              added at 3.00. Cycling elevation weight 1.00→1.75 (physics-derived). Methodology
+              page rewritten with explicit Compendium codes, derivation appendix, and limitations
+              acknowledgment. Effective {effectiveDate}.
+            </li>
+            <li>
+              <strong>v1.0</strong> — initial release. Distance + elevation-aware calculation
+              with first-pass sport multipliers. Effective {v1EffectiveDate}. Activities credited
+              under v1.0 retain v1.0 totals; v1.6 applies forward only.
             </li>
           </ul>
 
           <h2>10. What this isn&apos;t</h2>
           <p>
-            We've drawn from established physiology and training-science literature in calibrating
-            the v1.0 constants — Banister&apos;s TRIMP framework for cardiovascular load, Coggan&apos;s
-            Training Stress Score for power-based effort, decades of public research on metabolic
-            cost across sports. Where we use ideas from those frameworks in future versions, we&apos;ll
-            cite them.
+            v1.6 calibration draws directly from the 2011 Compendium of Physical Activities
+            (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) for sport multipliers
+            and Minetti et al. 2002 (<em>J Appl Physiol</em> 93:1039-46) for elevation weights.
+            Future versions may incorporate additional published frameworks — Banister's TRIMP for
+            cardiovascular load, Coggan's TSS for power-based effort — and we'll cite each in the
+            changelog when they ship.
           </p>
           <p>
             But PROOF Miles are not any of those metrics. Specifically:
@@ -621,8 +691,8 @@ export default function Methodology() {
             <li>
               PM is <strong>not</strong> a TSS or TRIMP score. Those metrics use different inputs
               (power-or-HR-time-in-zone curves) and serve different purposes (training-load
-              tracking for performance modeling). PM is designed for cross-network loyalty
-              accounting, not for prescribing your training.
+              tracking for performance modeling). PM is a cross-sport effort unit, not a
+              training prescription.
             </li>
             <li>
               PM is <strong>not</strong> a fitness or readiness assessment. We don&apos;t calculate
@@ -631,7 +701,97 @@ export default function Methodology() {
             </li>
           </ul>
 
-          <h2>11. Feedback</h2>
+          <h2>11. Known limitations</h2>
+          <p>
+            We&apos;d rather state these openly than pretend we capture them. PM&apos;s precision
+            is bounded by what device-recorded activity data can tell us. Specifically:
+          </p>
+          <ul>
+            <li>
+              <strong>Body mass.</strong> A 90kg rider does meaningfully more mechanical work
+              than a 60kg rider on the same climb, but earns the same PM. Per-athlete weight
+              normalization is deferred to v3.0 (will be optional, opt-in via athlete profile).
+            </li>
+            <li>
+              <strong>Intensity within a sport.</strong> A leisurely 50-mile ride and a hard
+              50-mile race earn the same PM despite different metabolic costs. Heart-rate-zone
+              and power-based intensity refinements are deferred to v2.x; v1.6 captures the data
+              (every activity stores HR, watts, kilojoules) but does not compute on it.
+            </li>
+            <li>
+              <strong>Environmental factors.</strong> Heat, altitude, humidity, and wind all
+              meaningfully affect metabolic cost. None are recorded by Strava or Garmin in a
+              form we can use. Activities completed in adverse conditions earn the same PM as
+              those in ideal conditions.
+            </li>
+            <li>
+              <strong>Indoor / virtual elevation.</strong> Strava reports zero elevation gain
+              for indoor and virtual rides (Section 7). Zwift's simulated climbing is real
+              effort but isn&apos;t in the data we receive. Direct integrations are on the
+              roadmap.
+            </li>
+            <li>
+              <strong>Pace variance within a sport.</strong> Walk and Run multipliers assume a
+              representative recreational pace (3.5 mph and 7 mph respectively). Faster or
+              slower athletes are credited at the same per-mile rate. Pace-aware multipliers are
+              deferred to v2.x.
+            </li>
+          </ul>
+          <p>
+            These limitations are visible to us. We don&apos;t engineer around them with hidden
+            adjustments or proprietary smoothing. Where the data is not there, we credit what
+            the data does say and document the gap.
+          </p>
+
+          <h2>12. For coaches and physiologists</h2>
+          <p>
+            Three questions we expect from anyone who reads this page closely.
+          </p>
+          <p>
+            <strong>Why doesn&apos;t PM use heart rate?</strong> Heart rate data is widely
+            available and would let us refine intensity. Two reasons it&apos;s deferred:
+            (a) optical-HR (wrist-strap) data is meaningfully noisier than chest-strap HR,
+            especially at intensity, so a HR-derived multiplier would amplify measurement
+            noise; (b) HR-zone calibration requires a per-athlete HR_max input, and the
+            standard age-predicted estimate (220-age, or Tanaka 208 - 0.7×age) has standard
+            error of 7-12 bpm — large enough to put zone boundaries fully inside the error
+            bar. v2.x ships with athlete-provided HR_max and a bounded intensity multiplier.
+          </p>
+          <p>
+            <strong>Why doesn&apos;t PM use body mass?</strong> Cycling at 14 mph and climbing
+            100m both depend on body mass, and PM doesn&apos;t correct for it. The reason:
+            requiring weight input creates a barrier to participation, and any default we use
+            (75kg system in our cycling derivation) is wrong for individual athletes by up to
+            ±30%. v3.0 ships an opt-in athlete-profile weight input that adjusts climbing PM;
+            athletes who don&apos;t provide weight are credited at the median assumption.
+          </p>
+          <p>
+            <strong>Why isn&apos;t running pace-aware when walking will be?</strong> Running
+            and walking both vary by pace, but walking varies more in <em>kind</em> — a 2.5 mph
+            stroll and a 4.5 mph fitness walk are qualitatively different exercise — while a
+            6 min/mile tempo and a 12 min/mile recovery jog are both still running. v1.6 ships
+            a fixed Walk multiplier with a documented pace assumption. Pace-aware multipliers
+            (for walking and running) are a v2.x decision pending field data on whether the
+            added complexity earns its keep.
+          </p>
+
+          <h2>13. Annual methodology audit</h2>
+          <p>
+            We commit to publishing a yearly methodology audit. Each audit reports per-sport PM
+            distributions across the network, correlations against published training-load
+            metrics where the underlying data exists (TSS for cyclists with power, TRIMP for
+            athletes with HR), any constants under review, and any changes shipping in the next
+            version. The first audit lands in 2027; preliminary cohort analysis from {effectiveDate}{" "}
+            forward will inform v2.x calibrations.
+          </p>
+          <p>
+            The methodology page is the audit trail. Every change shows up in the changelog
+            (Section 9). Every constant traces to a citation. If a published exercise
+            physiologist reads this and finds an error or a stronger calibration, we want to
+            know — see Section 14 below.
+          </p>
+
+          <h2>14. Feedback</h2>
           <p>
             We expect to revise this methodology. The constants in Sections 4 and 5 are our best
             calibration today, informed by public research and our own analysis — but coaches,
@@ -646,7 +806,7 @@ export default function Methodology() {
             you&apos;ll see them in the changelog above.
           </p>
 
-          <h2>12. For brand admins</h2>
+          <h2>15. For brand admins</h2>
           <p>
             If you run a brand loyalty program on PROOF, this calibration affects how fast your
             athletes accumulate brand PM. Two things to know:
@@ -654,17 +814,25 @@ export default function Methodology() {
           <ul>
             <li>
               <strong>Climbing-heavy cohorts accumulate PM faster</strong> than flat-cohort
-              projections imply. A cycling brand whose customers regularly climb significant
-              vertical will see milestone-crossing rates 10–25% faster than a brand whose customers
-              ride mostly flat terrain. Set your milestone PM thresholds with this in mind.
+              projections imply. The v1.6 cycling elevation weight (1.75 mi-equivalent per 100m)
+              is up from v1.0&apos;s 1.0, so a brand whose customers regularly climb significant
+              vertical will see milestone-crossing rates 25–50% faster than a brand whose
+              customers ride mostly flat terrain. Set milestone PM thresholds with this in mind.
+            </li>
+            <li>
+              <strong>Multi-sport cohorts will see different rates than v1.0 implied.</strong>
+              The v1.6 recalibration shifted Run multiplier 3.0→2.5, Swim 8.0→6.0, Hike
+              1.0→2.8, Walk 1.0→1.7. Brands with significant non-cycling exposure should expect
+              accumulation rates to reflect the new constants from the effective date forward.
+              Existing PM accumulated under v1.0 is preserved.
             </li>
             <li>
               <strong>The shape of the milestone ladder doesn&apos;t change.</strong> A
-              500/1000/2500/5000/10000/25000 PM ladder is still a graduated structure. Elevation
-              awareness changes the rate, not the structure. If you've calibrated milestones to
-              feel "reachable in 2-3 months for an active member" under distance-only intuition,
-              that timing shifts modestly faster for climbing cohorts and matches expectations for
-              flat cohorts.
+              500/1000/2500/5000/10000/25000 PM ladder is still a graduated structure.
+              Calibration changes the rate, not the structure. If you've calibrated milestones
+              to feel "reachable in 2-3 months for an active member" under v1.0 intuition, that
+              timing shifts modestly faster for cycling-with-climbing cohorts and shifts
+              meaningfully for hike/walk-heavy cohorts.
             </li>
           </ul>
           <p>
@@ -673,7 +841,7 @@ export default function Methodology() {
             accumulates, not how you should think about your reward strategy.
           </p>
 
-          <h2>13. Privacy reference</h2>
+          <h2>16. Privacy reference</h2>
           <p>
             This methodology document explains how we calculate PROOF Miles from the data we
             collect. For details on what data we collect, how we use it, who we share it with,
