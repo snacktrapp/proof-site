@@ -857,8 +857,8 @@ export default function ProofWebsite() {
 
           <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 15, color: COLORS.subtle,
             lineHeight: 1.7, maxWidth: 520, margin: "40px auto 0", textAlign: "center" }}>
-            Their PROOF identity is theirs. If they connect to another brand in the network,
-            their effort profile and history travel with them — but your rewards stay yours.
+            Their effort profile is theirs. Connect to another brand in the network
+            and that profile travels with them — but your rewards stay yours.
             You only fund effort earned during your relationship.
           </p>
         </Section>
@@ -1134,7 +1134,7 @@ export default function ProofWebsite() {
           <div style={{ textAlign: "center" }}>
             <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11,
               color: COLORS.signal, marginBottom: 12 }}>
-              ← Athletes carry their PROOF identity between brands →
+              ← Athletes carry their effort profile between brands →
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 14, color: COLORS.subtle, lineHeight: 1.7, maxWidth: 480, margin: "0 auto" }}>
               For brands, athletes arrive pre-qualified. A runner who connected through a footwear brand already has a PROOF profile
@@ -1206,7 +1206,7 @@ export default function ProofWebsite() {
                   <line x1="30" y1="10" x2="30" y2="4" stroke={COLORS.signal} strokeWidth="1.8" strokeLinecap="round" opacity={0.9} />
                   <polyline points="27,7 30,4 33,7" stroke={COLORS.signal} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.9} />
                 </svg>
-              ), title: "Tier + three-signal athlete profile", desc: "Every athlete earns a PROOF tier — Recruit through Apex, plus infinite Marks for the rarest ledgers — for recognition, plus three signals: Lifetime PM, Pace, and Trend. Tiers provide identity. Signals drive economics. Brands can map custom tier names to match their voice." },
+              ), title: "Tier + three-signal athlete profile", desc: "Every athlete earns a PROOF tier — Recruit through Apex, plus infinite Marks for the rarest ledgers — for recognition, plus three signals: Lifetime PM, Pace, and Trend. Tiers describe lifetime effort. Signals drive economics. Brands can map custom tier names to match their voice." },
               { icon: (
                 <svg width="36" height="34" viewBox="0 0 36 34" fill="none">
                   <circle cx="6" cy="16" r="5" stroke={COLORS.signal} strokeWidth="1.5" />
@@ -1234,7 +1234,7 @@ export default function ProofWebsite() {
                   <circle cx="6" cy="28" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
                   <circle cx="26" cy="28" r="4" fill={COLORS.surface} stroke={COLORS.signal} strokeWidth="1.5" />
                 </svg>
-              ), title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their PROOF identity. As the network grows, pre-qualified athletes discover your store." },
+              ), title: "Network effect built in", desc: "One Strava connection, every enrolled brand. Athletes carry their effort profile. As the network grows, pre-qualified athletes discover your store." },
             ].map((item, i) => (
               <div key={i} style={{ flex: "1 1 280px", maxWidth: 380, background: COLORS.surface,
                 border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 16, padding: "28px",
