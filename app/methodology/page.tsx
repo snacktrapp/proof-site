@@ -268,11 +268,11 @@ export default function Methodology() {
         <div className="meth">
           <p>
             PROOF Miles are the unit of verified athletic effort. Every mile traces to a
-            device-recorded activity confirmed through third-party platforms (Strava, Garmin) —
-            not self-reported, not inferred. Constants are derived from published metabolic-cost
-            data (Ainsworth et al. 2011 Compendium of Physical Activities) and the work-energy
-            theorem for elevation. The math is open, every multiplier is inspectable, and your
-            lifetime total is preserved under the rules in effect when each mile was earned.
+            device-recorded activity confirmed through Strava — not self-reported, not inferred.
+            Constants are derived from published metabolic-cost data (Ainsworth et al. 2011
+            Compendium of Physical Activities) and the work-energy theorem for elevation. The
+            math is open, every multiplier is inspectable, and your lifetime total is preserved
+            under the rules in effect when each mile was earned.
           </p>
 
           <p>
@@ -308,10 +308,10 @@ export default function Methodology() {
             athlete's record.
           </p>
           <p>
-            Activity data comes from connected fitness platforms (Strava and Garmin Connect today;
-            more later). We read what the platform reports, run it through our calculation, and
-            credit the result as PM. We don't infer effort from things you didn't actually do — if
-            it isn't recorded by your fitness device or app, it doesn't count.
+            Activity data comes from Strava (additional platforms on the roadmap). We read what
+            Strava reports, run it through our calculation, and credit the result as PM. We
+            don't infer effort from things you didn't actually do — if it isn't recorded by your
+            fitness device or app, it doesn't count.
           </p>
           <p>
             Lifetime PROOF Miles are designed to <strong>never reset and never decrease</strong>.
@@ -321,9 +321,8 @@ export default function Methodology() {
 
           <h2>2. Which activities count</h2>
           <p>
-            The platforms we connect to (Strava and Garmin Connect today) record many things.
-            PROOF only credits activities that pass a small set of inclusion gates — designed to
-            keep the system honest without being precious about it.
+            Strava records many things. PROOF only credits activities that pass a small set of
+            inclusion gates — designed to keep the system honest without being precious about it.
           </p>
           <p>
             These gates run on PROOF&apos;s side, against the activity data Strava sends us.
@@ -720,9 +719,9 @@ export default function Methodology() {
             </li>
             <li>
               <strong>Environmental factors.</strong> Heat, altitude, humidity, and wind all
-              meaningfully affect metabolic cost. None are recorded by Strava or Garmin in a
-              form we can use. Activities completed in adverse conditions earn the same PM as
-              those in ideal conditions.
+              meaningfully affect metabolic cost. None are recorded by Strava in a form we can
+              use. Activities completed in adverse conditions earn the same PM as those in
+              ideal conditions.
             </li>
             <li>
               <strong>Indoor / virtual elevation.</strong> Strava reports zero elevation gain
