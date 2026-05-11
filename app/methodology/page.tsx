@@ -269,8 +269,9 @@ export default function Methodology() {
           <p>
             PROOF Miles are the unit of verified athletic effort. Every mile traces to a
             device-recorded activity confirmed through Strava — not self-reported, not inferred.
-            Constants are derived from published metabolic-cost
-            data (Ainsworth et al. 2011 Compendium of Physical Activities) and the work-energy
+            Constants are derived from published metabolic-cost data (the Compendium of Physical
+            Activities — Ainsworth et al. 2011 foundation, with values verified against the
+            current 2024 Adult Compendium tables at pacompendium.com) and the work-energy
             theorem for elevation. The math is open, every multiplier is inspectable, and your
             lifetime total is preserved under the rules in effect when each mile was earned.
           </p>
@@ -388,7 +389,7 @@ export default function Methodology() {
             shouldn&apos;t have, the brand admin can reach out and we&apos;ll review.
           </p>
 
-          <h2>3. The v1.0 calculation</h2>
+          <h2>3. The {methodVersion} calculation</h2>
           <p>For every verified activity, the formula is:</p>
 
           <div className="formula">
@@ -419,8 +420,9 @@ export default function Methodology() {
 
           <h2>4. Sport multipliers ({methodVersion})</h2>
           <p>
-            The multiplier is anchored to road cycling at 14 mph (Compendium 2011 entry 01040,
-            10.0 MET). For each other sport, the pure-MET multiplier is derived as
+            The multiplier is anchored to road cycling at 14 mph (Compendium entry 01040,
+            10.0 MET — present in both the 2011 paper and the 2024 update). For each other
+            sport, the pure-MET multiplier is derived as
             <em> (sport MET / sport pace_mph) ÷ (10.0 / 14)</em>. This produces the per-mile
             metabolic cost ratio against the cycling anchor. Where we adjust above the pure-MET
             number — for impact load, on-water cardiovascular premium, whole-body engagement,
@@ -479,9 +481,12 @@ export default function Methodology() {
             effort at equivalent distance is genuinely higher. Gravel sits between them.
           </p>
           <p>
-            All Compendium codes refer to entries in the 2011 update of the Compendium of
-            Physical Activities (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81).
-            Available openly at <a href="https://pacompendium.com" target="_blank" rel="noopener noreferrer">pacompendium.com</a>.
+            All Compendium codes refer to entries in the Compendium of Physical Activities
+            (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+            Herrmann SD et al. 2024 Adult Compendium update, <em>J Sport Health Sci</em>).
+            The canonical searchable table — and the version this calibration was verified
+            against on 2026-05-11 — is the 2024 update at{" "}
+            <a href="https://pacompendium.com" target="_blank" rel="noopener noreferrer">pacompendium.com</a>.
           </p>
 
           <h2>5. Elevation weights ({methodVersion})</h2>
@@ -600,7 +605,7 @@ export default function Methodology() {
 
           <h2>8. What we capture but don&apos;t yet use</h2>
           <p>
-            On every activity, we record more than what v1.0 of the calculation reads. We capture
+            On every activity, we record more than what {methodVersion} of the calculation reads. We capture
             (and store) all of the following from every Strava activity:
           </p>
           <ul>
@@ -608,7 +613,7 @@ export default function Methodology() {
             <li><strong>Power</strong> — average watts and weighted average watts (when a power meter is present)</li>
             <li><strong>Energy</strong> — kilojoules of work performed</li>
             <li><strong>Strava&apos;s native effort score</strong> (the platform&apos;s own intensity rating)</li>
-            <li><strong>Elevation gain</strong> (already used in v1.0)</li>
+            <li><strong>Elevation gain</strong> (used since v1.0; current value calibration is {methodVersion})</li>
             <li><strong>Moving time</strong> (already used for our speed-ceiling fraud check)</li>
           </ul>
           <p>
@@ -649,8 +654,10 @@ export default function Methodology() {
           <ul>
             <li>
               <strong>{methodVersion}</strong> — sport multiplier and elevation weight
-              recalibration. Anchored to the 2011 Compendium of Physical Activities (Ainsworth
-              et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) with documented cross-modality
+              recalibration. Anchored to the published Compendium of Physical Activities
+              (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+              Herrmann SD et al. 2024 Adult Compendium update via pacompendium.com) with
+              documented cross-modality
               balancing factors and physics-derived elevation weights. Per-sport changes vs v1.0:
               GravelRide 1.20→0.95, MountainBikeRide 1.50→1.30, EBikeRide 0.40→0.60 (corrected
               MET basis), Run 3.00→2.50, TrailRun 4.00→2.70, Hike 1.00→2.80 (major correction),
@@ -681,9 +688,11 @@ export default function Methodology() {
 
           <h2>10. What this isn&apos;t</h2>
           <p>
-            v1.6 calibration draws directly from the 2011 Compendium of Physical Activities
-            (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) for sport multipliers
-            and Minetti et al. 2002 (<em>J Appl Physiol</em> 93:1039-46) for elevation weights.
+            v1.6 calibration draws directly from the published Compendium of Physical Activities
+            (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+            Herrmann SD et al. 2024 Adult Compendium update via pacompendium.com) for sport
+            multipliers and Minetti et al. 2002 (<em>J Appl Physiol</em> 93:1039-46) for elevation
+            weights.
             Future versions may incorporate additional published frameworks — Banister's TRIMP for
             cardiovascular load, Coggan's TSS for power-based effort — and we'll cite each in the
             changelog when they ship.
