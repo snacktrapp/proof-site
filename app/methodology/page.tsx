@@ -371,11 +371,12 @@ export default function Methodology() {
           </p>
           <p>
             <strong>Daily cap.</strong> A single athlete can earn up to 250 miles of
-            distance-based PROOF Miles per UTC day. Activities that would push past the cap
-            credit partially up to the limit; further activity that day doesn&apos;t add more.
-            This sits well above what almost any athlete logs in a day, but exists so a
-            single anomalous activity can&apos;t inflate the system. Elevation always credits
-            on top — climbing isn&apos;t bound by the daily cap.
+            distance-based PROOF Miles per UTC day. The activity that crosses the cap credits
+            its remaining headroom on distance and full elevation on top — once the day&apos;s
+            distance total reaches 250, further activities that day are rejected entirely
+            (no distance credit, no elevation credit). The cap sits well above what almost
+            any athlete logs in a day, but exists so a single anomalous activity can&apos;t
+            inflate the system.
           </p>
           <p>
             <strong>What we don&apos;t currently do.</strong> Strava&apos;s flagged-activity
@@ -437,16 +438,16 @@ export default function Methodology() {
             <tbody>
               <tr><td>Ride / VirtualRide</td><td>01040 · 10.0 MET · 14 mph (anchor)</td><td className="num">1.00</td><td className="num">—</td></tr>
               <tr><td>GravelRide</td><td>01030 · 8.0 MET · 12 mph</td><td className="num">0.95</td><td className="num">—</td></tr>
-              <tr><td>MountainBikeRide</td><td>01015 · 8.5 MET · 9 mph</td><td className="num">1.30</td><td className="num">—</td></tr>
+              <tr><td>MountainBikeRide</td><td>01009 · 8.5 MET · 9 mph</td><td className="num">1.30</td><td className="num">—</td></tr>
               <tr><td>EBikeRide</td><td>01084 · 6.0 MET · 14 mph (light electronic support)</td><td className="num">0.60</td><td className="num">—</td></tr>
               <tr><td>Run / VirtualRun</td><td>12070 · 11.0 MET · 7 mph</td><td className="num">2.50</td><td className="num">+14% †</td></tr>
               <tr><td>TrailRun</td><td>Run + level-trail premium</td><td className="num">2.70</td><td className="num">+0.20 ‡</td></tr>
               <tr><td>Hike</td><td>17080 · 6.0 MET · 3 mph</td><td className="num">2.80</td><td className="num">—</td></tr>
-              <tr><td>Walk</td><td>17200 · 4.3 MET · 3.5 mph</td><td className="num">1.70</td><td className="num">—</td></tr>
+              <tr><td>Walk</td><td>17200 · 4.8 MET · 3.5 mph</td><td className="num">1.90</td><td className="num">—</td></tr>
               <tr><td>Swim</td><td>18240–18290 · 5.8–8.0 MET · 1.7 mph (midpoint)</td><td className="num">6.00</td><td className="num">—</td></tr>
               <tr><td>Rowing (water)</td><td>18050 · 5.8 MET · 6 mph</td><td className="num">1.40</td><td className="num">+5% §</td></tr>
               <tr><td>Kayaking</td><td>18100 · 5.0 MET · 4 mph</td><td className="num">1.75</td><td className="num">—</td></tr>
-              <tr><td>NordicSki / RollerSki</td><td>19090 · 9.0 MET · 4.5 mph</td><td className="num">3.00</td><td className="num">+10% ¶</td></tr>
+              <tr><td>NordicSki / RollerSki</td><td>19090 · 8.5 MET · 4.5 mph</td><td className="num">2.90</td><td className="num">+10% ¶</td></tr>
             </tbody>
           </table>
           <p style={{ fontSize: 13, color: COLORS.subtle }}>
@@ -466,10 +467,11 @@ export default function Methodology() {
             shows water rowing produces meaningfully higher HR and lactate at matched-power vs
             ergometer rowing.
             <br /><br />
-            <strong>¶</strong> NordicSki: Compendium 19090 gives 2.80 pure-MET. The +10% reflects
+            <strong>¶</strong> NordicSki: Compendium 19090 gives 2.64 pure-MET. The +10% reflects
             whole-body engagement — XC skiing has the highest measured VO₂max among Olympic
             sports (sustained ~96 ml/kg/min in elite), driven by upper-body work that is not
-            fully captured in lower-body-dominant Compendium derivations.
+            fully captured in lower-body-dominant Compendium derivations. Pure-MET 2.64 + 10%
+            = 2.90.
           </p>
           <p>
             E-bikes are rated below cycling because the motor does meaningful work — we credit the
@@ -652,10 +654,23 @@ export default function Methodology() {
               balancing factors and physics-derived elevation weights. Per-sport changes vs v1.0:
               GravelRide 1.20→0.95, MountainBikeRide 1.50→1.30, EBikeRide 0.40→0.60 (corrected
               MET basis), Run 3.00→2.50, TrailRun 4.00→2.70, Hike 1.00→2.80 (major correction),
-              Walk 1.00→1.70, Swim 8.00→6.00, Rowing 2.00→1.40, Kayaking 2.00→1.75, NordicSki
-              added at 3.00. Cycling elevation weight 1.00→1.75 (physics-derived). Methodology
+              Walk 1.00→1.90, Swim 8.00→6.00, Rowing 2.00→1.40, Kayaking 2.00→1.75, NordicSki
+              added at 2.90. Cycling elevation weight 1.00→1.75 (physics-derived). Methodology
               page rewritten with explicit Compendium codes, derivation appendix, and limitations
               acknowledgment. Effective {effectiveDate}.
+              <br /><br />
+              <em>Within-v1.6 citation corrections (2026-05-11):</em> independent verification
+              against the live Compendium source caught three citation errors in the original
+              v1.6 ship. MountainBikeRide cited 01015 (which is actually "Bicycling, self-selected
+              easy pace" at 4.3 MET); the intended entry is <strong>01009 "Bicycling, mountain,
+              general" at 8.5 MET</strong>. The shipped 1.30 multiplier is correct under the
+              corrected code (citation-only fix). Walk cited 4.3 MET; Compendium 17200 publishes
+              <strong> 4.8 MET</strong> — multiplier corrected 1.70 → <strong>1.90</strong>.
+              NordicSki / RollerSki cited 9.0 MET; Compendium 19090 publishes <strong>8.5 MET</strong>
+              — multiplier corrected 3.00 → <strong>2.90</strong> (preserving the +10% upper-body
+              engagement premium). The cycling anchor (01040 = 10.0 MET / 14 mph) was verified
+              and holds. Version stays v1.6 because the math shape is unchanged; activities
+              credited before 2026-05-11 retain their original multiplier (version-from-now).
             </li>
             <li>
               <strong>v1.0</strong> — initial release. Distance + elevation-aware calculation
@@ -742,7 +757,42 @@ export default function Methodology() {
             the data does say and document the gap.
           </p>
 
-          <h2>12. For coaches and physiologists</h2>
+          <h2>12. Brand-layer modifiers (not part of PM)</h2>
+          <p>
+            PROOF Miles, as defined in Sections 3-6, are the methodology-canonical number.
+            Brand partners can layer two configurable behaviors on top of PM <em>at the brand
+            layer</em> — these affect what the athlete accumulates <em>in that brand&apos;s
+            program</em>, not the athlete&apos;s lifetime PM, tier, or public-profile total.
+          </p>
+          <p>
+            <strong>Anniversary multiplier.</strong> Each brand can configure an unconditional
+            multiplier (1.0–3.0) that applies for a window of days following each yearly
+            rollover of the athlete&apos;s connection-with-that-brand date. The default
+            multiplier is 1.0 (off); the default window is 7 days. A brand running a 2× / 7-day
+            anniversary kicker means an athlete who rides during their connection-anniversary
+            week earns 2× brand PM for those activities, which can advance brand-side milestones
+            and rewards faster. The first window opens on the <em>first</em> anniversary
+            (year+1 of connect day), not on connect day itself — connect-day is covered
+            separately by welcome bonuses where the brand has them. February 29 connections
+            roll to February 28 in non-leap years.
+          </p>
+          <p>
+            <strong>Forward-only brand PM.</strong> Brand PM only credits activities dated on or
+            after the athlete connected to that brand. Lifetime PM accumulates everything
+            (including activities dated before the brand connection); brand PM does not.
+            Reasoning: brand-side rewards have to mean &quot;what this athlete did <em>for this
+            brand, while connected</em>&quot; — retroactive credit on bulk-uploaded historical
+            rides would let an athlete cross the 500-PM brand milestone within minutes of
+            enrollment, breaking the audit story for brand admins.
+          </p>
+          <p>
+            Lifetime PM, the tier ladder, and the public profile are unaffected by either
+            mechanism. The methodology-canonical PM stamped on each activity row is unaffected.
+            Both modifiers are visible to the athlete in brand-side reward emails and in the
+            brand&apos;s storefront loyalty section when implemented.
+          </p>
+
+          <h2>13. For coaches and physiologists</h2>
           <p>
             Three questions we expect from anyone who reads this page closely.
           </p>
@@ -774,7 +824,7 @@ export default function Methodology() {
             added complexity earns its keep.
           </p>
 
-          <h2>13. Annual methodology audit</h2>
+          <h2>14. Annual methodology audit</h2>
           <p>
             We commit to publishing a yearly methodology audit. Each audit reports per-sport PM
             distributions across the network, correlations against published training-load
@@ -787,10 +837,10 @@ export default function Methodology() {
             The methodology page is the audit trail. Every change shows up in the changelog
             (Section 9). Every constant traces to a citation. If a published exercise
             physiologist reads this and finds an error or a stronger calibration, we want to
-            know — see Section 14 below.
+            know — see Section 15 below.
           </p>
 
-          <h2>14. Feedback</h2>
+          <h2>15. Feedback</h2>
           <p>
             We expect to revise this methodology. The constants in Sections 4 and 5 are our best
             calibration today, informed by public research and our own analysis — but coaches,
@@ -805,7 +855,7 @@ export default function Methodology() {
             you&apos;ll see them in the changelog above.
           </p>
 
-          <h2>15. For brand admins</h2>
+          <h2>16. For brand admins</h2>
           <p>
             If you run a brand loyalty program on PROOF, this calibration affects how fast your
             athletes accumulate brand PM. Two things to know:
@@ -821,7 +871,7 @@ export default function Methodology() {
             <li>
               <strong>Multi-sport cohorts will see different rates than v1.0 implied.</strong>
               The v1.6 recalibration shifted Run multiplier 3.0→2.5, Swim 8.0→6.0, Hike
-              1.0→2.8, Walk 1.0→1.7. Brands with significant non-cycling exposure should expect
+              1.0→2.8, Walk 1.0→1.9. Brands with significant non-cycling exposure should expect
               accumulation rates to reflect the new constants from the effective date forward.
               Existing PM accumulated under v1.0 is preserved.
             </li>
@@ -840,7 +890,7 @@ export default function Methodology() {
             accumulates, not how you should think about your reward strategy.
           </p>
 
-          <h2>16. Privacy reference</h2>
+          <h2>17. Privacy reference</h2>
           <p>
             This methodology document explains how we calculate PROOF Miles from the data we
             collect. For details on what data we collect, how we use it, who we share it with,
