@@ -210,11 +210,13 @@ const css = `
     text-align: center;
     max-width: 100%;
   }
+  .af-page a.af-button { color: ${COLORS.text}; }
   .af-button-primary {
     border-color: ${COLORS.signal};
     background: ${COLORS.signal};
     color: ${COLORS.base};
   }
+  .af-page a.af-button-primary { color: ${COLORS.base}; }
   .af-button:hover { transform: translateY(-1px); }
 
   .af-metrics {
