@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import type { CSSProperties, ReactNode } from "react";
+import { AthleteForwardHeader } from "./AthleteForwardHeader";
+import { athleteForwardChromeCss } from "./athleteForwardChrome";
 
 const COLORS = {
   base: "#050505",
@@ -21,7 +22,6 @@ const COLORS = {
 
 const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
 const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
-const APP_LOGIN_URL = "https://proof.verifiedeffort.com/auth/login";
 
 const detailCss = `
   .afd-page, .afd-page * { box-sizing: border-box; }
@@ -34,130 +34,7 @@ const detailCss = `
   }
   .afd-page a { color: inherit; text-decoration: none; }
   .afd-page ::selection { background: ${COLORS.signal}; color: ${COLORS.base}; }
-  .afd-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 30;
-    width: 100vw;
-    max-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    background: linear-gradient(180deg, rgba(5,5,5,0.88), rgba(5,5,5,0));
-    padding: 15px clamp(18px, 4vw, 48px);
-    color: ${COLORS.textBright};
-  }
-  .afd-logo {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    min-width: 0;
-  }
-  .afd-logo-mark {
-    display: grid;
-    width: 30px;
-    height: 30px;
-    place-items: center;
-    border: 2px solid currentColor;
-    border-radius: 6px;
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1;
-  }
-  .afd-logo-word {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 24px;
-    letter-spacing: 0.12em;
-  }
-  .afd-nav-links {
-    display: none;
-    align-items: center;
-    gap: clamp(14px, 2vw, 24px);
-    color: rgba(232,232,232,0.72);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .afd-nav-links a:hover,
-  .afd-nav-links a[aria-current="page"] { color: ${COLORS.signal}; }
-  .afd-nav-cta {
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 999px;
-    padding: 9px 12px;
-    background: rgba(5,5,5,0.38);
-    backdrop-filter: blur(14px);
-    color: ${COLORS.textBright};
-  }
-  .afd-nav-toggle {
-    display: grid;
-    position: relative;
-    z-index: 2;
-    flex: 0 0 auto;
-    margin-left: auto;
-    width: 42px;
-    height: 42px;
-    place-items: center;
-    border: 1px solid rgba(255,255,255,0.34);
-    border-radius: 999px;
-    background: rgba(5,5,5,0.62);
-    color: ${COLORS.textBright};
-    cursor: pointer;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.32);
-    backdrop-filter: blur(14px);
-  }
-  .afd-nav-toggle-lines {
-    display: grid;
-    gap: 5px;
-    width: 17px;
-  }
-  .afd-nav-toggle-lines span {
-    display: block;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-  }
-  .afd-mobile-menu {
-    position: fixed;
-    top: 70px;
-    right: clamp(18px, 4vw, 48px);
-    z-index: 40;
-    display: grid;
-    gap: 4px;
-    width: min(320px, calc(100vw - 36px));
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 16px;
-    background: rgba(5,5,5,0.92);
-    padding: 10px;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
-    backdrop-filter: blur(18px);
-  }
-  .afd-mobile-menu a {
-    border-radius: 10px;
-    padding: 13px 12px;
-    color: rgba(232,232,232,0.82);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .afd-mobile-menu a:hover,
-  .afd-mobile-menu a:focus-visible,
-  .afd-mobile-menu a[aria-current="page"] {
-    background: rgba(255,255,255,0.06);
-    color: ${COLORS.signal};
-  }
-  .afd-mobile-menu .afd-mobile-menu-cta {
-    margin-top: 4px;
-    background: ${COLORS.signal};
-    color: ${COLORS.base};
-    font-weight: 800;
-    text-align: center;
-  }
+  ${athleteForwardChromeCss}
   .afd-hero {
     position: relative;
     overflow: hidden;
@@ -483,21 +360,6 @@ const detailCss = `
     .afd-plan-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
   @media (max-width: 640px) {
-    .afd-nav { padding: 16px 18px; }
-    .afd-nav-links { display: none; }
-    .afd-nav-toggle {
-      display: grid;
-      position: fixed;
-      top: 16px;
-      left: min(330px, calc(100vw - 60px));
-      right: auto;
-    }
-    .afd-mobile-menu {
-      left: 18px;
-      right: 18px;
-      width: auto;
-    }
-    .afd-logo-word { font-size: 22px; }
     .afd-hero h1 {
       max-width: 100%;
       font-size: clamp(44px, 12vw, 54px);
@@ -560,90 +422,7 @@ const detailCss = `
 `;
 
 function ConceptNav({ current }: { current: "home" | "how" | "pricing" }) {
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  return (
-    <>
-      <nav className="afd-nav" aria-label="PROOF navigation">
-        <Link className="afd-logo" href="/">
-          <span className="afd-logo-mark">P</span>
-          <span className="afd-logo-word">PROOF</span>
-        </Link>
-        <div className="afd-nav-links">
-          <Link href="/" aria-current={current === "home" ? "page" : undefined}>
-            Home
-          </Link>
-          <Link href="/how-it-works" aria-current={current === "how" ? "page" : undefined}>
-            How it works
-          </Link>
-          <Link href="/pricing" aria-current={current === "pricing" ? "page" : undefined}>
-            Pricing
-          </Link>
-          <Link href="/#brands">For brands</Link>
-          <Link href="/#identity">Athletes</Link>
-          <a href={APP_LOGIN_URL}>Log in</a>
-          <Link className="afd-nav-cta" href="/start">
-            Get started
-          </Link>
-        </div>
-        <button
-          className="afd-nav-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="afd-mobile-menu"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="afd-nav-toggle-lines" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-        </button>
-      </nav>
-      {menuOpen ? (
-        <div className="afd-mobile-menu" id="afd-mobile-menu">
-          <Link
-            href="/"
-            aria-current={current === "home" ? "page" : undefined}
-            onClick={() => setMenuOpen(false)}
-          >
-            Home
-          </Link>
-          <Link
-            href="/how-it-works"
-            aria-current={current === "how" ? "page" : undefined}
-            onClick={() => setMenuOpen(false)}
-          >
-            How it works
-          </Link>
-          <Link
-            href="/pricing"
-            aria-current={current === "pricing" ? "page" : undefined}
-            onClick={() => setMenuOpen(false)}
-          >
-            Pricing
-          </Link>
-          <Link href="/#brands" onClick={() => setMenuOpen(false)}>
-            For brands
-          </Link>
-          <Link href="/#identity" onClick={() => setMenuOpen(false)}>
-            Athletes
-          </Link>
-          <a href={APP_LOGIN_URL} onClick={() => setMenuOpen(false)}>
-            Log in
-          </a>
-          <Link
-            className="afd-mobile-menu-cta"
-            href="/start"
-            onClick={() => setMenuOpen(false)}
-          >
-            Get started
-          </Link>
-        </div>
-      ) : null}
-    </>
-  );
+  return <AthleteForwardHeader current={current} />;
 }
 
 function Hero({

@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { CSSProperties } from "react";
+import { AthleteForwardHeader } from "./AthleteForwardHeader";
+import { athleteForwardChromeCss } from "./athleteForwardChrome";
 
 const COLORS = {
   base: "#050505",
@@ -29,13 +31,13 @@ const variantContent = {
       "Athletes earn progress through verified movement. Brands build reward programs around the athletes already living their category.",
     image: "/concepts/athlete-forward/hero-field.jpg",
     panelTitle: "Choose your path",
-    panelBody: "A cleaner handoff before account creation keeps the app from asking the wrong questions.",
+    panelBody: "We will send you into the PROOF app with the setup path that matches how you plan to use it.",
   },
   register: {
     kicker: "Create account",
     title: "Choose how you are using PROOF.",
     body:
-      "The generic signup should make the role choice obvious first, then hand athletes and brands into the right onboarding flow.",
+      "Athletes can connect activity and join rewards. Brands can build programs around verified effort.",
     image: "/concepts/athlete-forward/hero-trace.jpg",
     panelTitle: "Create your account",
     panelBody: "Select a role to continue with the right setup path.",
@@ -90,54 +92,7 @@ const css = `
   }
   .afa-page a { color: inherit; text-decoration: none; }
   .afa-page ::selection { background: ${COLORS.signal}; color: ${COLORS.base}; }
-  .afa-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 16px clamp(18px, 4vw, 48px);
-    background: linear-gradient(180deg, rgba(5,5,5,0.88), rgba(5,5,5,0));
-    color: ${COLORS.textBright};
-  }
-  .afa-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-  }
-  .afa-logo-mark {
-    display: grid;
-    width: 32px;
-    height: 32px;
-    place-items: center;
-    border: 2px solid currentColor;
-    border-radius: 6px;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1;
-  }
-  .afa-logo-word {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 0.12em;
-    line-height: 1;
-  }
-  .afa-nav-links {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    color: rgba(232,232,232,0.76);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .afa-nav-links a:hover { color: ${COLORS.signal}; }
+  ${athleteForwardChromeCss}
   .afa-shell {
     position: relative;
     min-height: 100svh;
@@ -394,7 +349,6 @@ const css = `
       padding-top: 112px;
     }
     .afa-panel { max-width: 560px; }
-    .afa-nav-links { display: none; }
   }
 
   @media (max-width: 640px) {
@@ -570,17 +524,7 @@ export function AthleteForwardAuthPreview({ variant }: { variant: AuthPreviewVar
   return (
     <main className="afa-page">
       <style>{css}</style>
-      <nav className="afa-nav" aria-label="PROOF navigation">
-        <Link className="afa-logo" href="/">
-          <span className="afa-logo-mark">P</span>
-          <span className="afa-logo-word">PROOF</span>
-        </Link>
-        <div className="afa-nav-links">
-          <Link href="/how-it-works">How it works</Link>
-          <Link href="/pricing">Pricing</Link>
-          <a href={APP_LOGIN_URL}>Log in</a>
-        </div>
-      </nav>
+      <AthleteForwardHeader current={variant === "start" ? "start" : undefined} />
 
       <section
         className="afa-shell"

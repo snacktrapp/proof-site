@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { AthleteForwardHeader } from "./AthleteForwardHeader";
+import { athleteForwardChromeCss } from "./athleteForwardChrome";
 
 const COLORS = {
   base: "#050505",
@@ -21,7 +23,6 @@ const COLORS = {
 const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
 const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
 const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
-const APP_LOGIN_URL = "https://proof.verifiedeffort.com/auth/login";
 
 const css = `
   .af-page, .af-page * { box-sizing: border-box; }
@@ -34,130 +35,7 @@ const css = `
   }
   .af-page a { color: inherit; text-decoration: none; }
   .af-page ::selection { background: ${COLORS.signal}; color: ${COLORS.base}; }
-
-  .af-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 30;
-    width: 100vw;
-    max-width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 18px;
-    padding: 16px clamp(18px, 4vw, 48px);
-    background: linear-gradient(180deg, rgba(5,5,5,0.88), rgba(5,5,5,0));
-    color: ${COLORS.textBright};
-  }
-  .af-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    min-width: 0;
-  }
-  .af-logo-mark {
-    display: grid;
-    width: 32px;
-    height: 32px;
-    place-items: center;
-    border: 2px solid currentColor;
-    border-radius: 6px;
-    font-family: 'Outfit', system-ui, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 1;
-  }
-  .af-logo-word {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 26px;
-    letter-spacing: 0.12em;
-    line-height: 1;
-  }
-  .af-nav-links {
-    display: none;
-    align-items: center;
-    gap: clamp(14px, 2vw, 26px);
-    color: rgba(232,232,232,0.76);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .af-nav-links a:hover { color: ${COLORS.signal}; }
-  .af-nav-cta {
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 999px;
-    padding: 9px 12px;
-    background: rgba(5,5,5,0.38);
-    backdrop-filter: blur(14px);
-    color: ${COLORS.textBright};
-  }
-  .af-nav-toggle {
-    display: grid;
-    position: relative;
-    z-index: 2;
-    flex: 0 0 auto;
-    margin-left: auto;
-    width: 42px;
-    height: 42px;
-    place-items: center;
-    border: 1px solid rgba(255,255,255,0.34);
-    border-radius: 999px;
-    background: rgba(5,5,5,0.62);
-    color: ${COLORS.textBright};
-    cursor: pointer;
-    box-shadow: 0 14px 34px rgba(0,0,0,0.32);
-    backdrop-filter: blur(14px);
-  }
-  .af-nav-toggle-lines {
-    display: grid;
-    gap: 5px;
-    width: 17px;
-  }
-  .af-nav-toggle-lines span {
-    display: block;
-    height: 2px;
-    border-radius: 999px;
-    background: currentColor;
-  }
-  .af-mobile-menu {
-    position: fixed;
-    top: 70px;
-    right: clamp(18px, 4vw, 48px);
-    z-index: 40;
-    display: grid;
-    gap: 4px;
-    width: min(320px, calc(100vw - 36px));
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 16px;
-    background: rgba(5,5,5,0.92);
-    padding: 10px;
-    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
-    backdrop-filter: blur(18px);
-  }
-  .af-mobile-menu a {
-    border-radius: 10px;
-    padding: 13px 12px;
-    color: rgba(232,232,232,0.82);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .af-mobile-menu a:hover,
-  .af-mobile-menu a:focus-visible {
-    background: rgba(255,255,255,0.06);
-    color: ${COLORS.signal};
-  }
-  .af-mobile-menu .af-mobile-menu-cta {
-    margin-top: 4px;
-    background: ${COLORS.signal};
-    color: ${COLORS.base};
-    font-weight: 800;
-    text-align: center;
-  }
+  ${athleteForwardChromeCss}
 
   .af-hero {
     position: relative;
@@ -646,21 +524,6 @@ const css = `
   }
 
   @media (max-width: 640px) {
-    .af-nav { padding: 16px 18px; }
-    .af-nav-links { display: none; }
-    .af-nav-toggle {
-      display: grid;
-      position: fixed;
-      top: 16px;
-      left: min(330px, calc(100vw - 60px));
-      right: auto;
-    }
-    .af-mobile-menu {
-      left: 18px;
-      right: 18px;
-      width: auto;
-    }
-    .af-logo-word { font-size: 22px; }
     .af-hero-image {
       background-position: 76% center;
       opacity: 0.98;
@@ -927,8 +790,6 @@ function redrawCanvases() {
 }
 
 export default function AthleteForwardConcept() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   useEffect(() => {
     redrawCanvases();
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -947,56 +808,7 @@ export default function AthleteForwardConcept() {
     <main className="af-page">
       <style>{css}</style>
 
-      <nav className="af-nav" aria-label="PROOF navigation">
-        <a className="af-logo" href="/">
-          <span className="af-logo-mark">P</span>
-          <span className="af-logo-word">PROOF</span>
-        </a>
-        <div className="af-nav-links">
-          <a href="/how-it-works">How it works</a>
-          <a href="/pricing">Pricing</a>
-          <a href="#brands">For brands</a>
-          <a href="#identity">Athletes</a>
-          <a href={APP_LOGIN_URL}>Log in</a>
-          <a className="af-nav-cta" href="/start">Get started</a>
-        </div>
-        <button
-          className="af-nav-toggle"
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="af-mobile-menu"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          onClick={() => setMenuOpen((open) => !open)}
-        >
-          <span className="af-nav-toggle-lines" aria-hidden="true">
-            <span />
-            <span />
-            <span />
-          </span>
-        </button>
-      </nav>
-      {menuOpen ? (
-        <div className="af-mobile-menu" id="af-mobile-menu">
-          <a href="/how-it-works" onClick={() => setMenuOpen(false)}>
-            How it works
-          </a>
-          <a href="/pricing" onClick={() => setMenuOpen(false)}>
-            Pricing
-          </a>
-          <a href="#brands" onClick={() => setMenuOpen(false)}>
-            For brands
-          </a>
-          <a href="#identity" onClick={() => setMenuOpen(false)}>
-            Athletes
-          </a>
-          <a href={APP_LOGIN_URL} onClick={() => setMenuOpen(false)}>
-            Log in
-          </a>
-          <a className="af-mobile-menu-cta" href="/start" onClick={() => setMenuOpen(false)}>
-            Get started
-          </a>
-        </div>
-      ) : null}
+      <AthleteForwardHeader current="home" />
 
       <header className="af-hero">
         <canvas className="af-canvas" data-art="hero" aria-hidden="true" />
