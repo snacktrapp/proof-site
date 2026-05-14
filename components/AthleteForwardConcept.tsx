@@ -218,6 +218,19 @@ const css = `
   }
   .af-page a.af-button-primary { color: ${COLORS.base}; }
   .af-button:hover { transform: translateY(-1px); }
+  .af-text-link {
+    display: inline-flex;
+    width: fit-content;
+    margin-top: 18px;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 3px;
+    color: ${COLORS.signal};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .af-text-link:hover { color: ${COLORS.textBright}; }
 
   .af-metrics {
     position: absolute;
@@ -509,6 +522,53 @@ const css = `
   .af-use-grid .af-card { min-height: 230px; }
   .af-use-grid .af-card .af-mono { margin-bottom: 44px; color: ${COLORS.signal}; }
 
+  .af-pricing-teaser {
+    background:
+      linear-gradient(180deg, rgba(200,255,0,0.06), rgba(5,5,5,0) 46%),
+      ${COLORS.surface};
+  }
+  .af-pricing-panel {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: clamp(26px, 5vw, 64px);
+    align-items: stretch;
+  }
+  .af-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .af-mini-plan {
+    display: grid;
+    align-content: space-between;
+    min-height: 260px;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    background: rgba(5,5,5,0.48);
+    padding: 18px;
+  }
+  .af-mini-plan-featured {
+    border-color: rgba(200,255,0,0.5);
+    background: ${COLORS.signalDim};
+  }
+  .af-mini-plan strong {
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(38px, 4vw, 56px);
+    font-weight: 400;
+    line-height: 0.95;
+  }
+  .af-mini-plan span {
+    display: block;
+    color: ${COLORS.steel};
+  }
+  .af-mini-plan p {
+    margin: 18px 0 0;
+    color: ${COLORS.subtle};
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
   .af-final { background: ${COLORS.base}; }
   .af-final-panel {
     position: relative;
@@ -562,6 +622,8 @@ const css = `
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
     .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
+    .af-pricing-panel { grid-template-columns: 1fr; }
+    .af-pricing-grid { grid-template-columns: repeat(3, minmax(160px, 1fr)); overflow-x: auto; }
     .af-panel { min-height: 460px; }
     .af-identity-panel { min-height: 520px; }
   }
@@ -593,7 +655,8 @@ const css = `
       flex-direction: column;
     }
     .af-button { width: 100%; }
-    .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
+    .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid, .af-pricing-grid { grid-template-columns: 1fr; }
+    .af-pricing-grid { overflow-x: visible; }
     .af-metrics div {
       border-right: 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -828,7 +891,8 @@ export default function AthleteForwardConcept() {
           <span className="af-logo-word">PROOF</span>
         </a>
         <div className="af-nav-links">
-          <a href="#how">How it works</a>
+          <a href="/concepts/athlete-forward/how-it-works">How it works</a>
+          <a href="/concepts/athlete-forward/pricing">Pricing</a>
           <a href="#brands">For brands</a>
           <a href="#identity">Athletes</a>
           <a className="af-nav-cta" href="#waitlist">Early access</a>
@@ -959,6 +1023,9 @@ export default function AthleteForwardConcept() {
                 </div>
               </div>
             </div>
+            <a className="af-text-link" href="/concepts/athlete-forward/how-it-works">
+              Read the detailed overview
+            </a>
           </div>
 
           <div className="af-panel">
@@ -1064,6 +1131,51 @@ export default function AthleteForwardConcept() {
         </div>
       </section>
 
+      <section className="af-section af-pricing-teaser" id="pricing">
+        <div className="af-section-inner af-pricing-panel">
+          <div>
+            <div className="af-eyebrow">Pricing</div>
+            <h2>Flat pricing after the value is clear.</h2>
+            <p className="af-lede">
+              PROOF should not feel like a tax on the reward. The pricing story is a simple
+              platform subscription: no revenue share, no per-transaction cut, and beta terms
+              that can flex while the category is being created.
+            </p>
+            <div className="af-actions">
+              <a className="af-button af-button-primary" href="/concepts/athlete-forward/pricing">
+                Compare plans
+              </a>
+              <a className="af-button" href="mailto:brian@verifiedeffort.com">
+                Discuss beta terms
+              </a>
+            </div>
+          </div>
+          <div className="af-pricing-grid" aria-label="Pricing summary">
+            <div className="af-mini-plan">
+              <div>
+                <span className="af-mono">Beta</span>
+                <strong>Founder terms</strong>
+              </div>
+              <p>Best for early brands validating an earned-reward program with direct support.</p>
+            </div>
+            <div className="af-mini-plan af-mini-plan-featured">
+              <div>
+                <span className="af-mono">Scale</span>
+                <strong>$499/mo</strong>
+              </div>
+              <p>Designed for brands ready to run challenges, milestones, and lifecycle flows.</p>
+            </div>
+            <div className="af-mini-plan">
+              <div>
+                <span className="af-mono">Enterprise</span>
+                <strong>Custom</strong>
+              </div>
+              <p>For larger programs that need custom contracts, reporting, support, or integrations.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="af-section af-final" id="waitlist">
         <div className="af-section-inner">
           <div className="af-final-panel">
@@ -1083,6 +1195,9 @@ export default function AthleteForwardConcept() {
                 <a className="af-button" href="mailto:brian@verifiedeffort.com">
                   Talk to PROOF
                 </a>
+                <a className="af-button" href="/concepts/athlete-forward/pricing">
+                  View pricing
+                </a>
               </div>
             </div>
           </div>
@@ -1091,7 +1206,10 @@ export default function AthleteForwardConcept() {
 
       <footer className="af-footer">
         <span>PROOF - athlete-forward concept route</span>
-        <span>Not linked from production navigation</span>
+        <span>
+          <a href="/concepts/athlete-forward/how-it-works">How it works</a> /{" "}
+          <a href="/concepts/athlete-forward/pricing">Pricing</a>
+        </span>
       </footer>
     </main>
   );
