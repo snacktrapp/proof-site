@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const COLORS = {
   base: "#050505",
@@ -18,26 +18,7 @@ const COLORS = {
   effort: "#FF3D00",
 };
 
-const HERO_STUDIES = [
-  {
-    id: "field",
-    label: "Field",
-    src: "/concepts/athlete-forward/hero-field.jpg",
-    position: "center center",
-  },
-  {
-    id: "rain",
-    label: "Rain",
-    src: "/concepts/athlete-forward/hero-rain.jpg",
-    position: "center center",
-  },
-  {
-    id: "trace",
-    label: "Trace",
-    src: "/concepts/athlete-forward/hero-trace.jpg",
-    position: "center center",
-  },
-];
+const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
 
 const css = `
   .af-page, .af-page * { box-sizing: border-box; }
@@ -235,34 +216,6 @@ const css = `
     color: ${COLORS.base};
   }
   .af-button:hover { transform: translateY(-1px); }
-  .af-hero-studies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 2px;
-    max-width: 100%;
-  }
-  .af-hero-study {
-    appearance: none;
-    border: 1px solid rgba(255,255,255,0.18);
-    border-radius: 999px;
-    background: rgba(5,5,5,0.48);
-    color: rgba(232,232,232,0.72);
-    cursor: pointer;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    line-height: 1;
-    min-width: 0;
-    padding: 9px 11px;
-    text-transform: uppercase;
-  }
-  .af-hero-study:hover,
-  .af-hero-study.is-active {
-    border-color: rgba(200,255,0,0.7);
-    background: rgba(200,255,0,0.12);
-    color: ${COLORS.signal};
-  }
 
   .af-metrics {
     position: absolute;
@@ -638,17 +591,6 @@ const css = `
       flex-direction: column;
     }
     .af-button { width: 100%; }
-    .af-hero-studies {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      width: 100%;
-      max-width: calc(100vw - 36px);
-    }
-    .af-hero-study {
-      width: 100%;
-      padding-left: 8px;
-      padding-right: 8px;
-    }
     .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
     .af-metrics div {
       border-right: 0;
@@ -860,8 +802,6 @@ function redrawCanvases() {
 }
 
 export default function AthleteForwardConcept() {
-  const [heroStudy, setHeroStudy] = useState(HERO_STUDIES[0]);
-
   useEffect(() => {
     redrawCanvases();
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -889,7 +829,7 @@ export default function AthleteForwardConcept() {
           <a href="#how">How it works</a>
           <a href="#brands">For brands</a>
           <a href="#identity">Athletes</a>
-          <a className="af-nav-cta" href="#waitlist">Preview concept</a>
+          <a className="af-nav-cta" href="#waitlist">Early access</a>
         </div>
       </nav>
 
@@ -897,7 +837,7 @@ export default function AthleteForwardConcept() {
         <canvas className="af-canvas" data-art="hero" aria-hidden="true" />
         <div
           className="af-hero-image"
-          style={{ backgroundImage: `url(${heroStudy.src})`, backgroundPosition: heroStudy.position }}
+          style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundPosition: "center center" }}
           aria-hidden="true"
         />
         <div className="af-noise" />
@@ -906,28 +846,16 @@ export default function AthleteForwardConcept() {
           <div className="af-kicker">Verified effort rewards</div>
           <h1>Your effort is worth something.</h1>
           <p className="af-hero-sub">
-            PROOF turns device-recorded athletic activity into loyalty currency brands can reward,
-            without asking athletes to buy first.
+            PROOF helps athletes turn verified movement into earned rewards, and gives brands
+            a cleaner way to recognize the people already living their category.
           </p>
           <div className="af-actions">
             <a className="af-button af-button-primary" href="#waitlist">
-              Join the waitlist
+              Build a reward program
             </a>
-            <a className="af-button" href="#how">
-              See how effort becomes proof
+            <a className="af-button" href="#identity">
+              See the athlete side
             </a>
-          </div>
-          <div className="af-hero-studies" aria-label="Hero image studies">
-            {HERO_STUDIES.map((study) => (
-              <button
-                className={`af-hero-study${heroStudy.id === study.id ? " is-active" : ""}`}
-                key={study.id}
-                type="button"
-                onClick={() => setHeroStudy(study)}
-              >
-                {study.label}
-              </button>
-            ))}
           </div>
         </div>
         <div className="af-metrics" aria-label="Example verified effort metrics">
@@ -950,20 +878,20 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner">
           <div className="af-cred-grid">
             <div className="af-cred-item">
-              <strong>Strava</strong>
-              <span>Athletes connect once and activities keep flowing automatically.</span>
+              <strong>Athlete</strong>
+              <span>Connect Strava once, keep moving, and earn progress when effort qualifies.</span>
+            </div>
+            <div className="af-cred-item">
+              <strong>Brand</strong>
+              <span>Invite the athletes who already train, ride, run, hike, swim, and show up.</span>
             </div>
             <div className="af-cred-item">
               <strong>Verified</strong>
-              <span>Device-recorded effort passes sport, distance, date, and integrity checks.</span>
+              <span>Device-recorded activities pass sport, distance, date, and integrity checks.</span>
             </div>
             <div className="af-cred-item">
-              <strong>Portable</strong>
-              <span>PROOF Miles build an athlete identity that travels across brand programs.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Rewarded</strong>
-              <span>Brands unlock offers when real effort crosses real thresholds.</span>
+              <strong>Reward</strong>
+              <span>Milestones and challenges unlock offers when real effort crosses real thresholds.</span>
             </div>
           </div>
         </div>
@@ -971,28 +899,27 @@ export default function AthleteForwardConcept() {
 
       <section className="af-section af-truth">
         <div className="af-section-inner">
-          <div className="af-eyebrow">The athlete truth</div>
-          <h2>Athletes do the work before they buy.</h2>
+          <div className="af-eyebrow">The shift</div>
+          <h2>The relationship can start with movement.</h2>
           <p className="af-lede">
-            Running, riding, swimming, hiking, and showing up are already signals of identity.
-            PROOF helps brands recognize that effort as part of the customer relationship,
-            not as a generic discount after checkout.
+            Athletes reveal intent before checkout: the miles, rides, swims, hikes, and training
+            they already record. PROOF turns that lived behavior into an entry point brands can honor.
           </p>
           <div className="af-truth-grid">
             <div className="af-card">
-              <span className="af-mono">01 / before checkout</span>
+              <span className="af-mono">01 / athlete</span>
+              <h3>Effort earns recognition</h3>
+              <p>Athletes make progress by doing the work they already care about.</p>
+            </div>
+            <div className="af-card">
+              <span className="af-mono">02 / brand</span>
               <h3>Participation becomes the onramp</h3>
-              <p>Brand links invite athletes into a program built around what they already do.</p>
+              <p>Brand programs can start with movement instead of waiting for checkout.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">02 / real behavior</span>
-              <h3>Loyalty has a measurable source</h3>
-              <p>Rewards attach to verified effort, not vague engagement or one-time coupon behavior.</p>
-            </div>
-            <div className="af-card">
-              <span className="af-mono">03 / ongoing identity</span>
-              <h3>The relationship compounds</h3>
-              <p>Every verified activity gives athletes a reason to return and brands a reason to reach out.</p>
+              <span className="af-mono">03 / proof</span>
+              <h3>The signal stays measurable</h3>
+              <p>Rewards attach to verified behavior, not vague engagement or empty clicks.</p>
             </div>
           </div>
         </div>
@@ -1002,31 +929,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>Motion becomes a rewardable signal.</h2>
+            <h2>From Strava activity to brand reward.</h2>
             <p className="af-lede">
-              PROOF reads verified activity, normalizes different sports into PROOF Miles,
-              and credits the athlete inside the brand relationship and reward window that matter.
+              Athletes join through a brand, connect Strava, and PROOF credits eligible effort
+              inside the sport, threshold, and local-time window that matter.
             </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Connect</h3>
-                  <p>Athletes join a brand and connect Strava in a few minutes.</p>
+                  <h3>Join a brand</h3>
+                  <p>A brand invite starts the relationship; Strava makes the effort verifiable.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Verify</h3>
-                  <p>Activities pass through sport, date, distance, and integrity checks.</p>
+                  <h3>Qualify with activity</h3>
+                  <p>Runs, rides, swims, hikes, and other sports are checked against the program rules.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Reward</h3>
-                  <p>Milestones, challenges, and brand moments can trigger codes and emails.</p>
+                  <h3>Receive the reward</h3>
+                  <p>Milestones, challenges, Shopify codes, and email moments can trigger automatically.</p>
                 </div>
               </div>
             </div>
@@ -1038,10 +965,10 @@ export default function AthleteForwardConcept() {
               <div className="af-mono" style={{ color: COLORS.signal }}>
                 Activity processed
               </div>
-              <h3>12.8 miles run becomes 38.4 PROOF Miles</h3>
+              <h3>A morning run becomes verified brand progress</h3>
               <p>
-                Behind every reward is an auditable record: sport, start time, eligibility,
-                window, and progress.
+                Behind every reward is an auditable record: sport, start time, eligibility, window,
+                and PROOF Mile progress.
               </p>
             </div>
           </div>
@@ -1051,26 +978,26 @@ export default function AthleteForwardConcept() {
       <section className="af-section" id="brands">
         <div className="af-section-inner">
           <div className="af-eyebrow">For brands</div>
-          <h2>Loyalty that starts before checkout.</h2>
+          <h2>Acquire the athletes already living your category.</h2>
           <p className="af-lede">
-            Traditional loyalty starts when someone buys. PROOF lets brands recognize the
-            activity, discipline, and identity that made the customer care in the first place.
+            Traditional loyalty starts after someone buys. PROOF gives brands a way to recognize
+            the activity, discipline, and identity that made the customer care in the first place.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
               <span className="af-mono">Acquisition</span>
-              <h3>Give athletes a reason to join</h3>
-              <p>Brand join pages become participation funnels, not coupon pages.</p>
+              <h3>Turn participation into audience</h3>
+              <p>Brand join pages invite athletes into a relationship built around what they do.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Engagement</span>
-              <h3>Build around real behavior</h3>
-              <p>Milestones and challenges are powered by verified effort, not empty clicks.</p>
+              <span className="af-mono">Activation</span>
+              <h3>Launch moments people can earn</h3>
+              <p>Challenges and milestones create reasons to move, return, and share progress.</p>
             </div>
             <div className="af-card">
               <span className="af-mono">Retention</span>
-              <h3>Send better moments</h3>
-              <p>Use PROOF events to trigger messages when athletes actually earn attention.</p>
+              <h3>Message when effort creates relevance</h3>
+              <p>Use PROOF events to trigger rewards, emails, and offers with earned context.</p>
             </div>
           </div>
         </div>
@@ -1079,28 +1006,28 @@ export default function AthleteForwardConcept() {
       <section className="af-section af-identity" id="identity">
         <div className="af-section-inner">
           <div className="af-eyebrow">For athletes</div>
-          <h2>A durable record of showing up.</h2>
+          <h2>A reason to keep showing up.</h2>
           <p className="af-lede">
-            PROOF should feel bigger than a discount engine. The athlete is building a verified
-            effort identity every time they move.
+            Athletes do not need another points scheme disconnected from the work. PROOF lets
+            verified training earn progress, status, and rewards with brands they care about.
           </p>
           <div className="af-identity-panel">
             <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
             <div className="af-profile-lines">
               <div className="af-profile-line">
                 <strong>Today</strong>
-                <span>Morning run verified through Strava</span>
+                <span>Morning run verified and credited to a brand challenge</span>
                 <em>+18 PM</em>
               </div>
               <div className="af-profile-line">
                 <strong>This month</strong>
-                <span>Challenge window progress updated</span>
+                <span>Eligible activities counted in the athlete's local-time window</span>
                 <em>62%</em>
               </div>
               <div className="af-profile-line">
                 <strong>Lifetime</strong>
-                <span>Portable PROOF identity grows across brands</span>
-                <em>Rival</em>
+                <span>PROOF Miles build a portable record across participating brands</span>
+                <em>Earned</em>
               </div>
             </div>
           </div>
@@ -1109,17 +1036,17 @@ export default function AthleteForwardConcept() {
 
       <section className="af-section">
         <div className="af-section-inner">
-          <div className="af-eyebrow">Program primitives</div>
-          <h2>Simple surfaces. Precise mechanics underneath.</h2>
+          <div className="af-eyebrow">What brands can build</div>
+          <h2>Rewards without hand-waving.</h2>
           <p className="af-lede">
-            The page can stay athlete-forward without hiding the system. Brands still need to
-            know PROOF is controlled, auditable, and ready for real reward programs.
+            The experience can feel simple because the mechanics are specific: athlete-local
+            windows, sport filters, PROOF Mile thresholds, Shopify rewards, and lifecycle events.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
               <span className="af-mono">Milestones</span>
-              <h3>Reward cumulative verified effort</h3>
-              <p>Brand-specific PROOF Mile thresholds unlock rewards as athletes keep moving.</p>
+              <h3>Reward cumulative effort</h3>
+              <p>Brand-specific PROOF Mile thresholds unlock progress as athletes keep moving.</p>
             </div>
             <div className="af-card">
               <span className="af-mono">Challenges</span>
@@ -1127,9 +1054,9 @@ export default function AthleteForwardConcept() {
               <p>Fixed, monthly, or rolling windows count the right activities in the athlete's local time.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Events</span>
+              <span className="af-mono">Connected rewards</span>
               <h3>Send proof into the stack</h3>
-              <p>Klaviyo, Shopify, and webhook events help brands message rewards with context.</p>
+              <p>Shopify, Klaviyo, and webhook events help brands message rewards with context.</p>
             </div>
           </div>
         </div>
@@ -1141,9 +1068,10 @@ export default function AthleteForwardConcept() {
             <div className="af-final-content">
               <div>
                 <div className="af-eyebrow">PROOF</div>
-                <h2>Reward the work athletes already do.</h2>
+                <h2>Build loyalty around proof, not guesswork.</h2>
                 <p>
-                  Athlete-forward on the surface. Precise, auditable, and brand-ready underneath.
+                  Invite athletes through movement. Reward them with verified context.
+                  Keep the relationship alive after the first earned moment.
                 </p>
               </div>
               <div className="af-actions">
