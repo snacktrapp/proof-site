@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const COLORS = {
   base: "#050505",
@@ -38,6 +38,8 @@ const css = `
     left: 0;
     right: 0;
     z-index: 30;
+    width: 100vw;
+    max-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -58,8 +60,10 @@ const css = `
     height: 32px;
     place-items: center;
     border: 2px solid currentColor;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    border-radius: 6px;
+    font-family: 'Outfit', system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
     line-height: 1;
   }
   .af-logo-word {
@@ -69,7 +73,7 @@ const css = `
     line-height: 1;
   }
   .af-nav-links {
-    display: flex;
+    display: none;
     align-items: center;
     gap: clamp(14px, 2vw, 26px);
     color: rgba(232,232,232,0.76);
@@ -86,6 +90,70 @@ const css = `
     background: rgba(5,5,5,0.38);
     backdrop-filter: blur(14px);
     color: ${COLORS.textBright};
+  }
+  .af-nav-toggle {
+    display: grid;
+    position: relative;
+    z-index: 2;
+    flex: 0 0 auto;
+    margin-left: auto;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 1px solid rgba(255,255,255,0.34);
+    border-radius: 999px;
+    background: rgba(5,5,5,0.62);
+    color: ${COLORS.textBright};
+    cursor: pointer;
+    box-shadow: 0 14px 34px rgba(0,0,0,0.32);
+    backdrop-filter: blur(14px);
+  }
+  .af-nav-toggle-lines {
+    display: grid;
+    gap: 5px;
+    width: 17px;
+  }
+  .af-nav-toggle-lines span {
+    display: block;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+  .af-mobile-menu {
+    position: fixed;
+    top: 70px;
+    right: clamp(18px, 4vw, 48px);
+    z-index: 40;
+    display: grid;
+    gap: 4px;
+    width: min(320px, calc(100vw - 36px));
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    background: rgba(5,5,5,0.92);
+    padding: 10px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.42);
+    backdrop-filter: blur(18px);
+  }
+  .af-mobile-menu a {
+    border-radius: 10px;
+    padding: 13px 12px;
+    color: rgba(232,232,232,0.82);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .af-mobile-menu a:hover,
+  .af-mobile-menu a:focus-visible {
+    background: rgba(255,255,255,0.06);
+    color: ${COLORS.signal};
+  }
+  .af-mobile-menu .af-mobile-menu-cta {
+    margin-top: 4px;
+    background: ${COLORS.signal};
+    color: ${COLORS.base};
+    font-weight: 800;
+    text-align: center;
   }
 
   .af-hero {
@@ -566,7 +634,6 @@ const css = `
   .af-footer a:hover { color: ${COLORS.signal}; }
 
   @media (max-width: 960px) {
-    .af-nav-links a:not(.af-nav-cta) { display: none; }
     .af-hero-content { align-content: center; padding-bottom: 176px; }
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
     .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -578,6 +645,18 @@ const css = `
   @media (max-width: 640px) {
     .af-nav { padding: 16px 18px; }
     .af-nav-links { display: none; }
+    .af-nav-toggle {
+      display: grid;
+      position: fixed;
+      top: 16px;
+      left: min(330px, calc(100vw - 60px));
+      right: auto;
+    }
+    .af-mobile-menu {
+      left: 18px;
+      right: 18px;
+      width: auto;
+    }
     .af-logo-word { font-size: 22px; }
     .af-hero-image {
       background-position: 76% center;
@@ -597,7 +676,7 @@ const css = `
     .af-hero-content {
       padding-left: 18px;
       padding-right: 18px;
-      padding-bottom: 236px;
+      padding-bottom: 72px;
     }
     .af-hero-sub {
       max-width: 340px;
@@ -611,13 +690,32 @@ const css = `
       flex-direction: column;
     }
     .af-button { width: 100%; }
-    .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
+    .af-metrics { display: none; }
+    .af-cred-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+    }
+    .af-cred-item {
+      min-height: 128px;
+      padding: 14px;
+    }
+    .af-cred-item strong { font-size: clamp(32px, 11vw, 44px); }
+    .af-cred-item span {
+      margin-top: 10px;
+      font-size: 13px;
+      line-height: 1.38;
+    }
+    .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
     .af-metrics div {
       border-right: 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .af-metrics div:last-child { border-bottom: 0; }
     .af-profile-line { grid-template-columns: 1fr; }
+    .af-strip .af-section-inner {
+      padding-top: 42px;
+      padding-bottom: 42px;
+    }
     .af-footer {
       align-items: flex-start;
       flex-direction: column;
@@ -826,6 +924,8 @@ function redrawCanvases() {
 }
 
 export default function AthleteForwardConcept() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     redrawCanvases();
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -845,7 +945,7 @@ export default function AthleteForwardConcept() {
       <style>{css}</style>
 
       <nav className="af-nav" aria-label="PROOF navigation">
-        <a className="af-logo" href="/">
+        <a className="af-logo" href="/concepts/athlete-forward">
           <span className="af-logo-mark">P</span>
           <span className="af-logo-word">PROOF</span>
         </a>
@@ -856,7 +956,40 @@ export default function AthleteForwardConcept() {
           <a href="#identity">Athletes</a>
           <a className="af-nav-cta" href="#waitlist">Get started</a>
         </div>
+        <button
+          className="af-nav-toggle"
+          type="button"
+          aria-expanded={menuOpen}
+          aria-controls="af-mobile-menu"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setMenuOpen((open) => !open)}
+        >
+          <span className="af-nav-toggle-lines" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </span>
+        </button>
       </nav>
+      {menuOpen ? (
+        <div className="af-mobile-menu" id="af-mobile-menu">
+          <a href="/concepts/athlete-forward/how-it-works" onClick={() => setMenuOpen(false)}>
+            How it works
+          </a>
+          <a href="/concepts/athlete-forward/pricing" onClick={() => setMenuOpen(false)}>
+            Pricing
+          </a>
+          <a href="#brands" onClick={() => setMenuOpen(false)}>
+            For brands
+          </a>
+          <a href="#identity" onClick={() => setMenuOpen(false)}>
+            Athletes
+          </a>
+          <a className="af-mobile-menu-cta" href="#waitlist" onClick={() => setMenuOpen(false)}>
+            Get started
+          </a>
+        </div>
+      ) : null}
 
       <header className="af-hero">
         <canvas className="af-canvas" data-art="hero" aria-hidden="true" />
@@ -1120,11 +1253,9 @@ export default function AthleteForwardConcept() {
       <footer className="af-footer">
         <span>2026 PROOF Verified Effort, Inc.</span>
         <span className="af-footer-links">
-          <a href="/concepts/athlete-forward/how-it-works">How it works</a>
-          <a href="/concepts/athlete-forward/pricing">Pricing</a>
-          <a href="/methodology">Methodology</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
+          <a href="/methodology">Methodology</a>
         </span>
       </footer>
     </main>
