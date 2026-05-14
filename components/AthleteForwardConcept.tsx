@@ -21,6 +21,7 @@ const COLORS = {
 };
 
 const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
+const HERO_VIDEO = "/concepts/athlete-forward/hero-field-loop.webm";
 const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
 const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
 
@@ -65,6 +66,19 @@ const css = `
       background-image 220ms ease,
       opacity 220ms ease,
       filter 220ms ease;
+  }
+  .af-hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    pointer-events: none;
+    opacity: 0.9;
+    filter: grayscale(1) contrast(1.08);
+    transform: scale(1.01);
   }
   .af-hero::after {
     content: '';
@@ -528,6 +542,10 @@ const css = `
       background-position: 76% center;
       opacity: 0.98;
     }
+    .af-hero-video {
+      object-position: 76% center;
+      opacity: 0.98;
+    }
     .af-hero::after {
       background:
         radial-gradient(circle at 82% 40%, rgba(5,5,5,0.02), rgba(5,5,5,0.32) 35%, rgba(5,5,5,0.86) 100%),
@@ -587,6 +605,10 @@ const css = `
       flex-direction: column;
     }
     .af-footer-links { justify-content: flex-start; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .af-hero-video { display: none; }
   }
 `;
 
@@ -817,6 +839,19 @@ export default function AthleteForwardConcept() {
           style={{ backgroundImage: `url(${HERO_IMAGE})` }}
           aria-hidden="true"
         />
+        <video
+          className="af-hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={HERO_IMAGE}
+          aria-hidden="true"
+          tabIndex={-1}
+        >
+          <source src={HERO_VIDEO} type="video/webm" />
+        </video>
         <div className="af-noise" />
         <div className="af-hero-content">
           <div className="af-kicker">Verified effort rewards</div>
