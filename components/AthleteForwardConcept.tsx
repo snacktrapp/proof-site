@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AthleteForwardHeader } from "./AthleteForwardHeader";
 import { athleteForwardChromeCss } from "./athleteForwardChrome";
 
@@ -21,7 +21,7 @@ const COLORS = {
 };
 
 const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
-const HERO_VIDEO_MP4 = "/concepts/athlete-forward/hero-field-loop.mp4";
+const HERO_VIDEO_MP4 = "/concepts/athlete-forward/hero-field-loop.mp4?v=2";
 const HERO_VIDEO_WEBM = "/concepts/athlete-forward/hero-field-loop.webm";
 const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
 const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
@@ -80,6 +80,12 @@ const css = `
     opacity: 0.9;
     filter: grayscale(1) contrast(1.08);
     transform: scale(1.01);
+  }
+  .af-hero-video::-webkit-media-controls,
+  .af-hero-video::-webkit-media-controls-panel,
+  .af-hero-video::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
   }
   .af-hero::after {
     content: '';
@@ -813,6 +819,8 @@ function redrawCanvases() {
 }
 
 export default function AthleteForwardConcept() {
+  const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+
   useEffect(() => {
     redrawCanvases();
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -824,6 +832,39 @@ export default function AthleteForwardConcept() {
     return () => {
       clearTimeout(resizeTimer);
       window.removeEventListener("resize", onResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const video = heroVideoRef.current;
+    if (!video) return;
+
+    const prepareVideo = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.controls = false;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      video.removeAttribute("controls");
+    };
+
+    const playVideo = () => {
+      prepareVideo();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      void video.play().catch(() => undefined);
+    };
+
+    prepareVideo();
+    playVideo();
+
+    video.addEventListener("canplay", playVideo);
+    document.addEventListener("visibilitychange", playVideo);
+
+    return () => {
+      video.removeEventListener("canplay", playVideo);
+      document.removeEventListener("visibilitychange", playVideo);
     };
   }, []);
 
@@ -841,12 +882,14 @@ export default function AthleteForwardConcept() {
           aria-hidden="true"
         />
         <video
+          ref={heroVideoRef}
           className="af-hero-video"
           autoPlay
+          controls={false}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={HERO_IMAGE}
           aria-hidden="true"
           tabIndex={-1}
