@@ -19,6 +19,10 @@ const COLORS = {
   effort: "#FF3D00",
 };
 
+const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
+const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
+const APP_LOGIN_URL = "https://proof.verifiedeffort.com/auth/login";
+
 const detailCss = `
   .afd-page, .afd-page * { box-sizing: border-box; }
   .afd-page {
@@ -496,7 +500,8 @@ const detailCss = `
     .afd-logo-word { font-size: 22px; }
     .afd-hero h1 {
       max-width: 100%;
-      font-size: clamp(50px, 14vw, 60px);
+      font-size: clamp(44px, 12vw, 54px);
+      text-wrap: auto;
       overflow-wrap: break-word;
     }
     .afd-hero::before {
@@ -504,7 +509,8 @@ const detailCss = `
     }
     .afd-hero-inner,
     .afd-section-inner {
-      width: 100%;
+      width: min(390px, 100vw);
+      max-width: min(390px, 100vw);
       padding-left: 18px;
       padding-right: 18px;
     }
@@ -516,7 +522,7 @@ const detailCss = `
     .afd-hero p,
     .afd-lede {
       width: calc(100vw - 36px);
-      max-width: calc(100vw - 36px);
+      max-width: min(354px, calc(100vw - 36px));
     }
     .afd-hero p,
     .afd-lede,
@@ -559,23 +565,24 @@ function ConceptNav({ current }: { current: "home" | "how" | "pricing" }) {
   return (
     <>
       <nav className="afd-nav" aria-label="PROOF navigation">
-        <Link className="afd-logo" href="/concepts/athlete-forward">
+        <Link className="afd-logo" href="/">
           <span className="afd-logo-mark">P</span>
           <span className="afd-logo-word">PROOF</span>
         </Link>
         <div className="afd-nav-links">
-          <Link href="/concepts/athlete-forward" aria-current={current === "home" ? "page" : undefined}>
+          <Link href="/" aria-current={current === "home" ? "page" : undefined}>
             Home
           </Link>
-          <Link href="/concepts/athlete-forward/how-it-works" aria-current={current === "how" ? "page" : undefined}>
+          <Link href="/how-it-works" aria-current={current === "how" ? "page" : undefined}>
             How it works
           </Link>
-          <Link href="/concepts/athlete-forward/pricing" aria-current={current === "pricing" ? "page" : undefined}>
+          <Link href="/pricing" aria-current={current === "pricing" ? "page" : undefined}>
             Pricing
           </Link>
-          <Link href="/concepts/athlete-forward#brands">For brands</Link>
-          <Link href="/concepts/athlete-forward#identity">Athletes</Link>
-          <Link className="afd-nav-cta" href="/concepts/athlete-forward#waitlist">
+          <Link href="/#brands">For brands</Link>
+          <Link href="/#identity">Athletes</Link>
+          <a href={APP_LOGIN_URL}>Log in</a>
+          <Link className="afd-nav-cta" href="/start">
             Get started
           </Link>
         </div>
@@ -597,35 +604,38 @@ function ConceptNav({ current }: { current: "home" | "how" | "pricing" }) {
       {menuOpen ? (
         <div className="afd-mobile-menu" id="afd-mobile-menu">
           <Link
-            href="/concepts/athlete-forward"
+            href="/"
             aria-current={current === "home" ? "page" : undefined}
             onClick={() => setMenuOpen(false)}
           >
             Home
           </Link>
           <Link
-            href="/concepts/athlete-forward/how-it-works"
+            href="/how-it-works"
             aria-current={current === "how" ? "page" : undefined}
             onClick={() => setMenuOpen(false)}
           >
             How it works
           </Link>
           <Link
-            href="/concepts/athlete-forward/pricing"
+            href="/pricing"
             aria-current={current === "pricing" ? "page" : undefined}
             onClick={() => setMenuOpen(false)}
           >
             Pricing
           </Link>
-          <Link href="/concepts/athlete-forward#brands" onClick={() => setMenuOpen(false)}>
+          <Link href="/#brands" onClick={() => setMenuOpen(false)}>
             For brands
           </Link>
-          <Link href="/concepts/athlete-forward#identity" onClick={() => setMenuOpen(false)}>
+          <Link href="/#identity" onClick={() => setMenuOpen(false)}>
             Athletes
           </Link>
+          <a href={APP_LOGIN_URL} onClick={() => setMenuOpen(false)}>
+            Log in
+          </a>
           <Link
             className="afd-mobile-menu-cta"
-            href="/concepts/athlete-forward#waitlist"
+            href="/start"
             onClick={() => setMenuOpen(false)}
           >
             Get started
@@ -822,7 +832,7 @@ export function AthleteForwardPricing() {
         mobileImagePosition="62% center"
         actions={
           <>
-            <a className="afd-button afd-button-primary" href="https://proof.verifiedeffort.com/auth/register?role=brand">
+            <a className="afd-button afd-button-primary" href={APP_REGISTER_BRAND_URL}>
               Start a brand program
             </a>
             <a className="afd-button" href="mailto:brian@verifiedeffort.com">
@@ -933,7 +943,7 @@ export function AthleteForwardPricing() {
             <a className="afd-button afd-button-primary" href="mailto:brian@verifiedeffort.com">
               Talk to PROOF
             </a>
-            <Link className="afd-button" href="/concepts/athlete-forward">
+            <Link className="afd-button" href="/">
               Back to home
             </Link>
           </div>
@@ -948,16 +958,16 @@ export function AthleteForwardHowItWorks() {
     <Shell current="how">
       <Hero
         kicker="How PROOF works"
-        title="How effort becomes earned loyalty."
+        title="Effort becomes earned loyalty."
         image="/concepts/athlete-forward/hero-rain.jpg"
         imagePosition="center center"
         mobileImagePosition="64% center"
         actions={
           <>
-            <a className="afd-button afd-button-primary" href="https://proof.verifiedeffort.com/auth/register?role=brand">
+            <a className="afd-button afd-button-primary" href={APP_REGISTER_BRAND_URL}>
               Build a reward program
             </a>
-            <Link className="afd-button" href="/concepts/athlete-forward/pricing">
+            <Link className="afd-button" href="/pricing">
               View pricing
             </Link>
           </>
@@ -1147,10 +1157,13 @@ export function AthleteForwardHowItWorks() {
             verified movement. PROOF handles the ledger, qualification, and reward trigger.
           </p>
           <div className="afd-actions">
-            <Link className="afd-button afd-button-primary" href="/concepts/athlete-forward/pricing">
+            <Link className="afd-button afd-button-primary" href="/pricing">
               Compare plans
             </Link>
-            <Link className="afd-button" href="/concepts/athlete-forward">
+            <a className="afd-button" href={APP_REGISTER_ATHLETE_URL}>
+              Join as an athlete
+            </a>
+            <Link className="afd-button" href="/">
               Back to home
             </Link>
           </div>

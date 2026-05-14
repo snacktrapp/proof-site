@@ -19,6 +19,9 @@ const COLORS = {
 };
 
 const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
+const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
+const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
+const APP_LOGIN_URL = "https://proof.verifiedeffort.com/auth/login";
 
 const css = `
   .af-page, .af-page * { box-sizing: border-box; }
@@ -945,16 +948,17 @@ export default function AthleteForwardConcept() {
       <style>{css}</style>
 
       <nav className="af-nav" aria-label="PROOF navigation">
-        <a className="af-logo" href="/concepts/athlete-forward">
+        <a className="af-logo" href="/">
           <span className="af-logo-mark">P</span>
           <span className="af-logo-word">PROOF</span>
         </a>
         <div className="af-nav-links">
-          <a href="/concepts/athlete-forward/how-it-works">How it works</a>
-          <a href="/concepts/athlete-forward/pricing">Pricing</a>
+          <a href="/how-it-works">How it works</a>
+          <a href="/pricing">Pricing</a>
           <a href="#brands">For brands</a>
           <a href="#identity">Athletes</a>
-          <a className="af-nav-cta" href="#waitlist">Get started</a>
+          <a href={APP_LOGIN_URL}>Log in</a>
+          <a className="af-nav-cta" href="/start">Get started</a>
         </div>
         <button
           className="af-nav-toggle"
@@ -973,10 +977,10 @@ export default function AthleteForwardConcept() {
       </nav>
       {menuOpen ? (
         <div className="af-mobile-menu" id="af-mobile-menu">
-          <a href="/concepts/athlete-forward/how-it-works" onClick={() => setMenuOpen(false)}>
+          <a href="/how-it-works" onClick={() => setMenuOpen(false)}>
             How it works
           </a>
-          <a href="/concepts/athlete-forward/pricing" onClick={() => setMenuOpen(false)}>
+          <a href="/pricing" onClick={() => setMenuOpen(false)}>
             Pricing
           </a>
           <a href="#brands" onClick={() => setMenuOpen(false)}>
@@ -985,7 +989,10 @@ export default function AthleteForwardConcept() {
           <a href="#identity" onClick={() => setMenuOpen(false)}>
             Athletes
           </a>
-          <a className="af-mobile-menu-cta" href="#waitlist" onClick={() => setMenuOpen(false)}>
+          <a href={APP_LOGIN_URL} onClick={() => setMenuOpen(false)}>
+            Log in
+          </a>
+          <a className="af-mobile-menu-cta" href="/start" onClick={() => setMenuOpen(false)}>
             Get started
           </a>
         </div>
@@ -1007,11 +1014,11 @@ export default function AthleteForwardConcept() {
             a cleaner way to recognize the people already living their category.
           </p>
           <div className="af-actions">
-            <a className="af-button af-button-primary" href="#waitlist">
+            <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
               Build a reward program
             </a>
-            <a className="af-button" href="#identity">
-              See the athlete side
+            <a className="af-button" href={APP_REGISTER_ATHLETE_URL}>
+              Join as an athlete
             </a>
           </div>
         </div>
@@ -1173,7 +1180,7 @@ export default function AthleteForwardConcept() {
                 </div>
               </div>
             </div>
-            <a className="af-text-link" href="/concepts/athlete-forward/how-it-works">
+            <a className="af-text-link" href="/how-it-works">
               Read the detailed overview
             </a>
           </div>
@@ -1235,13 +1242,13 @@ export default function AthleteForwardConcept() {
                 </p>
               </div>
               <div className="af-actions">
-                <a className="af-button af-button-primary" href="https://proof.verifiedeffort.com/auth/register?role=brand">
+                <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
                   Start a brand program
                 </a>
                 <a className="af-button" href="mailto:brian@verifiedeffort.com">
                   Talk to PROOF
                 </a>
-                <a className="af-button" href="/concepts/athlete-forward/pricing">
+                <a className="af-button" href="/pricing">
                   View pricing
                 </a>
               </div>

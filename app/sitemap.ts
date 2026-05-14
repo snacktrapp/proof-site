@@ -19,13 +19,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
-      url: `${BASE}/athletes`,
+      url: `${BASE}/pricing`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.8,
     },
     {
-      url: `${BASE}/demo`,
+      url: `${BASE}/start`,
+      lastModified,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${BASE}/methodology`,
       lastModified,
       changeFrequency: "monthly",
       priority: 0.6,

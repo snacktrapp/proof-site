@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "PROOF — Verified Effort Loyalty Infrastructure";
+export const alt = "PROOF - Verified Effort Rewards";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,11 +29,11 @@ async function loadBebasNeue(): Promise<ArrayBuffer | null> {
 }
 
 export default async function OGImage() {
-  const HEADLINE_LINE_1 = "Turn every mile, stroke,";
-  const HEADLINE_LINE_2 = "and stride into";
-  const HEADLINE_LINE_3 = "loyalty currency.";
-  const EYEBROW = "VERIFIED EFFORT LOYALTY INFRASTRUCTURE";
-  const SUBLINE = "Your customers are already training. PROOF turns verified athletic effort into loyalty currency for your brand.";
+  const HEADLINE_LINE_1 = "Your effort";
+  const HEADLINE_LINE_2 = "is worth";
+  const HEADLINE_LINE_3 = "something.";
+  const EYEBROW = "VERIFIED EFFORT REWARDS";
+  const SUBLINE = "PROOF helps athletes turn verified movement into earned rewards and gives brands a cleaner way to recognize real effort.";
   const CHIP = "VERIFIED BY PROOF";
   const WORDMARK = "PROOF";
   const DOMAIN = "verifiedeffort.com";
