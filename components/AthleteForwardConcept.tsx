@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AthleteForwardHeader } from "./AthleteForwardHeader";
 import { athleteForwardChromeCss } from "./athleteForwardChrome";
 
@@ -77,9 +77,17 @@ const css = `
     object-fit: cover;
     object-position: center center;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0;
+    visibility: hidden;
+    clip-path: inset(50%);
     filter: grayscale(1) contrast(1.08);
     transform: scale(1.01);
+    transition: opacity 220ms ease;
+  }
+  .af-hero-video[data-playing="true"] {
+    opacity: 0.9;
+    visibility: visible;
+    clip-path: none;
   }
   .af-hero-video::-webkit-media-controls,
   .af-hero-video::-webkit-media-controls-panel,
@@ -820,6 +828,7 @@ function redrawCanvases() {
 
 export default function AthleteForwardConcept() {
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+  const [heroVideoPlaying, setHeroVideoPlaying] = useState(false);
 
   useEffect(() => {
     redrawCanvases();
@@ -838,6 +847,7 @@ export default function AthleteForwardConcept() {
   useEffect(() => {
     const video = heroVideoRef.current;
     if (!video) return;
+    let cancelled = false;
 
     const prepareVideo = () => {
       video.muted = true;
@@ -847,24 +857,53 @@ export default function AthleteForwardConcept() {
       video.setAttribute("muted", "");
       video.setAttribute("playsinline", "");
       video.setAttribute("webkit-playsinline", "");
+      video.setAttribute("x-webkit-airplay", "deny");
       video.removeAttribute("controls");
     };
 
-    const playVideo = () => {
-      prepareVideo();
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      void video.play().catch(() => undefined);
+    const hideVideo = () => {
+      if (!cancelled) setHeroVideoPlaying(false);
     };
 
-    prepareVideo();
-    playVideo();
+    const showVideo = () => {
+      if (!cancelled) setHeroVideoPlaying(true);
+    };
 
-    video.addEventListener("canplay", playVideo);
-    document.addEventListener("visibilitychange", playVideo);
+    const playVideo = async () => {
+      prepareVideo();
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        hideVideo();
+        return;
+      }
+
+      try {
+        await video.play();
+        if (!video.paused && video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA) {
+          showVideo();
+        }
+      } catch {
+        hideVideo();
+      }
+    };
+    const handleCanPlay = () => void playVideo();
+    const handleVisibilityChange = () => void playVideo();
+
+    prepareVideo();
+    void playVideo();
+
+    video.addEventListener("canplay", handleCanPlay);
+    video.addEventListener("playing", showVideo);
+    video.addEventListener("pause", hideVideo);
+    video.addEventListener("error", hideVideo);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
-      video.removeEventListener("canplay", playVideo);
-      document.removeEventListener("visibilitychange", playVideo);
+      cancelled = true;
+      video.removeEventListener("canplay", handleCanPlay);
+      video.removeEventListener("playing", showVideo);
+      video.removeEventListener("pause", hideVideo);
+      video.removeEventListener("error", hideVideo);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
   }, []);
 
@@ -884,13 +923,13 @@ export default function AthleteForwardConcept() {
         <video
           ref={heroVideoRef}
           className="af-hero-video"
+          data-playing={heroVideoPlaying ? "true" : "false"}
           autoPlay
           controls={false}
           muted
           loop
           playsInline
           preload="auto"
-          poster={HERO_IMAGE}
           aria-hidden="true"
           tabIndex={-1}
           onLoadedData={(event) => {
