@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AthleteForwardFooter } from "@/components/AthleteForwardFooter";
 import { AthleteForwardHeader } from "@/components/AthleteForwardHeader";
 import { athleteForwardChromeCss } from "@/components/athleteForwardChrome";
 
@@ -384,11 +385,7 @@ export default function PrivacyPolicy() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer style={{ borderTop: `1px solid ${COLORS.rail}`, padding: "32px 24px",
-        textAlign: "center", fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>
-        &copy; {new Date().getFullYear()} PROOF Verified Effort, Inc. All rights reserved.
-      </footer>
+      <AthleteForwardFooter />
     </div>
   );
 }
