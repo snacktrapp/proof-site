@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const COLORS = {
   base: "#050505",
@@ -17,6 +17,27 @@ const COLORS = {
   steel: "#8BA0B4",
   effort: "#FF3D00",
 };
+
+const HERO_STUDIES = [
+  {
+    id: "field",
+    label: "Field",
+    src: "/concepts/athlete-forward/hero-field.jpg",
+    position: "center center",
+  },
+  {
+    id: "rain",
+    label: "Rain",
+    src: "/concepts/athlete-forward/hero-rain.jpg",
+    position: "center center",
+  },
+  {
+    id: "trace",
+    label: "Trace",
+    src: "/concepts/athlete-forward/hero-trace.jpg",
+    position: "center center",
+  },
+];
 
 const css = `
   .af-page, .af-page * { box-sizing: border-box; }
@@ -99,10 +120,26 @@ const css = `
     width: 100%;
     height: 100%;
   }
+  .af-canvas { z-index: 0; }
+  .af-hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: 0.9;
+    filter: grayscale(1) contrast(1.08);
+    transform: scale(1.01);
+    transition:
+      background-image 220ms ease,
+      opacity 220ms ease,
+      filter 220ms ease;
+  }
   .af-hero::after {
     content: '';
     position: absolute;
     inset: 0;
+    z-index: 2;
     pointer-events: none;
     background:
       radial-gradient(circle at 68% 34%, rgba(5,5,5,0.04), rgba(5,5,5,0.54) 40%, rgba(5,5,5,0.93) 100%),
@@ -112,6 +149,7 @@ const css = `
   .af-noise {
     position: absolute;
     inset: 0;
+    z-index: 3;
     pointer-events: none;
     background-image:
       linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
@@ -122,7 +160,7 @@ const css = `
   }
   .af-hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 4;
     display: grid;
     min-height: 100svh;
     align-content: end;
@@ -172,6 +210,7 @@ const css = `
     flex-wrap: wrap;
     gap: 12px;
     margin-top: 4px;
+    max-width: 100%;
   }
   .af-button {
     display: inline-flex;
@@ -188,6 +227,7 @@ const css = `
     letter-spacing: 0.08em;
     text-transform: uppercase;
     text-align: center;
+    max-width: 100%;
   }
   .af-button-primary {
     border-color: ${COLORS.signal};
@@ -195,12 +235,40 @@ const css = `
     color: ${COLORS.base};
   }
   .af-button:hover { transform: translateY(-1px); }
+  .af-hero-studies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 2px;
+    max-width: 100%;
+  }
+  .af-hero-study {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 999px;
+    background: rgba(5,5,5,0.48);
+    color: rgba(232,232,232,0.72);
+    cursor: pointer;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    min-width: 0;
+    padding: 9px 11px;
+    text-transform: uppercase;
+  }
+  .af-hero-study:hover,
+  .af-hero-study.is-active {
+    border-color: rgba(200,255,0,0.7);
+    background: rgba(200,255,0,0.12);
+    color: ${COLORS.signal};
+  }
 
   .af-metrics {
     position: absolute;
     right: clamp(18px, 4vw, 48px);
     bottom: clamp(18px, 5vw, 56px);
-    z-index: 3;
+    z-index: 4;
     display: grid;
     grid-template-columns: repeat(3, minmax(104px, 1fr));
     border: 1px solid rgba(255,255,255,0.12);
@@ -234,7 +302,7 @@ const css = `
     position: absolute;
     right: clamp(18px, 4vw, 48px);
     top: 84px;
-    z-index: 3;
+    z-index: 4;
     border: 1px solid rgba(200,255,0,0.36);
     border-radius: 999px;
     padding: 8px 11px;
@@ -565,10 +633,22 @@ const css = `
     }
     .af-actions {
       width: 100%;
+      max-width: calc(100vw - 36px);
       align-items: stretch;
       flex-direction: column;
     }
     .af-button { width: 100%; }
+    .af-hero-studies {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: 100%;
+      max-width: calc(100vw - 36px);
+    }
+    .af-hero-study {
+      width: 100%;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
     .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
     .af-metrics div {
       border-right: 0;
@@ -780,6 +860,8 @@ function redrawCanvases() {
 }
 
 export default function AthleteForwardConcept() {
+  const [heroStudy, setHeroStudy] = useState(HERO_STUDIES[0]);
+
   useEffect(() => {
     redrawCanvases();
     let resizeTimer: ReturnType<typeof setTimeout>;
@@ -813,6 +895,11 @@ export default function AthleteForwardConcept() {
 
       <header className="af-hero">
         <canvas className="af-canvas" data-art="hero" aria-hidden="true" />
+        <div
+          className="af-hero-image"
+          style={{ backgroundImage: `url(${heroStudy.src})`, backgroundPosition: heroStudy.position }}
+          aria-hidden="true"
+        />
         <div className="af-noise" />
         <div className="af-preview-pill af-mono">Preview-only route</div>
         <div className="af-hero-content">
@@ -829,6 +916,18 @@ export default function AthleteForwardConcept() {
             <a className="af-button" href="#how">
               See how effort becomes proof
             </a>
+          </div>
+          <div className="af-hero-studies" aria-label="Hero image studies">
+            {HERO_STUDIES.map((study) => (
+              <button
+                className={`af-hero-study${heroStudy.id === study.id ? " is-active" : ""}`}
+                key={study.id}
+                type="button"
+                onClick={() => setHeroStudy(study)}
+              >
+                {study.label}
+              </button>
+            ))}
           </div>
         </div>
         <div className="af-metrics" aria-label="Example verified effort metrics">
