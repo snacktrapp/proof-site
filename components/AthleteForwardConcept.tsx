@@ -21,7 +21,8 @@ const COLORS = {
 };
 
 const HERO_IMAGE = "/concepts/athlete-forward/hero-field.jpg";
-const HERO_VIDEO = "/concepts/athlete-forward/hero-field-loop.webm";
+const HERO_VIDEO_MP4 = "/concepts/athlete-forward/hero-field-loop.mp4";
+const HERO_VIDEO_WEBM = "/concepts/athlete-forward/hero-field-loop.webm";
 const APP_REGISTER_BRAND_URL = "https://proof.verifiedeffort.com/auth/register?role=brand";
 const APP_REGISTER_ATHLETE_URL = "https://proof.verifiedeffort.com/auth/register?role=athlete";
 
@@ -849,8 +850,12 @@ export default function AthleteForwardConcept() {
           poster={HERO_IMAGE}
           aria-hidden="true"
           tabIndex={-1}
+          onLoadedData={(event) => {
+            void event.currentTarget.play().catch(() => undefined);
+          }}
         >
-          <source src={HERO_VIDEO} type="video/webm" />
+          <source src={HERO_VIDEO_MP4} type="video/mp4" />
+          <source src={HERO_VIDEO_WEBM} type="video/webm" />
         </video>
         <div className="af-noise" />
         <div className="af-hero-content">
