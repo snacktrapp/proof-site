@@ -107,6 +107,7 @@ const css = `
     inset: 0;
     z-index: 1;
     background-size: cover;
+    background-position: center center;
     background-repeat: no-repeat;
     opacity: 0.9;
     filter: grayscale(1) contrast(1.08);
@@ -264,19 +265,6 @@ const css = `
     font-size: 10px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  .af-preview-pill {
-    position: absolute;
-    right: clamp(18px, 4vw, 48px);
-    top: 84px;
-    z-index: 4;
-    border: 1px solid rgba(200,255,0,0.36);
-    border-radius: 999px;
-    padding: 8px 11px;
-    background: rgba(5,5,5,0.48);
-    color: ${COLORS.signal};
-    backdrop-filter: blur(16px);
   }
 
   .af-section {
@@ -522,53 +510,6 @@ const css = `
   .af-use-grid .af-card { min-height: 230px; }
   .af-use-grid .af-card .af-mono { margin-bottom: 44px; color: ${COLORS.signal}; }
 
-  .af-pricing-teaser {
-    background:
-      linear-gradient(180deg, rgba(200,255,0,0.06), rgba(5,5,5,0) 46%),
-      ${COLORS.surface};
-  }
-  .af-pricing-panel {
-    display: grid;
-    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-    gap: clamp(26px, 5vw, 64px);
-    align-items: stretch;
-  }
-  .af-pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 12px;
-  }
-  .af-mini-plan {
-    display: grid;
-    align-content: space-between;
-    min-height: 260px;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px;
-    background: rgba(5,5,5,0.48);
-    padding: 18px;
-  }
-  .af-mini-plan-featured {
-    border-color: rgba(200,255,0,0.5);
-    background: ${COLORS.signalDim};
-  }
-  .af-mini-plan strong {
-    color: ${COLORS.textBright};
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(38px, 4vw, 56px);
-    font-weight: 400;
-    line-height: 0.95;
-  }
-  .af-mini-plan span {
-    display: block;
-    color: ${COLORS.steel};
-  }
-  .af-mini-plan p {
-    margin: 18px 0 0;
-    color: ${COLORS.subtle};
-    font-size: 14px;
-    line-height: 1.45;
-  }
-
   .af-final { background: ${COLORS.base}; }
   .af-final-panel {
     position: relative;
@@ -605,6 +546,7 @@ const css = `
 
   .af-footer {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 16px;
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -615,6 +557,13 @@ const css = `
     letter-spacing: 0.08em;
     text-transform: uppercase;
   }
+  .af-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 14px;
+  }
+  .af-footer a:hover { color: ${COLORS.signal}; }
 
   @media (max-width: 960px) {
     .af-nav-links a:not(.af-nav-cta) { display: none; }
@@ -622,8 +571,6 @@ const css = `
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
     .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
-    .af-pricing-panel { grid-template-columns: 1fr; }
-    .af-pricing-grid { grid-template-columns: repeat(3, minmax(160px, 1fr)); overflow-x: auto; }
     .af-panel { min-height: 460px; }
     .af-identity-panel { min-height: 520px; }
   }
@@ -631,8 +578,17 @@ const css = `
   @media (max-width: 640px) {
     .af-nav { padding: 16px 18px; }
     .af-nav-links { display: none; }
-    .af-preview-pill { display: none; }
     .af-logo-word { font-size: 22px; }
+    .af-hero-image {
+      background-position: 76% center;
+      opacity: 0.98;
+    }
+    .af-hero::after {
+      background:
+        radial-gradient(circle at 82% 40%, rgba(5,5,5,0.02), rgba(5,5,5,0.32) 35%, rgba(5,5,5,0.86) 100%),
+        linear-gradient(90deg, rgba(5,5,5,0.92), rgba(5,5,5,0.44) 56%, rgba(5,5,5,0.32)),
+        linear-gradient(180deg, rgba(5,5,5,0.28), rgba(5,5,5,0.08) 48%, rgba(5,5,5,0.88));
+    }
     .af-hero h1 {
       max-width: 100%;
       font-size: clamp(64px, 18vw, 84px);
@@ -655,15 +611,18 @@ const css = `
       flex-direction: column;
     }
     .af-button { width: 100%; }
-    .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid, .af-pricing-grid { grid-template-columns: 1fr; }
-    .af-pricing-grid { overflow-x: visible; }
+    .af-metrics, .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
     .af-metrics div {
       border-right: 0;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .af-metrics div:last-child { border-bottom: 0; }
     .af-profile-line { grid-template-columns: 1fr; }
-    .af-footer { flex-direction: column; }
+    .af-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .af-footer-links { justify-content: flex-start; }
   }
 `;
 
@@ -885,7 +844,7 @@ export default function AthleteForwardConcept() {
     <main className="af-page">
       <style>{css}</style>
 
-      <nav className="af-nav" aria-label="Athlete-forward concept navigation">
+      <nav className="af-nav" aria-label="PROOF navigation">
         <a className="af-logo" href="/">
           <span className="af-logo-mark">P</span>
           <span className="af-logo-word">PROOF</span>
@@ -895,7 +854,7 @@ export default function AthleteForwardConcept() {
           <a href="/concepts/athlete-forward/pricing">Pricing</a>
           <a href="#brands">For brands</a>
           <a href="#identity">Athletes</a>
-          <a className="af-nav-cta" href="#waitlist">Early access</a>
+          <a className="af-nav-cta" href="#waitlist">Get started</a>
         </div>
       </nav>
 
@@ -903,11 +862,10 @@ export default function AthleteForwardConcept() {
         <canvas className="af-canvas" data-art="hero" aria-hidden="true" />
         <div
           className="af-hero-image"
-          style={{ backgroundImage: `url(${HERO_IMAGE})`, backgroundPosition: "center center" }}
+          style={{ backgroundImage: `url(${HERO_IMAGE})` }}
           aria-hidden="true"
         />
         <div className="af-noise" />
-        <div className="af-preview-pill af-mono">Preview-only route</div>
         <div className="af-hero-content">
           <div className="af-kicker">Verified effort rewards</div>
           <h1>Your effort is worth something.</h1>
@@ -991,6 +949,65 @@ export default function AthleteForwardConcept() {
         </div>
       </section>
 
+      <section className="af-section" id="brands">
+        <div className="af-section-inner">
+          <div className="af-eyebrow">For brands</div>
+          <h2>Acquire the athletes already living your category.</h2>
+          <p className="af-lede">
+            Traditional loyalty starts after someone buys. PROOF gives brands a way to recognize
+            the activity, discipline, and identity that made the customer care in the first place.
+          </p>
+          <div className="af-use-grid">
+            <div className="af-card">
+              <span className="af-mono">Acquisition</span>
+              <h3>Turn participation into audience</h3>
+              <p>Brand join pages invite athletes into a relationship built around what they do.</p>
+            </div>
+            <div className="af-card">
+              <span className="af-mono">Activation</span>
+              <h3>Launch moments people can earn</h3>
+              <p>Challenges and milestones create reasons to move, return, and share progress.</p>
+            </div>
+            <div className="af-card">
+              <span className="af-mono">Retention</span>
+              <h3>Message when effort creates relevance</h3>
+              <p>Use PROOF events to trigger rewards, emails, and offers with earned context.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="af-section af-identity" id="identity">
+        <div className="af-section-inner">
+          <div className="af-eyebrow">For athletes</div>
+          <h2>A reason to keep showing up.</h2>
+          <p className="af-lede">
+            Athletes do not need another points scheme disconnected from the work. PROOF lets
+            verified training earn progress, status, and rewards with brands they care about.
+          </p>
+          <div className="af-identity-panel">
+            <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
+            <div className="af-profile-lines">
+              <div className="af-profile-line">
+                <strong>Today</strong>
+                <span>Your morning run counted toward a reward you can actually earn</span>
+                <em>+18 PM</em>
+              </div>
+              <div className="af-profile-line">
+                <strong>This month</strong>
+                <span>See how close you are, with every qualifying activity counted in your local time</span>
+                <em>62%</em>
+              </div>
+              <div className="af-profile-line">
+                <strong>Lifetime</strong>
+                <span>Build a verified effort record that can travel with you across participating brands</span>
+                <em>Earned</em>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="af-section" id="how">
         <div className="af-section-inner af-split">
           <div>
@@ -1044,65 +1061,6 @@ export default function AthleteForwardConcept() {
         </div>
       </section>
 
-      <section className="af-section" id="brands">
-        <div className="af-section-inner">
-          <div className="af-eyebrow">For brands</div>
-          <h2>Acquire the athletes already living your category.</h2>
-          <p className="af-lede">
-            Traditional loyalty starts after someone buys. PROOF gives brands a way to recognize
-            the activity, discipline, and identity that made the customer care in the first place.
-          </p>
-          <div className="af-use-grid">
-            <div className="af-card">
-              <span className="af-mono">Acquisition</span>
-              <h3>Turn participation into audience</h3>
-              <p>Brand join pages invite athletes into a relationship built around what they do.</p>
-            </div>
-            <div className="af-card">
-              <span className="af-mono">Activation</span>
-              <h3>Launch moments people can earn</h3>
-              <p>Challenges and milestones create reasons to move, return, and share progress.</p>
-            </div>
-            <div className="af-card">
-              <span className="af-mono">Retention</span>
-              <h3>Message when effort creates relevance</h3>
-              <p>Use PROOF events to trigger rewards, emails, and offers with earned context.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="af-section af-identity" id="identity">
-        <div className="af-section-inner">
-          <div className="af-eyebrow">For athletes</div>
-          <h2>A reason to keep showing up.</h2>
-          <p className="af-lede">
-            Athletes do not need another points scheme disconnected from the work. PROOF lets
-            verified training earn progress, status, and rewards with brands they care about.
-          </p>
-          <div className="af-identity-panel">
-            <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
-            <div className="af-profile-lines">
-              <div className="af-profile-line">
-                <strong>Today</strong>
-                <span>Morning run verified and credited to a brand challenge</span>
-                <em>+18 PM</em>
-              </div>
-              <div className="af-profile-line">
-                <strong>This month</strong>
-                <span>Eligible activities counted in the athlete's local-time window</span>
-                <em>62%</em>
-              </div>
-              <div className="af-profile-line">
-                <strong>Lifetime</strong>
-                <span>PROOF Miles build a portable record across participating brands</span>
-                <em>Earned</em>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="af-section">
         <div className="af-section-inner">
           <div className="af-eyebrow">What brands can build</div>
@@ -1131,51 +1089,6 @@ export default function AthleteForwardConcept() {
         </div>
       </section>
 
-      <section className="af-section af-pricing-teaser" id="pricing">
-        <div className="af-section-inner af-pricing-panel">
-          <div>
-            <div className="af-eyebrow">Pricing</div>
-            <h2>Flat pricing after the value is clear.</h2>
-            <p className="af-lede">
-              PROOF should not feel like a tax on the reward. The pricing story is a simple
-              platform subscription: no revenue share, no per-transaction cut, and beta terms
-              that can flex while the category is being created.
-            </p>
-            <div className="af-actions">
-              <a className="af-button af-button-primary" href="/concepts/athlete-forward/pricing">
-                Compare plans
-              </a>
-              <a className="af-button" href="mailto:brian@verifiedeffort.com">
-                Discuss beta terms
-              </a>
-            </div>
-          </div>
-          <div className="af-pricing-grid" aria-label="Pricing summary">
-            <div className="af-mini-plan">
-              <div>
-                <span className="af-mono">Beta</span>
-                <strong>Founder terms</strong>
-              </div>
-              <p>Best for early brands validating an earned-reward program with direct support.</p>
-            </div>
-            <div className="af-mini-plan af-mini-plan-featured">
-              <div>
-                <span className="af-mono">Scale</span>
-                <strong>$499/mo</strong>
-              </div>
-              <p>Designed for brands ready to run challenges, milestones, and lifecycle flows.</p>
-            </div>
-            <div className="af-mini-plan">
-              <div>
-                <span className="af-mono">Enterprise</span>
-                <strong>Custom</strong>
-              </div>
-              <p>For larger programs that need custom contracts, reporting, support, or integrations.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="af-section af-final" id="waitlist">
         <div className="af-section-inner">
           <div className="af-final-panel">
@@ -1190,7 +1103,7 @@ export default function AthleteForwardConcept() {
               </div>
               <div className="af-actions">
                 <a className="af-button af-button-primary" href="https://proof.verifiedeffort.com/auth/register?role=brand">
-                  Get early access
+                  Start a brand program
                 </a>
                 <a className="af-button" href="mailto:brian@verifiedeffort.com">
                   Talk to PROOF
@@ -1205,10 +1118,13 @@ export default function AthleteForwardConcept() {
       </section>
 
       <footer className="af-footer">
-        <span>PROOF - athlete-forward concept route</span>
-        <span>
-          <a href="/concepts/athlete-forward/how-it-works">How it works</a> /{" "}
+        <span>2026 PROOF Verified Effort, Inc.</span>
+        <span className="af-footer-links">
+          <a href="/concepts/athlete-forward/how-it-works">How it works</a>
           <a href="/concepts/athlete-forward/pricing">Pricing</a>
+          <a href="/methodology">Methodology</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </span>
       </footer>
     </main>
