@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata: Metadata = {
-  title: "PROOF — Verified Effort Loyalty Infrastructure",
+  title: "PROOF - Verified Effort Rewards",
   description:
-    "Turn every mile, stroke, and stride into loyalty currency. PROOF verifies athletic effort across every sport — GPS-tracked, effort-normalized — and turns it into rewards your customers earn from training they already do.",
+    "PROOF helps athletes turn verified movement into earned rewards and gives brands a cleaner way to recognize real effort.",
   metadataBase: new URL("https://verifiedeffort.com"),
   openGraph: {
-    title: "PROOF — Verified Effort Loyalty Infrastructure",
+    title: "PROOF - Verified Effort Rewards",
     description:
-      "Turn every mile, stroke, and stride into loyalty currency. PROOF verifies athletic effort across every sport — GPS-tracked, effort-normalized — and turns it into rewards your customers earn from training they already do.",
+      "PROOF helps athletes turn verified movement into earned rewards and gives brands a cleaner way to recognize real effort.",
     url: "https://verifiedeffort.com",
     siteName: "PROOF",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PROOF — Verified Effort Loyalty Infrastructure",
+    title: "PROOF - Verified Effort Rewards",
     description:
-      "Turn every mile, stroke, and stride into loyalty currency. PROOF verifies athletic effort across every sport — GPS-tracked, effort-normalized — and turns it into rewards your customers earn from training they already do.",
+      "PROOF helps athletes turn verified movement into earned rewards and gives brands a cleaner way to recognize real effort.",
   },
   icons: {
     icon: "/favicon.svg",
