@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { AthleteForwardPricing } from "@/components/AthleteForwardConceptPages";
 
 export const metadata: Metadata = {
-  title: "PROOF — Athlete-Forward Pricing Concept",
+  title: "PROOF — Pricing",
   description:
-    "A preview-only pricing and plan comparison page for the athlete-forward PROOF site concept.",
+    "Compare PROOF pricing and plan options for verified effort rewards, brand challenges, athlete progress, and earned loyalty programs.",
   robots: {
     index: false,
     follow: false,

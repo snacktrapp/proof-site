@@ -451,14 +451,14 @@ const detailCss = `
 
 function ConceptNav({ current }: { current: "home" | "how" | "pricing" }) {
   return (
-    <nav className="afd-nav" aria-label="Athlete-forward concept navigation">
+    <nav className="afd-nav" aria-label="PROOF navigation">
       <Link className="afd-logo" href="/concepts/athlete-forward">
         <span className="afd-logo-mark">P</span>
         <span className="afd-logo-word">PROOF</span>
       </Link>
       <div className="afd-nav-links">
         <Link href="/concepts/athlete-forward" aria-current={current === "home" ? "page" : undefined}>
-          Concept home
+          Home
         </Link>
         <Link href="/concepts/athlete-forward/how-it-works" aria-current={current === "how" ? "page" : undefined}>
           How it works
@@ -467,7 +467,7 @@ function ConceptNav({ current }: { current: "home" | "how" | "pricing" }) {
           Pricing
         </Link>
         <Link href="/concepts/athlete-forward#identity">Athletes</Link>
-        <Link href="/concepts/athlete-forward#waitlist">Early access</Link>
+        <Link href="/concepts/athlete-forward#waitlist">Get started</Link>
       </div>
     </nav>
   );
@@ -543,8 +543,8 @@ function Shell({
       <ConceptNav current={current} />
       {children}
       <footer className="afd-footer">
-        <span>PROOF - athlete-forward concept route</span>
-        <span>Preview-only pages</span>
+        <span>PROOF - verified effort rewards</span>
+        <span>Athletes earn. Brands reward.</span>
       </footer>
     </main>
   );
@@ -555,7 +555,7 @@ const plans = [
     name: "Developer",
     price: "Free",
     members: "Up to 100 active members",
-    bestFor: "Prototype, docs, and early integration review.",
+    bestFor: "For teams exploring verification, profile data, and the PROOF effort model.",
     features: [
       "Core verification gates",
       "PROOF tiers and public profiles",
@@ -568,7 +568,7 @@ const plans = [
     name: "Starter",
     price: "$199/mo",
     members: "Up to 1,000 active members",
-    bestFor: "A first live brand program with milestones and challenges.",
+    bestFor: "For a first live rewards program with milestones, challenges, and email events.",
     features: [
       "Everything in Developer",
       "Program dashboard",
@@ -581,7 +581,7 @@ const plans = [
     name: "Scale",
     price: "$499/mo",
     members: "Up to 10,000 active members",
-    bestFor: "The likely fit for brands actively running earned-reward campaigns.",
+    bestFor: "For brands actively running earned-reward campaigns across a growing athlete base.",
     features: [
       "Everything in Starter",
       "Cohort insights and exports",
@@ -594,7 +594,7 @@ const plans = [
     name: "Growth",
     price: "$899/mo",
     members: "Up to 25,000 active members",
-    bestFor: "Larger programs that need deeper reporting and campaign iteration.",
+    bestFor: "For larger programs that need deeper reporting, exports, and campaign iteration.",
     features: [
       "Everything in Scale",
       "Cross-brand reporting on roadmap",
@@ -636,34 +636,32 @@ export function AthleteForwardPricing() {
   return (
     <Shell current="pricing">
       <Hero
-        kicker="Concept pricing"
+        kicker="Pricing"
         title="Flat pricing. No reward tax."
         actions={
           <>
             <a className="afd-button afd-button-primary" href="https://proof.verifiedeffort.com/auth/register?role=brand">
-              Apply for beta
+              Start a brand program
             </a>
-            <Link className="afd-button" href="/concepts/athlete-forward/how-it-works">
-              See how it works
-            </Link>
+            <a className="afd-button" href="mailto:brian@verifiedeffort.com">
+              Talk to PROOF
+            </a>
           </>
         }
       >
-        Pricing should arrive after the visitor understands the new category. The full comparison
-        can live here, while the homepage carries only the simple promise: a platform subscription,
-        no revenue share, and beta terms that can flex during onboarding.
+        PROOF is priced as a platform subscription, not a cut of the reward. No revenue share,
+        no per-redemption fee, and no penalty when athletes move more.
       </Hero>
 
-      <Section eyebrow="Plans" title="Pick the shape of the program.">
+      <Section eyebrow="Plans" title="Choose the right starting point.">
         <p className="afd-lede">
-          These tiers mirror the current pricing direction, presented in the athlete-forward
-          concept style. Annual billing can still offer a 20 percent discount, but the page
-          leads with monthly pricing for simpler evaluation.
+          Start with the athlete volume and program complexity you need today. As your verified
+          effort program grows, PROOF scales with active members, reporting needs, and support level.
         </p>
         <div className="afd-note">
-          <strong style={{ color: COLORS.textBright }}>Beta note:</strong> PROOF is still in beta.
-          The tiers indicate the full-launch direction. Early brands should expect custom terms
-          during onboarding while program design, athlete volume, and support needs are understood.
+          <strong style={{ color: COLORS.textBright }}>Early partner terms are available.</strong>{" "}
+          If you are launching your first earned-reward program, we can tailor onboarding around
+          your sport category, expected athlete volume, and first campaign.
         </div>
 
         <div className="afd-plan-grid">
@@ -688,15 +686,15 @@ export function AthleteForwardPricing() {
 
         <div className="afd-note">
           Active members means athletes with at least one verified activity in a trailing 90-day
-          window. If a brand exceeds its tier, the product should continue verifying activity
-          while billing moves to the right plan or an overage agreement.
+          window. If a brand exceeds its tier, PROOF continues verifying activity while billing
+          moves to the right plan or an overage agreement.
         </div>
       </Section>
 
       <Section eyebrow="Comparison" title="Make evaluation easy.">
         <p className="afd-lede">
-          The comparison belongs on a dedicated page so serious brand buyers can evaluate the
-          mechanics without forcing every homepage visitor into procurement mode.
+          Every plan includes the verified effort foundation. Higher tiers add program tooling,
+          reporting, integrations, and support for larger athlete communities.
         </p>
         <div className="afd-table-wrap">
           <table className="afd-table">
@@ -734,8 +732,8 @@ export function AthleteForwardPricing() {
           <Card>
             <h3>No per-activity surprise</h3>
             <p>
-              The value is the verified effort ledger and reward engine. Pricing should scale
-              by active member volume and support needs, not punish athletes for moving more.
+              The value is the verified effort ledger and reward engine. Pricing scales by
+              active member volume and support needs, not by how often athletes move.
             </p>
           </Card>
         </div>
@@ -744,17 +742,17 @@ export function AthleteForwardPricing() {
       <section className="afd-section afd-final">
         <div className="afd-section-inner">
           <div className="afd-eyebrow">Next step</div>
-          <h2>Discuss the right beta terms.</h2>
+          <h2>Build a program around verified effort.</h2>
           <p className="afd-lede">
-            The page gives visitors a clear frame. The beta conversation can still be personal,
-            practical, and based on the first reward program a brand wants to run.
+            Tell us the sports you care about, the athletes you want to reach, and the reward
+            moment you want to create first. We will help map the right plan and launch path.
           </p>
           <div className="afd-actions">
             <a className="afd-button afd-button-primary" href="mailto:brian@verifiedeffort.com">
               Talk to PROOF
             </a>
             <Link className="afd-button" href="/concepts/athlete-forward">
-              Back to concept home
+              Back to home
             </Link>
           </div>
         </div>
@@ -767,7 +765,7 @@ export function AthleteForwardHowItWorks() {
   return (
     <Shell current="how">
       <Hero
-        kicker="Detailed overview"
+        kicker="How PROOF works"
         title="How effort becomes earned loyalty."
         actions={
           <>
@@ -780,16 +778,15 @@ export function AthleteForwardHowItWorks() {
           </>
         }
       >
-        This page carries the product explanation the homepage should not have to carry alone:
-        how athletes join, how activity is verified, how windows are counted, and how rewards
-        reach Shopify and lifecycle marketing flows.
+        PROOF verifies athlete activity, converts it into brand-specific progress, and triggers
+        rewards when real effort crosses the thresholds you set.
       </Hero>
 
       <Section eyebrow="The model" title="One athlete identity. Brand-specific rewards.">
         <p className="afd-lede">
           PROOF separates the universal effort ledger from each brand's reward program. The
           athlete can build a portable record of verified movement, while each brand decides
-          which sports count, which thresholds matter, and what the reward should be.
+          which sports count, which thresholds matter, and what each reward unlocks.
         </p>
         <div className="afd-grid">
           <Card>
@@ -818,8 +815,7 @@ export function AthleteForwardHowItWorks() {
 
       <Section eyebrow="The path" title="From brand invite to reward.">
         <p className="afd-lede">
-          The flow should feel simple to the athlete because the system handles the details
-          behind the scenes.
+          The flow feels simple to the athlete because PROOF handles the details behind the scenes.
         </p>
         <div className="afd-step-list">
           <div className="afd-step">
@@ -827,9 +823,9 @@ export function AthleteForwardHowItWorks() {
             <div>
               <h3>The brand starts the relationship</h3>
               <p>
-                A brand join page or brand slug creates the connection context. If an athlete
-                creates an account and connects Strava from that path, the product should carry
-                the brand intent through the onboarding flow.
+                Athletes join through a brand page, invite, or slug. PROOF carries that brand
+                context through account creation and Strava connection, then creates the brand
+                relationship automatically.
               </p>
             </div>
           </div>
@@ -848,9 +844,9 @@ export function AthleteForwardHowItWorks() {
             <div>
               <h3>Challenge windows use athlete-local time</h3>
               <p>
-                Fixed-date, monthly, and rolling windows should count eligible activities in
-                the athlete's local timezone. Brand managers choose plain calendar dates, and
-                PROOF handles the exact boundaries.
+                Fixed-date, monthly, and rolling windows count eligible activities in the
+                athlete's local timezone. Brand managers choose plain calendar dates, and
+                PROOF handles the exact technical boundaries.
               </p>
             </div>
           </div>
@@ -870,8 +866,8 @@ export function AthleteForwardHowItWorks() {
 
       <Section eyebrow="Controls" title="What a brand manager configures." alt>
         <p className="afd-lede">
-          This is where the product can stay powerful without feeling technical. A brand manager
-          should be choosing business rules, not wrestling with implementation details.
+          PROOF gives brand teams the controls they need to shape an earned-reward program
+          without turning campaign setup into engineering work.
         </p>
         <div className="afd-grid">
           <Card>
@@ -888,7 +884,7 @@ export function AthleteForwardHowItWorks() {
           </Card>
           <Card>
             <h3>Eligibility gates</h3>
-            <p>Optional gates can use tier, pace, lifetime PM, or brand PM when a campaign should target a specific athlete segment.</p>
+            <p>Optional gates can use tier, pace, lifetime PM, or brand PM when a campaign is intended for a specific athlete segment.</p>
           </Card>
           <Card>
             <h3>Lifecycle moments</h3>
@@ -901,51 +897,56 @@ export function AthleteForwardHowItWorks() {
         </div>
       </Section>
 
-      <Section eyebrow="Athlete CTA" title="Athletes do not need a separate destination yet.">
+      <Section eyebrow="Athlete experience" title="Simple for athletes. Useful for brands.">
         <p className="afd-lede">
-          The athlete story belongs on the homepage and inside each brand's onboarding path.
-          For now, a direct athlete CTA should explain the model without sending athletes to
-          a standalone page that has no clear next step.
+          Athletes do not have to understand the infrastructure. They join a brand, connect
+          Strava, keep moving, and see earned progress show up where the brand relationship lives.
         </p>
-        <div className="afd-grid afd-grid-2">
+        <div className="afd-grid">
           <Card highlight>
-            <h3>Recommended CTA</h3>
+            <h3>Connect once</h3>
             <p>
-              "Join through a participating brand" or "See the athlete side" keeps the message
-              true. It respects athletes without making PROOF feel like a consumer app before
-              that product path exists.
+              A single Strava connection powers verified activity across participating brand
+              relationships.
             </p>
           </Card>
           <Card>
-            <h3>Where it appears</h3>
+            <h3>Earn progress</h3>
             <p>
-              Use it in the homepage hero as a secondary CTA, in the athlete section, and in
-              brand join flows. The brand CTA remains the primary conversion path.
+              Eligible activities credit PROOF Miles, brand PM, challenge progress, and
+              milestone status automatically.
+            </p>
+          </Card>
+          <Card>
+            <h3>Redeem rewards</h3>
+            <p>
+              When the athlete qualifies, PROOF can trigger the reward moment through Shopify,
+              email, or the brand's owned customer experience.
             </p>
           </Card>
         </div>
       </Section>
 
-      <Section eyebrow="Operational details" title="The details that make it product-correct." alt>
+      <Section eyebrow="Accuracy" title="Built for precise qualification." alt>
         <div className="afd-grid">
           <Card>
             <h3>Local-time windows</h3>
             <p>
-              Activity start time and timezone should be stored so challenge qualification
-              matches the athlete's real calendar day.
+              Activity start time and timezone are preserved so challenge qualification matches
+              the athlete's real calendar day.
             </p>
           </Card>
           <Card>
-            <h3>Exclusive boundaries hidden</h3>
+            <h3>Inclusive dates for teams</h3>
             <p>
-              Brand managers should choose inclusive calendar dates. The product should convert
-              "May 14 through May 19" into the correct technical end boundary.
+              Brand managers select natural date ranges, such as May 14 through May 19. PROOF
+              applies the correct underlying boundaries.
             </p>
           </Card>
           <Card>
             <h3>Auditable rewards</h3>
             <p>
-              Reward records should show why they fired: challenge, threshold, activity window,
+              Reward records show why they fired: challenge, threshold, activity window,
               PM credited, code generation, redemption, expiration, or voiding.
             </p>
           </Card>
@@ -955,17 +956,17 @@ export function AthleteForwardHowItWorks() {
       <section className="afd-section afd-final">
         <div className="afd-section-inner">
           <div className="afd-eyebrow">Next step</div>
-          <h2>Keep the homepage light. Let this page do the explaining.</h2>
+          <h2>Launch the first earned-reward moment.</h2>
           <p className="afd-lede">
-            The athlete-forward homepage can build desire. This page can answer the product
-            questions once a brand buyer is interested enough to keep going.
+            Start with one brand, one sport category, and one reward athletes can earn through
+            verified movement. PROOF handles the ledger, qualification, and reward trigger.
           </p>
           <div className="afd-actions">
             <Link className="afd-button afd-button-primary" href="/concepts/athlete-forward/pricing">
               Compare plans
             </Link>
             <Link className="afd-button" href="/concepts/athlete-forward">
-              Back to concept home
+              Back to home
             </Link>
           </div>
         </div>
