@@ -136,6 +136,33 @@ export const athleteForwardChromeCss = `
     font-weight: 800;
     text-align: center;
   }
+  .proof-chrome-footer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 22px clamp(18px, 4vw, 48px);
+    color: #555555;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .proof-chrome-footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 14px;
+  }
+  .proof-chrome-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .proof-chrome-footer a:hover {
+    color: #C8FF00;
+  }
 
   @media (min-width: 940px) {
     .proof-chrome-nav-links { display: flex; }
@@ -156,5 +183,12 @@ export const athleteForwardChromeCss = `
       width: auto;
     }
     .proof-chrome-logo-word { font-size: 22px; }
+    .proof-chrome-footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    .proof-chrome-footer-links {
+      justify-content: flex-start;
+    }
   }
 `;
