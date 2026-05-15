@@ -395,6 +395,115 @@ const css = `
       linear-gradient(180deg, rgba(5,5,5,0), rgba(139,160,180,0.08) 48%, rgba(5,5,5,0)),
       ${COLORS.base};
   }
+  .af-shift-panel {
+    position: relative;
+    min-height: 390px;
+    margin-top: 42px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    background: ${COLORS.surfaceRaised};
+  }
+  .af-shift-panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(5,5,5,0.02), rgba(5,5,5,0.68)),
+      linear-gradient(90deg, rgba(5,5,5,0.82), rgba(5,5,5,0.42) 50%, rgba(5,5,5,0.74));
+    pointer-events: none;
+  }
+  .af-shift-content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 0.88fr) 92px minmax(0, 1fr);
+    gap: clamp(18px, 3vw, 28px);
+    align-items: end;
+    min-height: 390px;
+    padding: clamp(20px, 4vw, 38px);
+  }
+  .af-shift-lane {
+    display: grid;
+    gap: 13px;
+    border-left: 2px solid rgba(139,160,180,0.36);
+    background: rgba(5,5,5,0.42);
+    padding: 18px 0 18px 18px;
+    backdrop-filter: blur(14px);
+  }
+  .af-shift-lane-active {
+    border-left-color: ${COLORS.signal};
+    background: rgba(200,255,0,0.07);
+  }
+  .af-shift-lane .af-mono {
+    color: ${COLORS.steel};
+  }
+  .af-shift-lane-active .af-mono {
+    color: ${COLORS.signal};
+  }
+  .af-shift-lane strong {
+    display: block;
+    max-width: 360px;
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 0.88;
+  }
+  .af-shift-lane p {
+    max-width: 370px;
+    margin: 0;
+    color: ${COLORS.subtle};
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .af-shift-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  .af-shift-tags span {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 999px;
+    padding: 6px 9px;
+    color: ${COLORS.muted};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .af-shift-lane-active .af-shift-tags span {
+    border-color: rgba(200,255,0,0.34);
+    color: ${COLORS.signal};
+    background: rgba(200,255,0,0.06);
+  }
+  .af-shift-connector {
+    align-self: stretch;
+    position: relative;
+    min-height: 190px;
+  }
+  .af-shift-connector::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 8px;
+    right: 8px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(139,160,180,0.24), ${COLORS.signal});
+  }
+  .af-shift-connector::after {
+    content: '';
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 6px;
+    width: 16px;
+    height: 16px;
+    border-top: 1px solid ${COLORS.signal};
+    border-right: 1px solid ${COLORS.signal};
+    transform: rotate(45deg);
+    box-shadow: 0 0 18px rgba(200,255,0,0.22);
+  }
   .af-truth-grid,
   .af-use-grid {
     display: grid;
@@ -548,6 +657,16 @@ const css = `
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
     .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
+    .af-shift-content { grid-template-columns: 1fr; }
+    .af-shift-connector {
+      min-height: 48px;
+      align-self: auto;
+    }
+    .af-shift-connector::before {
+      top: 50%;
+      left: 0;
+      right: 0;
+    }
     .af-panel { min-height: 460px; }
     .af-identity-panel { min-height: 520px; }
   }
@@ -604,6 +723,12 @@ const css = `
       font-size: 13px;
       line-height: 1.38;
     }
+    .af-shift-panel,
+    .af-shift-content { min-height: 0; }
+    .af-shift-content {
+      padding: 18px;
+    }
+    .af-shift-lane strong { font-size: 38px; }
     .af-truth-grid, .af-use-grid { grid-template-columns: 1fr; }
     .af-metrics div {
       border-right: 0;
@@ -775,6 +900,84 @@ function drawTrace(canvas: HTMLCanvasElement) {
   ctx.restore();
 }
 
+function drawShift(canvas: HTMLCanvasElement) {
+  const setup = setupCanvas(canvas);
+  if (!setup) return;
+  const { ctx, w, h } = setup;
+  const random = seededRandom(5149);
+  ctx.fillStyle = "#060606";
+  ctx.fillRect(0, 0, w, h);
+
+  const bg = ctx.createLinearGradient(0, 0, w, h);
+  bg.addColorStop(0, "#17100E");
+  bg.addColorStop(0.48, "#0B0D0D");
+  bg.addColorStop(1, "#141A13");
+  ctx.fillStyle = bg;
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.save();
+  ctx.globalAlpha = 0.22;
+  ctx.strokeStyle = "rgba(139,160,180,0.34)";
+  ctx.lineWidth = 1;
+  for (let x = -w * 0.12; x < w * 1.12; x += 28) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x + w * 0.18, h);
+    ctx.stroke();
+  }
+  for (let y = h * 0.12; y < h * 0.94; y += 30) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(w, y + Math.sin(y * 0.02) * 18);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  ctx.save();
+  ctx.filter = "blur(18px)";
+  for (let i = 0; i < 22; i += 1) {
+    const x = random() * w * 0.42;
+    const y = h * (0.18 + random() * 0.72);
+    ctx.fillStyle = "rgba(255,61,0,0.1)";
+    ctx.beginPath();
+    ctx.ellipse(x, y, w * (0.04 + random() * 0.1), h * (0.04 + random() * 0.11), 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+
+  ctx.save();
+  ctx.shadowColor = "rgba(200,255,0,0.42)";
+  ctx.shadowBlur = 24;
+  ctx.strokeStyle = COLORS.signal;
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  for (let i = 0; i <= 150; i += 1) {
+    const t = i / 150;
+    const x = w * (0.12 + t * 0.78);
+    const y = h * (0.62 - t * 0.31 + Math.sin(t * Math.PI * 4) * 0.035);
+    if (i === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+
+  ctx.save();
+  for (let i = 0; i < 58; i += 1) {
+    const rightSide = random() > 0.35;
+    ctx.fillStyle = rightSide ? "rgba(200,255,0,0.5)" : "rgba(139,160,180,0.28)";
+    ctx.beginPath();
+    ctx.arc(
+      w * (rightSide ? 0.48 + random() * 0.45 : 0.08 + random() * 0.34),
+      h * (0.12 + random() * 0.74),
+      1 + random() * 2.6,
+      0,
+      Math.PI * 2,
+    );
+    ctx.fill();
+  }
+  ctx.restore();
+}
+
 function drawIdentity(canvas: HTMLCanvasElement) {
   const setup = setupCanvas(canvas);
   if (!setup) return;
@@ -822,6 +1025,7 @@ function redrawCanvases() {
   document.querySelectorAll<HTMLCanvasElement>("canvas[data-art]").forEach((canvas) => {
     if (canvas.dataset.art === "hero") drawMotionBlur(canvas);
     if (canvas.dataset.art === "trace") drawTrace(canvas);
+    if (canvas.dataset.art === "shift") drawShift(canvas);
     if (canvas.dataset.art === "identity") drawIdentity(canvas);
   });
 }
@@ -1003,6 +1207,38 @@ export default function AthleteForwardConcept() {
             Athletes reveal intent before checkout: the miles, rides, swims, hikes, and training
             they already record. PROOF turns that lived behavior into an entry point brands can honor.
           </p>
+          <div className="af-shift-panel" aria-label="Purchase-based loyalty compared with verified effort loyalty">
+            <canvas className="af-panel-canvas" data-art="shift" aria-hidden="true" />
+            <div className="af-shift-content">
+              <div className="af-shift-lane">
+                <span className="af-mono">Old loyalty signal</span>
+                <strong>Purchase first.</strong>
+                <p>
+                  The relationship waits for checkout, then tries to pull the customer back
+                  with points, discounts, or reminders.
+                </p>
+                <div className="af-shift-tags" aria-hidden="true">
+                  <span>Receipt</span>
+                  <span>Points</span>
+                  <span>Follow-up</span>
+                </div>
+              </div>
+              <div className="af-shift-connector" aria-hidden="true" />
+              <div className="af-shift-lane af-shift-lane-active">
+                <span className="af-mono">PROOF signal</span>
+                <strong>Movement first.</strong>
+                <p>
+                  A verified activity can start the relationship earlier, with progress that
+                  feels earned before a cart ever opens.
+                </p>
+                <div className="af-shift-tags" aria-hidden="true">
+                  <span>Device recorded</span>
+                  <span>23.4 PM</span>
+                  <span>Brand progress</span>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="af-truth-grid">
             <div className="af-card">
               <span className="af-mono">01 / athlete</span>
