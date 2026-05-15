@@ -46,13 +46,13 @@ const detailCss = `
     position: absolute;
     inset: 0;
     background:
-      linear-gradient(90deg, rgba(5,5,5,0.9), rgba(5,5,5,0.52), rgba(5,5,5,0.86)),
-      linear-gradient(180deg, rgba(5,5,5,0.18), rgba(5,5,5,0.88)),
+      linear-gradient(90deg, rgba(5,5,5,0.86), rgba(5,5,5,0.24) 54%, rgba(5,5,5,0.36)),
+      linear-gradient(180deg, rgba(5,5,5,0.06), rgba(5,5,5,0.54)),
       var(--afd-hero-image);
     background-position: var(--afd-hero-position, center);
     background-size: cover;
-    filter: grayscale(1) contrast(1.05);
-    opacity: 0.88;
+    filter: grayscale(1) contrast(1.08) brightness(1.24);
+    opacity: 0.96;
   }
   .afd-hero::after {
     content: "";
