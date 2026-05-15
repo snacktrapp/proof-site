@@ -77,17 +77,13 @@ const css = `
     object-fit: cover;
     object-position: center center;
     pointer-events: none;
-    opacity: 0;
-    visibility: hidden;
-    clip-path: inset(50%);
+    opacity: 0.001;
     filter: grayscale(1) contrast(1.08);
     transform: scale(1.01);
     transition: opacity 220ms ease;
   }
   .af-hero-video[data-playing="true"] {
     opacity: 0.9;
-    visibility: visible;
-    clip-path: none;
   }
   .af-hero-video::-webkit-media-controls,
   .af-hero-video::-webkit-media-controls-panel,
@@ -887,6 +883,9 @@ export default function AthleteForwardConcept() {
     };
     const handleCanPlay = () => void playVideo();
     const handleVisibilityChange = () => void playVideo();
+    const retryTimers = [250, 800, 1600, 3200].map((delay) =>
+      window.setTimeout(() => void playVideo(), delay)
+    );
 
     prepareVideo();
     void playVideo();
@@ -904,6 +903,7 @@ export default function AthleteForwardConcept() {
       video.removeEventListener("pause", hideVideo);
       video.removeEventListener("error", hideVideo);
       document.removeEventListener("visibilitychange", handleVisibilityChange);
+      retryTimers.forEach((timer) => window.clearTimeout(timer));
     };
   }, []);
 
