@@ -1357,7 +1357,7 @@ export default function AthleteForwardConcept() {
       <section className="af-section">
         <div className="af-section-inner">
           <div className="af-eyebrow">What brands can build</div>
-          <h2>Rewards without hand-waving.</h2>
+          <h2>Rewards backed by real effort.</h2>
           <p className="af-lede">
             The experience can feel simple because the mechanics are specific: athlete-local
             windows, sport filters, PROOF Mile thresholds, Shopify rewards, and lifecycle events.
