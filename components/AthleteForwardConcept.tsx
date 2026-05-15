@@ -417,8 +417,8 @@ const css = `
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: minmax(0, 0.88fr) 92px minmax(0, 1fr);
-    gap: clamp(18px, 3vw, 28px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(18px, 4vw, 46px);
     align-items: end;
     min-height: 390px;
     padding: clamp(20px, 4vw, 38px);
@@ -477,32 +477,6 @@ const css = `
     border-color: rgba(200,255,0,0.34);
     color: ${COLORS.signal};
     background: rgba(200,255,0,0.06);
-  }
-  .af-shift-connector {
-    align-self: stretch;
-    position: relative;
-    min-height: 190px;
-  }
-  .af-shift-connector::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 8px;
-    right: 8px;
-    height: 1px;
-    background: linear-gradient(90deg, rgba(139,160,180,0.24), ${COLORS.signal});
-  }
-  .af-shift-connector::after {
-    content: '';
-    position: absolute;
-    top: calc(50% - 8px);
-    right: 6px;
-    width: 16px;
-    height: 16px;
-    border-top: 1px solid ${COLORS.signal};
-    border-right: 1px solid ${COLORS.signal};
-    transform: rotate(45deg);
-    box-shadow: 0 0 18px rgba(200,255,0,0.22);
   }
   .af-truth-grid,
   .af-use-grid {
@@ -658,15 +632,6 @@ const css = `
     .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
     .af-shift-content { grid-template-columns: 1fr; }
-    .af-shift-connector {
-      min-height: 48px;
-      align-self: auto;
-    }
-    .af-shift-connector::before {
-      top: 50%;
-      left: 0;
-      right: 0;
-    }
     .af-panel { min-height: 460px; }
     .af-identity-panel { min-height: 520px; }
   }
@@ -1223,7 +1188,6 @@ export default function AthleteForwardConcept() {
                   <span>Follow-up</span>
                 </div>
               </div>
-              <div className="af-shift-connector" aria-hidden="true" />
               <div className="af-shift-lane af-shift-lane-active">
                 <span className="af-mono">PROOF signal</span>
                 <strong>Movement first.</strong>
