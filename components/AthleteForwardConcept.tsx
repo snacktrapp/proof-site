@@ -1239,23 +1239,6 @@ export default function AthleteForwardConcept() {
               </div>
             </div>
           </div>
-          <div className="af-truth-grid">
-            <div className="af-card">
-              <span className="af-mono">01 / athlete</span>
-              <h3>Effort earns recognition</h3>
-              <p>Athletes make progress by doing the work they already care about.</p>
-            </div>
-            <div className="af-card">
-              <span className="af-mono">02 / brand</span>
-              <h3>Participation becomes the onramp</h3>
-              <p>Brand programs can start with movement instead of waiting for checkout.</p>
-            </div>
-            <div className="af-card">
-              <span className="af-mono">03 / proof</span>
-              <h3>The signal stays measurable</h3>
-              <p>Rewards attach to verified behavior, not vague engagement or empty clicks.</p>
-            </div>
-          </div>
         </div>
       </section>
 
