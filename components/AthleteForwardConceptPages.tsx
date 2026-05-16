@@ -343,6 +343,77 @@ const detailCss = `
     color: ${COLORS.text};
     line-height: 1.56;
   }
+  .afd-billing-note {
+    display: grid;
+    gap: 14px;
+    max-width: 720px;
+    margin-top: 28px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-left: 3px solid ${COLORS.signal};
+    border-radius: 10px;
+    background: rgba(255,255,255,0.035);
+    padding: 18px 20px;
+  }
+  .afd-billing-short {
+    margin: 0;
+    color: ${COLORS.text};
+    line-height: 1.56;
+  }
+  .afd-billing-short strong {
+    color: ${COLORS.textBright};
+    font-weight: 700;
+  }
+  .afd-billing-details {
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    background: rgba(5,5,5,0.32);
+  }
+  .afd-billing-details summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 46px;
+    padding: 13px 15px;
+    cursor: pointer;
+    color: ${COLORS.textBright};
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    list-style: none;
+  }
+  .afd-billing-details summary::-webkit-details-marker { display: none; }
+  .afd-billing-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50%;
+    color: ${COLORS.signal};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  .afd-billing-details[open] .afd-billing-icon { transform: rotate(45deg); }
+  .afd-billing-body {
+    display: grid;
+    gap: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 0 15px 16px;
+  }
+  .afd-billing-body p {
+    margin: 0;
+    color: ${COLORS.subtle};
+    font-size: 15px;
+    line-height: 1.56;
+  }
   .afd-final {
     padding: clamp(68px, 8vw, 108px) 0;
     background: ${COLORS.base};
@@ -425,7 +496,8 @@ const detailCss = `
     .afd-card p,
     .afd-card li,
     .afd-step p,
-    .afd-note {
+    .afd-note,
+    .afd-billing-note {
       max-width: 100%;
       overflow-wrap: break-word;
     }
@@ -454,6 +526,14 @@ const detailCss = `
     .afd-step { grid-template-columns: 1fr; }
     .afd-actions { flex-direction: column; }
     .afd-button { width: 100%; }
+    .afd-billing-note {
+      padding: 16px 14px;
+    }
+    .afd-billing-details summary {
+      align-items: flex-start;
+      font-size: 12px;
+      line-height: 1.35;
+    }
     .afd-footer {
       align-items: flex-start;
       flex-direction: column;
@@ -701,13 +781,29 @@ export function AthleteForwardPricing() {
           ))}
         </div>
 
-        <div className="afd-note">
-          Billable members have an active brand connection, verified post-join activity, and
-          brand-program engagement in the trailing 12 months. Joining, claiming/generating a reward
-          code, or paid redemption attribution count as engagement; passive reward issuance,
-          milestone reached, automatic challenge completion, and normal Strava activity by itself do
-          not renew engagement. Included thresholds are plan-review points, not service blocks or
-          surprise auto-upgrades. Annual plans bill monthly with a 12-month commitment.
+        <div className="afd-billing-note">
+          <p className="afd-billing-short">
+            <strong>Billable-member thresholds are review points,</strong> not hard caps or
+            surprise upgrades. Annual plans bill monthly with a 12-month commitment.
+          </p>
+          <details className="afd-billing-details">
+            <summary>
+              <span>What counts as a billable member?</span>
+              <span className="afd-billing-icon" aria-hidden="true">+</span>
+            </summary>
+            <div className="afd-billing-body">
+              <p>
+                A billable member is a connected athlete with verified post-join activity and
+                brand-program engagement in the trailing 12 months.
+              </p>
+              <p>
+                Engagement includes joining the program, claiming or generating a reward code,
+                or paid redemption attribution. Strava activity by itself, passive reward
+                issuance, milestones reached, and automatic challenge completion do not renew
+                billing engagement.
+              </p>
+            </div>
+          </details>
         </div>
       </Section>
 

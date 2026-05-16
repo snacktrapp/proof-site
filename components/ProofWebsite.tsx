@@ -333,6 +333,75 @@ export default function ProofWebsite() {
         .account-mockup { max-width: 800px; margin: 0 auto; }
         .dashboard-mockup { box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5); }
 
+        .pricing-billing-note {
+          max-width: 660px;
+          margin: 18px auto 0;
+          text-align: center;
+        }
+        .pricing-billing-copy {
+          margin: 0;
+          font-family: 'Outfit', sans-serif;
+          font-size: 13px;
+          line-height: 1.55;
+          color: ${COLORS.subtle};
+        }
+        .pricing-billing-copy strong {
+          color: ${COLORS.text};
+          font-weight: 700;
+        }
+        .pricing-billable-details {
+          margin: 14px auto 0;
+          border: 1px solid ${COLORS.surfaceBorder};
+          border-radius: 10px;
+          background: rgba(255,255,255,0.025);
+          text-align: left;
+        }
+        .pricing-billable-details summary {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+          min-height: 46px;
+          padding: 13px 16px;
+          cursor: pointer;
+          color: ${COLORS.text};
+          font-family: 'Outfit', sans-serif;
+          font-size: 13px;
+          font-weight: 700;
+          letter-spacing: 0.02em;
+          list-style: none;
+        }
+        .pricing-billable-details summary::-webkit-details-marker { display: none; }
+        .pricing-billable-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 20px;
+          height: 20px;
+          flex: 0 0 20px;
+          border: 1px solid ${COLORS.surfaceBorder};
+          border-radius: 50%;
+          color: ${COLORS.signal};
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 14px;
+          line-height: 1;
+          transition: transform 0.2s ease;
+        }
+        .pricing-billable-details[open] .pricing-billable-icon { transform: rotate(45deg); }
+        .pricing-billable-body {
+          display: grid;
+          gap: 10px;
+          border-top: 1px solid ${COLORS.surfaceBorder};
+          padding: 0 16px 16px;
+        }
+        .pricing-billable-body p {
+          margin: 0;
+          color: ${COLORS.subtle};
+          font-family: 'Outfit', sans-serif;
+          font-size: 13px;
+          line-height: 1.58;
+        }
+
         /* ── TABLET ── */
         @media (max-width: 900px) {
           .proof-section { padding: 80px 20px; }
@@ -393,6 +462,9 @@ export default function ProofWebsite() {
             flex: 0 0 220px !important; max-width: 220px !important;
             scroll-snap-align: start;
           }
+          .pricing-billing-note {
+            text-align: left;
+          }
 
           /* Feature comparison table — smooth scroll */
           .feature-table-wrap { -webkit-overflow-scrolling: touch; }
@@ -433,6 +505,9 @@ export default function ProofWebsite() {
           /* Even tighter pricing cards on very small screens */
           .pricing-cards > div {
             flex: 0 0 200px !important; max-width: 200px !important;
+          }
+          .pricing-billing-note {
+            margin-top: 14px;
           }
         }
 
@@ -1410,13 +1485,32 @@ export default function ProofWebsite() {
               href="mailto:team@verifiedeffort.com" />
           </div>
 
-          <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
-            color: COLORS.muted, textAlign: "center", marginTop: 16 }}>
-            Billable members have verified post-join activity and brand-program engagement in the
-            trailing 12 months.
-            {annualPricing
-              ? " Annual plans bill monthly with a 12-month commitment."
-              : " Save 20% with annual commitment."}
+          <div className="pricing-billing-note">
+            <p className="pricing-billing-copy">
+              <strong>Billable-member thresholds are review points,</strong> not hard caps or
+              surprise upgrades.{" "}
+              {annualPricing
+                ? "Annual plans bill monthly with a 12-month commitment."
+                : "Save 20% with annual commitment."}
+            </p>
+            <details className="pricing-billable-details">
+              <summary>
+                <span>What counts as a billable member?</span>
+                <span className="pricing-billable-icon" aria-hidden="true">+</span>
+              </summary>
+              <div className="pricing-billable-body">
+                <p>
+                  A billable member is a connected athlete with verified post-join activity and
+                  brand-program engagement in the trailing 12 months.
+                </p>
+                <p>
+                  Engagement includes joining the program, claiming or generating a reward code,
+                  or paid redemption attribution. Strava activity by itself, passive reward
+                  issuance, milestones reached, and automatic challenge completion do not renew
+                  billing engagement.
+                </p>
+              </div>
+            </details>
           </div>
 
           {/* Feature comparison table */}
@@ -1461,19 +1555,6 @@ export default function ProofWebsite() {
             </table>
           </div>
 
-          {/* Overage note */}
-          <div style={{ maxWidth: 600, margin: "32px auto 0", textAlign: "center",
-            padding: "16px 24px", background: COLORS.surface,
-            border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 12 }}>
-            <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
-              color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>
-              Plan review points
-            </div>
-            <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted, lineHeight: 1.6 }}>
-              Included billable-member thresholds trigger a deliberate plan review, not a surprise
-              auto-upgrade or service block. Athletes keep enrolling and activity keeps verifying.
-            </p>
-          </div>
         </Section>
       </div>
 
