@@ -1382,29 +1382,29 @@ export default function ProofWebsite() {
 
           {/* 5-tier pricing cards */}
           <div className="pricing-cards" style={{ display: "flex", flexWrap: "wrap", gap: 12, justifyContent: "center", alignItems: "stretch" }}>
-            <PricingCard name="Developer" price="Free" members="Up to 100 active members"
+            <PricingCard name="Developer" price="Free" members="100 included active members"
               features={["Core verification (fraud gates)", "PROOF tiers + public profiles", "Basic dashboard", "Strava integration", "Documentation"]}
               cta="Get started free"
               href="/auth/register?role=brand" />
             <PricingCard name="Starter"
-              price={annualPricing ? "$159" : "$199"} period="/mo"
-              members="Up to 1,000 active members"
-              features={["Everything in Developer", "Program dashboard", "Webhook events (ESP integration)", "Milestone + challenge configuration", "Advanced fraud detection", "Email support"]}
+              price={annualPricing ? "$199" : "$249"} period="/mo"
+              members="2,500 included active members"
+              features={["Everything in Developer", "Program dashboard", "Webhook events (ESP integration)", "Milestone + challenge configuration", "Email support"]}
               cta="Apply for Beta"
               href="/auth/register?role=brand" />
             <PricingCard name="Scale"
-              price={annualPricing ? "$399" : "$499"} period="/mo"
-              members="Up to 10,000 active members" highlight
-              features={["Everything in Starter", "Cohort insights + exports", "Multi-platform integrations (roadmap)", "Priority support"]}
+              price={annualPricing ? "$599" : "$749"} period="/mo"
+              members="25,000 included active members" highlight
+              features={["Everything in Starter", "Cohort insights + exports", "Priority support"]}
               cta="Apply for Beta"
               href="/auth/register?role=brand" />
             <PricingCard name="Growth"
-              price={annualPricing ? "$719" : "$899"} period="/mo"
-              members="Up to 25,000 active members"
-              features={["Everything in Scale", "Cross-brand reporting (roadmap)", "Program health insights (roadmap)"]}
+              price={annualPricing ? "$1,599" : "$1,999"} period="/mo"
+              members="100,000 included active members"
+              features={["Everything in Scale", "Highest listed active-member threshold", "Priority support"]}
               cta="Apply for Beta"
               href="/auth/register?role=brand" />
-            <PricingCard name="Enterprise" price="Custom" members="Unlimited members"
+            <PricingCard name="Enterprise" price="Custom" members="Custom included active-member threshold"
               features={["Everything in Growth", "Custom contract + SLA", "Named account manager"]}
               cta="Talk to us"
               href="mailto:team@verifiedeffort.com" />
@@ -1412,8 +1412,10 @@ export default function ProofWebsite() {
 
           <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10,
             color: COLORS.muted, textAlign: "center", marginTop: 16 }}>
-            Active members = at least one verified activity in a trailing 90-day window.
-            {annualPricing ? " Prices shown reflect annual prepayment." : " Save 20% with annual billing."}
+            Active members = at least one verified activity in the trailing 180 days.
+            {annualPricing
+              ? " Annual plans bill monthly with a 12-month commitment."
+              : " Save 20% with annual commitment."}
           </div>
 
           {/* Feature comparison table */}
@@ -1436,19 +1438,8 @@ export default function ProofWebsite() {
               </thead>
               <tbody>
                 {[
-                  { feature: "Core verification (fraud gates)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "PROOF Verified Effort badge", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "PROOF tiers + public profiles", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Basic dashboard (members, activities, billing)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Webhook events (ESP integration)", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Advanced fraud detection", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Program dashboard (rewards, profiles, config)", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Milestone + challenge configuration", vals: ["—", "✓", "✓", "✓", "✓"] },
-                  { feature: "Fitness platform — Strava (live)", vals: ["✓", "✓", "✓", "✓", "✓"] },
-                  { feature: "Additional platforms (roadmap)", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Cohort insights + exports", vals: ["—", "—", "✓", "✓", "✓"] },
-                  { feature: "Cross-brand reporting", vals: ["—", "—", "—", "Roadmap", "Roadmap"] },
-                  { feature: "Program health insights", vals: ["—", "—", "—", "Roadmap", "Roadmap"] },
+                  { feature: "Included active members", vals: ["100", "2,500", "25,000", "100,000", "Custom"] },
+                  { feature: "Live reward program", vals: ["—", "✓", "✓", "✓", "✓"] },
                   { feature: "Custom contract + SLA", vals: ["—", "—", "—", "—", "✓"] },
                   { feature: "Support", vals: ["Docs", "Email", "Priority", "Priority", "Named acct mgr"] },
                 ].map((row, ri) => (
@@ -1475,12 +1466,11 @@ export default function ProofWebsite() {
             border: `1px solid ${COLORS.surfaceBorder}`, borderRadius: 12 }}>
             <div style={{ fontFamily: "'Outfit', sans-serif", fontSize: 11, fontWeight: 700,
               color: COLORS.subtle, textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 6 }}>
-              No hard caps
+              Plan review points
             </div>
             <p style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted, lineHeight: 1.6 }}>
-              If you exceed your tier&apos;s active member limit, a small per-member overage applies
-              rather than cutting verification. Overage rates and tier billing finalize at full
-              launch. Enterprise is unlimited.
+              Included active-member thresholds trigger a deliberate plan review, not a surprise
+              auto-upgrade or service block. Athletes keep enrolling and activity keeps verifying.
             </p>
           </div>
         </Section>
