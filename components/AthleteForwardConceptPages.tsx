@@ -243,10 +243,21 @@ const detailCss = `
   .afd-plan-price {
     color: ${COLORS.textBright};
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(42px, 5vw, 58px);
+    font-size: clamp(38px, 4.6vw, 54px);
     line-height: 0.92;
+    white-space: nowrap;
+  }
+  .afd-plan-annual {
+    margin-top: 7px;
+    color: ${COLORS.text};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    line-height: 1.45;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
   .afd-plan-note {
+    margin-top: 8px;
     color: ${COLORS.muted};
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
@@ -552,7 +563,7 @@ const plans = [
   {
     name: "Developer",
     price: "Free",
-    members: "Up to 100 active members",
+    members: "100 included billable members",
     bestFor: "For teams exploring verification, profile data, and the PROOF effort model.",
     features: [
       "Verified activity processing",
@@ -563,8 +574,9 @@ const plans = [
   },
   {
     name: "Starter",
-    price: "$199/mo",
-    members: "Up to 1,000 active members",
+    price: "$249/mo",
+    annual: "Annual: $199/mo",
+    members: "2,500 included billable members",
     bestFor: "For a first live rewards program with milestones, challenges, and email events.",
     features: [
       "Everything in Developer",
@@ -577,35 +589,37 @@ const plans = [
   },
   {
     name: "Scale",
-    price: "$499/mo",
-    members: "Up to 10,000 active members",
+    price: "$749/mo",
+    annual: "Annual: $599/mo",
+    members: "25,000 included billable members",
     bestFor: "For brands actively running earned-reward campaigns across a growing athlete base.",
     features: [
       "Everything in Starter",
-      "Up to 10,000 active members",
+      "Larger included billable-member threshold",
       "Priority support",
     ],
     highlight: true,
   },
   {
     name: "Growth",
-    price: "$899/mo",
-    members: "Up to 25,000 active members",
+    price: "$1,999/mo",
+    annual: "Annual: $1,599/mo",
+    members: "100,000 included billable members",
     bestFor: "For larger programs that need more headroom and closer support.",
     features: [
       "Everything in Scale",
-      "Up to 25,000 active members",
+      "Highest listed billable-member threshold",
       "Priority support",
     ],
   },
   {
     name: "Enterprise",
     price: "Custom",
-    members: "Unlimited members",
+    members: "Custom included billable-member threshold",
     bestFor: "Custom contracts, support, and launch needs.",
     features: [
       "Everything in Growth",
-      "Custom active-member capacity",
+      "Custom billable-member capacity",
       "Custom contract and SLA",
       "Named account manager",
     ],
@@ -624,7 +638,7 @@ const includedFeatures = [
 ];
 
 const comparisonRows = [
-  ["Active member cap", "100", "1,000", "10,000", "25,000", "Custom"],
+  ["Included billable members", "100", "2,500", "25,000", "100,000", "Custom"],
   ["Live reward program", "-", "Included", "Included", "Included", "Included"],
   ["Support", "Docs", "Email", "Priority", "Priority", "Named account manager"],
   ["Contract / SLA", "-", "-", "-", "-", "Custom"],
@@ -657,7 +671,8 @@ export function AthleteForwardPricing() {
       <Section eyebrow="Plans" title="Choose the right starting point.">
         <p className="afd-lede">
           Start with the athlete volume and program complexity you need today. As your verified
-          effort program grows, PROOF scales with active members, reporting needs, and support level.
+          effort program grows, PROOF scales with billable members, reporting needs, and support
+          level.
         </p>
         <div className="afd-note">
           <strong style={{ color: COLORS.textBright }}>Early partner terms are available.</strong>{" "}
@@ -673,6 +688,7 @@ export function AthleteForwardPricing() {
                   {plan.name}
                 </div>
                 <div className="afd-plan-price">{plan.price}</div>
+                {"annual" in plan ? <div className="afd-plan-annual">{plan.annual}</div> : null}
                 <div className="afd-plan-note">{plan.members}</div>
               </div>
               <p>{plan.bestFor}</p>
@@ -686,16 +702,19 @@ export function AthleteForwardPricing() {
         </div>
 
         <div className="afd-note">
-          Active members means athletes with at least one verified activity in a trailing 90-day
-          window. If a brand exceeds its tier, PROOF continues verifying activity while billing
-          moves to the right plan or an overage agreement.
+          Billable members have an active brand connection, verified post-join activity, and
+          brand-program engagement in the trailing 12 months. Joining, claiming/generating a reward
+          code, or paid redemption attribution count as engagement; passive reward issuance,
+          milestone reached, automatic challenge completion, and normal Strava activity by itself do
+          not renew engagement. Included thresholds are plan-review points, not service blocks or
+          surprise auto-upgrades. Annual plans bill monthly with a 12-month commitment.
         </div>
       </Section>
 
       <Section eyebrow="Comparison" title="What changes by plan.">
         <p className="afd-lede">
           The platform foundation is not carved into artificial feature gates. Live brand plans
-          differ mainly by active-member capacity, support level, and contract needs.
+          differ mainly by billable-member thresholds, support level, and contract needs.
         </p>
         <Card className="afd-included-card">
           <h3>Included in every live brand plan</h3>
@@ -742,7 +761,7 @@ export function AthleteForwardPricing() {
             <h3>No per-activity surprise</h3>
             <p>
               The value is the verified effort ledger and reward engine. Pricing scales by
-              active member volume and support needs, not by how often athletes move.
+              billable member volume and support needs, not by how often athletes move.
             </p>
           </Card>
         </div>
