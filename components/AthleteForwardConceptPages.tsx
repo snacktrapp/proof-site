@@ -222,6 +222,12 @@ const detailCss = `
     background: ${COLORS.signal};
     vertical-align: 1px;
   }
+  .afd-included-card {
+    margin-top: 34px;
+  }
+  .afd-included-card ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .afd-plan-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -433,6 +439,7 @@ const detailCss = `
     .afd-grid,
     .afd-grid-2,
     .afd-plan-grid { grid-template-columns: 1fr; }
+    .afd-included-card ul { grid-template-columns: 1fr; }
     .afd-step { grid-template-columns: 1fr; }
     .afd-actions { flex-direction: column; }
     .afd-button { width: 100%; }
@@ -548,9 +555,8 @@ const plans = [
     members: "Up to 100 active members",
     bestFor: "For teams exploring verification, profile data, and the PROOF effort model.",
     features: [
-      "Core verification gates",
-      "PROOF tiers and public profiles",
-      "Basic dashboard",
+      "Verified activity processing",
+      "Athlete dashboard and public profiles",
       "Strava integration",
       "Documentation",
     ],
@@ -562,9 +568,10 @@ const plans = [
     bestFor: "For a first live rewards program with milestones, challenges, and email events.",
     features: [
       "Everything in Developer",
-      "Program dashboard",
-      "Webhook events for ESP integration",
-      "Milestone and challenge configuration",
+      "Brand program workspace",
+      "Milestones, challenges, and rewards",
+      "Shopify reward code generation",
+      "Klaviyo or webhook delivery",
       "Email support",
     ],
   },
@@ -575,8 +582,7 @@ const plans = [
     bestFor: "For brands actively running earned-reward campaigns across a growing athlete base.",
     features: [
       "Everything in Starter",
-      "Cohort insights and exports",
-      "Multi-platform integrations on roadmap",
+      "Up to 10,000 active members",
       "Priority support",
     ],
     highlight: true,
@@ -585,11 +591,11 @@ const plans = [
     name: "Growth",
     price: "$899/mo",
     members: "Up to 25,000 active members",
-    bestFor: "For larger programs that need deeper reporting, exports, and campaign iteration.",
+    bestFor: "For larger programs that need more headroom and closer support.",
     features: [
       "Everything in Scale",
-      "Cross-brand reporting on roadmap",
-      "Program health insights on roadmap",
+      "Up to 25,000 active members",
+      "Priority support",
     ],
   },
   {
@@ -599,28 +605,29 @@ const plans = [
     bestFor: "Custom contracts, support, and launch needs.",
     features: [
       "Everything in Growth",
+      "Custom active-member capacity",
       "Custom contract and SLA",
       "Named account manager",
     ],
   },
 ];
 
+const includedFeatures = [
+  "Strava-verified activity processing",
+  "Brand-specific PROOF Miles ledger",
+  "Athlete dashboard and public profiles",
+  "Milestones, challenges, and reward issuance",
+  "Shopify discount-code generation",
+  "Klaviyo direct or generic webhook delivery",
+  "Member and reward CSV exports",
+  "Activity and reward visibility",
+];
+
 const comparisonRows = [
-  ["Core verification gates", "Yes", "Yes", "Yes", "Yes", "Yes"],
-  ["PROOF Verified Effort badge", "Yes", "Yes", "Yes", "Yes", "Yes"],
-  ["PROOF tiers and public profiles", "Yes", "Yes", "Yes", "Yes", "Yes"],
-  ["Basic dashboard", "Yes", "Yes", "Yes", "Yes", "Yes"],
-  ["Webhook events for ESP integration", "-", "Yes", "Yes", "Yes", "Yes"],
-  ["Advanced fraud detection", "-", "Yes", "Yes", "Yes", "Yes"],
-  ["Program dashboard", "-", "Yes", "Yes", "Yes", "Yes"],
-  ["Milestone and challenge configuration", "-", "Yes", "Yes", "Yes", "Yes"],
-  ["Fitness platform: Strava", "Yes", "Yes", "Yes", "Yes", "Yes"],
-  ["Additional fitness platforms", "-", "-", "Roadmap", "Roadmap", "Roadmap"],
-  ["Cohort insights and exports", "-", "-", "Yes", "Yes", "Yes"],
-  ["Cross-brand reporting", "-", "-", "-", "Roadmap", "Roadmap"],
-  ["Program health insights", "-", "-", "-", "Roadmap", "Roadmap"],
-  ["Custom contract and SLA", "-", "-", "-", "-", "Yes"],
+  ["Active member cap", "100", "1,000", "10,000", "25,000", "Custom"],
+  ["Live reward program", "-", "Included", "Included", "Included", "Included"],
   ["Support", "Docs", "Email", "Priority", "Priority", "Named account manager"],
+  ["Contract / SLA", "-", "-", "-", "-", "Custom"],
 ];
 
 export function AthleteForwardPricing() {
@@ -685,11 +692,19 @@ export function AthleteForwardPricing() {
         </div>
       </Section>
 
-      <Section eyebrow="Comparison" title="Make evaluation easy.">
+      <Section eyebrow="Comparison" title="What changes by plan.">
         <p className="afd-lede">
-          Every plan includes the verified effort foundation. Higher tiers add program tooling,
-          reporting, integrations, and support for larger athlete communities.
+          The platform foundation is not carved into artificial feature gates. Live brand plans
+          differ mainly by active-member capacity, support level, and contract needs.
         </p>
+        <Card className="afd-included-card">
+          <h3>Included in every live brand plan</h3>
+          <ul>
+            {includedFeatures.map((feature) => (
+              <li key={feature}>{feature}</li>
+            ))}
+          </ul>
+        </Card>
         <div className="afd-table-wrap">
           <table className="afd-table">
             <thead>
@@ -703,7 +718,7 @@ export function AthleteForwardPricing() {
               {comparisonRows.map((row) => (
                 <tr key={row[0]}>
                   {row.map((cell, index) => (
-                    <td key={`${row[0]}-${index}`} className={cell === "Yes" ? "afd-yes" : undefined}>
+                    <td key={`${row[0]}-${index}`} className={cell === "Included" ? "afd-yes" : undefined}>
                       {cell}
                     </td>
                   ))}
