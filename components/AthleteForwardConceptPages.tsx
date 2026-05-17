@@ -783,24 +783,36 @@ export function AthleteForwardPricing() {
 
         <div className="afd-billing-note">
           <p className="afd-billing-short">
-            <strong>Billable-member thresholds are review points,</strong> not hard caps or
-            surprise upgrades. Annual plans bill monthly with a 12-month commitment.
+            Pricing is based on billable members: athletes who are connected, active, and
+            meaningfully engaged with your brand program. Included thresholds are plan-review
+            points, not hard caps or surprise upgrades. Annual plans bill monthly with a 12-month
+            commitment.
           </p>
           <details className="afd-billing-details">
             <summary>
-              <span>What counts as a billable member?</span>
+              <span>How billable members are counted</span>
               <span className="afd-billing-icon" aria-hidden="true">+</span>
             </summary>
             <div className="afd-billing-body">
               <p>
-                A billable member is a connected athlete with verified post-join activity and
-                brand-program engagement in the trailing 12 months.
+                We count an athlete as billable for your brand only when all three are true in the
+                trailing 12 months: they still have an active brand connection, they have verified
+                activity after joining, and they have engaged with your brand program.
               </p>
               <p>
-                Engagement includes joining the program, claiming or generating a reward code,
-                or paid redemption attribution. Strava activity by itself, passive reward
-                issuance, milestones reached, and automatic challenge completion do not renew
-                billing engagement.
+                Engagement means joining your program, claiming or generating a reward code, or
+                making a purchase we can attribute to a PROOF reward.
+              </p>
+              <p>
+                We do not charge you for someone just because they connected Strava, keep uploading
+                activities, passively receive a reward, hit a milestone, or complete an automatic
+                challenge. If they stop engaging with your brand program for 12 months, they age out
+                of your billable count until they engage again.
+              </p>
+              <p>
+                If your billable-member count grows beyond the included threshold, we review the
+                right plan with you. Athletes can keep joining, activity keeps verifying, and you
+                will not be auto-upgraded without a conversation.
               </p>
             </div>
           </details>
