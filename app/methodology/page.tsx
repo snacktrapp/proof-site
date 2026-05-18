@@ -18,9 +18,10 @@ const COLORS = {
 };
 
 export default function Methodology() {
-  const effectiveDate = "May 6, 2026";
-  const methodVersion = "v1.6";
+  const effectiveDate = "May 18, 2026";
+  const methodVersion = "v1.7";
   const v1EffectiveDate = "April 30, 2026";
+  const v16EffectiveDate = "May 6, 2026";
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
@@ -388,7 +389,7 @@ export default function Methodology() {
             shouldn&apos;t have, the brand admin can reach out and we&apos;ll review.
           </p>
 
-          <h2>3. The v1.0 calculation</h2>
+          <h2>3. The current calculation</h2>
           <p>For every verified activity, the formula is:</p>
 
           <div className="formula">
@@ -419,25 +420,26 @@ export default function Methodology() {
 
           <h2>4. Sport multipliers ({methodVersion})</h2>
           <p>
-            The multiplier is anchored to road cycling at 14 mph (Compendium 2011 entry 01040,
-            10.0 MET). For each other sport, the pure-MET multiplier is derived as
+            The multiplier is anchored to road cycling at 14 mph (current Adult Compendium entry
+            01040, 10.0 MET). For most sports, the pure-MET multiplier is derived as
             <em> (sport MET / sport pace_mph) ÷ (10.0 / 14)</em>. This produces the per-mile
             metabolic cost ratio against the cycling anchor. Where we adjust above the pure-MET
             number — for impact load, on-water cardiovascular premium, whole-body engagement,
-            level-trail metabolic cost — the adjustment is named explicitly with its rationale.
+            rough-surface cycling, level-trail metabolic cost — the adjustment is named explicitly
+            with its rationale.
           </p>
           <table>
             <thead>
               <tr>
                 <th>Sport (Strava type)</th>
-                <th>Compendium code · MET · pace</th>
+                <th>Basis</th>
                 <th style={{ textAlign: "right" }}>Multiplier</th>
                 <th style={{ textAlign: "right" }}>Adjustment</th>
               </tr>
             </thead>
             <tbody>
               <tr><td>Ride / VirtualRide</td><td>01040 · 10.0 MET · 14 mph (anchor)</td><td className="num">1.00</td><td className="num">—</td></tr>
-              <tr><td>GravelRide</td><td>01030 · 8.0 MET · 12 mph</td><td className="num">0.95</td><td className="num">—</td></tr>
+              <tr><td>GravelRide</td><td>Ride anchor + rough-surface premium</td><td className="num">1.05</td><td className="num">+5% *</td></tr>
               <tr><td>MountainBikeRide</td><td>01009 · 8.5 MET · 9 mph</td><td className="num">1.30</td><td className="num">—</td></tr>
               <tr><td>EBikeRide</td><td>01084 · 6.0 MET · 14 mph (light electronic support)</td><td className="num">0.60</td><td className="num">—</td></tr>
               <tr><td>Run / VirtualRun</td><td>12070 · 11.0 MET · 7 mph</td><td className="num">2.50</td><td className="num">+14% †</td></tr>
@@ -451,6 +453,13 @@ export default function Methodology() {
             </tbody>
           </table>
           <p style={{ fontSize: 13, color: COLORS.subtle }}>
+            <strong>*</strong> GravelRide: the Compendium has no clean modern gravel-cycling entry.
+            We do not use mountain biking as the proxy because typical gravel riding is less
+            technical than MTB. Instead, GravelRide anchors to road cycling at 1.00 and applies a
+            small +5% editorial rough-surface premium for rolling resistance, vibration, handling
+            load, and lower mechanical efficiency. This is intentionally modest and will be revisited
+            with cohort data.
+            <br /><br />
             <strong>†</strong> Run: pure-MET derivation gives 2.20. The +14% above pure-MET is a
             cross-modality balancing factor reflecting running's higher impact load, EPOC
             premium, and athlete-perceived effort relative to cycling at the anchor pace. This
@@ -476,7 +485,9 @@ export default function Methodology() {
           <p>
             E-bikes are rated below cycling because the motor does meaningful work — we credit the
             human contribution. Mountain biking is rated above road cycling because off-road
-            effort at equivalent distance is genuinely higher. Gravel sits between them.
+            effort at equivalent distance is genuinely higher. Gravel sits just above the road
+            anchor because the surface is less mechanically efficient, but it remains well below
+            mountain biking.
           </p>
           <p>
             All Compendium codes refer to entries in the 2011 update of the Compendium of
@@ -600,7 +611,7 @@ export default function Methodology() {
 
           <h2>8. What we capture but don&apos;t yet use</h2>
           <p>
-            On every activity, we record more than what v1.0 of the calculation reads. We capture
+            On every activity, we record more than what the current calculation reads. We capture
             (and store) all of the following from every Strava activity:
           </p>
           <ul>
@@ -648,7 +659,16 @@ export default function Methodology() {
           <h3>Changelog</h3>
           <ul>
             <li>
-              <strong>{methodVersion}</strong> — sport multiplier and elevation weight
+              <strong>{methodVersion}</strong> — GravelRide surface-premium correction. GravelRide
+              moves from 0.95 to 1.05. The Compendium does not provide a clean modern gravel-cycling
+              code; v1.6 used 01030 (12-13.9 mph, 8.0 MET), which made gravel credit lower than
+              the road-cycling anchor. v1.7 anchors GravelRide to Ride and applies a small +5%
+              editorial rough-surface premium for rolling resistance, vibration, handling load,
+              and lower mechanical efficiency. Activities credited before {effectiveDate} keep
+              their original multiplier. Effective {effectiveDate}.
+            </li>
+            <li>
+              <strong>v1.6</strong> — sport multiplier and elevation weight
               recalibration. Anchored to the 2011 Compendium of Physical Activities (Ainsworth
               et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) with documented cross-modality
               balancing factors and physics-derived elevation weights. Per-sport changes vs v1.0:
@@ -657,7 +677,7 @@ export default function Methodology() {
               Walk 1.00→1.90, Swim 8.00→6.00, Rowing 2.00→1.40, Kayaking 2.00→1.75, NordicSki
               added at 2.90. Cycling elevation weight 1.00→1.75 (physics-derived). Methodology
               page rewritten with explicit Compendium codes, derivation appendix, and limitations
-              acknowledgment. Effective {effectiveDate}.
+              acknowledgment. Effective {v16EffectiveDate}.
               <br /><br />
               <em>Within-v1.6 citation corrections (2026-05-11):</em> independent verification
               against the live Compendium source caught three citation errors in the original
@@ -675,15 +695,15 @@ export default function Methodology() {
             <li>
               <strong>v1.0</strong> — initial release. Distance + elevation-aware calculation
               with first-pass sport multipliers. Effective {v1EffectiveDate}. Activities credited
-              under v1.0 retain v1.0 totals; v1.6 applies forward only.
+              under v1.0 retain v1.0 totals; later versions apply forward only.
             </li>
           </ul>
 
           <h2>10. What this isn&apos;t</h2>
           <p>
-            v1.6 calibration draws directly from the 2011 Compendium of Physical Activities
-            (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) for sport multipliers
-            and Minetti et al. 2002 (<em>J Appl Physiol</em> 93:1039-46) for elevation weights.
+            v1.7 calibration draws from the current Adult Compendium tables for sport multipliers,
+            the 2011 Compendium update as the foundational citation, and Minetti et al. 2002
+            (<em>J Appl Physiol</em> 93:1039-46) for elevation weights.
             Future versions may incorporate additional published frameworks — Banister's TRIMP for
             cardiovascular load, Coggan's TSS for power-based effort — and we'll cite each in the
             changelog when they ship.
@@ -729,7 +749,7 @@ export default function Methodology() {
             <li>
               <strong>Intensity within a sport.</strong> A leisurely 50-mile ride and a hard
               50-mile race earn the same PM despite different metabolic costs. Heart-rate-zone
-              and power-based intensity refinements are deferred to v2.x; v1.6 captures the data
+              and power-based intensity refinements are deferred to v2.x; v1.7 captures the data
               (every activity stores HR, watts, kilojoules) but does not compute on it.
             </li>
             <li>
@@ -818,7 +838,7 @@ export default function Methodology() {
             <strong>Why isn&apos;t running pace-aware when walking will be?</strong> Running
             and walking both vary by pace, but walking varies more in <em>kind</em> — a 2.5 mph
             stroll and a 4.5 mph fitness walk are qualitatively different exercise — while a
-            6 min/mile tempo and a 12 min/mile recovery jog are both still running. v1.6 ships
+            6 min/mile tempo and a 12 min/mile recovery jog are both still running. v1.7 ships
             a fixed Walk multiplier with a documented pace assumption. Pace-aware multipliers
             (for walking and running) are a v2.x decision pending field data on whether the
             added complexity earns its keep.
@@ -863,7 +883,7 @@ export default function Methodology() {
           <ul>
             <li>
               <strong>Climbing-heavy cohorts accumulate PM faster</strong> than flat-cohort
-              projections imply. The v1.6 cycling elevation weight (1.75 mi-equivalent per 100m)
+              projections imply. The v1.6+ cycling elevation weight (1.75 mi-equivalent per 100m)
               is up from v1.0&apos;s 1.0, so a brand whose customers regularly climb significant
               vertical will see milestone-crossing rates 25–50% faster than a brand whose
               customers ride mostly flat terrain. Set milestone PM thresholds with this in mind.
@@ -871,9 +891,10 @@ export default function Methodology() {
             <li>
               <strong>Multi-sport cohorts will see different rates than v1.0 implied.</strong>
               The v1.6 recalibration shifted Run multiplier 3.0→2.5, Swim 8.0→6.0, Hike
-              1.0→2.8, Walk 1.0→1.9. Brands with significant non-cycling exposure should expect
-              accumulation rates to reflect the new constants from the effective date forward.
-              Existing PM accumulated under v1.0 is preserved.
+              1.0→2.8, Walk 1.0→1.9. v1.7 separately moves GravelRide 0.95→1.05. Brands with
+              significant non-cycling or gravel exposure should expect accumulation rates to
+              reflect the new constants from their effective dates forward. Existing PM
+              accumulated under prior versions is preserved.
             </li>
             <li>
               <strong>The shape of the milestone ladder doesn&apos;t change.</strong> A
