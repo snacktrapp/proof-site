@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { AthleteForwardFooter } from "@/components/AthleteForwardFooter";
+import { AthleteForwardHeader } from "@/components/AthleteForwardHeader";
+import { athleteForwardChromeCss } from "@/components/athleteForwardChrome";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — PROOF",
@@ -21,25 +24,8 @@ export default function PrivacyPolicy() {
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
-      {/* Nav bar */}
-      <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 100,
-        background: "rgba(5,5,5,0.92)", backdropFilter: "blur(20px)",
-        borderBottom: `1px solid ${COLORS.rail}` }}>
-        <div style={{ maxWidth: 800, margin: "0 auto", padding: "0 24px",
-          display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
-          <a href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-            <div style={{ width: 28, height: 28, borderRadius: 6, border: `2px solid ${COLORS.textBright}`,
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 12, fontFamily: "'Outfit', sans-serif", fontWeight: 800, color: COLORS.textBright }}>P</div>
-            <span style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 16,
-              color: COLORS.textBright, letterSpacing: "0.12em", textTransform: "uppercase" }}>Proof</span>
-          </a>
-          <a href="/" style={{ fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.subtle,
-            textDecoration: "none", letterSpacing: "0.02em" }}>
-            Back to home
-          </a>
-        </div>
-      </nav>
+      <style>{athleteForwardChromeCss}</style>
+      <AthleteForwardHeader />
 
       {/* Content */}
       <main style={{ maxWidth: 800, margin: "0 auto", padding: "120px 24px 80px",
@@ -399,11 +385,7 @@ export default function PrivacyPolicy() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer style={{ borderTop: `1px solid ${COLORS.rail}`, padding: "32px 24px",
-        textAlign: "center", fontFamily: "'Outfit', sans-serif", fontSize: 13, color: COLORS.muted }}>
-        &copy; {new Date().getFullYear()} PROOF Verified Effort, Inc. All rights reserved.
-      </footer>
+      <AthleteForwardFooter />
     </div>
   );
 }

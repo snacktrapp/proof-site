@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import { AthleteForwardFooter } from "@/components/AthleteForwardFooter";
+import { AthleteForwardHeader } from "@/components/AthleteForwardHeader";
+import { athleteForwardChromeCss } from "@/components/athleteForwardChrome";
 
 export const metadata: Metadata = {
   title: "How PROOF Miles are Calculated — PROOF",
@@ -25,83 +28,8 @@ export default function Methodology() {
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
-      {/* Nav bar */}
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 100,
-          background: "rgba(5,5,5,0.92)",
-          backdropFilter: "blur(20px)",
-          borderBottom: `1px solid ${COLORS.rail}`,
-        }}
-      >
-        <div
-          style={{
-            maxWidth: 800,
-            margin: "0 auto",
-            padding: "0 24px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            height: 64,
-          }}
-        >
-          <a
-            href="/"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: 10,
-              textDecoration: "none",
-            }}
-          >
-            <div
-              style={{
-                width: 28,
-                height: 28,
-                borderRadius: 6,
-                border: `2px solid ${COLORS.textBright}`,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 12,
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 800,
-                color: COLORS.textBright,
-              }}
-            >
-              P
-            </div>
-            <span
-              style={{
-                fontFamily: "'Outfit', sans-serif",
-                fontWeight: 800,
-                fontSize: 16,
-                color: COLORS.textBright,
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
-            >
-              Proof
-            </span>
-          </a>
-          <a
-            href="/"
-            style={{
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: 13,
-              color: COLORS.subtle,
-              textDecoration: "none",
-              letterSpacing: "0.02em",
-            }}
-          >
-            Back to home
-          </a>
-        </div>
-      </nav>
+      <style>{athleteForwardChromeCss}</style>
+      <AthleteForwardHeader />
 
       {/* Content */}
       <main
@@ -270,8 +198,9 @@ export default function Methodology() {
           <p>
             PROOF Miles are the unit of verified athletic effort. Every mile traces to a
             device-recorded activity confirmed through Strava — not self-reported, not inferred.
-            Constants are derived from published metabolic-cost
-            data (Ainsworth et al. 2011 Compendium of Physical Activities) and the work-energy
+            Constants are derived from published metabolic-cost data (the Compendium of Physical
+            Activities — Ainsworth et al. 2011 foundation, with values verified against the
+            current 2024 Adult Compendium tables at pacompendium.com) and the work-energy
             theorem for elevation. The math is open, every multiplier is inspectable, and your
             lifetime total is preserved under the rules in effect when each mile was earned.
           </p>
@@ -389,7 +318,7 @@ export default function Methodology() {
             shouldn&apos;t have, the brand admin can reach out and we&apos;ll review.
           </p>
 
-          <h2>3. The current calculation</h2>
+          <h2>3. The {methodVersion} calculation</h2>
           <p>For every verified activity, the formula is:</p>
 
           <div className="formula">
@@ -420,8 +349,9 @@ export default function Methodology() {
 
           <h2>4. Sport multipliers ({methodVersion})</h2>
           <p>
-            The multiplier is anchored to road cycling at 14 mph (current Adult Compendium entry
-            01040, 10.0 MET). For most sports, the pure-MET multiplier is derived as
+            The multiplier is anchored to road cycling at 14 mph (Compendium entry 01040,
+            10.0 MET — present in both the 2011 paper and the 2024 update). For each other
+            sport, the pure-MET multiplier is derived as
             <em> (sport MET / sport pace_mph) ÷ (10.0 / 14)</em>. This produces the per-mile
             metabolic cost ratio against the cycling anchor. Where we adjust above the pure-MET
             number — for impact load, on-water cardiovascular premium, whole-body engagement,
@@ -490,9 +420,12 @@ export default function Methodology() {
             mountain biking.
           </p>
           <p>
-            All Compendium codes refer to entries in the 2011 update of the Compendium of
-            Physical Activities (Ainsworth et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81).
-            Available openly at <a href="https://pacompendium.com" target="_blank" rel="noopener noreferrer">pacompendium.com</a>.
+            All Compendium codes refer to entries in the Compendium of Physical Activities
+            (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+            Herrmann SD et al. 2024 Adult Compendium update, <em>J Sport Health Sci</em>).
+            The canonical searchable table — and the version this calibration was verified
+            against on 2026-05-11 — is the 2024 update at{" "}
+            <a href="https://pacompendium.com" target="_blank" rel="noopener noreferrer">pacompendium.com</a>.
           </p>
 
           <h2>5. Elevation weights ({methodVersion})</h2>
@@ -611,7 +544,7 @@ export default function Methodology() {
 
           <h2>8. What we capture but don&apos;t yet use</h2>
           <p>
-            On every activity, we record more than what the current calculation reads. We capture
+            On every activity, we record more than what {methodVersion} of the calculation reads. We capture
             (and store) all of the following from every Strava activity:
           </p>
           <ul>
@@ -619,7 +552,7 @@ export default function Methodology() {
             <li><strong>Power</strong> — average watts and weighted average watts (when a power meter is present)</li>
             <li><strong>Energy</strong> — kilojoules of work performed</li>
             <li><strong>Strava&apos;s native effort score</strong> (the platform&apos;s own intensity rating)</li>
-            <li><strong>Elevation gain</strong> (already used in v1.0)</li>
+            <li><strong>Elevation gain</strong> (used since v1.0; current value calibration is {methodVersion})</li>
             <li><strong>Moving time</strong> (already used for our speed-ceiling fraud check)</li>
           </ul>
           <p>
@@ -669,8 +602,10 @@ export default function Methodology() {
             </li>
             <li>
               <strong>v1.6</strong> — sport multiplier and elevation weight
-              recalibration. Anchored to the 2011 Compendium of Physical Activities (Ainsworth
-              et al., <em>Med Sci Sports Exerc</em> 43(8):1575-81) with documented cross-modality
+              recalibration. Anchored to the published Compendium of Physical Activities
+              (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+              Herrmann SD et al. 2024 Adult Compendium update via pacompendium.com) with
+              documented cross-modality
               balancing factors and physics-derived elevation weights. Per-sport changes vs v1.0:
               GravelRide 1.20→0.95, MountainBikeRide 1.50→1.30, EBikeRide 0.40→0.60 (corrected
               MET basis), Run 3.00→2.50, TrailRun 4.00→2.70, Hike 1.00→2.80 (major correction),
@@ -701,8 +636,10 @@ export default function Methodology() {
 
           <h2>10. What this isn&apos;t</h2>
           <p>
-            v1.7 calibration draws from the current Adult Compendium tables for sport multipliers,
-            the 2011 Compendium update as the foundational citation, and Minetti et al. 2002
+            v1.7 calibration draws from the published Compendium of Physical Activities
+            (Ainsworth et al. 2011 foundation, <em>Med Sci Sports Exerc</em> 43(8):1575-81;
+            Herrmann SD et al. 2024 Adult Compendium update via pacompendium.com) for sport
+            multipliers, a named GravelRide rough-surface premium, and Minetti et al. 2002
             (<em>J Appl Physiol</em> 93:1039-46) for elevation weights.
             Future versions may incorporate additional published frameworks — Banister's TRIMP for
             cardiovascular load, Coggan's TSS for power-based effort — and we'll cite each in the
@@ -935,19 +872,7 @@ export default function Methodology() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer
-        style={{
-          borderTop: `1px solid ${COLORS.rail}`,
-          padding: "32px 24px",
-          textAlign: "center",
-          fontFamily: "'Outfit', sans-serif",
-          fontSize: 13,
-          color: COLORS.muted,
-        }}
-      >
-        &copy; {new Date().getFullYear()} PROOF Verified Effort, Inc. All rights reserved.
-      </footer>
+      <AthleteForwardFooter />
     </div>
   );
 }
