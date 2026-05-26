@@ -21,6 +21,8 @@ Copy `.env.local.example` to `.env.local` and fill in:
 |---|---|
 | `KLAVIYO_PRIVATE_API_KEY` | Klaviyo → Account → Settings → API Keys → Create Private API Key (scopes: Lists Read/Write, Profiles Read/Write, Subscriptions Write) |
 | `KLAVIYO_LIST_ID` | Klaviyo → Lists & Segments → your list → the alphanumeric ID in the URL |
+| `RESEND_API_KEY` | Resend → API Keys → Create API Key |
+| `CONTACT_FROM_EMAIL` | A Resend-verified sender, e.g. `PROOF <team@verifiedeffort.com>` |
 
 **Never commit `.env.local` to git.** It's already in `.gitignore`.
 
@@ -36,6 +38,8 @@ Copy `.env.local.example` to `.env.local` and fill in:
 4. In your Vercel project → Settings → Environment Variables, add:
    - `KLAVIYO_PRIVATE_API_KEY`
    - `KLAVIYO_LIST_ID`
+   - `RESEND_API_KEY`
+   - `CONTACT_FROM_EMAIL`
 5. Go to Settings → Domains → Add your domain (`useproof.co`)
 6. Follow Vercel's DNS instructions (add two records at your registrar)
 
@@ -54,7 +58,9 @@ Vercel deploys automatically on every push to `main`.
 ## Before launch checklist
 
 - [ ] Add `KLAVIYO_PRIVATE_API_KEY` and `KLAVIYO_LIST_ID` to Vercel env vars
+- [ ] Add `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` to Vercel env vars for Preview and Production
 - [ ] Test the waitlist form end-to-end in Vercel preview
+- [ ] Test the contact form end-to-end in Vercel preview
 - [ ] Add `/public/og-image.png` (1200×630px) for social sharing
 - [ ] Confirm domain DNS is propagated
 - [ ] Submit sitemap to Google Search Console (Vercel generates `/sitemap.xml` automatically with Next.js 15)

@@ -147,7 +147,9 @@ const contactCss = `
     width: 100%;
     border: 1px solid rgba(255,255,255,0.12);
     border-radius: 8px;
-    background: #050505;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0)),
+      #050505;
     color: #e8e8e8;
     font: 500 15px/1.45 'Outfit', system-ui, sans-serif;
     outline: none;
@@ -156,6 +158,34 @@ const contactCss = `
   .contact-select {
     min-height: 46px;
     padding: 11px 12px;
+  }
+  .contact-select-wrap {
+    position: relative;
+    display: block;
+  }
+  .contact-select {
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 42px;
+  }
+  .contact-select::-ms-expand {
+    display: none;
+  }
+  .contact-select-wrap::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid rgba(232,232,232,0.72);
+    border-bottom: 2px solid rgba(232,232,232,0.72);
+    pointer-events: none;
+    transform: translateY(-62%) rotate(45deg);
+  }
+  .contact-select option {
+    background: #111111;
+    color: #ffffff;
   }
   .contact-textarea {
     min-height: 150px;
@@ -367,17 +397,19 @@ export function ContactPageContent() {
             </label>
             <label className="contact-field">
               <span>Inquiry type</span>
-              <select
-                className="contact-select"
-                value={form.inquiryType}
-                onChange={(event) => update("inquiryType", event.target.value)}
-              >
-                {inquiryTypes.map((type) => (
-                  <option key={type.value} value={type.value}>
-                    {type.label}
-                  </option>
-                ))}
-              </select>
+              <div className="contact-select-wrap">
+                <select
+                  className="contact-select"
+                  value={form.inquiryType}
+                  onChange={(event) => update("inquiryType", event.target.value)}
+                >
+                  {inquiryTypes.map((type) => (
+                    <option key={type.value} value={type.value}>
+                      {type.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </label>
             <label className="contact-field contact-honeypot" aria-hidden="true">
               <span>Website</span>

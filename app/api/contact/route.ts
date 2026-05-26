@@ -67,8 +67,8 @@ export async function POST(request: NextRequest) {
   if (!apiKey) {
     console.error("Missing RESEND_API_KEY for contact form");
     return NextResponse.json(
-      { error: "Contact form is not configured" },
-      { status: 500 }
+      { error: "Message delivery is not configured yet. Please try again later." },
+      { status: 503 }
     );
   }
 
