@@ -630,6 +630,7 @@ function Shell({
       <footer className="afd-footer">
         <span>2026 PROOF Verified Effort, Inc.</span>
         <span className="afd-footer-links">
+          <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
           <Link href="/methodology">Methodology</Link>
@@ -738,7 +739,7 @@ export function AthleteForwardPricing() {
             <a className="afd-button afd-button-primary" href={APP_REGISTER_BRAND_URL}>
               Start a brand program
             </a>
-            <a className="afd-button" href="mailto:brian@verifiedeffort.com">
+            <a className="afd-button" href="/contact">
               Talk to PROOF
             </a>
           </>
@@ -884,7 +885,7 @@ export function AthleteForwardPricing() {
             moment you want to create first. We will help map the right plan and launch path.
           </p>
           <div className="afd-actions">
-            <a className="afd-button afd-button-primary" href="mailto:brian@verifiedeffort.com">
+            <a className="afd-button afd-button-primary" href="/contact">
               Talk to PROOF
             </a>
             <Link className="afd-button" href="/">

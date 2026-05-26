@@ -472,7 +472,7 @@ function BrandForm() {
       <a className="afa-button afa-button-primary" href={APP_REGISTER_BRAND_URL}>
         Create brand account
       </a>
-      <a className="afa-button" href="mailto:brian@verifiedeffort.com">
+      <a className="afa-button" href="/contact">
         Talk to PROOF
       </a>
       <div className="afa-note">
@@ -503,7 +503,7 @@ function LoginForm() {
       </a>
       <div className="afa-secondary">
         <a href={APP_REGISTER_URL}>Create account</a>
-        <a href="mailto:brian@verifiedeffort.com">Need help?</a>
+        <a href="/contact">Need help?</a>
       </div>
     </div>
   );
@@ -556,6 +556,7 @@ export function AthleteForwardAuthPreview({ variant }: { variant: AuthPreviewVar
       <footer className="afa-footer">
         <span>2026 PROOF Verified Effort, Inc.</span>
         <span className="afa-footer-links">
+          <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
           <Link href="/methodology">Methodology</Link>

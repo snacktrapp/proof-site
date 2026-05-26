@@ -1362,9 +1362,6 @@ export default function AthleteForwardConcept() {
                 <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
                   Start a brand program
                 </a>
-                <a className="af-button" href="mailto:brian@verifiedeffort.com">
-                  Talk to PROOF
-                </a>
                 <a className="af-button" href="/pricing">
                   View pricing
                 </a>
@@ -1377,6 +1374,7 @@ export default function AthleteForwardConcept() {
       <footer className="af-footer">
         <span>2026 PROOF Verified Effort, Inc.</span>
         <span className="af-footer-links">
+          <a href="/contact">Contact</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
           <a href="/methodology">Methodology</a>

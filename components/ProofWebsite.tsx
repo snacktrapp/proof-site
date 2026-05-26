@@ -1482,7 +1482,7 @@ export default function ProofWebsite() {
             <PricingCard name="Enterprise" price="Custom" members="Custom included billable-member threshold"
               features={["Everything in Growth", "Custom contract + SLA", "Named account manager"]}
               cta="Talk to us"
-              href="mailto:team@verifiedeffort.com" />
+              href="/contact" />
           </div>
 
           <div className="pricing-billing-note">
@@ -1638,10 +1638,10 @@ export default function ProofWebsite() {
           </div>
           <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }}>
             {[
+              { label: "Contact", href: "/contact" },
               { label: "Privacy", href: "/privacy" },
               { label: "Terms", href: "/terms" },
               { label: "Methodology", href: "/methodology" },
-              { label: "Status", href: "#" },
             ].map((link, i) => (
               <a key={i} href={link.href} style={{ fontFamily: "'Outfit', sans-serif", fontSize: 12,
                 color: COLORS.muted, textDecoration: "none" }}
