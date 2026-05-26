@@ -211,7 +211,7 @@ const contactCss = `
   }
   .contact-faq h2 {
     max-width: 760px;
-    margin: 0;
+    margin: 14px 0 0;
     color: #ffffff;
     font-family: 'Bebas Neue', sans-serif;
     font-size: clamp(48px, 7vw, 96px);
