@@ -22,13 +22,17 @@ Copy `.env.local.example` to `.env.local` and fill in:
 | `KLAVIYO_PRIVATE_API_KEY` | Klaviyo → Account → Settings → API Keys → Create Private API Key (scopes: Lists Read/Write, Profiles Read/Write, Subscriptions Write) |
 | `KLAVIYO_LIST_ID` | Klaviyo → Lists & Segments → your list → the alphanumeric ID in the URL |
 | `RESEND_API_KEY` | Resend → API Keys → Create API Key |
-| `CONTACT_FROM_EMAIL` | A Resend-verified sender, e.g. `PROOF <team@verifiedeffort.com>` |
+| `CONTACT_FROM_EMAIL` | A Resend-verified sender, e.g. `PROOF <team@proof.verifiedeffort.com>` |
 
 **Never commit `.env.local` to git.** It's already in `.gitignore`.
 
 ---
 
 ## Deploy to Vercel
+
+Production public-site deploys are managed from the `proof-site` project in the
+**Proof HQ** Vercel organization. The production domains are
+`verifiedeffort.com` and `www.verifiedeffort.com`.
 
 ### First time
 
@@ -64,6 +68,15 @@ Vercel deploys automatically on every push to `main`.
 - [ ] Add `/public/og-image.png` (1200×630px) for social sharing
 - [ ] Confirm domain DNS is propagated
 - [ ] Submit sitemap to Google Search Console (Vercel generates `/sitemap.xml` automatically with Next.js 15)
+
+---
+
+## Operational Notes
+
+- 2026-05-27: `proof-site` was transferred into the **Proof HQ** Vercel organization.
+- 2026-05-27: The public `/contact` form was verified in production after adding `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` to Vercel for Production and Preview.
+- Resend currently has `proof.verifiedeffort.com` verified, so `CONTACT_FROM_EMAIL` should use that domain. Inquiry emails still deliver to `team@verifiedeffort.com`.
+- After changing contact-form environment variables, redeploy Production before testing; existing Vercel deployments do not pick up new env values retroactively.
 
 ---
 
