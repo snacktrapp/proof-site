@@ -227,8 +227,24 @@ const contactCss = `
     line-height: 1.45;
   }
   .contact-status-success {
-    background: rgba(200,255,0,0.09);
+    border: 1px solid rgba(200,255,0,0.24);
+    border-left: 3px solid #c8ff00;
+    background:
+      linear-gradient(180deg, rgba(200,255,0,0.12), rgba(200,255,0,0.055)),
+      rgba(200,255,0,0.04);
     color: #e8e8e8;
+    padding: 15px 16px;
+  }
+  .contact-status-success strong {
+    display: block;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.25;
+  }
+  .contact-status-success span {
+    display: block;
+    margin-top: 5px;
+    color: rgba(232,232,232,0.76);
   }
   .contact-status-error {
     background: rgba(255,61,0,0.11);
@@ -431,15 +447,23 @@ export function ContactPageContent() {
               />
             </label>
             {status === "success" ? (
-              <p className="contact-status contact-status-success">
-                Message sent. We will route it to the right person.
-              </p>
+              <div className="contact-status contact-status-success" role="status">
+                <strong>Message sent.</strong>
+                <span>
+                  Thanks for reaching out. We will review your note and reply from the PROOF team
+                  inbox.
+                </span>
+              </div>
             ) : null}
             {status === "error" ? (
               <p className="contact-status contact-status-error">{error}</p>
             ) : null}
             <button className="contact-submit" type="submit" disabled={status === "sending"}>
-              {status === "sending" ? "Sending..." : "Send message"}
+              {status === "sending"
+                ? "Sending..."
+                : status === "success"
+                  ? "Send another message"
+                  : "Send message"}
             </button>
           </form>
         </section>
