@@ -198,7 +198,11 @@ const css = `
   .fp-button-primary {
     border-color: ${COLORS.signal};
     background: ${COLORS.signal};
-    color: ${COLORS.base};
+    color: #000000;
+  }
+  .fp-button-primary:hover,
+  .fp-button-primary:focus-visible {
+    color: #000000;
   }
   .fp-section {
     border-top: 1px solid ${COLORS.surfaceBorder};
