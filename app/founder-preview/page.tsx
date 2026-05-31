@@ -200,6 +200,9 @@ const css = `
     background: ${COLORS.signal};
     color: #000000;
   }
+  .fp-page a.fp-button-primary {
+    color: #000000;
+  }
   .fp-button-primary:hover,
   .fp-button-primary:focus-visible {
     color: #000000;
