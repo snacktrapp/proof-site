@@ -114,7 +114,7 @@ const css = `
     background-image:
       linear-gradient(90deg, rgba(5,5,5,0.88), rgba(5,5,5,0.32) 56%, rgba(5,5,5,0.68)),
       linear-gradient(180deg, rgba(5,5,5,0.34), rgba(5,5,5,0.12) 48%, rgba(5,5,5,0.90)),
-      url('/concepts/athlete-forward/hero-field.jpg');
+      url('/founder-preview/road-cycling-mountain-motion-01-4x3.jpg');
     background-position: center;
     background-size: cover;
     filter: grayscale(1) contrast(1.08);
@@ -198,7 +198,14 @@ const css = `
   .fp-button-primary {
     border-color: ${COLORS.signal};
     background: ${COLORS.signal};
-    color: ${COLORS.base};
+    color: #000000;
+  }
+  .fp-page a.fp-button-primary {
+    color: #000000;
+  }
+  .fp-button-primary:hover,
+  .fp-button-primary:focus-visible {
+    color: #000000;
   }
   .fp-section {
     border-top: 1px solid ${COLORS.surfaceBorder};
