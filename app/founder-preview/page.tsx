@@ -114,7 +114,7 @@ const css = `
     background-image:
       linear-gradient(90deg, rgba(5,5,5,0.88), rgba(5,5,5,0.32) 56%, rgba(5,5,5,0.68)),
       linear-gradient(180deg, rgba(5,5,5,0.34), rgba(5,5,5,0.12) 48%, rgba(5,5,5,0.90)),
-      url('/concepts/athlete-forward/hero-field.jpg');
+      url('/founder-preview/road-cycling-mountain-motion-01-4x3.jpg');
     background-position: center;
     background-size: cover;
     filter: grayscale(1) contrast(1.08);
