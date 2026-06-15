@@ -1209,16 +1209,16 @@ export default function AthleteForwardConcept() {
       <section className="af-section" id="brands">
         <div className="af-section-inner">
           <div className="af-eyebrow">For brands</div>
-          <h2>Acquire the athletes already living your category.</h2>
+          <h2>Turn training into customer loyalty.</h2>
           <p className="af-lede">
-            Traditional loyalty starts after someone buys. PROOF gives brands a way to recognize
-            the activity, discipline, and identity that made the customer care in the first place.
+            Traditional loyalty waits for another purchase. PROOF gives brands a way to recognize
+            the activity, discipline, and identity that keep customers connected between orders.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
-              <span className="af-mono">Acquisition</span>
-              <h3>Turn participation into audience</h3>
-              <p>Brand join pages invite athletes into a relationship built around what they do.</p>
+              <span className="af-mono">Loyalty</span>
+              <h3>Build around what customers do</h3>
+              <p>Brand programs recognize verified training, not just another transaction.</p>
             </div>
             <div className="af-card">
               <span className="af-mono">Activation</span>
