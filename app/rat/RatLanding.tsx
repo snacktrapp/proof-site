@@ -76,8 +76,11 @@ export default function RatLanding() {
                 className="rat-wordmark"
               />
               <div className="rat-tagline-row">
-                <p className="rat-tagline">A locked drop for people still moving.</p>
-                <p className="rat-meta">No screenshots. No honor system.</p>
+                <p className="rat-tagline">Wrong way. Right reason.</p>
+                <p className="rat-meta">
+                  Join the RAT House. Earn your way to the next product drop. No screenshots. No
+                  honor system.
+                </p>
               </div>
               <div className="rat-action-row">
                 <button type="button" className="rat-button rat-button-pink" onClick={() => setAccessOpen(true)}>
