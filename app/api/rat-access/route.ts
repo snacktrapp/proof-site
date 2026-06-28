@@ -3,7 +3,16 @@ import { NextResponse } from "next/server";
 const PROOF_RAT_ACTION = "https://proof.verifiedeffort.com/rat?/requestAccess";
 
 export async function POST(request: Request) {
-  const form = await request.formData();
+  let form: FormData;
+  try {
+    form = await request.formData();
+  } catch {
+    return NextResponse.json(
+      { ok: false, error: "That did not land. Check the required fields and try again." },
+      { status: 400 },
+    );
+  }
+
   const forwarded = new FormData();
 
   for (const key of ["firstName", "email", "movementType", "runningAgainst", "company"]) {
