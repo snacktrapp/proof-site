@@ -84,7 +84,7 @@ export default function RatLanding() {
               </div>
               <div className="rat-action-row">
                 <button type="button" className="rat-button rat-button-pink" onClick={() => setAccessOpen(true)}>
-                  Knock Once
+                  Knock Knock
                 </button>
                 <p className="rat-accent-line">Verified by PROOF. Counted for RAT.</p>
               </div>
@@ -125,7 +125,7 @@ export default function RatLanding() {
 
                 <div className="rat-action-row rat-drop-actions">
                   <button type="button" className="rat-button rat-button-pink" onClick={() => setAccessOpen(true)}>
-                    Knock Once
+                    Knock Knock
                   </button>
                   <p className="rat-meta">No open cart. Real claim path.</p>
                 </div>
@@ -150,7 +150,7 @@ export default function RatLanding() {
           </div>
 
           <button type="button" className="rat-button rat-button-ghost" onClick={() => setAccessOpen(true)}>
-            Knock Once
+            Knock Knock
           </button>
         </div>
       </section>
@@ -196,7 +196,7 @@ export default function RatLanding() {
             ) : (
               <>
                 <p className="rat-modal-note">
-                  No promise of entry. No open cart. Drops stay locked behind verified effort.
+                  We&apos;ll shout when it&apos;s live. No open cart. Drops stay locked behind verified effort.
                 </p>
 
                 <form className="rat-form" onSubmit={submitAccess}>
@@ -271,7 +271,7 @@ export default function RatLanding() {
                   {submitError && <div className="rat-error">{submitError}</div>}
 
                   <button type="submit" disabled={submitting} className="rat-button rat-button-pink rat-submit">
-                    {submitting ? "Knocking..." : "Knock Once"}
+                    {submitting ? "Knocking..." : "Knock Knock"}
                   </button>
                 </form>
               </>
