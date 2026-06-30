@@ -263,19 +263,32 @@ export default function RatLanding() {
         }
 
         .rat-button {
-          min-height: 44px;
+          display: inline-flex;
+          height: 44px;
+          width: fit-content;
+          align-items: center;
+          justify-content: center;
+          box-sizing: border-box;
           border: 1px solid currentColor;
           background: transparent;
-          box-shadow: 5px 5px 0 rgba(255, 47, 163, 0.32);
+          box-shadow: 3px 3px 0 rgba(255, 47, 163, 0.32);
           cursor: pointer;
           font: 900 11px "JetBrains Mono", monospace;
           letter-spacing: 0;
-          padding: 12px 20px;
+          line-height: 1;
+          padding: 0 20px;
+          text-decoration: none;
           text-transform: uppercase;
           transition:
             background 0.18s ease,
             color 0.18s ease,
             border-color 0.18s ease;
+        }
+
+        .rat-button:hover,
+        .rat-button:focus,
+        .rat-button:visited {
+          text-decoration: none;
         }
 
         .rat-button-pink {
