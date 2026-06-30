@@ -28,7 +28,7 @@ export default function RatLanding() {
               <div className="rat-tagline-row">
                 <p className="rat-tagline">Wrong way. Right reason.</p>
                 <p className="rat-meta">
-                  Join the RAT House. Earn your way to the next product drop. No screenshots. No
+                  Join the RAT Pack. Earn your way to the next product drop. No screenshots. No
                   honor system.
                 </p>
               </div>
