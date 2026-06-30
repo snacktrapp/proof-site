@@ -1,59 +1,9 @@
 "use client";
 
-import { FormEvent, useState } from "react";
-
-const dropSteps = ["Knock.", "Move.", "Earn 50.", "Claim."];
-
-type FormState = {
-  firstName: string;
-  email: string;
-  movementType: string;
-  runningAgainst: string;
-};
-
-const initialForm: FormState = {
-  firstName: "",
-  email: "",
-  movementType: "",
-  runningAgainst: "",
-};
+const dropSteps = ["Join.", "Move.", "Earn 50.", "Claim."];
+const ratJoinUrl = "https://proof.verifiedeffort.com/join/run-against-traffic";
 
 export default function RatLanding() {
-  const [accessOpen, setAccessOpen] = useState(false);
-  const [form, setForm] = useState<FormState>(initialForm);
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  async function submitAccess(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    setSubmitting(true);
-    setSubmitError(null);
-
-    const body = new FormData(event.currentTarget);
-
-    try {
-      const response = await fetch("/api/rat-access", {
-        method: "POST",
-        body,
-      });
-      const data = (await response.json()) as { ok?: boolean; error?: string };
-      if (!response.ok || !data.ok) {
-        setSubmitted(false);
-        setSubmitError(data.error ?? "That did not land. Check the required fields and try again.");
-        return;
-      }
-      setSubmitted(true);
-      setForm(initialForm);
-    } catch {
-      setSubmitted(false);
-      setSubmitError("That did not land. Try again in a minute.");
-    } finally {
-      setSubmitting(false);
-      setAccessOpen(true);
-    }
-  }
-
   return (
     <main className="rat-page">
       <section className="rat-hero">
@@ -78,14 +28,14 @@ export default function RatLanding() {
               <div className="rat-tagline-row">
                 <p className="rat-tagline">Wrong way. Right reason.</p>
                 <p className="rat-meta">
-                  Join the RAT House. Earn your way to the next product drop. No screenshots. No
+                  Join the RAT Pack. Earn your way to the next product drop. No screenshots. No
                   honor system.
                 </p>
               </div>
               <div className="rat-action-row">
-                <button type="button" className="rat-button rat-button-pink" onClick={() => setAccessOpen(true)}>
-                  Knock Knock
-                </button>
+                <a href={ratJoinUrl} className="rat-button rat-button-pink">
+                  Join the RAT Pack
+                </a>
                 <p className="rat-accent-line">Verified by PROOF. Counted for RAT.</p>
               </div>
             </div>
@@ -124,9 +74,9 @@ export default function RatLanding() {
                 </div>
 
                 <div className="rat-action-row rat-drop-actions">
-                  <button type="button" className="rat-button rat-button-pink" onClick={() => setAccessOpen(true)}>
-                    Knock Knock
-                  </button>
+                  <a href={ratJoinUrl} className="rat-button rat-button-pink">
+                    Join the RAT Pack
+                  </a>
                   <p className="rat-meta">No open cart. Real claim path.</p>
                 </div>
               </div>
@@ -149,9 +99,9 @@ export default function RatLanding() {
             <p className="rat-house-line">Welcome to the RAT House.</p>
           </div>
 
-          <button type="button" className="rat-button rat-button-ghost" onClick={() => setAccessOpen(true)}>
-            Knock Knock
-          </button>
+          <a href={ratJoinUrl} className="rat-button rat-button-ghost">
+            Join the RAT Pack
+          </a>
         </div>
       </section>
 
@@ -161,124 +111,6 @@ export default function RatLanding() {
           <p>Proof verifies. RAT unlocks.</p>
         </div>
       </footer>
-
-      {accessOpen && (
-        <div className="rat-modal-backdrop" role="presentation">
-          <div
-            className="rat-modal-scrim"
-            role="presentation"
-            onClick={() => {
-              if (!submitting) setAccessOpen(false);
-            }}
-          />
-          <div className="rat-access-modal" role="dialog" aria-modal="true" aria-labelledby="rat-access-title">
-            <div className="rat-modal-header">
-              <div>
-                <p className="rat-modal-kicker">Knock request // RAT list</p>
-                <h2 id="rat-access-title">Knock once.</h2>
-              </div>
-              <button
-                type="button"
-                disabled={submitting}
-                aria-label="Close request access"
-                className="rat-modal-close"
-                onClick={() => setAccessOpen(false)}
-              >
-                x
-              </button>
-            </div>
-
-            {submitted ? (
-              <div className="rat-success">
-                <p>You knocked. We counted it.</p>
-                <span>If we open a spot in the next RAT cohort, we&apos;ll send instructions.</span>
-              </div>
-            ) : (
-              <>
-                <p className="rat-modal-note">
-                  We&apos;ll shout when it&apos;s live. No open cart. Drops stay locked behind verified effort.
-                </p>
-
-                <form className="rat-form" onSubmit={submitAccess}>
-                  <div className="rat-honeypot" aria-hidden="true">
-                    <label htmlFor="company">Company</label>
-                    <input id="company" name="company" type="text" tabIndex={-1} autoComplete="off" />
-                  </div>
-
-                  <div className="rat-form-grid">
-                    <label>
-                      <span>First name</span>
-                      <input
-                        name="firstName"
-                        type="text"
-                        required
-                        maxLength={80}
-                        value={form.firstName}
-                        disabled={submitting}
-                        onChange={(event) => setForm({ ...form, firstName: event.target.value })}
-                      />
-                    </label>
-                    <label>
-                      <span>Email</span>
-                      <input
-                        name="email"
-                        type="email"
-                        required
-                        maxLength={320}
-                        value={form.email}
-                        disabled={submitting}
-                        onChange={(event) => setForm({ ...form, email: event.target.value })}
-                      />
-                    </label>
-                  </div>
-
-                  <label>
-                    <span>How do you move?</span>
-                    <div className="rat-select-wrap">
-                      <select
-                        name="movementType"
-                        required
-                        value={form.movementType}
-                        disabled={submitting}
-                        onChange={(event) => setForm({ ...form, movementType: event.target.value })}
-                      >
-                        <option value="" disabled>
-                          Pick one
-                        </option>
-                        <option value="run">Run</option>
-                        <option value="ride">Ride</option>
-                        <option value="walk">Walk</option>
-                        <option value="hike">Hike</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </label>
-
-                  <label>
-                    <span>What are you running against?</span>
-                    <textarea
-                      name="runningAgainst"
-                      maxLength={500}
-                      rows={3}
-                      value={form.runningAgainst}
-                      disabled={submitting}
-                      placeholder="traffic, time, gravity, yourself..."
-                      onChange={(event) => setForm({ ...form, runningAgainst: event.target.value })}
-                    />
-                    <em>{form.runningAgainst.length} / 500</em>
-                  </label>
-
-                  {submitError && <div className="rat-error">{submitError}</div>}
-
-                  <button type="submit" disabled={submitting} className="rat-button rat-button-pink rat-submit">
-                    {submitting ? "Knocking..." : "Knock Knock"}
-                  </button>
-                </form>
-              </>
-            )}
-          </div>
-        </div>
-      )}
 
       <style jsx>{`
         .rat-page {
