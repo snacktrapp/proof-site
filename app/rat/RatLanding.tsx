@@ -101,8 +101,8 @@ export default function RatLanding() {
             <div className="rat-drop-grid">
               <div className="rat-object-stage">
                 <img
-                  src="/rat/rat-shirt-placeholder.png"
-                  alt="RAT hot pink long sleeve placeholder"
+                  src="/rat/rat-foamie-mockup.png"
+                  alt="RAT hot pink Foamie trucker hat mockup"
                   className="rat-product-placeholder"
                 />
                 <p className="rat-object-tag">Field Object 001 / unlocked by verified miles</p>
