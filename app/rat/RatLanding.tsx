@@ -1,6 +1,6 @@
 "use client";
 
-const dropSteps = ["Join.", "Move.", "Earn 50.", "Claim."];
+const dropSteps = ["Join.", "Move.", "Earn credit.", "Use it."];
 const ratJoinUrl = "https://proof.verifiedeffort.com/join/run-against-traffic";
 
 export default function RatLanding() {
@@ -28,8 +28,8 @@ export default function RatLanding() {
               <div className="rat-tagline-row">
                 <p className="rat-tagline">Wrong way. Right reason.</p>
                 <p className="rat-meta">
-                  Join the RAT Pack. Earn your way to the next product drop. No screenshots. No
-                  honor system.
+                  Join the RAT Pack. Earn verified RAT credit through real effort. Use it toward
+                  the First 50 Foamie.
                 </p>
               </div>
               <div className="rat-action-row">
@@ -46,7 +46,7 @@ export default function RatLanding() {
       <section className="rat-drop-section">
         <div className="rat-section-inner">
           <div className="rat-drop-sheet">
-            <p className="rat-drop-stamp">Drop 001 / Field Issue</p>
+            <p className="rat-drop-stamp">Field Issue 001</p>
 
             <div className="rat-drop-grid">
               <div className="rat-object-stage">
@@ -55,13 +55,14 @@ export default function RatLanding() {
                   alt="RAT hot pink Foamie trucker hat mockup"
                   className="rat-product-placeholder"
                 />
-                <p className="rat-object-tag">Field Object 001 / unlocked by verified miles</p>
+                <p className="rat-object-tag">Field Object 001 / earned with verified miles</p>
               </div>
 
               <div className="rat-drop-copy">
                 <h2>The First 50 Foamie</h2>
                 <p className="rat-drop-lede">
-                  You don&apos;t buy your way in. Move 50 verified RAT miles and the object opens.
+                  The first RAT object is live. Stack verified effort, earn RAT credit, and use it
+                  toward the Foamie.
                 </p>
 
                 <div className="rat-rule-strip">
@@ -77,7 +78,7 @@ export default function RatLanding() {
                   <a href={ratJoinUrl} className="rat-button rat-button-pink">
                     Join the RAT Pack
                   </a>
-                  <p className="rat-meta">No open cart. Real claim path.</p>
+                  <p className="rat-meta">No screenshots. No honor system.</p>
                 </div>
               </div>
             </div>
@@ -108,7 +109,7 @@ export default function RatLanding() {
       <footer className="rat-footer">
         <div className="rat-footer-inner">
           <p>Proof Labs // field test</p>
-          <p>Proof verifies. RAT unlocks.</p>
+          <p>Proof verifies. RAT counts.</p>
         </div>
       </footer>
 
