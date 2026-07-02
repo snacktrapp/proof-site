@@ -95,7 +95,7 @@ export default function RatLanding() {
           </div>
 
           <div className="rat-manifesto-copy">
-            <p>For the early, the stubborn, the not-sure, and the still-going.</p>
+            <p>For the early, the stubborn, the half-sure, and the still-going.</p>
             <p>Maybe the wrong way. Always the right reason.</p>
             <p className="rat-house-line">Welcome to the RAT House.</p>
           </div>
