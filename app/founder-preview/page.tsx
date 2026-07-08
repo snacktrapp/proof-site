@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AthleteForwardFooter } from "@/components/AthleteForwardFooter";
 import { AthleteForwardHeader } from "@/components/AthleteForwardHeader";
 import { athleteForwardChromeCss } from "@/components/athleteForwardChrome";
@@ -343,9 +342,6 @@ export default function FounderPreviewPage() {
             <a className="fp-button fp-button-primary" href={CONTACT_HREF}>
               Start a conversation
             </a>
-            <Link className="fp-button" href="/demo">
-              View platform walkthrough
-            </Link>
           </div>
         </div>
       </section>
