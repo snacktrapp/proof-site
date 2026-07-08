@@ -1,14 +1,6 @@
-import type { Metadata } from "next";
-import { AthleteForwardAuthPreview, type AuthPreviewVariant } from "@/components/AthleteForwardAuthPreview";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Create Account - PROOF",
-  description: "Preview of the PROOF signup flow for athletes and brands.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+const APP_REGISTER_URL = "https://proof.verifiedeffort.com/auth/register";
 
 type RegisterPageProps = {
   searchParams?: Promise<{
@@ -16,13 +8,16 @@ type RegisterPageProps = {
   }>;
 };
 
-function roleToVariant(role: string | string[] | undefined): AuthPreviewVariant {
+function registerUrl(role: string | string[] | undefined) {
   const value = Array.isArray(role) ? role[0] : role;
-  if (value === "athlete" || value === "brand") return value;
-  return "register";
+  if (value !== "athlete" && value !== "brand") return APP_REGISTER_URL;
+
+  const url = new URL(APP_REGISTER_URL);
+  url.searchParams.set("role", value);
+  return url.toString();
 }
 
 export default async function RegisterPreviewPage({ searchParams }: RegisterPageProps) {
   const params = searchParams ? await searchParams : undefined;
-  return <AthleteForwardAuthPreview variant={roleToVariant(params?.role)} />;
+  redirect(registerUrl(params?.role));
 }

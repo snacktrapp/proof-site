@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Run Against Traffic | PROOF",
   description:
     "Run Against Traffic is a Proof Labs field test where verified effort earns RAT credit toward the First 50 Foamie.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "Run Against Traffic | PROOF",
     description:

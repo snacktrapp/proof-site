@@ -91,7 +91,11 @@ proof-site/
 │       └── waitlist/
 │           └── route.ts    # POST /api/waitlist → Klaviyo
 ├── components/
-│   └── ProofWebsite.tsx    # Main site component
+│   ├── AthleteForwardConcept.tsx
+│   ├── AthleteForwardConceptPages.tsx
+│   ├── AthleteForwardFooter.tsx
+│   ├── AthleteForwardHeader.tsx
+│   └── ContactPage.tsx
 ├── public/
 │   ├── favicon.svg
 │   └── og-image.png        # Add this (1200×630)
