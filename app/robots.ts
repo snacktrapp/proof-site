@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/"],
+        disallow: ["/api/", "/demo", "/demo/"],
       },
     ],
     sitemap: "https://verifiedeffort.com/sitemap.xml",
