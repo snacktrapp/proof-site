@@ -1136,7 +1136,7 @@ export default function AthleteForwardConcept() {
           </div>
           <div>
             <strong>100%</strong>
-            <span>Device recorded</span>
+            <span>Approved source</span>
           </div>
         </div>
       </header>
@@ -1146,19 +1146,19 @@ export default function AthleteForwardConcept() {
           <div className="af-cred-grid">
             <div className="af-cred-item">
               <strong>Athlete</strong>
-              <span>Connect Strava once, keep moving, and earn progress when effort qualifies.</span>
+              <span>Opt in once, keep moving, and earn progress when effort qualifies.</span>
             </div>
             <div className="af-cred-item">
               <strong>Brand</strong>
-              <span>Invite the athletes who already train, ride, run, hike, swim, and show up.</span>
+              <span>Invite athletes into a PROOF-operated reward program.</span>
             </div>
             <div className="af-cred-item">
               <strong>Verified</strong>
-              <span>Device-recorded activities pass sport, distance, date, and integrity checks.</span>
+              <span>Eligible effort passes program, platform, and integrity checks.</span>
             </div>
             <div className="af-cred-item">
               <strong>Reward</strong>
-              <span>Milestones and challenges unlock offers when real effort crosses real thresholds.</span>
+              <span>Reward eligibility is tracked when real effort crosses approved thresholds.</span>
             </div>
           </div>
         </div>
@@ -1169,8 +1169,8 @@ export default function AthleteForwardConcept() {
           <div className="af-eyebrow">The shift</div>
           <h2>The relationship can start with movement.</h2>
           <p className="af-lede">
-            Athletes reveal intent before checkout: the miles, rides, swims, hikes, and training
-            they already record. PROOF turns that lived behavior into an entry point brands can honor.
+            Athletes opt in before the reward moment. PROOF turns eligible effort into a
+            program signal brands can honor without sharing raw athlete activity.
           </p>
           <div className="af-shift-panel" aria-label="Purchase-based loyalty compared with verified effort loyalty">
             <canvas className="af-panel-canvas" data-art="shift" aria-hidden="true" />
@@ -1179,7 +1179,7 @@ export default function AthleteForwardConcept() {
                 <span className="af-mono">Old loyalty signal</span>
                 <strong>Purchase first.</strong>
                 <p>
-                  The relationship waits for checkout, then tries to pull the customer back
+                  The relationship starts after purchase, then tries to create return visits
                   with points, discounts, or reminders.
                 </p>
                 <div className="af-shift-tags" aria-hidden="true">
@@ -1192,11 +1192,11 @@ export default function AthleteForwardConcept() {
                 <span className="af-mono">PROOF signal</span>
                 <strong>Movement first.</strong>
                 <p>
-                  A verified activity can start the relationship earlier, with progress that
-                  feels earned before a cart ever opens.
+                  Eligible effort can create reward progress, with PROOF operating the
+                  qualification layer for the brand.
                 </p>
                 <div className="af-shift-tags" aria-hidden="true">
-                  <span>Device recorded</span>
+                  <span>Approved source</span>
                   <span>23.4 PM</span>
                   <span>Brand progress</span>
                 </div>
@@ -1212,7 +1212,7 @@ export default function AthleteForwardConcept() {
           <h2>Turn training into customer loyalty.</h2>
           <p className="af-lede">
             Traditional loyalty waits for another purchase. PROOF gives brands a way to recognize
-            the activity, discipline, and identity that keep customers connected between orders.
+            eligible effort while keeping athlete activity controlled by opt-in and program rules.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
@@ -1223,12 +1223,12 @@ export default function AthleteForwardConcept() {
             <div className="af-card">
               <span className="af-mono">Activation</span>
               <h3>Launch moments people can earn</h3>
-              <p>Challenges and milestones create reasons to move, return, and share progress.</p>
+              <p>Program thresholds create clear reward moments athletes can qualify for.</p>
             </div>
             <div className="af-card">
               <span className="af-mono">Retention</span>
-              <h3>Message when effort creates relevance</h3>
-              <p>Use PROOF events to trigger rewards, emails, and offers with earned context.</p>
+              <h3>Support earned rewards</h3>
+              <p>Use PROOF reward status to support fulfillment and program follow-up.</p>
             </div>
           </div>
         </div>
@@ -1240,7 +1240,7 @@ export default function AthleteForwardConcept() {
           <h2>A reason to keep showing up.</h2>
           <p className="af-lede">
             Athletes do not need another points scheme disconnected from the work. PROOF lets
-            verified training earn progress, status, and rewards with brands they care about.
+            eligible effort earn program progress and rewards with brands they care about.
           </p>
           <div className="af-identity-panel">
             <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
@@ -1257,7 +1257,7 @@ export default function AthleteForwardConcept() {
               </div>
               <div className="af-profile-line">
                 <strong>Lifetime</strong>
-                <span>Build a verified effort record that can travel with you across participating brands</span>
+                <span>Keep PROOF-operated reward progress tied to the programs you join</span>
                 <em>Earned</em>
               </div>
             </div>
@@ -1269,31 +1269,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>From Strava activity to brand reward.</h2>
+            <h2>From athlete opt-in to brand reward.</h2>
             <p className="af-lede">
-              Athletes join through a brand, connect Strava, and PROOF credits eligible effort
-              inside the sport, threshold, and local-time window that matter.
+              Athletes join through a brand, connect an approved activity source, and PROOF
+              credits eligible effort inside the program rules that matter.
             </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Join a brand</h3>
-                  <p>A brand invite starts the relationship; Strava makes the effort verifiable.</p>
+                  <p>A brand invite starts the relationship; approved platform access makes effort verifiable.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Qualify with activity</h3>
-                  <p>Runs, rides, swims, hikes, and other sports are checked against the program rules.</p>
+                  <h3>Qualify with effort</h3>
+                  <p>Eligible efforts are checked against the program rules.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Receive the reward</h3>
-                  <p>Milestones, challenges, Shopify codes, and email moments can trigger automatically.</p>
+                  <p>PROOF records qualification and reward support state for the brand.</p>
                 </div>
               </div>
             </div>
@@ -1310,8 +1310,8 @@ export default function AthleteForwardConcept() {
               </div>
               <h3>A morning run becomes verified brand progress</h3>
               <p>
-                Behind every reward is an auditable record: sport, start time, eligibility, window,
-                and PROOF Mile progress.
+                Behind every reward is an auditable eligibility record: program rule, window,
+                qualification state, and reward support state.
               </p>
             </div>
           </div>
@@ -1324,23 +1324,23 @@ export default function AthleteForwardConcept() {
           <h2>Rewards backed by real effort.</h2>
           <p className="af-lede">
             The experience can feel simple because the mechanics are specific: athlete-local
-            windows, sport filters, PROOF Mile thresholds, Shopify rewards, and lifecycle events.
+            windows, sport filters, PROOF Mile thresholds, reward state, and aggregate reporting.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
               <span className="af-mono">Milestones</span>
               <h3>Reward cumulative effort</h3>
-              <p>Brand-specific PROOF Mile thresholds unlock progress as athletes keep moving.</p>
+              <p>Brand-specific PROOF Mile thresholds can mark reward eligibility as athletes keep moving.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Challenges</span>
+              <span className="af-mono">Windows</span>
               <h3>Create focused windows</h3>
-              <p>Fixed, monthly, or rolling windows count the right activities in the athlete's local time.</p>
+              <p>Fixed, monthly, or rolling windows count eligible effort in the athlete's local time.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Connected rewards</span>
-              <h3>Send proof into the stack</h3>
-              <p>Shopify, Klaviyo, and webhook events help brands message rewards with context.</p>
+              <span className="af-mono">Reporting</span>
+              <h3>Understand the program</h3>
+              <p>Aggregate reporting helps brands see program health without sharing raw athlete activity.</p>
             </div>
           </div>
         </div>
