@@ -633,7 +633,6 @@ function Shell({
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
-          <Link href="/methodology">Methodology</Link>
         </span>
       </footer>
     </main>

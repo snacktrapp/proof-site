@@ -6,7 +6,6 @@ export function AthleteForwardFooter() {
         <a href="/contact">Contact</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
-        <a href="/methodology">Methodology</a>
       </span>
     </footer>
   );
