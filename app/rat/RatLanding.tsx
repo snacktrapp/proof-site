@@ -1,6 +1,6 @@
 "use client";
 
-const dropSteps = ["Join.", "Move.", "Earn credit.", "Use it."];
+const dropSteps = ["Join.", "Move.", "Earn 50 Points.", "Claim the Foamie."];
 const ratJoinUrl = "https://proof.verifiedeffort.com/join/run-against-traffic";
 
 export default function RatLanding() {
@@ -28,8 +28,8 @@ export default function RatLanding() {
               <div className="rat-tagline-row">
                 <p className="rat-tagline">Wrong way. Right reason.</p>
                 <p className="rat-meta">
-                  Join the RAT Pack. Earn verified RAT credit through real effort. Use it toward
-                  the First 50 Foamie.
+                  Join the RAT Pack. Earn 50 Points through verified effort. Claim the First 50
+                  Foamie.
                 </p>
               </div>
               <div className="rat-action-row">
@@ -55,14 +55,13 @@ export default function RatLanding() {
                   alt="RAT hot pink Foamie trucker hat mockup"
                   className="rat-product-placeholder"
                 />
-                <p className="rat-object-tag">Field Object 001 / earned with verified miles</p>
+                <p className="rat-object-tag">Field Object 001 / unlocked at 50 Points</p>
               </div>
 
               <div className="rat-drop-copy">
                 <h2>The First 50 Foamie</h2>
                 <p className="rat-drop-lede">
-                  The first RAT object is live. Stack verified effort, earn RAT credit, and use it
-                  toward the Foamie.
+                  You don&apos;t buy your way in. Earn 50 Points and the Foamie unlocks.
                 </p>
 
                 <div className="rat-rule-strip">
@@ -569,208 +568,6 @@ export default function RatLanding() {
           font-size: 10px;
         }
 
-        .rat-modal-backdrop {
-          position: fixed;
-          inset: 0;
-          z-index: 50;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 24px 16px;
-        }
-
-        .rat-modal-scrim {
-          position: absolute;
-          inset: 0;
-          background: rgba(0, 0, 0, 0.84);
-        }
-
-        .rat-access-modal {
-          position: relative;
-          width: min(100%, 576px);
-          max-height: 92svh;
-          overflow-y: auto;
-          border: 1px solid var(--rat-pink);
-          background: #050505;
-          box-shadow: 10px 10px 0 rgba(255, 47, 163, 0.32);
-          color: white;
-          padding: 24px;
-        }
-
-        .rat-modal-header {
-          display: flex;
-          align-items: flex-start;
-          justify-content: space-between;
-          gap: 16px;
-        }
-
-        .rat-modal-kicker,
-        .rat-form span,
-        .rat-modal-note {
-          margin: 0;
-          color: var(--rat-pink);
-          font-size: 10px;
-          font-weight: 700;
-          text-transform: uppercase;
-        }
-
-        .rat-modal-header h2 {
-          margin: 8px 0 0;
-          font-size: 40px;
-          font-weight: 900;
-          line-height: 1;
-          text-transform: uppercase;
-        }
-
-        .rat-modal-close {
-          display: flex;
-          width: 40px;
-          height: 40px;
-          flex-shrink: 0;
-          align-items: center;
-          justify-content: center;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          background: transparent;
-          color: white;
-          cursor: pointer;
-          font: 400 20px "JetBrains Mono", monospace;
-        }
-
-        .rat-modal-note {
-          margin-top: 16px;
-          color: #a1a1aa;
-          font-size: 11px;
-          line-height: 1.6;
-        }
-
-        .rat-success {
-          padding: 40px 0;
-        }
-
-        .rat-success p {
-          margin: 0;
-          font-size: 40px;
-          font-weight: 900;
-          line-height: 1;
-          text-transform: uppercase;
-        }
-
-        .rat-success span {
-          display: block;
-          max-width: 520px;
-          margin-top: 20px;
-          color: #d4d4d8;
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 1.7;
-          text-transform: uppercase;
-        }
-
-        .rat-form {
-          display: flex;
-          flex-direction: column;
-          gap: 16px;
-          margin-top: 24px;
-        }
-
-        .rat-honeypot {
-          position: absolute;
-          left: -100vw;
-          width: 1px;
-          height: 1px;
-          overflow: hidden;
-        }
-
-        .rat-form-grid {
-          display: grid;
-          gap: 16px;
-          grid-template-columns: 1fr 1fr;
-        }
-
-        .rat-form label {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .rat-form input,
-        .rat-form select,
-        .rat-form textarea {
-          width: 100%;
-          box-sizing: border-box;
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          border-radius: 0;
-          background: black;
-          color: white;
-          font: 400 14px "JetBrains Mono", monospace;
-          outline: none;
-          padding: 12px;
-        }
-
-        .rat-form textarea {
-          resize: none;
-        }
-
-        .rat-form input:focus,
-        .rat-form select:focus,
-        .rat-form textarea:focus {
-          border-color: var(--rat-pink);
-        }
-
-        .rat-form textarea::placeholder {
-          color: #71717a;
-        }
-
-        .rat-select-wrap {
-          position: relative;
-        }
-
-        .rat-select-wrap::after {
-          content: "";
-          position: absolute;
-          right: 16px;
-          top: 50%;
-          width: 9px;
-          height: 9px;
-          border-bottom: 2px solid var(--rat-pink);
-          border-right: 2px solid var(--rat-pink);
-          pointer-events: none;
-          transform: translateY(-65%) rotate(45deg);
-        }
-
-        .rat-form select {
-          appearance: none;
-          color-scheme: dark;
-          cursor: pointer;
-          padding-right: 44px;
-        }
-
-        .rat-form option {
-          background: #050505;
-          color: white;
-        }
-
-        .rat-form em {
-          align-self: flex-end;
-          color: #71717a;
-          font-size: 10px;
-          font-style: normal;
-        }
-
-        .rat-error {
-          border: 1px solid var(--rat-pink);
-          background: rgba(255, 47, 163, 0.12);
-          color: white;
-          font-size: 11px;
-          font-weight: 700;
-          padding: 12px 16px;
-          text-transform: uppercase;
-        }
-
-        .rat-submit {
-          width: 100%;
-        }
-
         @media (max-width: 760px) {
           .rat-hero {
             min-height: 92svh;
@@ -788,8 +585,7 @@ export default function RatLanding() {
             max-height: 30svh;
           }
 
-          .rat-drop-grid,
-          .rat-form-grid {
+          .rat-drop-grid {
             grid-template-columns: 1fr;
           }
 
