@@ -633,7 +633,6 @@ function Shell({
           <Link href="/contact">Contact</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
-          <Link href="/methodology">Methodology</Link>
         </span>
       </footer>
     </main>
@@ -645,11 +644,11 @@ const plans = [
     name: "Developer",
     price: "Free",
     members: "100 included billable members",
-    bestFor: "For teams exploring verification, profile data, and the PROOF effort model.",
+    bestFor: "For teams exploring verification and the PROOF effort model.",
     features: [
-      "Verified activity processing",
-      "Athlete dashboard and public profiles",
-      "Strava integration",
+      "Eligibility processing",
+      "Athlete opt-in flow",
+      "Platform approval path",
       "Documentation",
     ],
   },
@@ -658,13 +657,13 @@ const plans = [
     price: "$249/mo",
     annual: "Annual: $199/mo",
     members: "2,500 included billable members",
-    bestFor: "For a first live rewards program with milestones, challenges, and email events.",
+    bestFor: "For a first live rewards program with clear eligibility and support needs.",
     features: [
       "Everything in Developer",
       "Brand program workspace",
-      "Milestones, challenges, and rewards",
-      "Shopify reward code generation",
-      "Klaviyo or webhook delivery",
+      "Reward eligibility rules",
+      "Reward support state",
+      "Aggregate program reporting",
       "Email support",
     ],
   },
@@ -708,14 +707,14 @@ const plans = [
 ];
 
 const includedFeatures = [
-  "Strava-verified activity processing",
+  "Approval-dependent activity-source processing",
   "Brand-specific PROOF Miles ledger",
-  "Athlete dashboard and public profiles",
-  "Milestones, challenges, and reward issuance",
-  "Shopify discount-code generation",
-  "Klaviyo direct or generic webhook delivery",
-  "Member and reward CSV exports",
-  "Activity and reward visibility",
+  "Athlete opt-in and program progress views",
+  "Reward eligibility rules",
+  "Reward support state",
+  "Aggregate program reporting",
+  "Platform approval support",
+  "Program configuration support",
 ];
 
 const comparisonRows = [
@@ -801,18 +800,18 @@ export function AthleteForwardPricing() {
                 activity after joining, and they have engaged with your brand program.
               </p>
               <p>
-                Engagement means joining your program, claiming or generating a reward code, or
-                making a purchase we can attribute to a PROOF reward.
+                Engagement means joining your program, claiming a reward, or asking for reward
+                support through the brand program.
               </p>
               <p>
-                We do not charge you for someone just because they connected Strava, keep uploading
-                activities, passively receive a reward, hit a milestone, or complete an automatic
-                challenge. If they stop engaging with your brand program for 12 months, they age out
-                of your billable count until they engage again.
+                We do not charge you for someone just because they connected an approved source,
+                keep generating eligible effort, or passively receive a reward. If they stop
+                engaging with your brand program for 12 months, they age out of your billable
+                count until they engage again.
               </p>
               <p>
                 If your billable-member count grows beyond the included threshold, we review the
-                right plan with you. Athletes can keep joining, activity keeps verifying, and you
+                right plan with you. Athletes can keep joining, eligibility checks continue, and you
                 will not be auto-upgraded without a conversation.
               </p>
             </div>
@@ -822,7 +821,7 @@ export function AthleteForwardPricing() {
 
       <Section eyebrow="Comparison" title="What changes by plan.">
         <p className="afd-lede">
-          The platform foundation is not carved into artificial feature gates. Live brand plans
+          The platform foundation is kept simple. Live brand plans
           differ mainly by billable-member thresholds, support level, and contract needs.
         </p>
         <Card className="afd-included-card">
@@ -918,35 +917,35 @@ export function AthleteForwardHowItWorks() {
           </>
         }
       >
-        PROOF verifies athlete activity, converts it into brand-specific progress, and triggers
-        rewards when real effort crosses the thresholds you set.
+        PROOF checks effort eligibility, converts it into brand-specific progress, and records
+        reward eligibility when real effort crosses approved thresholds.
       </Hero>
 
-      <Section eyebrow="The model" title="One athlete identity. Brand-specific rewards.">
+      <Section eyebrow="The model" title="Athlete opt-in. Brand-specific rewards.">
         <p className="afd-lede">
-          PROOF separates the universal effort ledger from each brand's reward program. The
-          athlete can build a portable record of verified movement, while each brand decides
-          which sports count, which thresholds matter, and what each reward unlocks.
+          PROOF separates athlete opt-in and effort eligibility from each brand's reward program.
+          The athlete controls the connection, while each brand defines which eligible effort can
+          qualify for a reward.
         </p>
         <div className="afd-grid">
           <Card>
             <h3>PROOF layer</h3>
             <p>
-              Device-recorded activity, verification gates, lifetime PROOF Miles, pace,
-              trend, and a portable athlete identity.
+              Approved activity-source access, verification gates, PROOF Miles, eligibility
+              state, and reward support state.
             </p>
           </Card>
           <Card highlight>
             <h3>Brand layer</h3>
             <p>
-              Sport allowlist, challenge windows, milestone ladders, reward values,
-              Shopify discounts, and customer messaging.
+              Sport allowlist, eligibility windows, reward values, fulfillment support,
+              and aggregate program reporting.
             </p>
           </Card>
           <Card>
             <h3>Athlete experience</h3>
             <p>
-              Athletes join through participating brands, connect Strava, and see their
+              Athletes join through participating brands, opt in to an approved source, and see their
               earned progress in the context of that brand.
             </p>
           </Card>
@@ -964,7 +963,7 @@ export function AthleteForwardHowItWorks() {
               <h3>The brand starts the relationship</h3>
               <p>
                 Athletes join through a brand page, invite, or slug. PROOF carries that brand
-                context through account creation and Strava connection, then creates the brand
+                context through account creation and approved source connection, then creates the brand
                 relationship automatically.
               </p>
             </div>
@@ -972,19 +971,19 @@ export function AthleteForwardHowItWorks() {
           <div className="afd-step">
             <div className="afd-step-number">02 / verify</div>
             <div>
-              <h3>Strava makes effort measurable</h3>
+              <h3>Approved access makes effort measurable</h3>
               <p>
-                Activities are imported and checked against sport, distance, velocity, date,
-                and integrity rules before they can credit PROOF Miles or brand PM.
+                Eligible efforts are checked against platform, program, and integrity rules
+                before they can credit PROOF Miles or program progress.
               </p>
             </div>
           </div>
           <div className="afd-step">
             <div className="afd-step-number">03 / qualify</div>
             <div>
-              <h3>Challenge windows use athlete-local time</h3>
+              <h3>Eligibility windows use athlete-local time</h3>
               <p>
-                Fixed-date, monthly, and rolling windows count eligible activities in the
+                Fixed-date, monthly, and rolling windows count eligible effort in the
                 athlete's local timezone. Brand managers choose plain calendar dates, and
                 PROOF handles the exact technical boundaries.
               </p>
@@ -993,11 +992,10 @@ export function AthleteForwardHowItWorks() {
           <div className="afd-step">
             <div className="afd-step-number">04 / reward</div>
             <div>
-              <h3>Rewards trigger with context</h3>
+              <h3>Rewards are easy to support</h3>
               <p>
-                Milestones and challenges can issue bonus PM, Shopify discounts, or events
-                for email flows. The athlete gets a reward because real activity crossed a
-                real threshold.
+                PROOF records the qualification reason, reward status, and support details.
+                The athlete gets a reward because eligible effort crossed a real threshold.
               </p>
             </div>
           </div>
@@ -1016,19 +1014,19 @@ export function AthleteForwardHowItWorks() {
           </Card>
           <Card>
             <h3>Windows and thresholds</h3>
-            <p>Set the date range, rolling period, monthly cadence, PM target, activity count, or improvement goal.</p>
+            <p>Set the date range, rolling period, monthly cadence, PROOF Mile target, or eligible effort count.</p>
           </Card>
           <Card>
             <h3>Reward economics</h3>
-            <p>Choose reward value, expiration, Shopify discount behavior, and the customer-facing reward label.</p>
+            <p>Choose reward value, expiration, fulfillment behavior, and the customer-facing reward label.</p>
           </Card>
           <Card>
             <h3>Eligibility gates</h3>
-            <p>Optional gates can use tier, pace, lifetime PM, or brand PM when a campaign is intended for a specific athlete segment.</p>
+            <p>Optional gates can use program status or PROOF Mile thresholds when a reward is intended for a defined group.</p>
           </Card>
           <Card>
-            <h3>Lifecycle moments</h3>
-            <p>Send events to email and marketing tools when athletes join, qualify, earn, redeem, or approach expiration.</p>
+            <h3>Program reporting</h3>
+            <p>Review aggregate opt-in, qualification, and reward-support trends without sharing raw athlete activity.</p>
           </Card>
           <Card>
             <h3>Brand presentation</h3>
@@ -1040,28 +1038,28 @@ export function AthleteForwardHowItWorks() {
       <Section eyebrow="Athlete experience" title="Simple for athletes. Useful for brands.">
         <p className="afd-lede">
           Athletes do not have to understand the infrastructure. They join a brand, connect
-          Strava, keep moving, and see earned progress show up where the brand relationship lives.
+          an approved activity source, keep moving, and see earned progress show up where the brand relationship lives.
         </p>
         <div className="afd-grid">
           <Card highlight>
             <h3>Connect once</h3>
             <p>
-              A single Strava connection powers verified activity across participating brand
-              relationships.
+              A single approved connection can support eligible effort across participating brand
+              relationships when platform permissions allow it.
             </p>
           </Card>
           <Card>
             <h3>Earn progress</h3>
             <p>
-              Eligible activities credit PROOF Miles, brand PM, challenge progress, and
-              milestone status automatically.
+              Eligible effort can credit PROOF Miles, program progress, and reward
+              eligibility automatically.
             </p>
           </Card>
           <Card>
             <h3>Redeem rewards</h3>
             <p>
-              When the athlete qualifies, PROOF can trigger the reward moment through Shopify,
-              email, or the brand's owned customer experience.
+              When the athlete qualifies, PROOF records reward status so the brand can support
+              the earned moment.
             </p>
           </Card>
         </div>
@@ -1072,8 +1070,8 @@ export function AthleteForwardHowItWorks() {
           <Card>
             <h3>Local-time windows</h3>
             <p>
-              Activity start time and timezone are preserved so challenge qualification matches
-              the athlete's real calendar day.
+              Program windows use athlete-local time so qualification matches the athlete's
+              real calendar day.
             </p>
           </Card>
           <Card>
@@ -1086,8 +1084,8 @@ export function AthleteForwardHowItWorks() {
           <Card>
             <h3>Auditable rewards</h3>
             <p>
-              Reward records show why they fired: challenge, threshold, activity window,
-              PM credited, code generation, redemption, expiration, or voiding.
+              Reward records show why they qualified: threshold, eligibility window,
+              PROOF Miles credited, support state, expiration, or voiding.
             </p>
           </Card>
         </div>
@@ -1099,7 +1097,7 @@ export function AthleteForwardHowItWorks() {
           <h2>Launch the first earned-reward moment.</h2>
           <p className="afd-lede">
             Start with one brand, one sport category, and one reward athletes can earn through
-            verified movement. PROOF handles the ledger, qualification, and reward trigger.
+            verified movement. PROOF handles the ledger, qualification, and reward support state.
           </p>
           <div className="afd-actions">
             <Link className="afd-button afd-button-primary" href="/pricing">

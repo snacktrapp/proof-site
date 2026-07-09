@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { AthleteForwardFooter } from "@/components/AthleteForwardFooter";
 import { AthleteForwardHeader } from "@/components/AthleteForwardHeader";
 import { athleteForwardChromeCss } from "@/components/athleteForwardChrome";
@@ -56,37 +55,37 @@ const pillars = [
   {
     title: "Verified Effort",
     body:
-      "Turn eligible activity from trusted connected platforms into a loyalty signal the brand can act on.",
+      "Turn athlete opt-in and approved platform access into earned reward moments PROOF can support.",
   },
   {
     title: "Earned Recognition",
     body:
-      "Show up when recognition is deserved: after verified activity, milestones, goals, records, challenges, rewards, and consistent participation.",
+      "Recognize athletes when eligible effort qualifies for a brand-funded reward.",
   },
   {
     title: "Owned Loyalty",
     body:
-      "Bring participation into the brand's ecommerce and marketing stack, so the brand can build direct relationships and drive repeat engagement.",
+      "Give brands program-level reporting and reward support without exposing raw athlete activity.",
   },
 ];
 
 const steps = [
   ["Join", "Athletes join a PROOF-powered brand program."],
-  ["Connect", "Athletes connect a trusted activity source, starting with Strava."],
-  ["Verify", "PROOF verifies eligible effort and applies the brand's loyalty rules."],
+  ["Connect", "Athletes opt in to an approved activity-source connection."],
+  ["Verify", "PROOF checks eligible effort against the brand's program rules."],
   [
     "Activate",
-    "Brands trigger rewards, lifecycle messaging, and customer intelligence through their ecommerce and marketing stack.",
+    "PROOF records qualification, reward status, and aggregate program reporting.",
   ],
 ];
 
 const questions = [
-  "Who joined the brand program?",
-  "Who is active?",
-  "Who is progressing?",
-  "Who earned rewards?",
-  "Who is ready for the next message?",
-  "Which achievements should the brand recognize?",
+  "How many athletes joined?",
+  "How many athletes opted in?",
+  "How is the program progressing?",
+  "How many rewards were earned?",
+  "Which reward states need support?",
+  "What aggregate trends should the brand understand?",
 ];
 
 const css = `
@@ -343,9 +342,6 @@ export default function FounderPreviewPage() {
             <a className="fp-button fp-button-primary" href={CONTACT_HREF}>
               Start a conversation
             </a>
-            <Link className="fp-button" href="/demo">
-              View platform walkthrough
-            </Link>
           </div>
         </div>
       </section>
@@ -356,8 +352,8 @@ export default function FounderPreviewPage() {
           <h2>PROOF starts when the athlete has done the work.</h2>
           <p className="fp-section-copy">
             Most promotional marketing starts when there is something to sell.
-            PROOF helps athletic brands build loyalty rooted in athletic
-            identity and achievement by showing up after real participation.
+            PROOF helps athletic brands build loyalty around athlete opt-in,
+            eligible effort, and reward moments that can be supported cleanly.
           </p>
         </div>
       </section>
@@ -412,18 +408,16 @@ export default function FounderPreviewPage() {
       <section className="fp-section">
         <div className="fp-section-inner">
           <p className="fp-label">Example</p>
-          <h2>An athletic apparel brand can recognize achievement as it happens.</h2>
+          <h2>An athletic apparel brand can recognize eligible effort cleanly.</h2>
           <p className="fp-section-copy">
             Athletes join the brand's PROOF-powered program, connect a trusted
-            activity source, earn progress for eligible activity, unlock
-            milestone rewards, and receive timely brand messages when they hit
-            achievements worth recognizing.
+            activity source after platform approval, earn progress for eligible
+            activity, and qualify for rewards the brand can support.
           </p>
           <p className="fp-section-copy">
             PROOF is in friendly launch testing while preparing for broader
-            athletic-brand conversations. It starts with Strava-verified
-            activity and is built to add additional trusted effort sources over
-            time.
+            athletic-brand conversations. Platform-source connections depend on
+            the relevant approval path.
           </p>
         </div>
       </section>

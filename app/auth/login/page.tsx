@@ -1,15 +1,7 @@
-import type { Metadata } from "next";
-import { AthleteForwardAuthPreview } from "@/components/AthleteForwardAuthPreview";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Log In - PROOF",
-  description: "Preview of the PROOF login flow.",
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+const APP_LOGIN_URL = "https://proof.verifiedeffort.com/auth/login";
 
 export default function LoginPreviewPage() {
-  return <AthleteForwardAuthPreview variant="login" />;
+  redirect(APP_LOGIN_URL);
 }
