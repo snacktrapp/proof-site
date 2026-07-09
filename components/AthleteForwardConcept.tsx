@@ -1110,11 +1110,11 @@ export default function AthleteForwardConcept() {
         </video>
         <div className="af-noise" />
         <div className="af-hero-content">
-          <div className="af-kicker">Verified effort rewards</div>
+          <div className="af-kicker">Effort-based loyalty</div>
           <h1>Your effort is worth something.</h1>
           <p className="af-hero-sub">
-            PROOF helps athletes turn verified movement into earned rewards, and gives brands
-            a cleaner way to recognize the people already living their category.
+            PROOF helps athletic brands turn verified movement into Points, milestones,
+            challenges, and rewards athletes can actually earn.
           </p>
           <div className="af-actions">
             <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
@@ -1127,8 +1127,8 @@ export default function AthleteForwardConcept() {
         </div>
         <div className="af-metrics" aria-label="Example verified effort metrics">
           <div>
-            <strong>23.4</strong>
-            <span>Proof miles</span>
+            <strong>23</strong>
+            <span>Points earned</span>
           </div>
           <div>
             <strong>05:42</strong>
@@ -1146,7 +1146,7 @@ export default function AthleteForwardConcept() {
           <div className="af-cred-grid">
             <div className="af-cred-item">
               <strong>Athlete</strong>
-              <span>Connect Strava once, keep moving, and earn progress when effort qualifies.</span>
+              <span>Join a brand program, keep moving, and earn progress when effort qualifies.</span>
             </div>
             <div className="af-cred-item">
               <strong>Brand</strong>
@@ -1154,7 +1154,7 @@ export default function AthleteForwardConcept() {
             </div>
             <div className="af-cred-item">
               <strong>Verified</strong>
-              <span>Device-recorded activities pass sport, distance, date, and integrity checks.</span>
+              <span>Eligible device-recorded activities pass sport, distance, date, and integrity checks.</span>
             </div>
             <div className="af-cred-item">
               <strong>Reward</strong>
@@ -1197,8 +1197,8 @@ export default function AthleteForwardConcept() {
                 </p>
                 <div className="af-shift-tags" aria-hidden="true">
                   <span>Device recorded</span>
-                  <span>23.4 PM</span>
-                  <span>Brand progress</span>
+                  <span>23 Points</span>
+                  <span>Reward progress</span>
                 </div>
               </div>
             </div>
@@ -1248,7 +1248,7 @@ export default function AthleteForwardConcept() {
               <div className="af-profile-line">
                 <strong>Today</strong>
                 <span>Your morning run counted toward a reward you can actually earn</span>
-                <em>+18 PM</em>
+                <em>+18 Points</em>
               </div>
               <div className="af-profile-line">
                 <strong>This month</strong>
@@ -1269,17 +1269,17 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>From Strava activity to brand reward.</h2>
+            <h2>From verified activity to brand reward.</h2>
             <p className="af-lede">
-              Athletes join through a brand, connect Strava, and PROOF credits eligible effort
-              inside the sport, threshold, and local-time window that matter.
+              Athletes join through a brand, connect an approved activity source, and PROOF
+              credits eligible effort inside the sport, threshold, and local-time window that matter.
             </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Join a brand</h3>
-                  <p>A brand invite starts the relationship; Strava makes the effort verifiable.</p>
+                  <p>A brand invite starts the relationship; approved activity data makes the effort verifiable.</p>
                 </div>
               </div>
               <div className="af-signal-card">
@@ -1310,8 +1310,8 @@ export default function AthleteForwardConcept() {
               </div>
               <h3>A morning run becomes verified brand progress</h3>
               <p>
-                Behind every reward is an auditable record: sport, start time, eligibility, window,
-                and PROOF Mile progress.
+                Behind every reward is an auditable record: eligibility, window, reward state,
+                and Points progress.
               </p>
             </div>
           </div>
@@ -1324,13 +1324,13 @@ export default function AthleteForwardConcept() {
           <h2>Rewards backed by real effort.</h2>
           <p className="af-lede">
             The experience can feel simple because the mechanics are specific: athlete-local
-            windows, sport filters, PROOF Mile thresholds, Shopify rewards, and lifecycle events.
+            windows, sport filters, Points thresholds, Shopify rewards, and lifecycle events.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
               <span className="af-mono">Milestones</span>
               <h3>Reward cumulative effort</h3>
-              <p>Brand-specific PROOF Mile thresholds unlock progress as athletes keep moving.</p>
+              <p>Brand-specific Points thresholds unlock progress as athletes keep moving.</p>
             </div>
             <div className="af-card">
               <span className="af-mono">Challenges</span>
@@ -1340,7 +1340,7 @@ export default function AthleteForwardConcept() {
             <div className="af-card">
               <span className="af-mono">Connected rewards</span>
               <h3>Send proof into the stack</h3>
-              <p>Shopify, Klaviyo, and webhook events help brands message rewards with context.</p>
+              <p>Shopify, Klaviyo, and webhook events help brands message reward and account moments with context.</p>
             </div>
           </div>
         </div>
