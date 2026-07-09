@@ -133,10 +133,9 @@ export default function PrivacyPolicy() {
             <strong>Forward-purpose declaration.</strong> We capture all of the activity-data fields
             above on every recorded activity, even though our current PROOF Miles calculation
             (methodology v1.0) only uses distance and elevation. The remaining fields — heart rate,
-            power, kilojoules, and intensity scores — are stored to support enriched effort
-            calculation in future releases (intensity-aware PROOF Miles, dimension-specific
-            challenges, athlete specializations). You can review the full methodology, including the
-            forward roadmap, at our{" "}
+            power, kilojoules, and intensity scores — are stored to support future improvements
+            to athlete-owned effort methodology and eligible program calculations. You can review
+            the full methodology at our{" "}
             <a href="/methodology">PROOF methodology page</a>. Disconnecting a fitness platform
             stops new data of any of these types from being received.
           </p>
@@ -147,9 +146,9 @@ export default function PrivacyPolicy() {
           </p>
           <ul>
             <li>Your connection to specific brand programs</li>
-            <li>PROOF miles (PM) earned — our effort-normalized unit</li>
-            <li>Your PROOF tier and brand-specific tier</li>
-            <li>Reward thresholds reached and discount codes issued</li>
+            <li>Brand-scoped Points and reward progress for programs you join</li>
+            <li>Reward thresholds reached, credits issued, and redemption/support state</li>
+            <li>Limited account and communication details needed to operate the program</li>
           </ul>
 
           <h3>2.4 Usage Data</h3>
@@ -163,8 +162,8 @@ export default function PrivacyPolicy() {
           <p>We use the information we collect to:</p>
           <ul>
             <li>Verify that athletic activities are real and recorded by the athlete&apos;s fitness device or app</li>
-            <li>Convert verified activities into PROOF miles using our PROOF Effort Index (PEI)</li>
-            <li>Calculate and maintain your PROOF tier and active status</li>
+            <li>Convert verified activities into athlete-owned PROOF Miles and brand-scoped Points</li>
+            <li>Calculate and maintain your athlete identity, program progress, and reward eligibility</li>
             <li>Credit your effort to brand loyalty programs you have joined</li>
             <li>Generate and deliver rewards (e.g., discount codes) on behalf of brands</li>
             <li>Send you transactional notifications about your account and earned rewards</li>
@@ -184,14 +183,16 @@ export default function PrivacyPolicy() {
             necessary to operate their program:
           </p>
           <ul>
-            <li>Your PROOF tier and active status</li>
-            <li>Brand-specific PROOF miles earned (only for sports in that brand's allowlist)</li>
-            <li>Reward milestones reached</li>
+            <li>Brand-scoped Points and next-reward progress for that program</li>
+            <li>Reward credits issued, available, expired, redeemed, or otherwise needing support</li>
+            <li>High-level program support state, such as joined status or connection health</li>
             <li>Your email address (for program communications you have opted into)</li>
           </ul>
           <p>
-            Brands do not receive your raw GPS data, your full activity history, or data from other
-            brand programs you have joined. Each brand only sees effort relevant to their own program.
+            Brands do not receive your raw GPS data, raw activity feed, full activity history,
+            pace, trend, or data from other brand programs you have joined. Each brand only sees
+            loyalty accounting, reward, support, and aggregate program information scoped to its
+            own program.
           </p>
 
           <h3>4.2 With Fitness Platforms</h3>
@@ -217,9 +218,9 @@ export default function PrivacyPolicy() {
 
           <h2>5. Data Retention and GPS Data</h2>
           <p>
-            We retain your account information and PROOF miles history for as long as your account is
-            active. Activity records (type, distance, date, verified PM) are retained as part of your
-            effort ledger.
+            We retain your account information and athlete-owned PROOF Miles history for as long as
+            your account is active. Activity records and transformed loyalty outputs are retained as
+            part of your effort and reward ledger.
           </p>
           <p>
             GPS route data is used during the verification process to confirm that an activity is

@@ -25,7 +25,7 @@ const faqs = [
   },
   {
     q: "What platforms does PROOF support today?",
-    a: "Strava is live today. Shopify discount-code generation and Klaviyo or webhook-based messaging are part of the brand program stack.",
+    a: "PROOF is built around athlete-authorized activity-source connections. Brand programs can use PROOF to issue earned credits, support rewards, and manage lifecycle messaging.",
   },
   {
     q: "How does pricing work?",

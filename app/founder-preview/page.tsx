@@ -85,7 +85,7 @@ const questions = [
   "How is the program progressing?",
   "How many rewards were earned?",
   "Which reward states need support?",
-  "What aggregate trends should the brand understand?",
+  "What aggregate program reporting helps the brand operate?",
 ];
 
 const css = `

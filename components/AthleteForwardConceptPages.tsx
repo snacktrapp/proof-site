@@ -708,12 +708,12 @@ const plans = [
 
 const includedFeatures = [
   "Approval-dependent activity-source processing",
-  "Brand-specific PROOF Miles ledger",
+  "Brand-scoped Points ledger",
   "Athlete opt-in and program progress views",
   "Reward eligibility rules",
   "Reward support state",
   "Aggregate program reporting",
-  "Platform approval support",
+  "Platform posture support",
   "Program configuration support",
 ];
 
@@ -931,8 +931,8 @@ export function AthleteForwardHowItWorks() {
           <Card>
             <h3>PROOF layer</h3>
             <p>
-              Approved activity-source access, verification gates, PROOF Miles, eligibility
-              state, and reward support state.
+              Approved activity-source access, verification gates, Points accounting,
+              eligibility state, and reward support state.
             </p>
           </Card>
           <Card highlight>
@@ -974,7 +974,7 @@ export function AthleteForwardHowItWorks() {
               <h3>Approved access makes effort measurable</h3>
               <p>
                 Eligible efforts are checked against platform, program, and integrity rules
-                before they can credit PROOF Miles or program progress.
+                before they can credit Points or program progress.
               </p>
             </div>
           </div>
@@ -1014,7 +1014,7 @@ export function AthleteForwardHowItWorks() {
           </Card>
           <Card>
             <h3>Windows and thresholds</h3>
-            <p>Set the date range, rolling period, monthly cadence, PROOF Mile target, or eligible effort count.</p>
+            <p>Set the date range, rolling period, monthly cadence, Points target, or eligible effort count.</p>
           </Card>
           <Card>
             <h3>Reward economics</h3>
@@ -1022,11 +1022,11 @@ export function AthleteForwardHowItWorks() {
           </Card>
           <Card>
             <h3>Eligibility gates</h3>
-            <p>Optional gates can use program status or PROOF Mile thresholds when a reward is intended for a defined group.</p>
+            <p>Optional gates can use program status or brand-scoped Points thresholds when a reward is intended for a defined group.</p>
           </Card>
           <Card>
             <h3>Program reporting</h3>
-            <p>Review aggregate opt-in, qualification, and reward-support trends without sharing raw athlete activity.</p>
+            <p>Review aggregate opt-in, qualification, reward liability, and support state without sharing raw athlete activity.</p>
           </Card>
           <Card>
             <h3>Brand presentation</h3>
@@ -1051,7 +1051,7 @@ export function AthleteForwardHowItWorks() {
           <Card>
             <h3>Earn progress</h3>
             <p>
-              Eligible effort can credit PROOF Miles, program progress, and reward
+              Eligible effort can credit Points, program progress, and reward
               eligibility automatically.
             </p>
           </Card>
@@ -1085,7 +1085,7 @@ export function AthleteForwardHowItWorks() {
             <h3>Auditable rewards</h3>
             <p>
               Reward records show why they qualified: threshold, eligibility window,
-              PROOF Miles credited, support state, expiration, or voiding.
+              Points credited, support state, expiration, or voiding.
             </p>
           </Card>
         </div>
