@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import AthleteForwardConcept from "@/components/AthleteForwardConcept";
 
 export const metadata: Metadata = {
-  title: "PROOF - Verified Effort Rewards",
+  title: "PROOF - Effort-Based Loyalty for Athletic Brands",
   description:
-    "PROOF helps athletes turn verified movement into earned rewards and gives brands a cleaner way to recognize real effort.",
+    "PROOF helps athletic brands turn verified movement into Points, milestones, challenges, and earned rewards.",
 };
 
 export default function Home() {
