@@ -8,15 +8,15 @@
 
 **Subject:** You're a Contender.
 
-**Preheader:** 500 Lifetime PM. Tier advanced. Recognized at every brand.
+**Preheader:** 500 Lifetime PM. Tier advanced.
 
 ---
 
 Lifetime PM just crossed 500.
 
-Your PROOF tier is now **Contender** — visible to every brand you're connected to, and every brand you ever join.
+Your PROOF tier is now **Contender**.
 
-PROOF tier never moves backward. Brand rewards keep earning fresh. Next up:
+PROOF tier never moves backward. Brand Points and rewards keep earning fresh inside each program you join. Next up:
 
 - **Rival →** 3,000 Lifetime PM
 
@@ -30,7 +30,7 @@ Keep climbing.
 
 | Tier | Lifetime PM at crossing | Subject | Preheader | Next-up line |
 |---|---|---|---|---|
-| Contender | 500 | You're a Contender. | 500 Lifetime PM. Tier advanced. Recognized at every brand. | **Rival →** 3,000 Lifetime PM |
+| Contender | 500 | You're a Contender. | 500 Lifetime PM. Tier advanced. | **Rival →** 3,000 Lifetime PM |
 | Rival | 3,000 | You're a Rival. | 3,000 Lifetime PM. Tier advanced. | **Elite →** 10,000 Lifetime PM |
 | Elite | 10,000 | You're Elite. | 10,000 Lifetime PM. Tier advanced. | **Legend →** 25,000 Lifetime PM |
 | Legend | 25,000 | You're a Legend. | 25,000 Lifetime PM. Tier advanced. | **Myth →** 100,000 Lifetime PM |
@@ -43,7 +43,7 @@ Keep climbing.
 ## Copy-tone notes by tier
 
 - **Contender → Legend** copy stays close to the Contender template above — terse, "next up" visible, "Keep climbing." Changes per tier: subject, preheader, next-up threshold, Lifetime PM number.
-- **Myth and above** drop "Keep climbing" — it reads as coaching to someone who's already climbed. Replace signoff body with: *"PROOF is built to recognize effort at every scale. Yours is now visible at every brand you'll ever connect to."*
+- **Myth and above** drop "Keep climbing" — it reads as coaching to someone who's already climbed. Replace signoff body with: *"PROOF is built to recognize effort at every scale. Your Lifetime PM remains part of your athlete-owned identity."*
 - **Apex · Mark II and above** — no "Keep climbing," no "Next up" if Mark IV+. Body becomes: *"At this altitude, the ladder is yours to define. Every Mark doubles. Lifetime PM never moves backward."*
 - **Legend-only special case:** at Legend threshold (25k) the old ceiling was reached. For legibility with athletes who've been on PROOF since before the ladder extension, include a one-line aside: *"Myth and Apex tiers added 2026-04. Your climb continues."* Remove this aside 12 months after ladder-extension date.
 

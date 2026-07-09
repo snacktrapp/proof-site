@@ -1,9 +1,9 @@
-**Trigger:** Fires immediately after an athlete completes their first Strava OAuth connection to PROOF.
+**Trigger:** Fires immediately after an athlete completes their first activity-source connection to PROOF.
 
 **Branching:** Template selects between two variants based on Lifetime PM after backfill completes. Backfill runs async; this email fires *after* backfill finishes (or after a 5-min cap, whichever is first — for veterans with very long histories, send preliminary "your history is importing" transactional from the brand's ESP as part of their welcome bonus flow, and let PROOF's welcome land once the ledger is settled).
 
-- **Variant A — Zero-state** (Lifetime PM < 500 after backfill): new or lightly-used Strava account. Ahead-looking framing.
-- **Variant B — Backfilled** (Lifetime PM ≥ 500 after backfill): existing Strava athlete with meaningful history. Recognition-of-history framing.
+- **Variant A — Zero-state** (Lifetime PM < 500 after backfill): new or lightly-used activity account. Ahead-looking framing.
+- **Variant B — Backfilled** (Lifetime PM ≥ 500 after backfill): existing athlete with meaningful recorded history. Recognition-of-history framing.
 
 ---
 
@@ -11,19 +11,19 @@
 
 **Subject:** Your effort now counts.
 
-**Preheader:** One Strava connect. Every verified mile, across every brand.
+**Preheader:** One connection. Verified effort starts here.
 
 ---
 
-You just connected Strava to PROOF.
+You just connected an activity source to PROOF.
 
-From here on, every GPS-verified activity you record becomes PROOF miles — an effort score normalized across every sport. One road cycling mile = 1 PM. Running, swimming, trail, rowing all convert through the PROOF Effort Index.
+From here on, every eligible device-recorded activity you log can become PROOF Miles — an athlete-owned effort score normalized across sports. One road cycling mile = 1 PM. Running, swimming, trail, rowing all convert through the PROOF Effort Index.
 
 Three things to know:
 
-- **Lifetime PM never resets.** It's permanent, and it travels with you to every brand you join.
-- **Rewards earn fresh per brand.** Each brand's reward clock starts at zero on the day you connect — plus whatever welcome bonus they've configured.
-- **Your tier and pace are visible to every enrolled brand.** The ladder: Recruit, Contender, Rival, Elite, Legend, Myth, Apex — and Marks beyond.
+- **Lifetime PM never resets.** It's permanent, and it stays with your PROOF account.
+- **Rewards earn fresh per brand.** Each brand's Points and reward progress start when you join that program — plus whatever welcome bonus they've configured.
+- **Your PROOF tier is yours.** The ladder: Recruit, Contender, Rival, Elite, Legend, Myth, Apex — and Marks beyond.
 
 Your wallet, tier, and connected brands live at **proof.verifiedeffort.com**.
 
@@ -35,15 +35,15 @@ Your wallet, tier, and connected brands live at **proof.verifiedeffort.com**.
 
 **Subject:** {Tier}. {pm_total} PM. Verified.
 
-**Preheader:** {years_of_history} years of Strava, now portable.
+**Preheader:** {years_of_history} years of effort, now verified.
 
 ---
 
-We pulled your Strava history: **{years_of_history} years, {pm_total} PROOF miles.**
+We pulled your activity history: **{years_of_history} years, {pm_total} PROOF Miles.**
 
-That puts you in the **{Tier}** tier — visible to every brand you connect to, today and every day forward. {next_line}
+That puts you in the **{Tier}** tier. {next_line}
 
-Your tier, pace, and trend travel with you. Brand rewards earn fresh — most brands reward backfilled athletes with a sizable welcome bonus based on the tier you arrive with.
+Your Lifetime PM is athlete-owned identity. Brand rewards earn fresh through brand-scoped Points and reward progress inside each program you join.
 
 **Your wallet →** proof.verifiedeffort.com
 
@@ -80,5 +80,5 @@ Renders based on arriving tier. Gives forward momentum without making the athlet
 
 - `{Tier}` — arriving tier name, title case (Rival, Myth, Apex, Apex · Mark II, etc.)
 - `{pm_total}` — Lifetime PM after backfill, comma-formatted
-- `{years_of_history}` — age of oldest verified activity in completed years (minimum 1; if <1 year of history with ≥500 PM, omit the years phrase and render as "We pulled your Strava history — {pm_total} PROOF miles.")
+- `{years_of_history}` — age of oldest verified activity in completed years (minimum 1; if <1 year of history with ≥500 PM, omit the years phrase and render as "We pulled your activity history — {pm_total} PROOF Miles.")
 - `{next_line}` — see table above

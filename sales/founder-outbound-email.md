@@ -25,8 +25,9 @@ trusted activity source, earn progress for eligible activity, unlock rewards,
 and receive recognition when it is actually deserved: after verified activity,
 milestones, goals, records, challenges, rewards, and consistent participation.
 
-We're in friendly launch testing now and starting with Strava-verified activity,
-with the system built to add additional trusted effort sources over time.
+We're in friendly launch testing now with athlete-authorized activity
+verification, and the system is built to add additional trusted effort sources
+over time.
 
 I would value your perspective as we shape the first brand conversations. Would
 you be open to a 20-minute call?
