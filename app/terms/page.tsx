@@ -140,7 +140,13 @@ export default function TermsOfService() {
             </li>
             <li>
               <strong>PROOF Miles (PM)</strong> — our effort-normalized internal unit, calculated
-              from verified athletic activity using the PROOF Effort Index ("PEI").
+              from verified athletic activity using the PROOF Effort Index ("PEI") and used for
+              athlete-owned identity and methodology.
+            </li>
+            <li>
+              <strong>Points</strong> — the brand-program loyalty accounting unit used to track
+              reward progress, eligibility, credits, and support state inside a participating
+              brand program.
             </li>
             <li>
               <strong>Brand Program</strong> — a brand's configured set of milestones, sport
@@ -210,10 +216,10 @@ export default function TermsOfService() {
 
           <h2>5. Athletes — How Rewards Work</h2>
           <p>
-            When you join a brand's program, your verified activity in the brand's allowlisted
-            sports accrues PROOF Miles toward that brand. When you cross a brand-configured
-            milestone, the brand's program issues a reward — typically a single-use discount code
-            generated through the brand's Shopify store and locked to your account.
+            When you join a brand's program, eligible verified activity can generate Points and
+            reward progress inside that brand's program. When you cross a brand-configured
+            threshold, the brand's program may issue a reward — typically a single-use discount
+            code generated through the brand's Shopify store and locked to your account.
           </p>
           <p>
             Important conditions:
@@ -234,9 +240,14 @@ export default function TermsOfService() {
               security.
             </li>
             <li>
+              Points are a brand-program accounting output, have no cash value except where a brand
+              has separately issued a reward, and may be subject to program-specific expiration,
+              correction, or support rules.
+            </li>
+            <li>
               Lifetime PROOF Miles are intended to persist across the network for as long as your
-              account exists; however, we reserve the right to adjust, recompute, or remove PM
-              credits that result from system errors, fraud, or duplicate activity recordings.
+              account exists; however, we reserve the right to adjust, recompute, or remove PM or
+              Points credits that result from system errors, fraud, or duplicate activity recordings.
             </li>
           </ul>
 
@@ -313,8 +324,8 @@ export default function TermsOfService() {
             </li>
           </ul>
           <p>
-            PROOF provides the infrastructure to verify athletic effort, accumulate brand-specific
-            PROOF Miles, and trigger reward issuance. PROOF is not a party to the underlying
+            PROOF provides the infrastructure to verify athletic effort, maintain brand-scoped
+            Points and reward state, and trigger reward issuance. PROOF is not a party to the underlying
             transaction between the brand and the athlete and does not act as a merchant of record
             for the brand's products or discounts.
           </p>
@@ -323,9 +334,10 @@ export default function TermsOfService() {
           <p>
             When an athlete joins a brand's program, the brand receives only the limited data
             described in our{" "}
-            <a href="/privacy">Privacy Policy</a> §4.1 — tier, brand-specific PM, milestone status,
-            and email for opted-in program communications. The brand does not receive raw GPS
-            data, full activity history, or data from other brand programs the athlete has joined.
+            <a href="/privacy">Privacy Policy</a> §4.1 — brand-scoped Points, reward/account
+            state, support state, aggregate program reporting, and email for opted-in program
+            communications. The brand does not receive raw GPS data, raw activity feeds, full
+            activity history, pace, trend, or data from other brand programs the athlete has joined.
           </p>
           <p>
             Brands agree to use athlete data only for the operation of the brand's loyalty program

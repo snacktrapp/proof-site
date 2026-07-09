@@ -7,6 +7,10 @@ export const metadata: Metadata = {
   title: "How PROOF Miles are Calculated — PROOF",
   description:
     "The methodology behind PROOF Miles. How we convert verified athletic effort into a single, sport-normalized unit. Open and versioned.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const COLORS = {
@@ -565,10 +569,9 @@ export default function Methodology() {
           </p>
           <p>
             Future releases may use this data for intensity-weighted PM, power-aware PM,
-            recovery-context calculation, dimension-specific brand challenges, athlete
-            specializations (Climbing Specialist, Power Specialist, etc.), and brand analytics.
-            We&apos;ll publish those features as they ship — not on a fixed roadmap, but with the
-            same versioning discipline as v1.0.
+            recovery-context calculation, or challenge eligibility where the athlete has joined
+            a program that uses those rules. We&apos;ll publish those features as they ship — not on
+            a fixed roadmap, but with the same versioning discipline as v1.0.
           </p>
 
           <h2>9. Versioning</h2>
@@ -714,12 +717,12 @@ export default function Methodology() {
             the data does say and document the gap.
           </p>
 
-          <h2>12. Brand-layer modifiers (not part of PM)</h2>
+          <h2>12. Brand program outputs (not part of Lifetime PM)</h2>
           <p>
             PROOF Miles, as defined in Sections 3-6, are the methodology-canonical number.
-            Brand partners can layer two configurable behaviors on top of PM <em>at the brand
-            layer</em> — these affect what the athlete accumulates <em>in that brand&apos;s
-            program</em>, not the athlete&apos;s lifetime PM, tier, or public-profile total.
+            Brand programs may transform eligible effort into Points, reward progress, or
+            program-specific eligibility <em>inside that brand&apos;s program</em>. Those outputs do
+            not change the athlete&apos;s lifetime PM or tier.
           </p>
           <p>
             <strong>Anniversary multiplier.</strong> Each brand can configure an unconditional
@@ -727,26 +730,27 @@ export default function Methodology() {
             rollover of the athlete&apos;s connection-with-that-brand date. The default
             multiplier is 1.0 (off); the default window is 7 days. A brand running a 2× / 7-day
             anniversary kicker means an athlete who rides during their connection-anniversary
-            week earns 2× brand PM for those activities, which can advance brand-side milestones
-            and rewards faster. The first window opens on the <em>first</em> anniversary
+            week can earn 2× brand-scoped Points for eligible activity, which can advance reward
+            progress faster. The first window opens on the <em>first</em> anniversary
             (year+1 of connect day), not on connect day itself — connect-day is covered
             separately by welcome bonuses where the brand has them. February 29 connections
             roll to February 28 in non-leap years.
           </p>
           <p>
-            <strong>Forward-only brand PM.</strong> Brand PM only credits activities dated on or
-            after the athlete connected to that brand. Lifetime PM accumulates everything
-            (including activities dated before the brand connection); brand PM does not.
+            <strong>Forward-only brand Points.</strong> Brand-scoped Points only credit activities
+            dated on or after the athlete connected to that brand. Lifetime PM accumulates
+            everything (including activities dated before the brand connection); brand-scoped
+            Points do not.
             Reasoning: brand-side rewards have to mean &quot;what this athlete did <em>for this
             brand, while connected</em>&quot; — retroactive credit on bulk-uploaded historical
-            rides would let an athlete cross the 500-PM brand milestone within minutes of
+            rides would let an athlete cross a brand milestone within minutes of
             enrollment, breaking the audit story for brand admins.
           </p>
           <p>
-            Lifetime PM, the tier ladder, and the public profile are unaffected by either
+            Lifetime PM and the tier ladder are unaffected by either
             mechanism. The methodology-canonical PM stamped on each activity row is unaffected.
-            Both modifiers are visible to the athlete in brand-side reward emails and in the
-            brand&apos;s storefront loyalty section when implemented.
+            Brand program outputs are visible to the athlete and may be used for brand-scoped
+            reward/account support, not as a raw activity feed.
           </p>
 
           <h2>13. For coaches and physiologists</h2>
@@ -815,27 +819,27 @@ export default function Methodology() {
           <h2>16. For brand admins</h2>
           <p>
             If you run a brand loyalty program on PROOF, this calibration affects how fast your
-            athletes accumulate brand PM. Two things to know:
+            athletes accumulate Points and reward progress. Two things to know:
           </p>
           <ul>
             <li>
-              <strong>Climbing-heavy cohorts accumulate PM faster</strong> than flat-cohort
+              <strong>Climbing-heavy cohorts can progress faster</strong> than flat-cohort
               projections imply. The v1.6+ cycling elevation weight (1.75 mi-equivalent per 100m)
               is up from v1.0&apos;s 1.0, so a brand whose customers regularly climb significant
-              vertical will see milestone-crossing rates 25–50% faster than a brand whose
-              customers ride mostly flat terrain. Set milestone PM thresholds with this in mind.
+              vertical may see reward-progress rates move faster than a brand whose customers ride
+              mostly flat terrain. Set Points thresholds with this in mind.
             </li>
             <li>
               <strong>Multi-sport cohorts will see different rates than v1.0 implied.</strong>
               The v1.6 recalibration shifted Run multiplier 3.0→2.5, Swim 8.0→6.0, Hike
               1.0→2.8, Walk 1.0→1.9. v1.7 separately moves GravelRide 0.95→1.05. Brands with
               significant non-cycling or gravel exposure should expect accumulation rates to
-              reflect the new constants from their effective dates forward. Existing PM
-              accumulated under prior versions is preserved.
+              reflect the new constants from their effective dates forward. Existing athlete-owned
+              PM accumulated under prior versions is preserved.
             </li>
             <li>
               <strong>The shape of the milestone ladder doesn&apos;t change.</strong> A
-              500/1000/2500/5000/10000/25000 PM ladder is still a graduated structure.
+              500/1000/2500/5000/10000/25000 Points ladder is still a graduated structure.
               Calibration changes the rate, not the structure. If you've calibrated milestones
               to feel "reachable in 2-3 months for an active member" under v1.0 intuition, that
               timing shifts modestly faster for cycling-with-climbing cohorts and shifts
@@ -844,8 +848,9 @@ export default function Methodology() {
           </ul>
           <p>
             We don&apos;t recommend rebuilding your milestone ladder around elevation specifically.
-            PM is the unit; the ladder is the structure. The methodology revision affects how PM
-            accumulates, not how you should think about your reward strategy.
+            Points are the brand-program unit; the ladder is the structure. The methodology
+            revision affects how eligible effort converts into Points, not how you should think
+            about your reward strategy.
           </p>
 
           <h2>17. Privacy reference</h2>
@@ -857,8 +862,8 @@ export default function Methodology() {
           </p>
           <p>
             Short summary: we collect activity data from connected fitness platforms with your
-            explicit OAuth consent, use it to calculate PM and operate brand programs you&apos;ve
-            joined, and don&apos;t sell, rent, or share it for advertising. We do not train AI or
+            explicit OAuth consent, use it to calculate athlete-owned PM and brand-scoped Points
+            for programs you&apos;ve joined, and don&apos;t sell, rent, or share it for advertising. We do not train AI or
             machine-learning models on athlete activity data.
           </p>
 
