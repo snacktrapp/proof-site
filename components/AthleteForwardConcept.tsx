@@ -275,40 +275,6 @@ const css = `
     line-height: 1.62;
   }
 
-  .af-strip {
-    background:
-      linear-gradient(90deg, rgba(200,255,0,0.06), transparent 25%, transparent 70%, rgba(139,160,180,0.09)),
-      ${COLORS.surface};
-  }
-  .af-cred-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.08);
-  }
-  .af-cred-item {
-    min-height: 160px;
-    background: rgba(5,5,5,0.68);
-    padding: clamp(18px, 3vw, 24px);
-  }
-  .af-cred-item strong {
-    display: block;
-    color: ${COLORS.textBright};
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 400;
-    line-height: 0.86;
-  }
-  .af-cred-item span {
-    display: block;
-    max-width: 210px;
-    margin-top: 16px;
-    color: ${COLORS.subtle};
-    font-size: 15px;
-    line-height: 1.45;
-  }
-
   .af-split {
     display: grid;
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -513,59 +479,154 @@ const css = `
   .af-identity { background: #070707; }
   .af-identity-panel {
     position: relative;
-    min-height: 600px;
     margin-top: 40px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 18px;
-    background: ${COLORS.surfaceRaised};
-  }
-  .af-identity-panel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
     background:
-      linear-gradient(180deg, rgba(5,5,5,0.04), rgba(5,5,5,0.78)),
-      linear-gradient(90deg, rgba(5,5,5,0.76), transparent 72%);
-    pointer-events: none;
+      radial-gradient(circle at 88% 10%, rgba(200,255,0,0.08), transparent 300px),
+      ${COLORS.surfaceRaised};
+    padding: clamp(22px, 5vw, 52px);
   }
-  .af-profile-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+  .af-next-effort-top {
     display: grid;
-    align-content: center;
-    gap: 16px;
-    padding: clamp(18px, 5vw, 64px);
-  }
-  .af-profile-line {
-    display: grid;
-    grid-template-columns: minmax(80px, 0.22fr) minmax(0, 1fr) auto;
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.32fr);
+    gap: clamp(22px, 5vw, 54px);
     align-items: center;
-    width: min(760px, 100%);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    background: rgba(5,5,5,0.58);
-    backdrop-filter: blur(16px);
-    padding: 14px;
   }
-  .af-profile-line strong {
-    color: ${COLORS.textBright};
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-  }
-  .af-profile-line span {
-    color: ${COLORS.subtle};
-    font-size: 15px;
-  }
-  .af-profile-line em {
+  .af-next-effort-kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
     color: ${COLORS.signal};
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    font-style: normal;
-    letter-spacing: 0.08em;
+    font-weight: 800;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
+  }
+  .af-next-effort-kicker::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: ${COLORS.signal};
+    box-shadow: 0 0 18px rgba(200,255,0,0.34);
+  }
+  .af-next-effort-label,
+  .af-progress-label {
+    margin-top: 28px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .af-next-effort-title {
+    margin: 14px 0 0;
+    max-width: 760px;
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 116px);
+    font-weight: 400;
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+  .af-next-effort-copy {
+    margin: 22px 0 0;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(15px, 2vw, 21px);
+    line-height: 1.5;
+  }
+  .af-next-effort-side {
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: clamp(18px, 4vw, 34px);
+  }
+  .af-points-number {
+    display: block;
+    margin-top: 12px;
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 0.9;
+  }
+  .af-progress-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 26px;
+  }
+  .af-progress-percent {
+    color: ${COLORS.signal};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .af-progress-track {
+    height: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.11);
+  }
+  .af-progress-fill {
+    width: 69%;
+    height: 100%;
+    border-radius: inherit;
+    background: ${COLORS.signal};
+    box-shadow: 0 0 24px rgba(200,255,0,0.25);
+  }
+  .af-progress-caption {
+    margin-top: 10px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .af-next-effort-divider {
+    height: 1px;
+    margin: clamp(24px, 5vw, 42px) 0;
+    background: rgba(255,255,255,0.11);
+  }
+  .af-path-panel {
+    border-radius: 18px;
+    background: rgba(255,255,255,0.045);
+    padding: clamp(18px, 4vw, 28px);
+  }
+  .af-path-intro {
+    margin: 14px 0 0;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.52;
+  }
+  .af-path-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 760px;
+  }
+  .af-path-option {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(5,5,5,0.26);
+    padding: 16px;
+  }
+  .af-path-option strong {
+    display: block;
+    color: ${COLORS.textBright};
+    font-size: 19px;
+    line-height: 1.15;
+  }
+  .af-path-option span {
+    display: block;
+    margin-top: 10px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .af-use-grid .af-card { min-height: 230px; }
@@ -629,11 +690,17 @@ const css = `
   @media (max-width: 960px) {
     .af-hero-content { align-content: center; padding-bottom: 176px; }
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
-    .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
     .af-shift-content { grid-template-columns: 1fr; }
     .af-panel { min-height: 460px; }
-    .af-identity-panel { min-height: 520px; }
+    .af-next-effort-top { grid-template-columns: 1fr; }
+    .af-next-effort-side {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-left: 0;
+      padding-top: 22px;
+      padding-left: 0;
+    }
   }
 
   @media (max-width: 640px) {
@@ -674,20 +741,6 @@ const css = `
     }
     .af-button { width: 100%; }
     .af-metrics { display: none; }
-    .af-cred-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-    }
-    .af-cred-item {
-      min-height: 128px;
-      padding: 14px;
-    }
-    .af-cred-item strong { font-size: clamp(32px, 11vw, 44px); }
-    .af-cred-item span {
-      margin-top: 10px;
-      font-size: 13px;
-      line-height: 1.38;
-    }
     .af-shift-panel,
     .af-shift-content { min-height: 0; }
     .af-shift-content {
@@ -700,11 +753,7 @@ const css = `
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .af-metrics div:last-child { border-bottom: 0; }
-    .af-profile-line { grid-template-columns: 1fr; }
-    .af-strip .af-section-inner {
-      padding-top: 42px;
-      padding-bottom: 42px;
-    }
+    .af-path-options { grid-template-columns: 1fr; }
     .af-footer {
       align-items: flex-start;
       flex-direction: column;
@@ -1113,8 +1162,8 @@ export default function AthleteForwardConcept() {
           <div className="af-kicker">Effort-based loyalty</div>
           <h1>Your effort is worth something.</h1>
           <p className="af-hero-sub">
-            PROOF helps athletic brands turn verified movement into Points, milestones,
-            challenges, and rewards athletes can actually earn.
+            PROOF helps athletic brands build lasting loyalty around real effort, giving
+            athletes clear progress toward rewards they can actually earn.
           </p>
           <div className="af-actions">
             <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
@@ -1140,29 +1189,6 @@ export default function AthleteForwardConcept() {
           </div>
         </div>
       </header>
-
-      <section className="af-section af-strip" aria-label="PROOF credibility pillars">
-        <div className="af-section-inner">
-          <div className="af-cred-grid">
-            <div className="af-cred-item">
-              <strong>Athlete</strong>
-              <span>Join a brand program, keep moving, and earn progress when effort qualifies.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Brand</strong>
-              <span>Invite athletes into a PROOF-operated reward program.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Verified</strong>
-              <span>Eligible effort passes program, platform, and integrity checks.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Reward</strong>
-              <span>Reward eligibility is tracked when real effort crosses approved thresholds.</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="af-section af-truth">
         <div className="af-section-inner">
@@ -1216,19 +1242,19 @@ export default function AthleteForwardConcept() {
           </p>
           <div className="af-use-grid">
             <div className="af-card">
-              <span className="af-mono">Loyalty</span>
-              <h3>Build around what customers do</h3>
-              <p>Brand programs recognize verified training, not just another transaction.</p>
+              <span className="af-mono">First reward</span>
+              <h3>Give athletes a reason to join</h3>
+              <p>Offer a clear first reward athletes can earn through approved movement.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Activation</span>
-              <h3>Launch moments people can earn</h3>
-              <p>Program thresholds create clear reward moments athletes can qualify for.</p>
+              <span className="af-mono">Repeat touchpoint</span>
+              <h3>Stay present between purchases</h3>
+              <p>Let training, rides, runs, or other approved efforts create progress with your brand.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Retention</span>
-              <h3>Support earned rewards</h3>
-              <p>Use PROOF reward status to support fulfillment and program follow-up.</p>
+              <span className="af-mono">Return visit</span>
+              <h3>Turn effort into a reason to come back</h3>
+              <p>Reward progress gives athletes a timely reason to revisit your store or community.</p>
             </div>
           </div>
         </div>
@@ -1243,22 +1269,41 @@ export default function AthleteForwardConcept() {
             eligible effort earn program progress and rewards with brands they care about.
           </p>
           <div className="af-identity-panel">
-            <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
-            <div className="af-profile-lines">
-              <div className="af-profile-line">
-                <strong>Today</strong>
-                <span>Your morning run counted toward a reward you can actually earn</span>
-                <em>+18 Points</em>
+            <div className="af-next-effort-top">
+              <div>
+                <div className="af-next-effort-kicker">Next best effort</div>
+                <div className="af-next-effort-label">Closest reward · Brand X</div>
+                <h3 className="af-next-effort-title">$5 reward within reach.</h3>
+                <p className="af-next-effort-copy">You are 31 Points away with Brand X.</p>
               </div>
-              <div className="af-profile-line">
-                <strong>This month</strong>
-                <span>See how close you are, with every qualifying activity counted in your local time</span>
-                <em>62%</em>
+              <div className="af-next-effort-side">
+                <div className="af-next-effort-label">Points to go</div>
+                <strong className="af-points-number">31</strong>
+                <div className="af-progress-row">
+                  <span className="af-progress-label">Progress</span>
+                  <span className="af-progress-percent">69%</span>
+                </div>
+                <div className="af-progress-track" aria-hidden="true">
+                  <div className="af-progress-fill" />
+                </div>
+                <div className="af-progress-caption">269 / 300 Points</div>
               </div>
-              <div className="af-profile-line">
-                <strong>Lifetime</strong>
-                <span>Keep PROOF-operated reward progress tied to the programs you join</span>
-                <em>Earned</em>
+            </div>
+            <div className="af-next-effort-divider" />
+            <div className="af-path-panel">
+              <div className="af-next-effort-label">Pick your path</div>
+              <p className="af-path-intro">
+                Choose the kind of effort that fits your week.
+              </p>
+              <div className="af-path-options">
+                <div className="af-path-option">
+                  <strong>One ride</strong>
+                  <span>Roughly 25–31 miles.</span>
+                </div>
+                <div className="af-path-option">
+                  <strong>Two runs</strong>
+                  <span>Roughly 8–12 miles total.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1269,31 +1314,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>From verified activity to brand reward.</h2>
+            <h2>Join. Move. Get closer.</h2>
             <p className="af-lede">
-              Athletes join through a brand, connect an approved activity source, and PROOF
-              credits eligible effort inside the sport, threshold, and local-time window that matter.
+              Athletes join through a brand, connect an approved activity source, and see how
+              eligible effort moves them toward a real reward.
             </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Join a brand</h3>
-                  <p>A brand invite starts the relationship; approved source access makes effort verifiable.</p>
+                  <h3>Join the program</h3>
+                  <p>An athlete joins from a brand invite and connects an approved activity source.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Qualify with effort</h3>
-                  <p>Eligible efforts are checked against the program rules.</p>
+                  <h3>Complete approved effort</h3>
+                  <p>Runs, rides, or other approved sports count toward that brand's rewards.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Receive the reward</h3>
-                  <p>PROOF records qualification and reward support state for the brand.</p>
+                  <h3>See what is within reach</h3>
+                  <p>Progress updates so the athlete knows what they earned and what comes next.</p>
                 </div>
               </div>
             </div>
@@ -1306,12 +1351,12 @@ export default function AthleteForwardConcept() {
             <canvas className="af-panel-canvas" data-art="trace" aria-hidden="true" />
             <div className="af-panel-copy">
               <div className="af-mono" style={{ color: COLORS.signal }}>
-                Activity processed
+                Example
               </div>
-              <h3>A morning run becomes verified brand progress</h3>
+              <h3>A morning run moves a reward closer.</h3>
               <p>
-                Behind every reward is an auditable eligibility record: program rule, window,
-                qualification state, reward support state, and Points progress.
+                The athlete sees the Points they earned, how close they are to Brand X's next
+                reward, and the kind of effort that could get them there.
               </p>
             </div>
           </div>
@@ -1323,24 +1368,24 @@ export default function AthleteForwardConcept() {
           <div className="af-eyebrow">What brands can build</div>
           <h2>Rewards backed by real effort.</h2>
           <p className="af-lede">
-            The experience can feel simple because the mechanics are specific: athlete-local
-            windows, sport filters, Points thresholds, reward state, and aggregate reporting.
+            Start with reward moments athletes immediately understand. PROOF handles the
+            verification and progress tracking behind the scenes.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
-              <span className="af-mono">Milestones</span>
-              <h3>Reward cumulative effort</h3>
-              <p>Brand-specific Points thresholds unlock progress as athletes keep moving.</p>
+              <span className="af-mono">Always-on rewards</span>
+              <h3>Earn $5 after 300 Points</h3>
+              <p>A simple effort-to-reward ladder athletes can keep working toward.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Windows</span>
-              <h3>Create focused windows</h3>
-              <p>Fixed, monthly, or rolling windows count eligible effort in the athlete's local time.</p>
+              <span className="af-mono">Monthly challenge</span>
+              <h3>Complete 100 approved miles this month</h3>
+              <p>A time-bound campaign that gives athletes a clear goal and deadline.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Reporting</span>
-              <h3>Understand the program</h3>
-              <p>Aggregate reporting helps brands see program health without sharing raw athlete activity.</p>
+              <span className="af-mono">Reactivation</span>
+              <h3>Bring lapsed customers back through effort</h3>
+              <p>Invite athletes to earn progress before asking them to buy again.</p>
             </div>
           </div>
         </div>
