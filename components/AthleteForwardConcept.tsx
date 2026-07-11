@@ -1389,31 +1389,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-          <h2>From verified activity to brand reward.</h2>
-          <p className="af-lede">
-            Athletes join through a brand, connect an approved activity source, and PROOF
-              turns eligible effort into clear reward progress.
-          </p>
+            <h2>Join. Move. Get closer.</h2>
+            <p className="af-lede">
+              Athletes join through a brand, connect an approved activity source, and see how
+              eligible effort moves them toward a real reward.
+            </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Join a brand</h3>
-                  <p>A brand invite starts the relationship; source access makes effort verifiable.</p>
+                  <h3>Join the program</h3>
+                  <p>An athlete joins from a brand invite and connects an approved activity source.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Qualify with effort</h3>
-                  <p>Approved activities count toward the rewards that brand offers.</p>
+                  <h3>Complete approved effort</h3>
+                  <p>Runs, rides, or other approved sports count toward that brand's rewards.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Receive the reward</h3>
-                  <p>When the athlete reaches the threshold, the reward is ready to claim.</p>
+                  <h3>See what is within reach</h3>
+                  <p>Progress updates so the athlete knows what they earned and what comes next.</p>
                 </div>
               </div>
             </div>
@@ -1426,12 +1426,12 @@ export default function AthleteForwardConcept() {
             <canvas className="af-panel-canvas" data-art="trace" aria-hidden="true" />
             <div className="af-panel-copy">
               <div className="af-mono" style={{ color: COLORS.signal }}>
-                Activity processed
+                Example
               </div>
-              <h3>A morning run becomes verified brand progress</h3>
+              <h3>A morning run moves a reward closer.</h3>
               <p>
-                The athlete sees progress toward a reward. The brand sees a clean program record
-                it can understand and support.
+                The athlete sees the Points they earned, how close they are to Brand X's next
+                reward, and the kind of effort that could get them there.
               </p>
             </div>
           </div>
