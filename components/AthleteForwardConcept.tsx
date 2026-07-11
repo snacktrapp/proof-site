@@ -1259,7 +1259,7 @@ export default function AthleteForwardConcept() {
             </div>
             <div className="af-cred-item">
               <strong>Reward</strong>
-              <span>Reward eligibility is tracked when real effort crosses approved thresholds.</span>
+              <span>When the work qualifies, the athlete has a reward to claim.</span>
             </div>
           </div>
         </div>
@@ -1317,19 +1317,19 @@ export default function AthleteForwardConcept() {
           </p>
           <div className="af-use-grid">
             <div className="af-card">
-              <span className="af-mono">Loyalty</span>
-              <h3>Build around what customers do</h3>
-              <p>Brand programs recognize verified training, not just another transaction.</p>
+              <span className="af-mono">First reward</span>
+              <h3>Give athletes a reason to join</h3>
+              <p>Offer a clear first reward athletes can earn through approved movement.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Activation</span>
-              <h3>Launch moments people can earn</h3>
-              <p>Program thresholds create clear reward moments athletes can qualify for.</p>
+              <span className="af-mono">Repeat touchpoint</span>
+              <h3>Stay present between purchases</h3>
+              <p>Let training, rides, runs, or other approved efforts create progress with your brand.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Retention</span>
-              <h3>Support earned rewards</h3>
-              <p>Use PROOF reward status to support fulfillment and program follow-up.</p>
+              <span className="af-mono">Return visit</span>
+              <h3>Turn effort into a reason to come back</h3>
+              <p>Reward progress gives athletes a timely reason to revisit your store or community.</p>
             </div>
           </div>
         </div>
@@ -1389,31 +1389,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>From verified activity to brand reward.</h2>
-            <p className="af-lede">
-              Athletes join through a brand, connect an approved activity source, and PROOF
-              credits eligible effort inside the sport, threshold, and local-time window that matter.
-            </p>
+          <h2>From verified activity to brand reward.</h2>
+          <p className="af-lede">
+            Athletes join through a brand, connect an approved activity source, and PROOF
+              turns eligible effort into clear reward progress.
+          </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Join a brand</h3>
-                  <p>A brand invite starts the relationship; approved source access makes effort verifiable.</p>
+                  <p>A brand invite starts the relationship; source access makes effort verifiable.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Qualify with effort</h3>
-                  <p>Eligible efforts are checked against the program rules.</p>
+                  <p>Approved activities count toward the rewards that brand offers.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
                   <h3>Receive the reward</h3>
-                  <p>PROOF records qualification and reward support state for the brand.</p>
+                  <p>When the athlete reaches the threshold, the reward is ready to claim.</p>
                 </div>
               </div>
             </div>
@@ -1430,8 +1430,8 @@ export default function AthleteForwardConcept() {
               </div>
               <h3>A morning run becomes verified brand progress</h3>
               <p>
-                Behind every reward is an auditable eligibility record: program rule, window,
-                qualification state, reward support state, and Points progress.
+                The athlete sees progress toward a reward. The brand sees a clean program record
+                it can understand and support.
               </p>
             </div>
           </div>
@@ -1443,24 +1443,24 @@ export default function AthleteForwardConcept() {
           <div className="af-eyebrow">What brands can build</div>
           <h2>Rewards backed by real effort.</h2>
           <p className="af-lede">
-            The experience can feel simple because the mechanics are specific: athlete-local
-            windows, sport filters, Points thresholds, reward state, and aggregate reporting.
+            Start with reward moments athletes immediately understand. PROOF handles the
+            verification and progress tracking behind the scenes.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
-              <span className="af-mono">Milestones</span>
-              <h3>Reward cumulative effort</h3>
-              <p>Brand-specific Points thresholds unlock progress as athletes keep moving.</p>
+              <span className="af-mono">Always-on rewards</span>
+              <h3>Earn $5 after 300 Points</h3>
+              <p>A simple effort-to-reward ladder athletes can keep working toward.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Windows</span>
-              <h3>Create focused windows</h3>
-              <p>Fixed, monthly, or rolling windows count eligible effort in the athlete's local time.</p>
+              <span className="af-mono">Monthly challenge</span>
+              <h3>Complete 100 approved miles this month</h3>
+              <p>A time-bound campaign that gives athletes a clear goal and deadline.</p>
             </div>
             <div className="af-card">
-              <span className="af-mono">Reporting</span>
-              <h3>Understand the program</h3>
-              <p>Aggregate reporting helps brands see program health without sharing raw athlete activity.</p>
+              <span className="af-mono">Reactivation</span>
+              <h3>Bring lapsed customers back through effort</h3>
+              <p>Invite athletes to earn progress before asking them to buy again.</p>
             </div>
           </div>
         </div>
