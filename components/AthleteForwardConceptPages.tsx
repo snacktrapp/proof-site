@@ -258,7 +258,7 @@ const detailCss = `
   }
   .afd-plan-note {
     margin-top: 8px;
-    color: ${COLORS.muted};
+    color: ${COLORS.signal};
     font-family: 'JetBrains Mono', monospace;
     font-size: 10px;
     line-height: 1.5;
