@@ -513,59 +513,154 @@ const css = `
   .af-identity { background: #070707; }
   .af-identity-panel {
     position: relative;
-    min-height: 600px;
     margin-top: 40px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.1);
     border-radius: 18px;
-    background: ${COLORS.surfaceRaised};
-  }
-  .af-identity-panel::after {
-    content: '';
-    position: absolute;
-    inset: 0;
     background:
-      linear-gradient(180deg, rgba(5,5,5,0.04), rgba(5,5,5,0.78)),
-      linear-gradient(90deg, rgba(5,5,5,0.76), transparent 72%);
-    pointer-events: none;
+      radial-gradient(circle at 88% 10%, rgba(200,255,0,0.08), transparent 300px),
+      ${COLORS.surfaceRaised};
+    padding: clamp(22px, 5vw, 52px);
   }
-  .af-profile-lines {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
+  .af-next-effort-top {
     display: grid;
-    align-content: center;
-    gap: 16px;
-    padding: clamp(18px, 5vw, 64px);
-  }
-  .af-profile-line {
-    display: grid;
-    grid-template-columns: minmax(80px, 0.22fr) minmax(0, 1fr) auto;
-    gap: 16px;
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.32fr);
+    gap: clamp(22px, 5vw, 54px);
     align-items: center;
-    width: min(760px, 100%);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 14px;
-    background: rgba(5,5,5,0.58);
-    backdrop-filter: blur(16px);
-    padding: 14px;
   }
-  .af-profile-line strong {
-    color: ${COLORS.textBright};
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 14px;
-  }
-  .af-profile-line span {
-    color: ${COLORS.subtle};
-    font-size: 15px;
-  }
-  .af-profile-line em {
+  .af-next-effort-kicker {
+    display: flex;
+    align-items: center;
+    gap: 9px;
     color: ${COLORS.signal};
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    font-style: normal;
-    letter-spacing: 0.08em;
+    font-weight: 800;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
+  }
+  .af-next-effort-kicker::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: ${COLORS.signal};
+    box-shadow: 0 0 18px rgba(200,255,0,0.34);
+  }
+  .af-next-effort-label,
+  .af-progress-label {
+    margin-top: 28px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .af-next-effort-title {
+    margin: 14px 0 0;
+    max-width: 760px;
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 116px);
+    font-weight: 400;
+    line-height: 0.86;
+    text-transform: uppercase;
+  }
+  .af-next-effort-copy {
+    margin: 22px 0 0;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(15px, 2vw, 21px);
+    line-height: 1.5;
+  }
+  .af-next-effort-side {
+    border-left: 1px solid rgba(255,255,255,0.12);
+    padding-left: clamp(18px, 4vw, 34px);
+  }
+  .af-points-number {
+    display: block;
+    margin-top: 12px;
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 82px);
+    line-height: 0.9;
+  }
+  .af-progress-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 26px;
+  }
+  .af-progress-percent {
+    color: ${COLORS.signal};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 800;
+  }
+  .af-progress-track {
+    height: 10px;
+    margin-top: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.11);
+  }
+  .af-progress-fill {
+    width: 69%;
+    height: 100%;
+    border-radius: inherit;
+    background: ${COLORS.signal};
+    box-shadow: 0 0 24px rgba(200,255,0,0.25);
+  }
+  .af-progress-caption {
+    margin-top: 10px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+  }
+  .af-next-effort-divider {
+    height: 1px;
+    margin: clamp(24px, 5vw, 42px) 0;
+    background: rgba(255,255,255,0.11);
+  }
+  .af-path-panel {
+    border-radius: 18px;
+    background: rgba(255,255,255,0.045);
+    padding: clamp(18px, 4vw, 28px);
+  }
+  .af-path-intro {
+    margin: 14px 0 0;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: clamp(15px, 2vw, 20px);
+    line-height: 1.52;
+  }
+  .af-path-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px;
+    max-width: 760px;
+  }
+  .af-path-option {
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    background: rgba(5,5,5,0.26);
+    padding: 16px;
+  }
+  .af-path-option strong {
+    display: block;
+    color: ${COLORS.textBright};
+    font-size: 19px;
+    line-height: 1.15;
+  }
+  .af-path-option span {
+    display: block;
+    margin-top: 10px;
+    color: ${COLORS.steel};
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
   }
 
   .af-use-grid .af-card { min-height: 230px; }
@@ -633,7 +728,13 @@ const css = `
     .af-split, .af-final-content { grid-template-columns: 1fr; }
     .af-shift-content { grid-template-columns: 1fr; }
     .af-panel { min-height: 460px; }
-    .af-identity-panel { min-height: 520px; }
+    .af-next-effort-top { grid-template-columns: 1fr; }
+    .af-next-effort-side {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-left: 0;
+      padding-top: 22px;
+      padding-left: 0;
+    }
   }
 
   @media (max-width: 640px) {
@@ -700,7 +801,7 @@ const css = `
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
     .af-metrics div:last-child { border-bottom: 0; }
-    .af-profile-line { grid-template-columns: 1fr; }
+    .af-path-options { grid-template-columns: 1fr; }
     .af-strip .af-section-inner {
       padding-top: 42px;
       padding-bottom: 42px;
@@ -1243,22 +1344,41 @@ export default function AthleteForwardConcept() {
             eligible effort earn program progress and rewards with brands they care about.
           </p>
           <div className="af-identity-panel">
-            <canvas className="af-panel-canvas" data-art="identity" aria-hidden="true" />
-            <div className="af-profile-lines">
-              <div className="af-profile-line">
-                <strong>Today</strong>
-                <span>Your morning run counted toward a reward you can actually earn</span>
-                <em>+18 Points</em>
+            <div className="af-next-effort-top">
+              <div>
+                <div className="af-next-effort-kicker">Next best effort</div>
+                <div className="af-next-effort-label">Closest reward · Brand X</div>
+                <h3 className="af-next-effort-title">$5 reward within reach.</h3>
+                <p className="af-next-effort-copy">You are 31 Points away with Brand X.</p>
               </div>
-              <div className="af-profile-line">
-                <strong>This month</strong>
-                <span>See how close you are, with every qualifying activity counted in your local time</span>
-                <em>62%</em>
+              <div className="af-next-effort-side">
+                <div className="af-next-effort-label">Points to go</div>
+                <strong className="af-points-number">31</strong>
+                <div className="af-progress-row">
+                  <span className="af-progress-label">Progress</span>
+                  <span className="af-progress-percent">69%</span>
+                </div>
+                <div className="af-progress-track" aria-hidden="true">
+                  <div className="af-progress-fill" />
+                </div>
+                <div className="af-progress-caption">269 / 300 Points</div>
               </div>
-              <div className="af-profile-line">
-                <strong>Lifetime</strong>
-                <span>Keep PROOF-operated reward progress tied to the programs you join</span>
-                <em>Earned</em>
+            </div>
+            <div className="af-next-effort-divider" />
+            <div className="af-path-panel">
+              <div className="af-next-effort-label">Pick your path</div>
+              <p className="af-path-intro">
+                Choose the kind of effort that fits your week.
+              </p>
+              <div className="af-path-options">
+                <div className="af-path-option">
+                  <strong>One ride</strong>
+                  <span>Roughly 25–31 miles.</span>
+                </div>
+                <div className="af-path-option">
+                  <strong>Two runs</strong>
+                  <span>Roughly 8–12 miles total.</span>
+                </div>
               </div>
             </div>
           </div>
