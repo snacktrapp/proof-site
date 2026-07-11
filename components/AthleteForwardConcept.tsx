@@ -1214,8 +1214,8 @@ export default function AthleteForwardConcept() {
           <div className="af-kicker">Effort-based loyalty</div>
           <h1>Your effort is worth something.</h1>
           <p className="af-hero-sub">
-            PROOF helps athletic brands turn verified movement into Points, milestones,
-            challenges, and rewards athletes can actually earn.
+            PROOF helps athletic brands build lasting loyalty around real effort, giving
+            athletes clear progress toward rewards they can actually earn.
           </p>
           <div className="af-actions">
             <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
@@ -1246,20 +1246,20 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner">
           <div className="af-cred-grid">
             <div className="af-cred-item">
-              <strong>Athlete</strong>
-              <span>Join a brand program, keep moving, and earn progress when effort qualifies.</span>
-            </div>
-            <div className="af-cred-item">
               <strong>Brand</strong>
-              <span>Invite athletes into a PROOF-operated reward program.</span>
+              <span>Launch a rewards program built around the sports your customers actually do.</span>
             </div>
             <div className="af-cred-item">
-              <strong>Verified</strong>
-              <span>Eligible effort passes program, platform, and integrity checks.</span>
+              <strong>Athlete</strong>
+              <span>Join the program, connect an approved source, and start earning progress.</span>
+            </div>
+            <div className="af-cred-item">
+              <strong>Effort</strong>
+              <span>Approved rides, runs, and other activities move the athlete closer.</span>
             </div>
             <div className="af-cred-item">
               <strong>Reward</strong>
-              <span>When the work qualifies, the athlete has a reward to claim.</span>
+              <span>When the work qualifies, the athlete has something real to claim.</span>
             </div>
           </div>
         </div>
