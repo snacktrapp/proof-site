@@ -641,87 +641,106 @@ function Shell({
 
 const plans = [
   {
-    name: "Developer",
-    price: "Free",
-    members: "100 included billable members",
-    bestFor: "For teams exploring verification and the PROOF effort model.",
+    name: "Base",
+    price: "$199/mo",
+    annual: "Annual: $149/mo",
+    members: "Up to 2,500 active program athletes",
+    bestFor: "For launching your first verified effort rewards program.",
     features: [
-      "Eligibility processing",
-      "Athlete opt-in flow",
-      "Platform approval path",
-      "Documentation",
+      "Full core PROOF experience",
+      "Verified activities",
+      "Points and reward progress",
+      "Athlete and brand dashboards",
+      "Standard lifecycle emails",
     ],
   },
   {
-    name: "Starter",
-    price: "$249/mo",
-    annual: "Annual: $199/mo",
-    members: "2,500 included billable members",
-    bestFor: "For a first live rewards program with clear eligibility and support needs.",
+    name: "Build",
+    price: "$349/mo",
+    annual: "Annual: $279/mo",
+    members: "Up to 15,000 active program athletes",
+    bestFor: "For running PROOF as an always-on athlete rewards channel.",
     features: [
-      "Everything in Developer",
-      "Brand program workspace",
-      "Reward eligibility rules",
-      "Reward support state",
-      "Aggregate program reporting",
-      "Email support",
+      "Everything in Base",
+      "Growing athlete communities",
+      "Recurring reward programs",
+      "Standard support",
     ],
   },
   {
-    name: "Scale",
-    price: "$749/mo",
-    annual: "Annual: $599/mo",
-    members: "25,000 included billable members",
-    bestFor: "For brands actively running earned-reward campaigns across a growing athlete base.",
+    name: "Race",
+    price: "$599/mo",
+    annual: "Annual: $499/mo",
+    members: "Up to 50,000 active program athletes",
+    bestFor: "For larger active programs with more reward moments and reporting needs.",
     features: [
-      "Everything in Starter",
-      "Larger included billable-member threshold",
+      "Everything in Build",
+      "Larger active audience",
+      "Multiple reward moments",
+      "Expanded reporting",
       "Priority support",
     ],
     highlight: true,
   },
   {
-    name: "Growth",
-    price: "$1,999/mo",
-    annual: "Annual: $1,599/mo",
-    members: "100,000 included billable members",
-    bestFor: "For larger programs that need more headroom and closer support.",
+    name: "Peak",
+    price: "$899/mo",
+    annual: "Annual: $749/mo",
+    members: "Up to 150,000 active program athletes",
+    bestFor: "For established athlete communities running PROOF as a core loyalty experience.",
     features: [
-      "Everything in Scale",
-      "Highest listed billable-member threshold",
+      "Everything in Race",
+      "Highest public audience band",
       "Priority support",
+      "Plan-fit review",
     ],
   },
   {
-    name: "Enterprise",
+    name: "Custom",
     price: "Custom",
-    members: "Custom included billable-member threshold",
-    bestFor: "Custom contracts, support, and launch needs.",
+    members: "High-touch or unusual programs",
+    bestFor: "For custom support, unusually large rollouts, legal/security needs, or bespoke terms.",
     features: [
-      "Everything in Growth",
-      "Custom billable-member capacity",
-      "Custom contract and SLA",
-      "Named account manager",
+      "Custom program structure",
+      "Custom support model",
+      "Custom contract or SLA",
+      "Named launch support",
     ],
   },
 ];
 
-const includedFeatures = [
-  "Approval-dependent activity-source processing",
-  "Brand-scoped Points ledger",
-  "Athlete opt-in and program progress views",
-  "Reward eligibility rules",
-  "Reward support state",
-  "Aggregate program reporting",
-  "Platform posture support",
-  "Program configuration support",
+const noChargeItems = [
+  "Order volume",
+  "Store revenue",
+  "Email list size",
+  "Activity volume",
+  "Points earned",
+  "Rewards unlocked",
+  "Reward redemptions",
+  "A percentage of rewards",
 ];
 
-const comparisonRows = [
-  ["Included billable members", "100", "2,500", "25,000", "100,000", "Custom"],
-  ["Live reward program", "-", "Included", "Included", "Included", "Included"],
-  ["Support", "Docs", "Email", "Priority", "Priority", "Named account manager"],
-  ["Contract / SLA", "-", "-", "-", "-", "Custom"],
+const pricingFaqs = [
+  {
+    question: "What is an active program athlete?",
+    answer:
+      "An athlete who has joined your brand's PROOF program and completed at least one approved-sport activity for your brand in the last 12 months.",
+  },
+  {
+    question: "Do athletes count every time they complete an activity?",
+    answer:
+      "No. Athletes are counted once, whether they complete one approved activity or one hundred.",
+  },
+  {
+    question: "Do inactive athletes count forever?",
+    answer:
+      "No. Athletes who join but never complete an approved activity — or who have no approved activity for 12 months — do not count toward your plan guidance.",
+  },
+  {
+    question: "Are plan bands hard caps?",
+    answer:
+      "No. They are planning guides, not surprise overage triggers. If your program grows, athletes keep participating and we review plan fit with you before anything changes.",
+  },
 ];
 
 export function AthleteForwardPricing() {
@@ -729,7 +748,7 @@ export function AthleteForwardPricing() {
     <Shell current="pricing">
       <Hero
         kicker="Pricing"
-        title="Flat pricing. No reward tax."
+        title="Pricing that does not punish movement."
         image="/concepts/athlete-forward/hero-swim.jpg"
         imagePosition="center center"
         mobileImagePosition="62% center"
@@ -744,20 +763,20 @@ export function AthleteForwardPricing() {
           </>
         }
       >
-        PROOF is priced as a platform subscription, not a cut of the reward. No revenue share,
-        no per-redemption fee, and no penalty when athletes move more.
+        PROOF plans are guided by active program athletes — not order volume, revenue, email
+        list size, activity volume, Points earned, or reward redemptions.
       </Hero>
 
-      <Section eyebrow="Plans" title="Choose the right starting point.">
+      <Section eyebrow="Plans" title="Simple plans for athlete-native rewards.">
         <p className="afd-lede">
-          Start with the athlete volume and program complexity you need today. As your verified
-          effort program grows, PROOF scales with billable members, reporting needs, and support
-          level.
+          Start with the active athlete audience you expect to serve. Every paid plan includes
+          the core PROOF experience: verified effort, Points, rewards, athlete progress, brand
+          reporting, and lifecycle messaging.
         </p>
         <div className="afd-note">
-          <strong style={{ color: COLORS.textBright }}>Early partner terms are available.</strong>{" "}
-          If you are launching your first earned-reward program, we can tailor onboarding around
-          your sport category, expected athlete volume, and first campaign.
+          <strong style={{ color: COLORS.textBright }}>Built for athletic brands.</strong>{" "}
+          Invite broadly, let athletes move, and let rewards work. PROOF is priced so a successful
+          program feels like momentum, not a meter running in the background.
         </div>
 
         <div className="afd-plan-grid">
@@ -783,95 +802,57 @@ export function AthleteForwardPricing() {
 
         <div className="afd-billing-note">
           <p className="afd-billing-short">
-            Pricing is based on billable members: athletes who are connected, active, and
-            meaningfully engaged with your brand program. Included thresholds are plan-review
-            points, not hard caps or surprise upgrades. Annual plans bill monthly with a 12-month
-            commitment.
+            <strong>Active program athletes</strong> are athletes who have joined your brand's
+            PROOF program and completed at least one approved-sport activity for your brand in
+            the last 12 months. Annual prices are shown monthly with annual billing.
           </p>
           <details className="afd-billing-details">
             <summary>
-              <span>How billable members are counted</span>
+              <span>How active program athletes are counted</span>
               <span className="afd-billing-icon" aria-hidden="true">+</span>
             </summary>
             <div className="afd-billing-body">
               <p>
-                We count an athlete as billable for your brand only when all three are true in the
-                trailing 12 months: they still have an active brand connection, they have verified
-                activity after joining, and they have engaged with your brand program.
+                Athletes are counted once, whether they complete one approved activity or one
+                hundred.
               </p>
               <p>
-                Engagement means joining your program, claiming a reward, or asking for reward
-                support through the brand program.
+                Athletes who join but never complete an approved activity — or who have no
+                approved activity for 12 months — do not count toward your plan guidance.
               </p>
               <p>
-                We do not charge you for someone just because they connected an approved source,
-                keep generating eligible effort, or passively receive a reward. If they stop
-                engaging with your brand program for 12 months, they age out of your billable
-                count until they engage again.
-              </p>
-              <p>
-                If your billable-member count grows beyond the included threshold, we review the
-                right plan with you. Athletes can keep joining, eligibility checks continue, and you
-                will not be auto-upgraded without a conversation.
+                Plan bands are planning guides, not surprise overage triggers. If your program
+                grows, athletes keep participating and we review the right fit with you before
+                anything changes.
               </p>
             </div>
           </details>
         </div>
       </Section>
 
-      <Section eyebrow="Comparison" title="What changes by plan.">
+      <Section eyebrow="No growth tax" title="What PROOF does not charge for.">
         <p className="afd-lede">
-          The platform foundation is kept simple. Live brand plans
-          differ mainly by billable-member thresholds, support level, and contract needs.
+          Your store should grow. Your list should grow. Your athletes should move more, earn
+          more, and redeem more. None of those moments should feel like a pricing event.
         </p>
         <Card className="afd-included-card">
-          <h3>Included in every live brand plan</h3>
+          <h3>PROOF does not charge by</h3>
           <ul>
-            {includedFeatures.map((feature) => (
+            {noChargeItems.map((feature) => (
               <li key={feature}>{feature}</li>
             ))}
           </ul>
         </Card>
-        <div className="afd-table-wrap">
-          <table className="afd-table">
-            <thead>
-              <tr>
-                {["Feature", "Developer", "Starter", "Scale", "Growth", "Enterprise"].map((heading) => (
-                  <th key={heading}>{heading}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonRows.map((row) => (
-                <tr key={row[0]}>
-                  {row.map((cell, index) => (
-                    <td key={`${row[0]}-${index}`} className={cell === "Included" ? "afd-yes" : undefined}>
-                      {cell}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
       </Section>
 
-      <Section eyebrow="Packaging principle" title="Price the platform, not the athlete.">
+      <Section eyebrow="FAQ" title="The simple version.">
         <div className="afd-grid afd-grid-2">
-          <Card>
-            <h3>No revenue share</h3>
-            <p>
-              Brands fund their own rewards, but PROOF does not take a cut of redemptions.
-              That keeps the reward economics clean and easier to model.
-            </p>
-          </Card>
-          <Card>
-            <h3>No per-activity surprise</h3>
-            <p>
-              The value is the verified effort ledger and reward engine. Pricing scales by
-              billable member volume and support needs, not by how often athletes move.
-            </p>
-          </Card>
+          {pricingFaqs.map((faq) => (
+            <Card key={faq.question}>
+              <h3>{faq.question}</h3>
+              <p>{faq.answer}</p>
+            </Card>
+          ))}
         </div>
       </Section>
 
@@ -880,8 +861,8 @@ export function AthleteForwardPricing() {
           <div className="afd-eyebrow">Next step</div>
           <h2>Build a program around verified effort.</h2>
           <p className="afd-lede">
-            Tell us the sports you care about, the athletes you want to reach, and the reward
-            moment you want to create first. We will help map the right plan and launch path.
+            Tell us the sports you care about, the athletes you want to reach, and the first
+            reward moment you want to create. We will help map the right starting plan.
           </p>
           <div className="afd-actions">
             <a className="afd-button afd-button-primary" href="/contact">

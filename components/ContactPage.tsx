@@ -29,7 +29,7 @@ const faqs = [
   },
   {
     q: "How does pricing work?",
-    a: "PROOF is priced as a platform subscription for brands, with included billable-member thresholds. Pricing is not a revenue share or per-redemption fee.",
+    a: "PROOF is priced as a platform subscription for brands, guided by active program athletes. We do not charge by order volume, revenue, email list size, activity volume, Points earned, rewards unlocked, or redemptions.",
   },
   {
     q: "I already use PROOF. Should I contact support here?",
