@@ -275,40 +275,6 @@ const css = `
     line-height: 1.62;
   }
 
-  .af-strip {
-    background:
-      linear-gradient(90deg, rgba(200,255,0,0.06), transparent 25%, transparent 70%, rgba(139,160,180,0.09)),
-      ${COLORS.surface};
-  }
-  .af-cred-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: rgba(255,255,255,0.08);
-  }
-  .af-cred-item {
-    min-height: 160px;
-    background: rgba(5,5,5,0.68);
-    padding: clamp(18px, 3vw, 24px);
-  }
-  .af-cred-item strong {
-    display: block;
-    color: ${COLORS.textBright};
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(40px, 5vw, 70px);
-    font-weight: 400;
-    line-height: 0.86;
-  }
-  .af-cred-item span {
-    display: block;
-    max-width: 210px;
-    margin-top: 16px;
-    color: ${COLORS.subtle};
-    font-size: 15px;
-    line-height: 1.45;
-  }
-
   .af-split {
     display: grid;
     grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
@@ -724,7 +690,7 @@ const css = `
   @media (max-width: 960px) {
     .af-hero-content { align-content: center; padding-bottom: 176px; }
     .af-metrics { left: 18px; right: 18px; grid-template-columns: 1fr 1fr 1fr; }
-    .af-cred-grid, .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .af-truth-grid, .af-use-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .af-split, .af-final-content { grid-template-columns: 1fr; }
     .af-shift-content { grid-template-columns: 1fr; }
     .af-panel { min-height: 460px; }
@@ -775,20 +741,6 @@ const css = `
     }
     .af-button { width: 100%; }
     .af-metrics { display: none; }
-    .af-cred-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1px;
-    }
-    .af-cred-item {
-      min-height: 128px;
-      padding: 14px;
-    }
-    .af-cred-item strong { font-size: clamp(32px, 11vw, 44px); }
-    .af-cred-item span {
-      margin-top: 10px;
-      font-size: 13px;
-      line-height: 1.38;
-    }
     .af-shift-panel,
     .af-shift-content { min-height: 0; }
     .af-shift-content {
@@ -802,10 +754,6 @@ const css = `
     }
     .af-metrics div:last-child { border-bottom: 0; }
     .af-path-options { grid-template-columns: 1fr; }
-    .af-strip .af-section-inner {
-      padding-top: 42px;
-      padding-bottom: 42px;
-    }
     .af-footer {
       align-items: flex-start;
       flex-direction: column;
@@ -1241,29 +1189,6 @@ export default function AthleteForwardConcept() {
           </div>
         </div>
       </header>
-
-      <section className="af-section af-strip" aria-label="PROOF credibility pillars">
-        <div className="af-section-inner">
-          <div className="af-cred-grid">
-            <div className="af-cred-item">
-              <strong>Brand</strong>
-              <span>Launch a rewards program built around the sports your customers actually do.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Athlete</strong>
-              <span>Join the program, connect an approved source, and start earning progress.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Effort</strong>
-              <span>Approved rides, runs, and other activities move the athlete closer.</span>
-            </div>
-            <div className="af-cred-item">
-              <strong>Reward</strong>
-              <span>When the work qualifies, the athlete has something real to claim.</span>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <section className="af-section af-truth">
         <div className="af-section-inner">
