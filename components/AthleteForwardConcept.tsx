@@ -1,5 +1,6 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { useEffect, useRef, useState } from "react";
 import { AthleteForwardHeader } from "./AthleteForwardHeader";
 import { athleteForwardChromeCss } from "./athleteForwardChrome";
@@ -444,6 +445,93 @@ const css = `
     color: ${COLORS.signal};
     background: rgba(200,255,0,0.06);
   }
+  .af-recognition-panel {
+    position: relative;
+    display: grid;
+    gap: clamp(18px, 3vw, 30px);
+    margin-top: 42px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 18px;
+    background:
+      radial-gradient(circle at 18% 14%, rgba(255,61,0,0.12), transparent 310px),
+      radial-gradient(circle at 90% 22%, rgba(200,255,0,0.1), transparent 280px),
+      linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+      ${COLORS.surfaceRaised};
+    padding: clamp(24px, 6vw, 56px);
+  }
+  .af-recognition-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 18px 18px;
+    mask-image: linear-gradient(110deg, rgba(0,0,0,0.84), transparent 72%);
+    pointer-events: none;
+  }
+  .af-recognition-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .af-recognition-list {
+    display: grid;
+    gap: clamp(6px, 1vw, 10px);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .af-recognition-list li {
+    color: ${COLORS.textBright};
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(46px, 7.2vw, 104px);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    line-height: 0.86;
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 580ms ease,
+      transform 580ms ease,
+      color 580ms ease;
+    transition-delay: calc(var(--reveal-index) * 90ms);
+  }
+  .af-recognition-panel[data-visible="true"] .af-recognition-list li {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .af-recognition-list li:nth-child(5) {
+    color: ${COLORS.signal};
+  }
+  .af-recognition-punchline {
+    position: relative;
+    z-index: 2;
+    max-width: 930px;
+    margin: 8px 0 0;
+    color: ${COLORS.textBright};
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 580ms ease 520ms,
+      transform 580ms ease 520ms;
+  }
+  .af-recognition-panel[data-visible="true"] .af-recognition-punchline {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .af-recognition-punchline-signal span {
+    color: ${COLORS.signal};
+  }
+  .af-recognition-punchline-signal {
+    border-left: 2px solid ${COLORS.signal};
+    padding-left: clamp(14px, 2vw, 22px);
+    color: rgba(232,232,232,0.92);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(30px, 4.4vw, 62px);
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
   .af-truth-grid,
   .af-use-grid {
     display: grid;
@@ -763,6 +851,11 @@ const css = `
 
   @media (prefers-reduced-motion: reduce) {
     .af-hero-video { display: none; }
+    .af-recognition-list li {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 `;
 
@@ -1046,7 +1139,9 @@ function redrawCanvases() {
 
 export default function AthleteForwardConcept() {
   const heroVideoRef = useRef<HTMLVideoElement | null>(null);
+  const recognitionRef = useRef<HTMLDivElement | null>(null);
   const [heroVideoPlaying, setHeroVideoPlaying] = useState(false);
+  const [recognitionVisible, setRecognitionVisible] = useState(false);
 
   useEffect(() => {
     redrawCanvases();
@@ -1125,6 +1220,39 @@ export default function AthleteForwardConcept() {
     };
   }, []);
 
+  useEffect(() => {
+    const recognition = recognitionRef.current;
+    if (!recognition) return;
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setRecognitionVisible(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry?.isIntersecting) {
+          setRecognitionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.32 },
+    );
+
+    observer.observe(recognition);
+    return () => observer.disconnect();
+  }, []);
+
+  const renderRecognitionList = () => (
+    <ul className="af-recognition-list">
+      <li style={{ "--reveal-index": 0 } as CSSProperties}>Before sunrise.</li>
+      <li style={{ "--reveal-index": 1 } as CSSProperties}>After work.</li>
+      <li style={{ "--reveal-index": 2 } as CSSProperties}>In bad weather.</li>
+      <li style={{ "--reveal-index": 3 } as CSSProperties}>Alone.</li>
+      <li style={{ "--reveal-index": 4 } as CSSProperties}>Tired.</li>
+    </ul>
+  );
+
   return (
     <main className="af-page">
       <style>{css}</style>
@@ -1162,8 +1290,8 @@ export default function AthleteForwardConcept() {
           <div className="af-kicker">Effort-based loyalty</div>
           <h1>Your effort is worth something.</h1>
           <p className="af-hero-sub">
-            PROOF helps athletic brands build lasting loyalty around real effort, giving
-            athletes clear progress toward rewards they can actually earn.
+            PROOF helps athletic brands turn real-world training into loyalty, progress,
+            and rewards athletes can actually earn.
           </p>
           <div className="af-actions">
             <a className="af-button af-button-primary" href={APP_REGISTER_BRAND_URL}>
@@ -1190,44 +1318,25 @@ export default function AthleteForwardConcept() {
         </div>
       </header>
 
-      <section className="af-section af-truth">
+      <section className="af-section af-truth" id="recognition">
         <div className="af-section-inner">
-          <div className="af-eyebrow">The shift</div>
-          <h2>The relationship can start with movement.</h2>
+          <div className="af-eyebrow">Recognition</div>
+          <h2>The work usually goes unseen.</h2>
           <p className="af-lede">
-            Athletes opt in before the reward moment. PROOF turns eligible effort into a
-            program signal brands can honor without sharing raw athlete activity.
+            Most loyalty programs notice the transaction. PROOF notices the work that
+            happens before the next one.
           </p>
-          <div className="af-shift-panel" aria-label="Purchase-based loyalty compared with verified effort loyalty">
-            <canvas className="af-panel-canvas" data-art="shift" aria-hidden="true" />
-            <div className="af-shift-content">
-              <div className="af-shift-lane">
-                <span className="af-mono">Old loyalty signal</span>
-                <strong>Purchase first.</strong>
-                <p>
-                  The relationship starts after purchase, then tries to create return visits
-                  with points, discounts, or reminders.
-                </p>
-                <div className="af-shift-tags" aria-hidden="true">
-                  <span>Receipt</span>
-                  <span>Points</span>
-                  <span>Follow-up</span>
-                </div>
-              </div>
-              <div className="af-shift-lane af-shift-lane-active">
-                <span className="af-mono">PROOF signal</span>
-                <strong>Movement first.</strong>
-                <p>
-                  Eligible effort can create reward progress, with PROOF operating the
-                  qualification layer for the brand.
-                </p>
-                <div className="af-shift-tags" aria-hidden="true">
-                  <span>Approved source</span>
-                  <span>23 Points</span>
-                  <span>Reward progress</span>
-                </div>
-              </div>
-            </div>
+          <div
+            ref={recognitionRef}
+            className="af-recognition-panel"
+            data-visible={recognitionVisible ? "true" : "false"}
+            aria-label="The effort PROOF helps brands recognize"
+          >
+            <div className="af-recognition-copy">{renderRecognitionList()}</div>
+            <p className="af-recognition-punchline af-recognition-punchline-signal">
+              PROOF helps brands reward<br />
+              <span>the athletes who keep showing up.</span>
+            </p>
           </div>
         </div>
       </section>
@@ -1237,8 +1346,8 @@ export default function AthleteForwardConcept() {
           <div className="af-eyebrow">For brands</div>
           <h2>Turn training into customer loyalty.</h2>
           <p className="af-lede">
-            Traditional loyalty waits for another purchase. PROOF gives brands a way to recognize
-            the activity, discipline, and identity that keep customers connected between orders.
+            Give customers a reason to stay connected between orders — not with another
+            generic discount, but with rewards tied to the effort they already care about.
           </p>
           <div className="af-use-grid">
             <div className="af-card">
@@ -1265,8 +1374,8 @@ export default function AthleteForwardConcept() {
           <div className="af-eyebrow">For athletes</div>
           <h2>A reason to keep showing up.</h2>
           <p className="af-lede">
-            Athletes do not need another points scheme disconnected from the work. PROOF lets
-            eligible effort earn program progress and rewards with brands they care about.
+            Athletes see how their approved runs, rides, and other efforts move them
+            toward rewards with brands they care about.
           </p>
           <div className="af-identity-panel">
             <div className="af-next-effort-top">
@@ -1314,31 +1423,31 @@ export default function AthleteForwardConcept() {
         <div className="af-section-inner af-split">
           <div>
             <div className="af-eyebrow">How it works</div>
-            <h2>Join. Move. Get closer.</h2>
+            <h2>Connect activity. Set rewards. Let athletes earn.</h2>
             <p className="af-lede">
-              Athletes join through a brand, connect an approved activity source, and see how
-              eligible effort moves them toward a real reward.
+              PROOF connects verified activity data to a brand's rewards program, so athletes
+              can earn progress through approved sports and redeem Shopify rewards.
             </p>
             <div className="af-signal-row">
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Join the program</h3>
-                  <p>An athlete joins from a brand invite and connects an approved activity source.</p>
+                  <h3>Athletes connect activity</h3>
+                  <p>They join from a brand invite and connect an approved source like Strava.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>Complete approved effort</h3>
-                  <p>Runs, rides, or other approved sports count toward that brand's rewards.</p>
+                  <h3>Brands choose what counts</h3>
+                  <p>Each brand sets eligible sports, reward thresholds, and challenge goals.</p>
                 </div>
               </div>
               <div className="af-signal-card">
                 <span className="af-dot" aria-hidden="true" />
                 <div>
-                  <h3>See what is within reach</h3>
-                  <p>Progress updates so the athlete knows what they earned and what comes next.</p>
+                  <h3>PROOF tracks and rewards progress</h3>
+                  <p>Points and reward status update in PROOF, with Shopify rewards and brand progress emails.</p>
                 </div>
               </div>
             </div>
@@ -1355,8 +1464,8 @@ export default function AthleteForwardConcept() {
               </div>
               <h3>A morning run moves a reward closer.</h3>
               <p>
-                The athlete sees the Points they earned, how close they are to Brand X's next
-                reward, and the kind of effort that could get them there.
+                An athlete completes an approved activity, PROOF updates their Points, and the
+                brand can turn that progress into a reward, challenge, or timely email.
               </p>
             </div>
           </div>
@@ -1399,8 +1508,8 @@ export default function AthleteForwardConcept() {
                 <div className="af-eyebrow">PROOF</div>
                 <h2>Build loyalty around proof, not guesswork.</h2>
                 <p>
-                  Invite athletes through movement. Reward them with verified context.
-                  Keep the relationship alive after the first earned moment.
+                  Connect your brand to the effort your customers already care about —
+                  then give them a clear reason to come back.
                 </p>
               </div>
               <div className="af-actions">
