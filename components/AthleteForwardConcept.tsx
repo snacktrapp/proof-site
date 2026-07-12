@@ -1288,7 +1288,7 @@ export default function AthleteForwardConcept() {
         <div className="af-noise" />
         <div className="af-hero-content">
           <div className="af-kicker">Effort-based loyalty</div>
-          <h1>Your effort is worth something.</h1>
+          <h1>Effort is worth something.</h1>
           <p className="af-hero-sub">
             PROOF helps athletic brands turn real-world training into loyalty, progress,
             and rewards athletes can actually earn.
