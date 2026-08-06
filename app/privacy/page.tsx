@@ -131,6 +131,13 @@ export default function PrivacyPolicy() {
             review how eligible effort becomes Points on our{" "}
             <a href="/methodology">PROOF methodology page</a>.
           </p>
+          <p>
+            We retain identifiable activity detail for no more than seven days after the activity.
+            After that period, the activity identifier, title, sport, distance, duration, elevation,
+            and other connected-platform detail are deleted from PROOF&apos;s active systems. We retain
+            only the provider-free loyalty records needed to preserve Points, rewards, and account
+            history as described in Section 5.
+          </p>
 
           <h3>2.3 Brand Program Data</h3>
           <p>
@@ -214,10 +221,24 @@ export default function PrivacyPolicy() {
 
           <h2>5. Data Retention</h2>
           <p>
-            While your fitness-platform connection is active, we retain the minimized activity fields
-            described above as needed to verify eligible effort, prevent duplicate credit, explain your
-            own recent activity, and operate program calculations. We do not store full GPS route
-            coordinates.
+            We retain the minimized activity fields described above for no more than seven days after
+            the activity. During that period, we use the detail to verify eligible effort, prevent
+            duplicate credit, explain your own recent activity, and process activity updates or
+            deletions. We do not store full GPS route coordinates.
+          </p>
+          <p>
+            After seven days, PROOF deletes the identifiable activity detail and retains provider-free
+            loyalty accounting such as dated Points entries, aggregate lifetime progress, reward and
+            Challenge outcomes, and commerce records. Those retained records preserve value already
+            earned without retaining the connected-platform athlete ID, activity ID, title, sport,
+            route, distance, duration, elevation, or other activity-level performance data.
+          </p>
+          <p>
+            If a connected platform reports an activity update or deletion during the seven-day
+            period, PROOF removes the activity detail. Points or rewards already issued from that
+            activity may remain so participating brands can honor earned value. To prevent duplicate
+            credit, PROOF may retain only the activity identifier until the original seven-day period
+            expires; that identifier is not shown to brands or used for marketing.
           </p>
           <p>
             A confirmed disconnect deletes the connected platform&apos;s authorization credentials,
@@ -227,11 +248,11 @@ export default function PrivacyPolicy() {
           </p>
           <p>
             Disconnecting does not delete earned loyalty value or completed commerce history. PROOF
-            retains aggregate lifetime progress, brand-scoped Points, Challenge outcomes, earned
-            rewards, and purchase or refund records so that brands can honor value already earned and
-            maintain necessary financial and support records. These preserved records do not include
-            the deleted fitness-platform athlete ID, activity ID, title, date, sport, route, distance,
-            duration, elevation, or performance data.
+            retains provider-free aggregate lifetime progress, brand-scoped Points, Challenge
+            outcomes, earned rewards, and purchase or refund records so that brands can honor value
+            already earned and maintain necessary financial and support records. These preserved
+            records do not include the deleted fitness-platform athlete ID, activity ID, title, date,
+            sport, route, distance, duration, elevation, or performance data.
           </p>
           <p>
             If you delete your PROOF account, we will delete personal data within 30 days, except where
@@ -291,8 +312,9 @@ export default function PrivacyPolicy() {
             through Strava instead of PROOF, contact team@verifiedeffort.com and we will complete the
             deletion. In either case, your aggregate lifetime progress, brand Points, completed
             Challenges, earned rewards, and completed purchases remain. If you reconnect later,
-            PROOF starts processing eligible activity from the new authorization forward; deleted
-            activity detail is not restored.
+            PROOF starts processing eligible activity from the new authorization forward; it does
+            not import activity from before that new authorization, and deleted activity detail is
+            not restored.
           </p>
 
           <h3>7.5 Communication Preferences</h3>
