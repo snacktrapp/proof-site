@@ -276,19 +276,23 @@ export default function PrivacyPolicy() {
 
           <h3>7.4 Disconnect Fitness Platforms</h3>
           <p>
-            You may disconnect any connected fitness platform at any time through your PROOF
-            account settings. You may also revoke PROOF&apos;s access directly through the platform&apos;s
-            own settings:
+            You may disconnect any connected fitness platform at any time through the Connections
+            page in your PROOF account settings. Using PROOF&apos;s disconnect control lets us confirm
+            revocation with the platform and delete the authorization, provider identifiers, and
+            detailed activity records described in Section 5.
           </p>
+          <p>You may also revoke PROOF&apos;s access directly through the platform&apos;s own settings:</p>
           <ul>
             <li>Strava: Settings → My Apps → PROOF → Revoke Access</li>
           </ul>
           <p>
-            After the platform confirms revocation, PROOF stops receiving new activity and deletes the
-            authorization, provider identifiers, and detailed activity records described in Section 5.
-            Your aggregate lifetime progress, brand Points, completed Challenges, earned rewards, and
-            completed purchases remain. If you reconnect later, PROOF starts processing eligible
-            activity from the new authorization forward; deleted activity detail is not restored.
+            Revoking access directly through Strava stops PROOF&apos;s authorization, but the external
+            notification may not immediately complete PROOF&apos;s detailed-data cleanup. If you revoke
+            through Strava instead of PROOF, contact team@verifiedeffort.com and we will complete the
+            deletion. In either case, your aggregate lifetime progress, brand Points, completed
+            Challenges, earned rewards, and completed purchases remain. If you reconnect later,
+            PROOF starts processing eligible activity from the new authorization forward; deleted
+            activity detail is not restored.
           </p>
 
           <h3>7.5 Communication Preferences</h3>
