@@ -20,7 +20,7 @@ const COLORS = {
 };
 
 export default function PrivacyPolicy() {
-  const effectiveDate = "March 29, 2026";
+  const effectiveDate = "August 6, 2026";
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
@@ -110,34 +110,26 @@ export default function PrivacyPolicy() {
           <p>
             When you connect a fitness platform to PROOF (currently Strava; additional integrations
             planned), we receive activity data from that platform through their authorized API.
-            This data may include:
+            We limit the activity data we retain to fields used to verify eligible effort and operate
+            the loyalty programs you join. These fields may include:
           </p>
           <ul>
             <li>Activity type (e.g., cycling, running, swimming, walking)</li>
-            <li>Distance, duration, and pace/speed</li>
-            <li>GPS route data (used for verification, then discarded — see Section 5)</li>
+            <li>Distance, moving time, and total elevation gain</li>
             <li>Date and time of activity</li>
-            <li>Activity title and description</li>
-            <li>Total elevation gain</li>
-            <li>Heart rate data (average and maximum, when recorded by your device)</li>
-            <li>Power data (average and weighted-average watts, when a power meter is paired)</li>
-            <li>Energy expended in kilojoules (when computable from power data)</li>
-            <li>Your fitness platform&apos;s native intensity score, where one is published</li>
-            <li>Your fitness platform profile information (athlete ID, profile name, profile photo URL)</li>
+            <li>Activity title</li>
+            <li>The fitness-platform athlete and activity identifiers needed to maintain the connection and prevent duplicate credit</li>
+            <li>PROOF&apos;s verification result and the Points calculated from the activity</li>
           </ul>
           <p>
             We only access data you have explicitly authorized through the OAuth consent flow provided
             by each fitness platform. You can revoke this access at any time (see Section 7).
           </p>
           <p>
-            <strong>Forward-purpose declaration.</strong> We capture all of the activity-data fields
-            above on every recorded activity, even though our current PROOF Miles calculation
-            (methodology v1.0) only uses distance and elevation. The remaining fields — heart rate,
-            power, kilojoules, and intensity scores — are stored to support future improvements
-            to athlete-owned effort methodology and eligible program calculations. You can review
-            the full methodology at our{" "}
-            <a href="/methodology">PROOF methodology page</a>. Disconnecting a fitness platform
-            stops new data of any of these types from being received.
+            PROOF does not retain GPS routes, heart rate, power, kilojoules, Strava intensity scores,
+            activity descriptions, or Strava profile photos for newly processed activities. You can
+            review how eligible effort becomes Points on our{" "}
+            <a href="/methodology">PROOF methodology page</a>.
           </p>
 
           <h3>2.3 Brand Program Data</h3>
@@ -200,6 +192,10 @@ export default function PrivacyPolicy() {
             We do not share your data back to Strava or other connected fitness platforms
             beyond what is required for the API connection to function.
           </p>
+          <p>
+            Strava may collect and analyze information about your use of PROOF as permitted by
+            Strava&apos;s own terms and privacy policy.
+          </p>
 
           <h3>4.3 With Third Parties</h3>
           <p>
@@ -216,23 +212,32 @@ export default function PrivacyPolicy() {
             rights, your safety, or the safety of others.
           </p>
 
-          <h2>5. Data Retention and GPS Data</h2>
+          <h2>5. Data Retention</h2>
           <p>
-            We retain your account information and athlete-owned PROOF Miles history for as long as
-            your account is active. Activity records and transformed loyalty outputs are retained as
-            part of your effort and reward ledger.
+            While your fitness-platform connection is active, we retain the minimized activity fields
+            described above as needed to verify eligible effort, prevent duplicate credit, explain your
+            own recent activity, and operate program calculations. We do not store full GPS route
+            coordinates.
           </p>
           <p>
-            GPS route data is used during the verification process to confirm that an activity is
-            real and recorded by your fitness device or app. We do not store full GPS route
-            coordinates long-term. Once
-            verification is complete, we retain only the verification result (verified or not) and
-            aggregate activity data (distance, sport type, duration).
+            A confirmed disconnect deletes the connected platform&apos;s authorization credentials,
+            provider identifiers, and detailed activity records from PROOF&apos;s active systems. Limited
+            operational and security logs may remain for their normal short retention period, and
+            deleted records may remain temporarily in encrypted backups until those backups expire.
           </p>
           <p>
-            If you delete your account, we will delete your personal data within 30 days, except where
-            we are required by law to retain it. Anonymized and aggregated data that cannot be used to
-            identify you may be retained for analytics purposes.
+            Disconnecting does not delete earned loyalty value or completed commerce history. PROOF
+            retains aggregate lifetime progress, brand-scoped Points, Challenge outcomes, earned
+            rewards, and purchase or refund records so that brands can honor value already earned and
+            maintain necessary financial and support records. These preserved records do not include
+            the deleted fitness-platform athlete ID, activity ID, title, date, sport, route, distance,
+            duration, elevation, or performance data.
+          </p>
+          <p>
+            If you delete your PROOF account, we will delete personal data within 30 days, except where
+            we must retain limited information for legal, fraud-prevention, financial, or security
+            obligations. De-identified aggregate data that cannot reasonably identify you may be
+            retained for analytics.
           </p>
 
           <h2>6. Data Security</h2>
@@ -271,17 +276,23 @@ export default function PrivacyPolicy() {
 
           <h3>7.4 Disconnect Fitness Platforms</h3>
           <p>
-            You may disconnect any connected fitness platform at any time through your PROOF
-            account settings. You may also revoke PROOF&apos;s access directly through the platform&apos;s
-            own settings:
+            You may disconnect any connected fitness platform at any time through the Connections
+            page in your PROOF account settings. Using PROOF&apos;s disconnect control lets us confirm
+            revocation with the platform and delete the authorization, provider identifiers, and
+            detailed activity records described in Section 5.
           </p>
+          <p>You may also revoke PROOF&apos;s access directly through the platform&apos;s own settings:</p>
           <ul>
             <li>Strava: Settings → My Apps → PROOF → Revoke Access</li>
           </ul>
           <p>
-            Disconnecting a fitness platform stops new activity data from being sent to PROOF. Activity
-            data already verified and credited to your account remains part of your effort history
-            unless you request its deletion.
+            Revoking access directly through Strava stops PROOF&apos;s authorization, but the external
+            notification may not immediately complete PROOF&apos;s detailed-data cleanup. If you revoke
+            through Strava instead of PROOF, contact team@verifiedeffort.com and we will complete the
+            deletion. In either case, your aggregate lifetime progress, brand Points, completed
+            Challenges, earned rewards, and completed purchases remain. If you reconnect later,
+            PROOF starts processing eligible activity from the new authorization forward; deleted
+            activity detail is not restored.
           </p>
 
           <h3>7.5 Communication Preferences</h3>
@@ -376,12 +387,6 @@ export default function PrivacyPolicy() {
           </p>
 
           <hr className="divider" />
-
-          <p style={{ color: COLORS.subtle, fontSize: 13 }}>
-            This policy is designed to meet the requirements of the Strava API Agreement, the
-            California Consumer Privacy Act (CCPA/CPRA), and the General Data Protection Regulation
-            (GDPR).
-          </p>
 
         </div>
       </main>
