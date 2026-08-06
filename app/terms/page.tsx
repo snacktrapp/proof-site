@@ -21,7 +21,7 @@ const COLORS = {
 };
 
 export default function TermsOfService() {
-  const effectiveDate = "April 29, 2026";
+  const effectiveDate = "August 6, 2026";
 
   return (
     <div style={{ background: COLORS.base, minHeight: "100vh", color: COLORS.text }}>
@@ -213,6 +213,14 @@ export default function TermsOfService() {
             PROOF does not control, modify, or store data on the connected platform. We only read
             activity data as authorized by you and as permitted by each platform's API agreement.
           </p>
+          <p>
+            PROOF retains identifiable activity detail for no more than seven days after the
+            activity. We may retain provider-free Points, aggregate progress, reward outcomes, and
+            commerce records after deleting that detail. If an activity is updated or deleted during
+            the seven-day period, its detail is removed; Points or rewards already issued may remain
+            so participating brands can honor earned value. See our{" "}
+            <a href="/privacy">Privacy Policy</a> for the complete retention and disconnect rules.
+          </p>
 
           <h2>5. Athletes — How Rewards Work</h2>
           <p>
@@ -248,6 +256,12 @@ export default function TermsOfService() {
               Lifetime PROOF Miles are intended to persist across the network for as long as your
               account exists; however, we reserve the right to adjust, recompute, or remove PM or
               Points credits that result from system errors, fraud, or duplicate activity recordings.
+            </li>
+            <li>
+              Disconnecting a fitness platform stops future processing and removes that platform&apos;s
+              authorization, identifiers, and detailed activity records. Provider-free lifetime
+              progress, Points, completed Challenges, earned rewards, and completed purchases may
+              remain as described in the Privacy Policy.
             </li>
           </ul>
 
